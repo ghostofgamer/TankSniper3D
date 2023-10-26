@@ -16,6 +16,5 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.position += transform.forward * 10 * Time.deltaTime;
-        //GetComponent<Rigidbody>().AddRelativeForce(transform.forward * _speed * Time.deltaTime, ForceMode.VelocityChange); 
     }
 }

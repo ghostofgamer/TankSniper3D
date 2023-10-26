@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerPlayer : MonoBehaviour
 {
     private readonly int _speed = 10;
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.A))

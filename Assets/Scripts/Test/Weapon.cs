@@ -8,11 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _position;
     [SerializeField] private Transform _container;
 
-    private readonly int _speed = 10;
-    private readonly int _speedRotate = 3;
-    private float _camRotationY = 0;
-    private float _limitAnglesY = 15;
-    private float _limitAnglesX = 15;
+    private readonly float _limitAngles = 50f;
+
     private float vertical;
     private float horizontal;
 
@@ -20,7 +17,7 @@ public class Weapon : MonoBehaviour
     {
         vertical += Input.GetAxis("Mouse Y");
         horizontal += Input.GetAxis("Mouse X");
-        transform.rotation = Quaternion.Euler(Mathf.Clamp(-vertical, -50f, 50f), Mathf.Clamp(horizontal, -50f, 50f), 0);
+        transform.rotation = Quaternion.Euler(Mathf.Clamp(-vertical, -_limitAngles, _limitAngles), Mathf.Clamp(horizontal, -_limitAngles, _limitAngles), 0);
     }
 
     public void Shoot()
