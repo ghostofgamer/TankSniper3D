@@ -9,29 +9,23 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform _container;
 
     private readonly int _speed = 10;
-    private readonly int _camRotationY = 0;
+    private readonly int _speedRotate = 3;
+    private float _camRotationY = 0;
+    private float _limitAnglesY = 15;
+    private float _limitAnglesX = 15;
+    private float vertical;
+    private float horizontal;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Bullet bullet = Instantiate(_prefabBullet, _container);
-            bullet.Init(_position);
-        }
+        vertical += Input.GetAxis("Mouse Y");
+        horizontal += Input.GetAxis("Mouse X");
+        transform.rotation = Quaternion.Euler(Mathf.Clamp(-vertical, -50f, 50f), Mathf.Clamp(horizontal, -50f, 50f), 0);
+    }
 
-        float horizontal = Input.GetAxis("Mouse Y");
-        float vertical = Input.GetAxis("Mouse X");
-
-        if (horizontal != 0)
-        {
-            var tmp = _camRotationY - horizontal * Time.deltaTime;
-            transform.Rotate(transform.right, -horizontal);
-        }
-
-        if (vertical != 0)
-        {
-            var tmp = _camRotationY - vertical * Time.deltaTime;
-            transform.Rotate(transform.up, vertical);
-        }
+    public void Shoot()
+    {
+        Bullet bullet = Instantiate(_prefabBullet, _container);
+        bullet.Init(_position);
     }
 }
