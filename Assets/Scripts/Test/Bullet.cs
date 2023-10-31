@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private readonly int _speed = 65;
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
     public void Init(Transform transform)
     {
@@ -13,8 +14,19 @@ public class Bullet : MonoBehaviour
         //this.transform.Translate(0, 0, 1);
     }
 
+    private void Start()
+    {
+        StartCoroutine(DestroyBullet());       
+    }
+
     private void Update()
     {
-        transform.position += transform.forward * 10 * Time.deltaTime;
+        transform.position += transform.forward * _speed * Time.deltaTime;
+    }
+
+    private IEnumerator DestroyBullet()
+    {
+        yield return _waitForSeconds;
+        gameObject.SetActive(false);
     }
 }
