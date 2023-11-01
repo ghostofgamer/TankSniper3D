@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthBar : Bar
+public class Progresbar : Bar
 {
-    [SerializeField] private Player _player;
+
 }
