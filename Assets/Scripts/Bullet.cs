@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private readonly int _speed = 65;
+    private readonly int _speed = 50;
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
     public void Init(Transform transform)

@@ -9,13 +9,9 @@ public class TowerPlayer : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.A))
-        {
             transform.Rotate(0, -_speed * Time.deltaTime, 0);
-        }
 
         if (Input.GetKey(KeyCode.D))
-        {
             transform.Rotate(0, _speed * Time.deltaTime, 0);
-        }
     }
 }
