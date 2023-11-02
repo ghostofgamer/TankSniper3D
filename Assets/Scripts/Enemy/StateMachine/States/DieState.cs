@@ -6,9 +6,18 @@ public class DieState : State
 {
     [SerializeField] private EnemyAnimations _enemyAnimations;
 
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
+
     private void OnEnable()
     {
-        _enemyAnimations.Shooting(false);
+        StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        Debug.Log("Убил");
         _enemyAnimations.Die(true);
+        yield return _waitForSeconds;
+        gameObject.SetActive(false);
     }
 }

@@ -24,30 +24,32 @@ public class CameraAim : MonoBehaviour
 
     private void Update()
     {
-        if (_isZoom)
+        if (!_weapon.IsReload)
         {
-            _towerRotate.Rotate();
-            //_weapon.Rotate();
-        }
+            if (_isZoom)
+            {
+                _towerRotate.Rotate();
+            }
 
-        if (!_isZoom)
-        {
-            _towerRotate.ResetRotate();
-        }
+            if (!_isZoom)
+            {
+                _towerRotate.ResetRotate();
+            }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            SetCamera();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                SetCamera();
+            }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            _weapon.Shoot();
+            if (Input.GetMouseButtonUp(0))
+            {
+                _weapon.Shoot();
 
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
+                if (_coroutine != null)
+                    StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(SetCameraPause());
+                _coroutine = StartCoroutine(SetCameraPause());
+            }
         }
     }
 

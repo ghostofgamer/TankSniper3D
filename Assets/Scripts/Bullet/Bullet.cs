@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     private readonly int _speed = 50;
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
+    private Coroutine _coroutine;
+
     public void Init(Transform transform)
     {
         this.transform.position = transform.position;
@@ -14,9 +16,15 @@ public class Bullet : MonoBehaviour
         //this.transform.Translate(0, 0, 1);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(DestroyBullet());       
+        _coroutine =  StartCoroutine(DestroyBullet());  
+    }
+
+    private void OnDisable()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
     private void Update()

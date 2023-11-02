@@ -7,8 +7,8 @@ public class MoverState : State
     [SerializeField] private Transform _path;
     [SerializeField] private EnemyAnimations _enemyAnimations;
 
-    private int _currentPoint = 0;
     private List<Transform> _points;
+    private int _currentPoint = 0;
     private float _speedMove = 5;
     private float _speedRotation = 3;
 
