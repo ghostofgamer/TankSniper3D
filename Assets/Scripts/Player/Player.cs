@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private int _currentHealth;
 
     public event UnityAction<int,int> HealthChanged;
+    public event UnityAction Dying;
+
+    private bool _isDead => _currentHealth <= 0;
 
     private void Start()
     {
@@ -20,12 +23,13 @@ public class Player : MonoBehaviour
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth,_maxHealth);
 
-        if (_currentHealth <= 0)
+        if (_isDead)
             Die();
     }
 
     private void Die()
     {
+        Dying?.Invoke();
         Debug.Log("Жизни игрока кончились");
     }
 }

@@ -10,12 +10,7 @@ public class EnemyShoot : MonoBehaviour
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
-    private void Start()
-    {
-        StartCoroutine(Shoot());
-    }
-
-    private IEnumerator Shoot()
+    public IEnumerator Shoot()
     {
         while (true)
         {
