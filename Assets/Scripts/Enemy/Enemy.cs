@@ -27,8 +27,8 @@ public class Enemy : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
         _currentHealth -= damage;
+        _coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
         HealthChanged?.Invoke(_currentHealth,_health);
     }
 }

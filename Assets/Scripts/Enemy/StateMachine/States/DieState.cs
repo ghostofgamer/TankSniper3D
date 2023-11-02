@@ -15,7 +15,6 @@ public class DieState : State
 
     private IEnumerator Die()
     {
-        Debug.Log("Убил");
         _enemyAnimations.Die(true);
         yield return _waitForSeconds;
         gameObject.SetActive(false);
