@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BulletTrigger : MonoBehaviour
 {
-    [SerializeField] private int _damage = 10;
+    [SerializeField] private Bullet _bullet;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Enemy enemy))
-            enemy.TakeDamage(_damage);
+            enemy.TakeDamage(_bullet.Damage);
 
         if (other.TryGetComponent(out Player player))
-            player.ApplyDamage(_damage);
+            player.ApplyDamage(_bullet.Damage);
     }
 }

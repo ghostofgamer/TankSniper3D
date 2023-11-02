@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private int _damage = 10;
+
     private readonly int _speed = 50;
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
     private Coroutine _coroutine;
+
+    public int Damage => _damage;
 
     public void Init(Transform transform)
     {

@@ -14,9 +14,10 @@ public class Weapon : MonoBehaviour
 
     private readonly int _maxAmmo = 4;
 
-    private List<Bullet> _bullets = new List<Bullet>();
+    private ObjectPool<Bullet> _pool;
     private bool _isFirstShoot = false;
     private int _currentAmmo;
+    private bool _autoExpand = true;
 
     public bool IsReload { get; private set; } = false;
 
@@ -25,7 +26,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        SetBullets();
+        _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
+        _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
     }
 
@@ -41,11 +43,12 @@ public class Weapon : MonoBehaviour
 
             if (_currentAmmo > 0)
             {
-                var bullet = _bullets.FirstOrDefault(p => p.gameObject.activeSelf == false);
-                bullet.gameObject.SetActive(true);
-                bullet.Init(_shootPosition);
-                _currentAmmo--;
-                BulletsChanged?.Invoke(_currentAmmo);
+                if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+                {
+                    bullet.Init(_shootPosition);
+                    _currentAmmo--;
+                    BulletsChanged?.Invoke(_currentAmmo);
+                }
 
                 if (_currentAmmo <= 0)
                     StartCoroutine(Reload());
@@ -68,15 +71,5 @@ public class Weapon : MonoBehaviour
     {
         _image.gameObject.SetActive(flag);
         IsReload = flag;
-    }
-
-    private void SetBullets()
-    {
-        for (int i = 0; i < _maxAmmo; i++)
-        {
-            Bullet bullet = Instantiate(_prefabBullet, _container);
-            bullet.gameObject.SetActive(false);
-            _bullets.Add(bullet);
-        }
     }
 }
