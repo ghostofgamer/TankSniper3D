@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    [SerializeField] private GameObject _newGameObject;
+    [SerializeField] private Transform _newGameObject;
+    [SerializeField] private Transform[] _objects;
     [SerializeField] private GameObject _oldGameObject;
-    [SerializeField] private GameObject _Roof;
-    [SerializeField] private GameObject _newRoof;
 
-    private void OnCollisionEnter(Collision collision)
+    public void GetDestroyObject()
     {
-        if (collision.gameObject.TryGetComponent(out Bullet bullet))
-            GetDestroyObject();
-    }
-
-    private void GetDestroyObject()
-    {
-        _newGameObject.SetActive(true);
-        Instantiate(_newGameObject, transform.position, transform.rotation);
         _oldGameObject.SetActive(false);
+
+        foreach (var house in _objects)
+        {
+            house.gameObject.SetActive(true);
+            var rigidbody = house.gameObject.GetComponent<Rigidbody>();
+            rigidbody.AddForce(Vector3.down * 1000, ForceMode.Force);
+        }
+
+        //_newGameObject.gameObject.SetActive(true);
+
+        //for (int i = 0; i < _newGameObject.childCount; i++)
+        //{
+        //    _newGameObject.GetChild(i);
+        //    var rigidbody = _newGameObject.gameObject.GetComponent<Rigidbody>();
+        //    rigidbody.AddForce(Vector3.forward * 1000, ForceMode.Force);
+        //}
+        //Instantiate(_newGameObject, transform.position, transform.rotation);
     }
 }

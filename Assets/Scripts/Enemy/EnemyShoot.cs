@@ -14,6 +14,7 @@ public class EnemyShoot : MonoBehaviour
     {
         while (true)
         {
+            yield return _waitForSeconds;
             Bullet bullet = Instantiate(_prefab, _container);
             bullet.Init(_shootPosition);
             yield return _waitForSeconds;

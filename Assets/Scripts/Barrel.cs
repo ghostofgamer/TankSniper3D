@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Barrel : MonoBehaviour
+{
+    [SerializeField] private float _radius;
+    [SerializeField] private ParticleSystem _ExplosionParticle;
+
+    private int _damage = 30;
+
+    public void Explosion()
+    {
+        StartCoroutine(OnDestroysss());
+    }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    StartCoroutine(OnDestroysss());
+    //}
+
+    private IEnumerator OnDestroysss()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
+        Instantiate(_ExplosionParticle, transform);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent(out Enemy enemy))
+                enemy.TakeDamage(_damage);
+
+            if (hitCollider.TryGetComponent(out Destroy destroy))
+            {
+                destroy.GetDestroyObject();
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.SetActive(false);
+    }
+}

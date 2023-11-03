@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         this.transform.rotation = transform.rotation;
         //this.transform.Translate(0, 0, 1);
     }
-
+    
     private void OnEnable()
     {
         _coroutine =  StartCoroutine(DestroyBullet());  
