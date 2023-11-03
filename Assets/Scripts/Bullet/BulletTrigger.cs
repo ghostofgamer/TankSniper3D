@@ -51,7 +51,6 @@ public class BulletTrigger : MonoBehaviour
 
         if (other.TryGetComponent(out Player player))
             player.ApplyDamage(_bullet.Damage);
-        //gameObject.SetActive(false);
     }
 
     private IEnumerator SetActive()
@@ -66,6 +65,5 @@ public class BulletTrigger : MonoBehaviour
     {
         GetComponent<Collider>().enabled = flag;
         _bullet.enabled = flag;
-
     }
 }
