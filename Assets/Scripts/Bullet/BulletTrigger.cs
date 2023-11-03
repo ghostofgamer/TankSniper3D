@@ -6,23 +6,23 @@ public class BulletTrigger : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _radius = 0.001f;
+    [SerializeField] private BulletEffect _bulletEffect;
     [SerializeField] private ParticleSystem _explosionEffect;
+
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.6f);
 
     private Coroutine _coroutine;
 
     private void OnTriggerEnter(Collider other)
     {
-        _explosionEffect.Play();
-        _explosionEffect.GetComponent<AudioSource>().Play();
-
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(SetActive());
-        Debug.Log("я попал в " + other.name);
-
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius/*, 1, QueryTriggerInteraction.Collide*/);
-        Debug.Log(hitColliders.Length);
+        _bulletEffect.PlayEffect();
+        //_explosionEffect.Play();
+        //_explosionEffect.GetComponent<AudioSource>().Play();
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
 
         foreach (var hitCollider in hitColliders)
         {
@@ -56,7 +56,7 @@ public class BulletTrigger : MonoBehaviour
     private IEnumerator SetActive()
     {
         SetBullet(false);
-        yield return new WaitForSeconds(0.6f);
+        yield return _waitForSeconds;
         SetBullet(true);
         gameObject.SetActive(false);
     }

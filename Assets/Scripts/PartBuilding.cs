@@ -5,6 +5,7 @@ using UnityEngine;
 public class PartBuilding : MonoBehaviour
 {
     private Coroutine _coroutine;
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
     private void OnEnable()
     {
@@ -18,7 +19,7 @@ public class PartBuilding : MonoBehaviour
 
     private IEnumerator OnSetActive()
     {
-        yield return new WaitForSeconds(3f);
+        yield return _waitForSeconds;
         gameObject.SetActive(false);
     }
 }

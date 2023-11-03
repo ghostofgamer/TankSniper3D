@@ -8,16 +8,12 @@ public class Barrel : MonoBehaviour
     [SerializeField] private ParticleSystem _ExplosionParticle;
 
     private int _damage = 30;
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
     public void Explosion()
     {
         StartCoroutine(OnDestroysss());
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    StartCoroutine(OnDestroysss());
-    //}
 
     private IEnumerator OnDestroysss()
     {
@@ -34,7 +30,7 @@ public class Barrel : MonoBehaviour
                 destroy.GetDestroyObject();
             }
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitForSeconds;
 
         gameObject.SetActive(false);
     }
