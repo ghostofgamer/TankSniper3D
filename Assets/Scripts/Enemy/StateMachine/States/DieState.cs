@@ -8,7 +8,7 @@ public class DieState : State
     [SerializeField] private Effect _effect;
     [SerializeField] private KilledInfo _killedInfo;
 
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
     private int _force = 300;
 
     private void OnEnable()
