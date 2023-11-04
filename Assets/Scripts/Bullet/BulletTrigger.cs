@@ -6,8 +6,7 @@ public class BulletTrigger : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _radius = 0.001f;
-    [SerializeField] private BulletEffect _bulletEffect;
-    [SerializeField] private ParticleSystem _explosionEffect;
+    [SerializeField] private Effect _effect;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.6f);
 
@@ -19,14 +18,11 @@ public class BulletTrigger : MonoBehaviour
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(SetActive());
-        _bulletEffect.PlayEffect();
-        //_explosionEffect.Play();
-        //_explosionEffect.GetComponent<AudioSource>().Play();
+        _effect.PlayEffect();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
 
         foreach (var hitCollider in hitColliders)
         {
-            Debug.Log("вокруг " + other.name);
             if (hitCollider.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(_bullet.Damage);

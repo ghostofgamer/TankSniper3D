@@ -5,7 +5,7 @@ using UnityEngine;
 public class DieState : State
 {
     [SerializeField] private EnemyAnimations _enemyAnimations;
-    [SerializeField] private DieEffect _effect;
+    [SerializeField] private Effect _effect;
     [SerializeField] private KilledInfo _killedInfo;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Effect : MonoBehaviour
+public class Effect : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _effect;
 
@@ -10,7 +10,7 @@ public abstract class Effect : MonoBehaviour
 
     private void Start()
     {
-        _audio = GetComponent<AudioSource>();
+        _audio = _effect.GetComponent<AudioSource>();
     }
 
     public void PlayEffect()
