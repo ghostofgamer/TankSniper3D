@@ -12,13 +12,6 @@ public class Destroy : MonoBehaviour
 
     public void GetDestroyObject()
     {
-
-        //foreach (var house in _objects)
-        //{
-        //    house.gameObject.SetActive(true);
-        //    var rigidbody = house.gameObject.GetComponent<Rigidbody>();
-        //    rigidbody.AddForce(Vector3.down * 1000, ForceMode.Force);
-        //}
         _oldGameObject.SetActive(false);
         _newGameObject.gameObject.SetActive(true);
         _destroyObjects = new List<Transform>();
