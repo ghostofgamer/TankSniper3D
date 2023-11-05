@@ -26,13 +26,27 @@ public class AimInput : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                _weapon.Shoot();
-                _towerRotate.ResetRotate();
+                if (_weapon.IsLastShoot)
+                {
+                    _cameraAim.SetCinemachinecamera();
+                    _weapon.LastShoot();
+                    _towerRotate.ResetRotate();
+                    //_cameraAim.OFFCinemachinecamera();
+                    if (_coroutine != null)
+                        StopCoroutine(_coroutine);
 
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
+                    _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+                }
+                else
+                {
 
-                _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+                    _weapon.Shoot();
+                    _towerRotate.ResetRotate();
+                    if (_coroutine != null)
+                        StopCoroutine(_coroutine);
+
+                    _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+                }
             }
         }
     }
