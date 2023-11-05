@@ -10,6 +10,8 @@ public class AimInput : MonoBehaviour
 
     private Coroutine _coroutine;
 
+    public bool IsZoom { get; private set; } = false;
+
     private void Update()
     {
         if (!_weapon.IsReload)
@@ -22,15 +24,16 @@ public class AimInput : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 _towerRotate.Rotate();
+                IsZoom = true;
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                IsZoom = false;
                 if (_weapon.IsLastShoot)
                 {
                     _cameraAim.SetCinemachinecamera();
                     _weapon.LastShoot();
-                    _towerRotate.ResetRotate();
                     //_cameraAim.OFFCinemachinecamera();
                     if (_coroutine != null)
                         StopCoroutine(_coroutine);
@@ -39,9 +42,7 @@ public class AimInput : MonoBehaviour
                 }
                 else
                 {
-
                     _weapon.Shoot();
-                    _towerRotate.ResetRotate();
                     if (_coroutine != null)
                         StopCoroutine(_coroutine);
 

@@ -5758,7 +5758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 6987057921935029526}
+  _weapon: {fileID: 6987057921935029528}
   _bulletsImages:
   - {fileID: 469776569}
   - {fileID: 1005994824}
@@ -8830,7 +8830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd94188b63b155a4ab0d66f0d5022603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 6987057921935029526}
+  _weapon: {fileID: 6987057921935029528}
 --- !u!4 &1922342618
 Transform:
   m_ObjectHideFlags: 0
@@ -12846,7 +12846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01210d8be07f4498b9c8257ebca427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 6987057921935029526}
+  _weapon: {fileID: 6987057921935029528}
   _towerRotate: {fileID: 6987057921935029527}
   _cameraAim: {fileID: 3323233339149155238}
 --- !u!1 &3327849082270789895
@@ -16041,8 +16041,8 @@ GameObject:
   - component: {fileID: 6987057921935029524}
   - component: {fileID: 5494815379853261453}
   - component: {fileID: 4251669917987443263}
-  - component: {fileID: 6987057921935029526}
   - component: {fileID: 6987057921935029527}
+  - component: {fileID: 6987057921935029528}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -16212,23 +16212,6 @@ Transform:
   m_Father: {fileID: 1748846660843112886}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6987057921935029526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6793889334528396732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7ccb28d4f5fd34180085beec349c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
-  _shootPosition: {fileID: 1820074660}
-  _container: {fileID: 526608135}
-  _image: {fileID: 1544761785}
-  _cinemachineCamera: {fileID: 683608753}
 --- !u!114 &6987057921935029527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16242,6 +16225,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 1996741758}
+  _aimInput: {fileID: 3323233339149155242}
+--- !u!114 &6987057921935029528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793889334528396732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
+  _shootPosition: {fileID: 1820074660}
+  _container: {fileID: 526608135}
+  _image: {fileID: 1544761785}
+  _cinemachineCamera: {fileID: 683608753}
 --- !u!33 &6988699636834877923
 MeshFilter:
   m_ObjectHideFlags: 0

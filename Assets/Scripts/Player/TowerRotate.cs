@@ -5,12 +5,19 @@ using UnityEngine;
 public class TowerRotate : MonoBehaviour
 {
     [SerializeField] private Transform _startTransform;
+    [SerializeField] private AimInput _aimInput;
 
     private readonly float _limitAngles = 50f;
     private readonly float _speed = 1f;
 
     private float vertical;
     private float horizontal;
+
+    private void Update()
+    {
+        if (transform.rotation != _startTransform.rotation && !_aimInput.IsZoom)
+            ResetRotate();
+    }
 
     public void Rotate()
     {

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private Bullet _prefabBullet;
     [SerializeField] private Transform _shootPosition;
@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
         _currentAmmo = _maxAmmo;
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         if (!IsReload)
         {
@@ -81,9 +81,9 @@ public class Weapon : MonoBehaviour
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 bullet.Init(_shootPosition);
-                //_cinemachineCamera.transform.parent = null;
-                //_cinemachineCamera.Follow = bullet.transform;
-                //_cinemachineCamera.LookAt = bullet.transform;
+                _cinemachineCamera.transform.parent = null;
+                _cinemachineCamera.Follow = bullet.transform;
+                _cinemachineCamera.LookAt = bullet.transform;
                 _currentAmmo--;
                 BulletsChanged?.Invoke(_currentAmmo);
 

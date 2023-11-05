@@ -13,14 +13,12 @@ public class CameraAim : MonoBehaviour
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
     private Vector3 _startPosition;
-    private Transform _start;
-    private Quaternion _s;
+    private Quaternion _startRotation;
 
     private void Start()
     {
         _startPosition = _mainCamera.transform.position;
-        _s = _mainCamera.transform.rotation;
-        _start = _mainCamera.transform;
+        _startRotation = _mainCamera.transform.rotation;
         _mainCamera.GetComponent<Camera>();
         _mainCamera = Camera.main;
     }
@@ -29,7 +27,7 @@ public class CameraAim : MonoBehaviour
     {
         yield return _waitForSeconds;
         //SetCamera();
-        OFFCinemachinecamera();
+        OffCinemachineCamera();
     }
 
     public void SetCamera()
@@ -40,7 +38,6 @@ public class CameraAim : MonoBehaviour
 
     public void SetCinemachinecamera()
     {
-        //_startPosition = _cinemachinecamera.transform.position;
         _cinemachinecamera.GetComponent<Camera>().enabled = true;
         _cinemachinecamera.enabled = true;
         _mainCamera.enabled = false;
@@ -48,15 +45,19 @@ public class CameraAim : MonoBehaviour
         Time.timeScale = 0.3f;
         Time.fixedDeltaTime = Time.timeScale * 0.01f;
     }
-    public void OFFCinemachinecamera()
+    public void OffCinemachineCamera()
     {
         _cinemachinecamera.GetComponent<Camera>().enabled = !_cinemachinecamera.GetComponent<Camera>().enabled;
-        //_cinemachinecamera.transform.position= _startPosition;
         _cinemachinecamera.enabled = false;
-        _mainCamera.transform.rotation = _s;
-        _mainCamera.transform.position = _startPosition;
+        ReserMainCamera();
         _mainCamera.enabled = true;
         _cameraAim.enabled = false;
         Time.timeScale = 1f;
+    }
+
+    private void ReserMainCamera()
+    {
+        _mainCamera.transform.rotation = _startRotation;
+        _mainCamera.transform.position = _startPosition;
     }
 }
