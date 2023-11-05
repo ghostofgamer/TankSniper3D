@@ -37,12 +37,6 @@ public class BulletTrigger : MonoBehaviour
             {
                 barrel.Explosion();
             }
-
-            //if (hitCollider.TryGetComponent(out House house))
-            //{
-            //    house.Destroy();
-            //}
-
         }
 
         if (other.TryGetComponent(out Player player))

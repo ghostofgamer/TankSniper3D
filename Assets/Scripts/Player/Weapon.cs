@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     private bool _isFirstShoot = false;
     private int _currentAmmo;
     private bool _autoExpand = true;
+    private int _hitEnemy = 0;
 
     public bool IsLastShoot { get; private set; } = true;
     public bool IsReload { get; private set; } = false;
@@ -32,17 +33,6 @@ public class Weapon : MonoBehaviour
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
         _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
-    }
-
-    private void Update()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
-        Physics.Raycast(ray, out hit);
-        Debug.DrawLine(ray.origin, hit.point, Color.red);
-
-        //RaycastHit hit = Physics.Raycast(transform.position,transform.forward);
-
     }
 
     public void Shoot()
@@ -74,16 +64,44 @@ public class Weapon : MonoBehaviour
 
     public void LastShoot()
     {
+        RaycastHit hit;
+        Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
+        Physics.Raycast(ray, out hit);
+        //Debug.Log(hit.collider.name);
+
+        if (!_isFirstShoot)
+        {
+            FirstShoot?.Invoke();
+            _isFirstShoot = true;
+        }
+
         if (_currentAmmo > 0)
         {
+
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 bullet.Init(_shootPosition);
-                _cinemachineCamera.transform.parent = null;
-                _cinemachineCamera.Follow = bullet.transform;
-                _cinemachineCamera.LookAt = bullet.transform;
+                //_cinemachineCamera.transform.parent = null;
+                //_cinemachineCamera.Follow = bullet.transform;
+                //_cinemachineCamera.LookAt = bullet.transform;
                 _currentAmmo--;
                 BulletsChanged?.Invoke(_currentAmmo);
+
+                //StartCoroutine(Shooting());
+                //if (hit.collider.GetComponent<Enemy>())
+                //{
+                //    _hitEnemy++;
+                //    Debug.Log(_hitEnemy);
+
+                //    if (_hitEnemy == 3)
+                //    {
+                //        for (int i = 0; i < 3; i++)
+                //        {
+                //            StartCoroutine(Shooting());
+                //            Debug.Log("суперудар");
+                //        }
+                //    }
+                //}
             }
 
             if (_currentAmmo <= 0)
@@ -104,5 +122,14 @@ public class Weapon : MonoBehaviour
     {
         _image.gameObject.SetActive(flag);
         IsReload = flag;
+    }
+
+    private IEnumerator Shooting()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Shoot();
+        }
     }
 }
