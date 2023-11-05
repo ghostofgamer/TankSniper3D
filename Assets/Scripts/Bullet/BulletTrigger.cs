@@ -25,7 +25,7 @@ public class BulletTrigger : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out Enemy enemy))
             {
-                enemy.TakeDamage(_bullet.Damage);
+                enemy.TakeDamage(_bullet.Damage); 
             }
 
             if (hitCollider.TryGetComponent(out Destroy destroy))

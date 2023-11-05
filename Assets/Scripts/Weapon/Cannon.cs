@@ -4,5 +4,17 @@ using UnityEngine;
 
 public class Cannon : Weapon
 {
+    public override void SuperShoot()
+    {
+        StartCoroutine(Shooting());
+    }
 
+    private IEnumerator Shooting()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Shoot();
+        }
+    }
 }

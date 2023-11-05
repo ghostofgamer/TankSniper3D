@@ -35,6 +35,8 @@ public abstract class Weapon : MonoBehaviour
         _currentAmmo = _maxAmmo;
     }
 
+    public abstract void SuperShoot();
+
     public virtual void Shoot()
     {
         if (!IsReload)
@@ -58,8 +60,6 @@ public abstract class Weapon : MonoBehaviour
                     StartCoroutine(Reload());
             }
         }
-        //////Bullet bullet = Instantiate(_prefabBullet, _container);
-        //bullet.Init(_shootPosition);
     }
 
     public void LastShoot()
@@ -67,7 +67,6 @@ public abstract class Weapon : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
         Physics.Raycast(ray, out hit);
-        //Debug.Log(hit.collider.name);
 
         if (!_isFirstShoot)
         {
@@ -86,20 +85,16 @@ public abstract class Weapon : MonoBehaviour
                 _cinemachineCamera.LookAt = bullet.transform;
                 _currentAmmo--;
                 BulletsChanged?.Invoke(_currentAmmo);
+                SuperShoot();
 
-                //StartCoroutine(Shooting());
                 //if (hit.collider.GetComponent<Enemy>())
                 //{
                 //    _hitEnemy++;
-                //    Debug.Log(_hitEnemy);
 
                 //    if (_hitEnemy == 3)
                 //    {
                 //        for (int i = 0; i < 3; i++)
-                //        {
                 //            StartCoroutine(Shooting());
-                //            Debug.Log("суперудар");
-                //        }
                 //    }
                 //}
             }
@@ -122,14 +117,5 @@ public abstract class Weapon : MonoBehaviour
     {
         _image.gameObject.SetActive(flag);
         IsReload = flag;
-    }
-
-    private IEnumerator Shooting()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(0.1f);
-            Shoot();
-        }
     }
 }

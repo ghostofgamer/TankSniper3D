@@ -30,6 +30,7 @@ public class AimInput : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 IsZoom = false;
+
                 if (_weapon.IsLastShoot)
                 {
                     _cameraAim.SetCinemachinecamera();
@@ -43,12 +44,18 @@ public class AimInput : MonoBehaviour
                 else
                 {
                     _weapon.Shoot();
+
                     if (_coroutine != null)
                         StopCoroutine(_coroutine);
 
                     _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
                 }
             }
+        }
+
+        if (!IsZoom)
+        {
+            _towerRotate.ResetRotate();
         }
     }
 }
