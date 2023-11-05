@@ -28,17 +28,12 @@ public class EnemyShoot : MonoBehaviour
         {
             yield return _waitForSeconds;
             Shooting();
-            //Bullet bullet = Instantiate(_prefab, _container);
-            //bullet.Init(_shootPosition);
-            //yield return _waitForSeconds;
         }
     }
 
     private void Shooting()
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
-        {
             bullet.Init(_shootPosition);
-        }
     }
 }
