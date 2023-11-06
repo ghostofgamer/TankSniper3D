@@ -8,21 +8,21 @@ using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private Bullet _prefabBullet;
-    [SerializeField] private Transform _shootPosition;
+    [SerializeField] protected Bullet _prefabBullet;
+    [SerializeField] protected Transform _shootPosition;
     [SerializeField] private Transform _container;
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
 
     private readonly int _maxAmmo = 4;
 
-    private ObjectPool<Bullet> _pool;
+    protected ObjectPool<Bullet> _pool;
     private bool _isFirstShoot = false;
     private int _currentAmmo;
     private bool _autoExpand = true;
     private int _hitEnemy = 0;
 
-    public bool IsLastShoot { get; private set; } = true;
+    public bool IsLastShoot { get; private set; } = false;
     public bool IsReload { get; private set; } = false;
 
     public event UnityAction FirstShoot;
@@ -51,57 +51,54 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
                 {
-                    bullet.Init(_shootPosition);
-                    _currentAmmo--;
-                    BulletsChanged?.Invoke(_currentAmmo);
+                    Shoot(bullet);
+                    IsLastShoot = _currentAmmo == 1;
+                    EnemyHitChanger();
                 }
-
-                if (_currentAmmo <= 0)
-                    StartCoroutine(Reload());
             }
         }
     }
 
     public void LastShoot()
     {
+        if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+        {
+            Shoot(bullet);
+            CinemachineMove(bullet);
+            IsLastShoot = _currentAmmo == 1;
+        }
+
+        if (_currentAmmo <= 0)
+            StartCoroutine(Reload());
+    }
+
+    private void EnemyHitChanger()
+    {
         RaycastHit hit;
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
         Physics.Raycast(ray, out hit);
 
-        if (!_isFirstShoot)
+        if (hit.collider.GetComponent<Enemy>())
         {
-            FirstShoot?.Invoke();
-            _isFirstShoot = true;
-        }
+            _hitEnemy++;
 
-        if (_currentAmmo > 0)
-        {
-
-            if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-            {
-                bullet.Init(_shootPosition);
-                _cinemachineCamera.transform.parent = null;
-                _cinemachineCamera.Follow = bullet.transform;
-                _cinemachineCamera.LookAt = bullet.transform;
-                _currentAmmo--;
-                BulletsChanged?.Invoke(_currentAmmo);
+            if (_hitEnemy == 3)
                 SuperShoot();
-
-                //if (hit.collider.GetComponent<Enemy>())
-                //{
-                //    _hitEnemy++;
-
-                //    if (_hitEnemy == 3)
-                //    {
-                //        for (int i = 0; i < 3; i++)
-                //            StartCoroutine(Shooting());
-                //    }
-                //}
-            }
-
-            if (_currentAmmo <= 0)
-                StartCoroutine(Reload());
         }
+    }
+
+    private void CinemachineMove(Bullet bullet)
+    {
+        _cinemachineCamera.transform.parent = null;
+        _cinemachineCamera.Follow = bullet.transform;
+        _cinemachineCamera.LookAt = bullet.transform;
+    }
+
+    private void Shoot(Bullet bullet)
+    {
+        bullet.Init(_shootPosition);
+        _currentAmmo--;
+        BulletsChanged?.Invoke(_currentAmmo);
     }
 
     private IEnumerator Reload()

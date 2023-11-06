@@ -47,7 +47,7 @@ public class CameraAim : MonoBehaviour
     }
     public void OffCinemachineCamera()
     {
-        _cinemachinecamera.GetComponent<Camera>().enabled = !_cinemachinecamera.GetComponent<Camera>().enabled;
+        _cinemachinecamera.GetComponent<Camera>().enabled = false;
         _cinemachinecamera.enabled = false;
         ReserMainCamera();
         _mainCamera.enabled = true;

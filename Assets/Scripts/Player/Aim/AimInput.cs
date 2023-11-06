@@ -35,7 +35,7 @@ public class AimInput : MonoBehaviour
                 {
                     _cameraAim.SetCinemachinecamera();
                     _weapon.LastShoot();
-                    //_cameraAim.OFFCinemachinecamera();
+
                     if (_coroutine != null)
                         StopCoroutine(_coroutine);
 
