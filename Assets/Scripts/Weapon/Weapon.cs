@@ -43,7 +43,6 @@ public abstract class Weapon : MonoBehaviour
         {
             if (!_isFirstShoot)
             {
-                Debug.Log("первый");
                 FirstShoot?.Invoke();
                 _isFirstShoot = true;
             }

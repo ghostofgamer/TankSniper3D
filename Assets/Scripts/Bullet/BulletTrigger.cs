@@ -20,7 +20,7 @@ public class BulletTrigger : MonoBehaviour
         _coroutine = StartCoroutine(SetActive());
         _effect.PlayEffect();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
-
+        Debug.Log(hitColliders.Length);
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out Enemy enemy))
