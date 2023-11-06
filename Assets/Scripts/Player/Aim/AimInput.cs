@@ -33,7 +33,7 @@ public class AimInput : MonoBehaviour
 
                 if (_weapon.IsLastShoot)
                 {
-                    _cameraAim.SetCinemachinecamera();
+                    _cameraAim.SetCinemachineCamera();
                     _weapon.LastShoot();
 
                     if (_coroutine != null)

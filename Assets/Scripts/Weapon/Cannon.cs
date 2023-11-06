@@ -6,20 +6,17 @@ public class Cannon : Weapon
 {
     public override void SuperShoot()
     {
-        StartCoroutine(Shooting());
+        StartCoroutine(TripleShot());
     }
 
-    private IEnumerator Shooting()
+    private IEnumerator TripleShot()
     {
         for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.15f);
 
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-            {
                 bullet.Init(_shootPosition);
-            }
-            //Shoot();
         }
     }
 }

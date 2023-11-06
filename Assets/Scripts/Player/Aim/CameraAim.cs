@@ -36,7 +36,7 @@ public class CameraAim : MonoBehaviour
         _cameraAim.enabled = !_mainCamera.enabled;
     }
 
-    public void SetCinemachinecamera()
+    public void SetCinemachineCamera()
     {
         _cinemachinecamera.GetComponent<Camera>().enabled = true;
         _cinemachinecamera.enabled = true;
@@ -49,13 +49,13 @@ public class CameraAim : MonoBehaviour
     {
         _cinemachinecamera.GetComponent<Camera>().enabled = false;
         _cinemachinecamera.enabled = false;
-        ReserMainCamera();
+        ResetMainCamera();
         _mainCamera.enabled = true;
         _cameraAim.enabled = false;
         Time.timeScale = 1f;
     }
 
-    private void ReserMainCamera()
+    private void ResetMainCamera()
     {
         _mainCamera.transform.rotation = _startRotation;
         _mainCamera.transform.position = _startPosition;
