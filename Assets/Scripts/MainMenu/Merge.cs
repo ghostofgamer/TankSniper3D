@@ -34,4 +34,26 @@ public class Merge : MonoBehaviour
             }
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.TryGetComponent<PlayerLevel>(out PlayerLevel level))
+    //    {
+    //        if (level.Level == GetComponent<PlayerLevel>().Level)
+    //        {
+    //            if (Id < other.GetComponent<Merge>().Id)
+    //                return;
+
+    //            GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity)as GameObject;
+    //            Destroy(other);
+    //            Destroy(gameObject);
+    //            Debug.Log("триггер при мердже" + other.name);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("что не так");
+    //            _drag.ResetPosition();
+    //        }
+    //    }
+    //}
 }

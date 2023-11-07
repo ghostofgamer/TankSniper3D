@@ -8,32 +8,31 @@ public class Cub : MonoBehaviour
 
     public bool IsStay = false;
 
-    //private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Merge merge))
+            IsStay = true;
+    }
+
+    //private void OnTriggerStay(Collider other)
     //{
-    //    if (collision.gameObject.TryGetComponent(out Merge merge))
+    //    if (other.TryGetComponent(out Merge merge))
+    //    {
     //        IsStay = true;
+    //    }
     //}
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.TryGetComponent(out Merge merge))
-        {
-            Debug.Log("˚Ù‚‡");
-            IsStay = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out Merge merge))
-            IsStay = false;
-    }
-
-    //private void OnCollisionExit(Collision collision)
+    //private void OnTriggerExit(Collider other)
     //{
-    //    if (collision.gameObject.TryGetComponent(out Merge merge))
+    //    if (other.TryGetComponent(out Merge merge))
     //        IsStay = false;
     //}
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Merge merge))
+            IsStay = false;
+    }
 
     //private void Update()
     //{
@@ -61,7 +60,6 @@ public class Cub : MonoBehaviour
         if (hit.collider.GetComponent<DragAndDrop>())
         {
             ChangeColor();
-
         }
         else
         {

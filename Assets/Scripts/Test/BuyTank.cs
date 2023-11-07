@@ -10,7 +10,7 @@ public class BuyTank : MonoBehaviour
     [SerializeField] private Transform _container;
 
     private List<Transform> _positions;
-    private float _offset = 1.65f;
+    private float _offset = 1f;
 
     private void Start()
     {
@@ -18,7 +18,6 @@ public class BuyTank : MonoBehaviour
 
         for (int i = 0; i < _position.childCount; i++)
             _positions.Add(_position.GetChild(i));
-
     }
 
     public void OnClick()

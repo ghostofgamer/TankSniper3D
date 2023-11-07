@@ -17,8 +17,17 @@ public class DragAndDrop : MonoBehaviour
     //    return Camera.main.WorldToScreenPoint(transform.position);
     //}
     private GameObject _selectObject;
-    public Vector3 StartPosition { get; private set; }
     private float _offset = 1.65f;
+
+    public Vector3 StartPosition { get; private set; }
+    private int _layerNumber = 6;
+    private int _layerMask;
+    //private LayerMask _mask = -1;
+
+    private void Start()
+    {
+        _layerMask = 1 << _layerNumber;
+    }
 
     private void Update()
     {
@@ -40,6 +49,11 @@ public class DragAndDrop : MonoBehaviour
             }
         }
 
+        if (_selectObject == null)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
@@ -54,31 +68,59 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-            _selectObject.transform.position = new Vector3(worldPosition.x, 13f, worldPosition.z);
+            _selectObject.transform.position = new Vector3(worldPosition.x, 10f, worldPosition.z);
         }
     }
-
 
     private void GetRaycast()
     {
+        _layerMask = 1 << _layerNumber;
         RaycastHit hit;
         Ray ray = new Ray(_selectObject.gameObject.transform.position, -_selectObject.gameObject.transform.up);
-        Physics.Raycast(ray, out hit);
 
-        if (hit.collider.GetComponent<Cub>())
-        {
-            Vector3 position = hit.collider.gameObject.transform.position;
-            _selectObject.transform.position = new Vector3(position.x, position.y + _offset, position.z)/*hit.collider.gameObject.transform.position*/;
-            //tank.transform.position = new Vector3(position.x, position.y + _offset, position.z);
-            Debug.Log("˘Í˚");
-        }
+        Physics.Raycast(ray, out hit/*, Mathf.Infinity, _layerMask*/);
+        
+            Debug.Log("Œ¡‹≈ “ —Õ»«” “”“ " + hit.collider.gameObject.name);
+
+            if (hit.collider.GetComponent<Cub>())
+            {
+                //Debug.Log(hit.collider.gameObject.name);
+                    Vector3 position = hit.collider.gameObject.transform.position;
+                _selectObject.transform.position = new Vector3(position.x, position.y + _offset, position.z)/*hit.collider.gameObject.transform.position*/;
+            }
+            else if (hit.collider.GetComponent<PlayerLevel>())
+            {
+                _selectObject.transform.position = StartPosition;
+            }
+            //else if (hit.collider.GetComponent<PlayerLevel>())
+            //{
+            //    if (hit.collider.gameObject.GetComponent<PlayerLevel>().Level == gameObject.GetComponent<PlayerLevel>().Level)
+            //    {
+            //        Debug.Log(hit.collider.gameObject.GetComponent<PlayerLevel>().Level);
+            //        Vector3 position = hit.collider.gameObject.transform.position;
+            //        _selectObject.transform.position = new Vector3(position.x, position.y + _offset, position.z);
+            //    }
+            //    else
+            //    {
+            //        ResetPosition();
+            //        Debug.Log("ÂÒÂÚËÏ");
+            //    }
+            //}
+        
         else
         {
-            ResetPosition();
-            //_selectObject.transform.position = StartPosition;
-            return;
+            //ResetPosition();
+            _selectObject.transform.position = StartPosition;
+            //return;
         }
     }
+
+
+    public void ResetPosition()
+    {
+        _selectObject.transform.position = StartPosition;
+    }
+
 
     private RaycastHit CastRay()
     {
@@ -101,10 +143,6 @@ public class DragAndDrop : MonoBehaviour
         return hit;
     }
 
-    public void ResetPosition()
-    {
-        _selectObject.transform.position = StartPosition;
-    }
 
     private void OnMouseDown()
     {
