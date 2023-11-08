@@ -10,12 +10,12 @@ public class Initializator : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PlayerHealthbar _playerHealthbar;
+    [Header("Enemys")]
+    [SerializeField] private Transform _enemysContainer;
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
-    [SerializeField] private Transform _enemysContainer;
 
     private Player _player;
-    private List<Enemy> _enemys;
 
     private void Awake()
     {
