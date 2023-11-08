@@ -7,6 +7,8 @@ public class Merge : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private DragAndDrop _drag;
 
+    private int _maxLevel = 3;
+
     public int Id { get; private set; }
 
     private void Start()
@@ -18,7 +20,7 @@ public class Merge : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<PlayerLevel>(out PlayerLevel level))
         {
-            if (level.Level == GetComponent<PlayerLevel>().Level)
+            if (level.Level == GetComponent<PlayerLevel>().Level&& level.Level<_maxLevel)
             {
                 if (Id < collision.gameObject.GetComponent<Merge>().Id)
                     return;
@@ -27,11 +29,11 @@ public class Merge : MonoBehaviour
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
             }
-            else
-            {
-                Debug.Log("что не так");
-                _drag.ResetPosition();
-            }
+            //else
+            //{
+            //    Debug.Log("что не так");
+            //    _drag.ResetPosition();
+            //}
         }
     }
 
