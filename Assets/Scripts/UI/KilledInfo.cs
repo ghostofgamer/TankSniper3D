@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KilledInfo : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class KilledInfo : MonoBehaviour
     [SerializeField] private Transform _containerEnemy;
 
     private int _killed;
+
+    public event UnityAction AllEnemysDying;
 
     private void Start()
     {
@@ -20,5 +23,8 @@ public class KilledInfo : MonoBehaviour
     {
         _killed++;
         _killedCount.text = _killed.ToString();
+
+        if(_killed == _containerEnemy.childCount)
+            AllEnemysDying?.Invoke();
     }
 }

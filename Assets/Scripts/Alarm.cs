@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Alarm : MonoBehaviour
 {
-    [SerializeField] private Weapon _weapon;
+    private Weapon _weapon;
 
     public bool Warning { get; private set; } = false;
+
+    public void Init(Weapon weapon)
+    {
+        _weapon = weapon;
+    }
 
     private void OnEnable()
     {

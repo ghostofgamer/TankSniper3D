@@ -8,8 +8,6 @@ public class SoundValueButton : AbstractButton
     [SerializeField] private Image _mute;
     [SerializeField] private Image _unMute;
 
-    [SerializeField] private AudioListener _audioListener;
-
     public override void OnClick()
     {
         SetValue();

@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PlayerHealthbar : Bar
 {
-    [SerializeField] private Player _player;
+    private Player _player;
 
     private void OnEnable()
     {
         _player.HealthChanged += OnValueChanged;
-            Slider.value = 1;
+        Slider.value = 1;
     }
 
     private void OnDisable()
     {
         _player.HealthChanged -= OnValueChanged;
+    }
+
+    public void Init(Player player)
+    {
+        _player = player;
     }
 }
