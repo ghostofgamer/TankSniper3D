@@ -2,34 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AimInput : MonoBehaviour
+public class AimButton : AbstractButton
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private TowerRotate _towerRotate;
     [SerializeField] private CameraAim _cameraAim;
-    //[SerializeField] private AimButton _aimButton;
 
     private Coroutine _coroutine;
 
     public bool IsZoom { get; private set; } = false;
-    //public bool IsButtonClick { get; private set; } = false;
+    //[SerializeField] private AimInput _aimInput;
+    public bool isPressed = false;
 
     private void Update()
     {
         if (!_weapon.IsReload)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _cameraAim.SetCamera();
-            }
-
-            if (Input.GetMouseButton(0))
+            if (isPressed)
             {
                 _towerRotate.Rotate();
                 IsZoom = true;
             }
 
-            if (Input.GetMouseButtonUp(0))
+            if (!isPressed&& IsZoom)
             {
                 IsZoom = false;
 
@@ -38,20 +33,11 @@ public class AimInput : MonoBehaviour
                     _cameraAim.SetCinemachineCamera();
                     _weapon.LastShoot();
                     OnSetCameraPause();
-
-                    //if (_coroutine != null)
-                    //    StopCoroutine(_coroutine);
-
-                    //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
                 }
                 else
                 {
                     _weapon.Shoot();
                     OnSetCameraPause();
-                    //if (_coroutine != null)
-                    //    StopCoroutine(_coroutine);
-
-                    //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
                 }
             }
         }
@@ -68,5 +54,23 @@ public class AimInput : MonoBehaviour
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+    }
+
+    public override void OnClick()
+    {
+        _cameraAim.SetCamera();
+    }
+
+    public void OnDown()
+    {
+        Debug.Log("зажата");
+        _cameraAim.SetCamera();
+        isPressed = true;
+    }
+
+    public void OnUp()
+    {
+        Debug.Log("jn;fnf");
+        isPressed = false;
     }
 }

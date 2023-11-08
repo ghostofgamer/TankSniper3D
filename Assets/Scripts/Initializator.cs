@@ -26,9 +26,9 @@ public class Initializator : MonoBehaviour
     {
         _player = GetPlayer(_indexPlayer);
         EnemyInit(_player);
+        PlayerHealthbarInit();
         _alarm.Init(_player.GetComponent<Weapon>());
         _gameOverScreen.Init(_player);
-        _playerHealthbar.Init(_player);
     }
 
     private void EnemyInit(Player player)
@@ -44,5 +44,11 @@ public class Initializator : MonoBehaviour
 
         _players[index].gameObject.SetActive(true);
         return _players[index];
+    }
+
+    private void PlayerHealthbarInit()
+    {
+        _playerHealthbar.Init(_player);
+        _playerHealthbar.gameObject.SetActive(true);
     }
 }
