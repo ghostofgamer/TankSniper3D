@@ -13,12 +13,13 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
+    [SerializeField] private AudioSource _audioSource;
 
     protected ObjectPool<Bullet> _pool;
 
     private readonly int _maxAmmo = 4;
 
-    private bool _isFirstShoot = false;
+    protected bool _isFirstShoot = false;
     private int _currentAmmo;
     private bool _autoExpand = true;
     private int _hitEnemy = 0;
@@ -44,8 +45,7 @@ public abstract class Weapon : MonoBehaviour
         {
             if (!_isFirstShoot)
             {
-                FirstShoot?.Invoke();
-                _isFirstShoot = true;
+                SetFirstShoot();
             }
 
             if (_currentAmmo > 0)
@@ -53,6 +53,7 @@ public abstract class Weapon : MonoBehaviour
                 if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
                 {
                     Shoot(bullet);
+                    _audioSource.Play();
                     IsLastShoot = _currentAmmo == 1;
                     EnemyHitChanger();
                 }
@@ -92,9 +93,9 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    protected void MultiShoot(int count)
+    protected void MultiShoot(int count, float delay)
     {
-        StartCoroutine(TripleShot(count));
+        StartCoroutine(TripleShot(count, delay));
     }
 
     protected void BigShoot()
@@ -131,14 +132,17 @@ public abstract class Weapon : MonoBehaviour
         IsReload = flag;
     }
 
-    private IEnumerator TripleShot(int count )
+    private IEnumerator TripleShot(int count, float delay)
     {
         for (int i = 0; i < count; i++)
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(delay);
 
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+            {
+                _audioSource.Play();
                 bullet.Init(_shootPosition);
+            }
         }
     }
 
@@ -146,10 +150,16 @@ public abstract class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
 
-        if(_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+        if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
             bullet.Init(_shootPosition);
             bullet.transform.localScale += new Vector3(3, 3, 3);
         }
+    }
+
+    protected void SetFirstShoot()
+    {
+        FirstShoot?.Invoke();
+        _isFirstShoot = true;
     }
 }

@@ -14,12 +14,14 @@ public class BulletTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         //if (_coroutine != null)
         //    StopCoroutine(_coroutine);
 
         //_coroutine = StartCoroutine(SetActive());
         //_effect.PlayEffect();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
+        Debug.Log(hitColliders.Length);
 
         foreach (var hitCollider in hitColliders)
         {
@@ -32,6 +34,7 @@ public class BulletTrigger : MonoBehaviour
             if (hitCollider.TryGetComponent(out Destroy destroy))
             {
                 Hit();
+                Debug.Log("plfybt");
                 destroy.GetDestroyObject();
             }
 
@@ -49,7 +52,7 @@ public class BulletTrigger : MonoBehaviour
         }
     }
 
-    private void Hit()
+    public void Hit()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);

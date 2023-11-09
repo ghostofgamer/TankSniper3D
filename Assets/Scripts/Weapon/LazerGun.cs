@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketGun : Weapon
+public class LazerGun : Weapon
 {
-    private readonly int _count = 3;
-    private readonly float _delay = 0.3f;
+    private readonly int _count = 4;
+    private readonly float _delay = 0.1f;
 
     public override void SuperShoot()
     {
