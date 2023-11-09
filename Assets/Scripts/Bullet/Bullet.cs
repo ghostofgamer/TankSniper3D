@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 
     private readonly int _speed = 50;
 
+    private float _radius = 0.001f;
+
     public int Damage => _damage;
 
     public void Init(Transform transform)

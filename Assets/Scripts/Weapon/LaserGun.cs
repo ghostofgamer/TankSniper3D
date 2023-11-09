@@ -34,7 +34,6 @@ public class LaserGun : Weapon
         Activate();
     }
 
-
     public override void SuperShoot()
     {
         

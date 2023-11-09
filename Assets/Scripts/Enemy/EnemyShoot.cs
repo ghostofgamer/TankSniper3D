@@ -8,6 +8,9 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform _shootPosition;
     [SerializeField] private Transform _container;
     [SerializeField] private float _delay;
+    [Header("Звук")]
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
 
     private readonly int _ammoCount = 10;
 
@@ -27,6 +30,8 @@ public class EnemyShoot : MonoBehaviour
         while (true)
         {
             yield return _waitForSeconds;
+            //_audioSource.Play();
+            _audioSource.PlayOneShot(_audioClip);
             Shooting();
         }
     }

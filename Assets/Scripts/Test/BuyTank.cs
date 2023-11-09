@@ -24,7 +24,7 @@ public class BuyTank : MonoBehaviour
     {
         _positions = new List<Transform>();
         _slider.value = 0;
-        ShowTankPlayer(_currentTankIndex);
+        //ShowTankPlayer(_currentTankIndex);
 
         for (int i = 0; i < _position.childCount; i++)
             _positions.Add(_position.GetChild(i));
@@ -67,17 +67,17 @@ public class BuyTank : MonoBehaviour
 
         _currentLevelText.text = _currentLevel.ToString();
         _currentTankIndex = _currentLevel;
-        ShowTankPlayer(_currentTankIndex);
+        //ShowTankPlayer(_currentTankIndex);
     }
 
-    private void ShowTankPlayer(int index)
-    {
-        for (int i = 0; i < _tanks.Length; i++)
-        {
-            if (i == index - 1)
-                _tanks[i].gameObject.SetActive(true);
-            else
-                _tanks[i].gameObject.SetActive(false);
-        }
-    }
+    //private void ShowTankPlayer(int index)
+    //{
+    //    for (int i = 0; i < _tanks.Length; i++)
+    //    {
+    //        if (i == index - 1)
+    //            _tanks[i].gameObject.SetActive(true);
+    //        else
+    //            _tanks[i].gameObject.SetActive(false);
+    //    }
+    //}
 }

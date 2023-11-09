@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerRotate : MonoBehaviour
 {
     [SerializeField] private Transform _startTransform;
+    [SerializeField] private GameObject _tower;
 
     private const string s_MouseX = "Mouse X";
     private const string s_MouseY = "Mouse Y";
@@ -24,6 +25,9 @@ public class TowerRotate : MonoBehaviour
 
     public void ResetRotate()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, _startTransform.rotation, _speed * Time.deltaTime);
+        if (_tower.transform.rotation != _startTransform.rotation)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, _startTransform.rotation, _speed * Time.deltaTime);
+        }
     }
 }

@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class Cannon : Weapon
 {
+    private readonly int _count = 2;
+
     public override void SuperShoot()
     {
-        StartCoroutine(TripleShot());
-    }
-
-    private IEnumerator TripleShot()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            yield return new WaitForSeconds(0.15f);
-
-            if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-                bullet.Init(_shootPosition);
-        }
+        MultiShoot(_count);
     }
 }

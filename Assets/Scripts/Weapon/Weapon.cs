@@ -14,9 +14,10 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
 
+    protected ObjectPool<Bullet> _pool;
+
     private readonly int _maxAmmo = 4;
 
-    protected ObjectPool<Bullet> _pool;
     private bool _isFirstShoot = false;
     private int _currentAmmo;
     private bool _autoExpand = true;
@@ -81,10 +82,24 @@ public abstract class Weapon : MonoBehaviour
         if (hit.collider.GetComponent<Enemy>())
         {
             _hitEnemy++;
+            Debug.Log(_hitEnemy);
 
-            if (_hitEnemy == 3)
+            if (_hitEnemy == 1)
+            {
+                _hitEnemy = 0;
                 SuperShoot();
+            }
         }
+    }
+
+    protected void MultiShoot(int count)
+    {
+        StartCoroutine(TripleShot(count));
+    }
+
+    protected void BigShoot()
+    {
+        StartCoroutine(ScaleBullet());
     }
 
     private void CinemachineMove(Bullet bullet)
@@ -114,5 +129,27 @@ public abstract class Weapon : MonoBehaviour
     {
         _image.gameObject.SetActive(flag);
         IsReload = flag;
+    }
+
+    private IEnumerator TripleShot(int count )
+    {
+        for (int i = 0; i < count; i++)
+        {
+            yield return new WaitForSeconds(0.15f);
+
+            if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+                bullet.Init(_shootPosition);
+        }
+    }
+
+    private IEnumerator ScaleBullet()
+    {
+        yield return new WaitForSeconds(0.15f);
+
+        if(_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+        {
+            bullet.Init(_shootPosition);
+            bullet.transform.localScale += new Vector3(3, 3, 3);
+        }
     }
 }
