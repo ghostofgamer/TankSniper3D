@@ -85,7 +85,7 @@ public abstract class Weapon : MonoBehaviour
             _hitEnemy++;
             Debug.Log(_hitEnemy);
 
-            if (_hitEnemy == 1)
+            if (_hitEnemy == 3)
             {
                 _hitEnemy = 0;
                 SuperShoot();

@@ -6,8 +6,8 @@ public class AimInputButton : AbstractButton
 {
     [SerializeField] private TowerRotate _towerRotate;
 
-    private Weapon _weapon;
-    private CameraAim _cameraAim;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private CameraAim _cameraAim;
     private Coroutine _coroutine;
 
     public bool IsZoom { get; private set; } = false;
