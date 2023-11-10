@@ -9,6 +9,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private int _indexPlayer;
     [Header("UI")]
     [SerializeField] private GameOverScreen _gameOverScreen;
+    [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private PlayerHealthbar _playerHealthbar;
     //[SerializeField] private AimInputButton _aimButton;
     [Header("Enemys")]
@@ -31,6 +32,7 @@ public class Initializator : MonoBehaviour
         PlayerHealthbarInit();
         _alarm.Init(_player.GetComponent<Weapon>());
         _gameOverScreen.Init(_player);
+        _victoryScreen.Init();
     }
 
     private void EnemyInit(Player player)

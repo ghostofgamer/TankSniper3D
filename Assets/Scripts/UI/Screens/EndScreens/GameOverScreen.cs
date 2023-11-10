@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class GameOverScreen : AbstarctScreen
+public class GameOverScreen : EndGame
 {
     [SerializeField] private Player _player;
 
     public void Init(Player player)
     {
         _player = player;
+        Reward = _levelConfig.RewardGameOver;
+        _rewardCountText.text = Reward.ToString();
     }
 
     private void OnEnable()
     {
-        _player.Dying += OnDying;
+        _player.Dying += OnEndGame;
     }
 
     private void OnDisable()
     {
-        _player.Dying -= OnDying;
+        _player.Dying -= OnEndGame;
     }
 
-    private void OnDying()
+    protected override void OnEndGame()
     {
         Open();
     }
