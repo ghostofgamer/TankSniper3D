@@ -5,9 +5,10 @@ using UnityEngine;
 public class AimInputButton : AbstractButton
 {
     [SerializeField] private TowerRotate _towerRotate;
-
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CameraAim _cameraAim;
+    [SerializeField] private PlayerMover _playerMover;
+
     private Coroutine _coroutine;
 
     public bool IsZoom { get; private set; } = false;
@@ -20,6 +21,7 @@ public class AimInputButton : AbstractButton
             if (isPressed)
             {
                 _towerRotate.Rotate();
+                //_playerMover.Go();
                 IsZoom = true;
             }
 
@@ -37,6 +39,7 @@ public class AimInputButton : AbstractButton
                 {
                     _weapon.Shoot();
                     OnSetCameraPause();
+                    //_playerMover.Hide();
                 }
             }
         }
@@ -59,6 +62,7 @@ public class AimInputButton : AbstractButton
 
     public void OnDown()
     {
+        _playerMover.Go();
         _cameraAim.SetCamera();
         isPressed = true;
     }
@@ -66,6 +70,7 @@ public class AimInputButton : AbstractButton
     public void OnUp()
     {
         isPressed = false;
+        _playerMover.Hide();
     }
 
     public void Init(Weapon weapon,/* TowerRotate towerRotate, */CameraAim cameraAim)

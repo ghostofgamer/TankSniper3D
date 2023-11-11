@@ -18,6 +18,11 @@ public class BulletTrigger : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
+            if (hitCollider.TryGetComponent(out Block block))
+            {
+                Hit();
+            }
+
             if (hitCollider.TryGetComponent(out Enemy enemy))
             {
                 Hit();
@@ -27,7 +32,6 @@ public class BulletTrigger : MonoBehaviour
             if (hitCollider.TryGetComponent(out Destroy destroy))
             {
                 Hit();
-                Debug.Log("plfybt");
                 destroy.GetDestroyObject();
             }
 

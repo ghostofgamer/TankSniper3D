@@ -6,9 +6,9 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
-    private Player _target;
     [SerializeField] private FlyDamage _flyDamage;
 
+    private Player _target;
     private Coroutine _coroutine;
     private int _currentHealth;
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    [SerializeField] private Transform _target;
     [SerializeField] private EnemyShoot _enemyShoot;
 
-    private float _speedRotation = 3f;
+    //private Transform _target;
+    //private float _speedRotation = 3f;
     private Coroutine _coroutine;
 
     private void OnEnable()
@@ -27,7 +27,7 @@ public class AttackState : State
 
     private void Rotate()
     {
-        transform.LookAt(_target);
+        transform.LookAt(Target.transform);
         //Vector3 relativePosition = transform.position - _target.position;
         //Quaternion rotation = Quaternion.LookRotation(-relativePosition);
         //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
