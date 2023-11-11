@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +35,7 @@ public abstract class State : MonoBehaviour
 
     public void Exit()
     {
-        if(enabled==true)
+        if (enabled == true)
         {
             foreach (Transition transition in _transitions)
                 transition.enabled = false;

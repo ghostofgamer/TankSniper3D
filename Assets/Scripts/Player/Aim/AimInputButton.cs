@@ -21,7 +21,6 @@ public class AimInputButton : AbstractButton
             if (isPressed)
             {
                 _towerRotate.Rotate();
-                //_playerMover.Go();
                 IsZoom = true;
             }
 
@@ -39,7 +38,6 @@ public class AimInputButton : AbstractButton
                 {
                     _weapon.Shoot();
                     OnSetCameraPause();
-                    //_playerMover.Hide();
                 }
             }
         }
@@ -73,10 +71,10 @@ public class AimInputButton : AbstractButton
         _playerMover.Hide();
     }
 
-    public void Init(Weapon weapon,/* TowerRotate towerRotate, */CameraAim cameraAim)
+    public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim)
     {
         _weapon = weapon;
-        //_towerRotate = towerRotate;
+        _towerRotate = towerRotate;
         _cameraAim = cameraAim;
     }
 }

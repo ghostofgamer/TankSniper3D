@@ -52,7 +52,7 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
                 {
-                    Shoot(bullet);
+                    AmmoChanger(bullet);
                     _audioSource.Play();
                     IsLastShoot = _currentAmmo == 1;
                     EnemyHitChanger();
@@ -65,31 +65,38 @@ public abstract class Weapon : MonoBehaviour
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
-            Shoot(bullet);
+            AmmoChanger(bullet);
             CinemachineMove(bullet);
             IsLastShoot = _currentAmmo == 1;
         }
 
         if (_currentAmmo <= 0)
+        {
             StartCoroutine(Reload());
+        }
     }
 
     private void EnemyHitChanger()
     {
         RaycastHit hit;
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
-        Physics.Raycast(ray, out hit);
 
-        if (hit.collider.GetComponent<Enemy>())
+        if (Physics.Raycast(ray, out hit))
         {
-            _hitEnemy++;
-            Debug.Log(_hitEnemy);
-
-            if (_hitEnemy == 3)
+            if (hit.collider.GetComponent<Enemy>())
             {
-                _hitEnemy = 0;
-                SuperShoot();
+                _hitEnemy++;
+
+                if (_hitEnemy == 3)
+                {
+                    _hitEnemy = 0;
+                    SuperShoot();
+                }
             }
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -110,7 +117,7 @@ public abstract class Weapon : MonoBehaviour
         _cinemachineCamera.LookAt = bullet.transform;
     }
 
-    private void Shoot(Bullet bullet)
+    private void AmmoChanger(Bullet bullet)
     {
         bullet.Init(_shootPosition);
         _currentAmmo--;

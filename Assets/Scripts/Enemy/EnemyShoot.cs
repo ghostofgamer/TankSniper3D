@@ -31,14 +31,17 @@ public class EnemyShoot : MonoBehaviour
         {
             yield return _waitForSeconds;
             //_audioSource.Play();
-            _audioSource.PlayOneShot(_audioClip);
-            Shooting();
+            //_audioSource.PlayOneShot(_audioClip);
+            Shooting(_shootPosition);
         }
     }
 
-    private void Shooting()
+    public void Shooting(Transform shootingPosition)
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
-            bullet.Init(_shootPosition);
+        {
+            _audioSource.Play();
+            bullet.Init(shootingPosition);
+        }
     }
 }

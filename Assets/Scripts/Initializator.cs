@@ -11,7 +11,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private PlayerHealthbar _playerHealthbar;
-    //[SerializeField] private AimInputButton _aimButton;
+    [SerializeField] private AimInputButton[] _aimButton;
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
     [Header("Other")]
@@ -28,7 +28,6 @@ public class Initializator : MonoBehaviour
     {
         _player = GetPlayer(_indexPlayer);
         EnemyInit(_player);
-        //AimInputInit();
         PlayerHealthbarInit();
         _alarm.Init(_player.GetComponent<Weapon>());
         _gameOverScreen.Init(_player);
@@ -47,6 +46,7 @@ public class Initializator : MonoBehaviour
             player.gameObject.SetActive(false);
 
         _players[index].gameObject.SetActive(true);
+        _aimButton[index].gameObject.SetActive(true);
         return _players[index];
     }
 
@@ -55,10 +55,4 @@ public class Initializator : MonoBehaviour
         _playerHealthbar.Init(_player);
         _playerHealthbar.gameObject.SetActive(true);
     }
-
-    //private void AimInputInit()
-    //{
-    //    _aimButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<CameraAim>());
-    //    _aimButton.gameObject.SetActive(true);
-    //}
 }
