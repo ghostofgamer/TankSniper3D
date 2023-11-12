@@ -32,7 +32,7 @@ public class Initializator : MonoBehaviour
         EnemyInit(_player);
         _alarm.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
-        _gameOverScreen.Init(_player);
+        GameOverScreenInit();
         _victoryScreen.Init();
     }
 
@@ -56,5 +56,11 @@ public class Initializator : MonoBehaviour
     {
         _fightScreen.Init(_player.GetComponent<Weapon>());
         _fightScreen.gameObject.SetActive(true);
+    }
+
+    private void GameOverScreenInit()
+    {
+        _gameOverScreen.Init(_player);
+        _gameOverScreen.gameObject.SetActive(true);
     }
 }
