@@ -20,6 +20,8 @@ public class TowerRotate : MonoBehaviour
     private float _xRotation = 0f;
     private float _yRotation = 0f;
 
+    private float _speedSlerp = 6;
+
     public void Rotate()
     {
         float mouseX = Input.GetAxis("Mouse X") * _sensivity * Time.deltaTime;
@@ -31,10 +33,17 @@ public class TowerRotate : MonoBehaviour
         _yRotation = Mathf.Clamp(_yRotation, -90f, 90f);
 
         //transform.localRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
-
-        transform.rotation = Quaternion.Euler(
+        Quaternion targetRotation = Quaternion.Euler(
             Mathf.Clamp(_xRotation, -_limitAngles, _limitAngles),
             Mathf.Clamp(-_yRotation, -_limitAngles, _limitAngles), 0);
+
+        Vector3 finalRotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime).eulerAngles;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime);
+        //transform.rotation = Quaternion.Euler(finalRotation);
+
+        //transform.rotation = Quaternion.Euler(
+        //    Mathf.Clamp(_xRotation, -_limitAngles, _limitAngles),
+        //    Mathf.Clamp(-_yRotation, -_limitAngles, _limitAngles), 0);
 
         //vertical += Input.GetAxis(s_MouseY);
         //horizontal += Input.GetAxis(s_MouseX);
