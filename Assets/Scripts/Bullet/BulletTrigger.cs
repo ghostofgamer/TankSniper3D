@@ -70,6 +70,6 @@ public class BulletTrigger : MonoBehaviour
     {
         GetComponent<Collider>().enabled = flag;
         _bullet.enabled = flag;
-        _bullet.GetComponent<MeshRenderer>().enabled = flag;
+        //_bullet.GetComponent<MeshRenderer>().enabled = flag;
     }
 }

@@ -16,11 +16,31 @@ public class TowerRotate : MonoBehaviour
     private float vertical;
     private float horizontal;
 
+    private float _sensivity = 65;
+    private float _xRotation = 0f;
+    private float _yRotation = 0f;
+
     public void Rotate()
     {
-        vertical += Input.GetAxis(s_MouseY);
-        horizontal += Input.GetAxis(s_MouseX);
-        transform.rotation = Quaternion.Euler(Mathf.Clamp(-vertical, -_limitAngles, _limitAngles), Mathf.Clamp(horizontal, -_limitAngles, _limitAngles), 0);
+        float mouseX = Input.GetAxis("Mouse X") * _sensivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * _sensivity * Time.deltaTime;
+
+        _xRotation -= mouseY;
+        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+        _yRotation -= mouseX;
+        _yRotation = Mathf.Clamp(_yRotation, -90f, 90f);
+
+        //transform.localRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
+
+        transform.rotation = Quaternion.Euler(
+            Mathf.Clamp(_xRotation, -_limitAngles, _limitAngles),
+            Mathf.Clamp(-_yRotation, -_limitAngles, _limitAngles), 0);
+
+        //vertical += Input.GetAxis(s_MouseY);
+        //horizontal += Input.GetAxis(s_MouseX);
+        //transform.rotation = Quaternion.Euler(
+        //    Mathf.Clamp(-vertical * Time.deltaTime, -_limitAngles, _limitAngles), 
+        //    Mathf.Clamp(horizontal * Time.deltaTime, -_limitAngles, _limitAngles), 0);
     }
 
     public void ResetRotate()

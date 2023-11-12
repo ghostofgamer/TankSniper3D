@@ -30,8 +30,6 @@ public class EnemyShoot : MonoBehaviour
         while (true)
         {
             yield return _waitForSeconds;
-            //_audioSource.Play();
-            //_audioSource.PlayOneShot(_audioClip);
             Shooting(_shootPosition);
         }
     }
@@ -40,8 +38,13 @@ public class EnemyShoot : MonoBehaviour
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
         {
-            _audioSource.Play();
+            _audioSource.PlayOneShot(_audioClip);
             bullet.Init(shootingPosition);
         }
+    }
+
+    public void LookTarget(Transform target)
+    {
+        _shootPosition.LookAt(target.transform);
     }
 }

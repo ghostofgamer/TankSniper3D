@@ -1415,7 +1415,6 @@ MonoBehaviour:
   _levelConfig: {fileID: 11400000, guid: cfb8f40448aea7d479eeb825a69936a6, type: 2}
   _rewardCountText: {fileID: 4475014111679506189}
   _continueButton: {fileID: 4475014111651555234}
-  _player: {fileID: 0}
 --- !u!225 &4475014109908226916
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6168,7 +6167,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 4475014109752720495}
   m_HandleRect: {fileID: 0}
@@ -6979,6 +6978,10 @@ PrefabInstance:
     - target: {fileID: 8913630677130031038, guid: b273b5697cdb645f7ba978fe1fbc14b8, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8913630677130031038, guid: b273b5697cdb645f7ba978fe1fbc14b8, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8913630677212632133, guid: b273b5697cdb645f7ba978fe1fbc14b8, type: 3}
       propertyPath: m_AnchorMax.x
