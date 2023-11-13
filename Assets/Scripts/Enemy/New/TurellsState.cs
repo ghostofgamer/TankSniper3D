@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TurellsState : State
 {
-    [SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private EnemyShoot _enemyShoot;
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Transform[] _shootPoints;
