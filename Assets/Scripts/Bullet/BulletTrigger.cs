@@ -54,8 +54,8 @@ public class BulletTrigger : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(SetActive());
         _effect.PlayEffect();
+        _coroutine = StartCoroutine(SetActive());
     }
 
     private IEnumerator SetActive()
