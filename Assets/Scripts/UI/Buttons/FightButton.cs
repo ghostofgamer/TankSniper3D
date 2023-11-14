@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class FightButton : AbstractButton
 {
     [SerializeField] private Load _load;
+    [SerializeField] private LoadScreen _loadScreen;
 
     private int _sceneNumber = 1;
 
@@ -16,6 +17,7 @@ public class FightButton : AbstractButton
 
     public override void OnClick()
     {
-        SceneManager.LoadScene(_sceneNumber);
+        _loadScreen.Loading(_sceneNumber);
+        //SceneManager.LoadScene(_sceneNumber);
     }
 }
