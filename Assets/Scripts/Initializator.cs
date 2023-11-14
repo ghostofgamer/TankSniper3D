@@ -22,6 +22,7 @@ public class Initializator : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         Init();
     }
 

@@ -35,20 +35,16 @@ public class DragAndDrop : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Debug.Log("1");
             if (_selectObject == null)
             {
-                Debug.Log("2");
                 hit = CastRay();
 
                 if (hit.collider != null)
                 {
-                    Debug.Log("3");
                     Debug.Log(hit.collider.gameObject.name);
                     if (!hit.collider.CompareTag("drag"))
                         return;
 
-                    Debug.Log("4");
                     _selectObject = hit.collider.gameObject;
                     StartPosition = _selectObject.transform.position;
                     Cursor.visible = false;

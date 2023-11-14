@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class FightButton : AbstractButton
 {
-    private int _sceneNumber = 3;
+    [SerializeField] private Load _load;
+
+    private int _sceneNumber = 1;
+
+    private void Start()
+    {
+        _sceneNumber = _load.GetScene();
+    }
 
     public override void OnClick()
     {
