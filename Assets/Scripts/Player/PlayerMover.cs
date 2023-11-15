@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
+    [SerializeField] private float _maxPositionX;
+    [SerializeField] private float _minPositionX;
+
     private readonly float _speed = 6.5f;
 
     private Vector3 _target;
-    private float _stepSize = 15;
+    private float _stepSize = 5f;
 
     public bool _isDone { get; private set; } = true;
 
@@ -18,13 +21,15 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+        if (transform.position != _target)
+            transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+
+        //Debug.Log(transform.position.x);
     }
 
     public void Go()
     {
-        float needX = Mathf.Clamp(transform.position.x + _stepSize, -2.1f, 3.1f);
-        _target = new Vector3(/*transform.position.x + _stepSize*/needX, transform.position.y, transform.position.z);
+        _target = new Vector3(GetTarget(_stepSize), transform.position.y, transform.position.z);
     }
 
     public void Hide()
@@ -35,7 +40,11 @@ public class PlayerMover : MonoBehaviour
     private IEnumerator GoHide()
     {
         yield return new WaitForSeconds(1f);
-        float needX = Mathf.Clamp(transform.position.x - _stepSize, -0.36f, 3.1f);
-        _target = new Vector3(needX/*transform.position.x - _stepSize*/, transform.position.y, transform.position.z);
+        _target = new Vector3(GetTarget(-_stepSize), transform.position.y, transform.position.z);
+    }
+
+    private float GetTarget(float step)
+    {
+        return Mathf.Clamp(transform.position.x + step, _minPositionX, _maxPositionX);
     }
 }
