@@ -7,6 +7,7 @@ public class SettingsScreen : AbstractScreen
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
 
+    private int _startSound = 1;
     private int _soundValue;
     private int _soundOff = 0;
     private int _soundOn = 1;
@@ -16,23 +17,19 @@ public class SettingsScreen : AbstractScreen
 
     private void Awake()
     {
-        _soundValue = _load.GetSound();
-        Debug.Log("значение : " + _soundValue);
+        _soundValue = _load.Get(Save.Sound, _startSound);
         AudioListener.pause = _soundValue == _soundOn ? false : true;
-        Debug.Log(AudioListener.pause);
     }
 
     public void Mute()
     {
-        Debug.Log("значение : " + _soundValue);
         AudioListener.pause = true;
-        _save.SetSound(_soundOff);
+        _save.SetData(Save.Sound, _soundOff);
     }
 
     public void PlaySound()
     {
         AudioListener.pause = false;
-        _save.SetSound(_soundOn);
-        Debug.Log("значение : " + _soundValue);
+        _save.SetData(Save.Sound, _soundOn);
     }
 }

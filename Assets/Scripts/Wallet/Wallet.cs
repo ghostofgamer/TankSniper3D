@@ -10,13 +10,12 @@ public class Wallet : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private Save _save;
 
+    private int _startMoney = 0;
     private int _money;
-
-    public event UnityAction MoneyChanged;
 
     private void Start()
     {
-        _money = _load.GetMoney();
+        _money = _load.Get(Save.Money, _startMoney);
         MoneyInfo();
     }
 
@@ -24,14 +23,14 @@ public class Wallet : MonoBehaviour
     {
         _money += money;
         MoneyInfo();
-        _save.SetMoney(_money);
+        _save.SetData(Save.Money, _money);
     }
 
     public void DecreaseMoney(int money)
     {
         _money -= money;
         MoneyInfo();
-        _save.SetMoney(_money);
+        _save.SetData(Save.Money, _money);
     }
 
     private void MoneyInfo()

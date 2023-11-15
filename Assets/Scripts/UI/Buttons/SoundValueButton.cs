@@ -38,9 +38,9 @@ public class SoundValueButton : AbstractButton
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
 
         if (AudioListener.pause == true)
-            _save.SetSound(_settingsScreen.SoundOff);
+            _save.SetData(Save.Sound, _settingsScreen.SoundOff);
 
         else
-            _save.SetSound(_settingsScreen.SoundOn);
+            _save.SetData(Save.Sound, _settingsScreen.SoundOn);
     }
 }

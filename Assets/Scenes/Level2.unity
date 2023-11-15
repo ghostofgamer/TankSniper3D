@@ -5994,6 +5994,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0000002, z: 1.0000001}
   m_Center: {x: -0.0000004172325, y: -0.0000029802322, z: 0.0000003874302}
+--- !u!1 &872286422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872286424}
+  - component: {fileID: 872286423}
+  m_Layer: 0
+  m_Name: Progress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &872286423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872286422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f8c6cabb39eac4fb32cdae72f42dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _save: {fileID: 920476716}
+  Load: {fileID: 632212806}
+--- !u!4 &872286424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872286422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6514244, y: 23.39097, z: -34.058586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885226548
 GameObject:
   m_ObjectHideFlags: 0
@@ -11270,6 +11316,7 @@ MonoBehaviour:
   _fightScreen: {fileID: 1737034110}
   _enemysContainer: {fileID: 1342705773}
   _alarm: {fileID: 1922342617}
+  _progress: {fileID: 872286423}
 --- !u!4 &1746644475
 Transform:
   m_ObjectHideFlags: 0

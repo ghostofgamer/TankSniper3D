@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class VictoryScreen : EndGame
 {
     [SerializeField] private KilledInfo _killedInfo;
-    [SerializeField] private Save _save; 
+    [SerializeField] private Save _save;
+
+    private Progress _progress;
 
     private void OnEnable()
     {
@@ -20,15 +22,18 @@ public class VictoryScreen : EndGame
         _killedInfo.AllEnemysDying -= OnEndGame;
     }
 
-    public void Init()
+    public void Init(Progress progress)
     {
         Reward = _levelConfig.RewardVictory;
         _rewardCountText.text = Reward.ToString();
+        _progress = progress;
     }
 
     protected override void OnEndGame()
     {
         base.OnEndGame();
-        _save.SetScene(SceneManager.GetActiveScene().buildIndex);
+        int index = SceneManager.GetActiveScene().buildIndex;
+        _save.SetData(Save.SceneNumber, ++index);
+        _save.SetData(Save.Map, _progress.AddIndex());
     }
 }

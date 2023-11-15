@@ -8,16 +8,16 @@ public class FightButton : AbstractButton
     [SerializeField] private Load _load;
     [SerializeField] private LoadScreen _loadScreen;
 
-    private int _sceneNumber = 1;
+    private int _startSceneIndex = 1;
+    private int _sceneNumber;
 
     private void Start()
     {
-        _sceneNumber = _load.GetScene();
+        _sceneNumber = _load.Get(Save.SceneNumber, _startSceneIndex);
     }
 
     public override void OnClick()
     {
         _loadScreen.Loading(_sceneNumber);
-        //SceneManager.LoadScene(_sceneNumber);
     }
 }

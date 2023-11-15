@@ -17,6 +17,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Transform _enemysContainer;
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
+    [SerializeField] private Progress _progress;
 
     private Player _player;
 
@@ -34,7 +35,7 @@ public class Initializator : MonoBehaviour
         _alarm.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
         GameOverScreenInit();
-        _victoryScreen.Init();
+        _victoryScreen.Init(_progress);
     }
 
     private void EnemyInit(Player player)
