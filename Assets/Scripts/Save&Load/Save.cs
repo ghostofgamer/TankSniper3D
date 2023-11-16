@@ -11,6 +11,10 @@ public class Save : MonoBehaviour
     public const string Map = "Map";
     public const string Enviropment = "Enviropment";
     public const string Tank = "Tank";
+    public const string Zebra = "Zebra";
+    public const string Winter = "Winter";
+    public const string Leopard = "Leopard";
+    public const string Color = "Color";
 
     private void Start()
     {
