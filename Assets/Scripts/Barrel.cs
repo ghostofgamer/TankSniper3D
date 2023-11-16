@@ -7,8 +7,9 @@ public class Barrel : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private ParticleSystem _ExplosionParticle;
 
-    private int _damage = 50;
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+
+    private int _damage = 50;
 
     public void Explosion()
     {
@@ -26,12 +27,10 @@ public class Barrel : MonoBehaviour
                 enemy.TakeDamage(_damage);
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
-            {
                 destroy.GetDestroyObject();
-            }
         }
-        yield return _waitForSeconds;
 
+        yield return _waitForSeconds;
         gameObject.SetActive(false);
     }
 }
