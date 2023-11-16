@@ -10,8 +10,7 @@ public class Save : MonoBehaviour
     public const string Sound = "Sound";
     public const string Map = "Map";
     public const string Enviropment = "Enviropment";
-
-    //private int index = 0;
+    public const string Tank = "Tank";
 
     private void Start()
     {

@@ -7,11 +7,6 @@ public class AbstractScreen : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
 
-    //private void Awake()
-    //{
-        
-    //}
-
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();

@@ -6,7 +6,6 @@ public class Initializator : MonoBehaviour
 {
     [Header("Player")]
     [SerializeField] private Player[] _players;
-    [SerializeField] private int _indexPlayer;
     [Header("UI")]
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private VictoryScreen _victoryScreen;
@@ -18,12 +17,17 @@ public class Initializator : MonoBehaviour
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
     [SerializeField] private Progress _progress;
+    [SerializeField] private Load _load;
 
+    private readonly int _startIndex = 0;
+
+    private int _indexPlayer;
     private Player _player;
 
     private void Awake()
     {
         Time.timeScale = 1;
+        _indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
     }
 
