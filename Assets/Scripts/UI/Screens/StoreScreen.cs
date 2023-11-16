@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StoreScreen : AbstractScreen
@@ -18,6 +19,12 @@ public class StoreScreen : AbstractScreen
     public void SetItem()
     {
         OffItem(_items);
+    }
+
+    public GameObject GetTank()
+    {
+        var filter = _items.FirstOrDefault(p => p.activeSelf == true);
+        return filter;
     }
 
     private void OffItem(GameObject[] items)
