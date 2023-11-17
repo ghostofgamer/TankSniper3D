@@ -18,6 +18,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Alarm _alarm;
     [SerializeField] private Progress _progress;
     [SerializeField] private Load _load;
+    [SerializeField] private MaterialContainer _materialContainer;
 
     private readonly int _startIndex = 0;
 
@@ -55,6 +56,7 @@ public class Initializator : MonoBehaviour
 
         _players[index].gameObject.SetActive(true);
         _aimButton[index].gameObject.SetActive(true);
+        _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         return _players[index];
     }
 

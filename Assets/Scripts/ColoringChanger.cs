@@ -8,13 +8,10 @@ public class ColoringChanger : MonoBehaviour
 
     private Material[] materials;
 
-    private void Start()
-    {
-        materials = _MeshRenderer[0].materials;
-    }
-
     public void SetMaterial(Material material)
     {
+        materials = _MeshRenderer[0].materials;
+
         for (int i = 0; i < materials.Length; i++)
             materials[i] = material;
 

@@ -4785,6 +4785,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8585494652355832030, guid: 2a3ca2e2814020240bd41184fd5dfe36, type: 3}
   m_PrefabInstance: {fileID: 818101509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &841849099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841849101}
+  - component: {fileID: 841849100}
+  m_Layer: 0
+  m_Name: MaterialContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &841849100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841849099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53feee9951f79f04592df94f335f2fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _materials:
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
+  - {fileID: 2100000, guid: 614e09b44c8ea4f41b8060e541c1c60f, type: 2}
+  - {fileID: 2100000, guid: 84ebdd9a7188b384cb24e204d27aff98, type: 2}
+  - {fileID: 2100000, guid: 9a0f32d9afb229c4583389edfceb8bda, type: 2}
+  _load: {fileID: 2077111402}
+--- !u!4 &841849101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841849099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3403423, y: 33.392902, z: -33.34973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844371835
 GameObject:
   m_ObjectHideFlags: 0
@@ -9225,6 +9275,7 @@ MonoBehaviour:
   _alarm: {fileID: 1922342617}
   _progress: {fileID: 120116237}
   _load: {fileID: 2077111402}
+  _materialContainer: {fileID: 841849100}
 --- !u!4 &1746644475
 Transform:
   m_ObjectHideFlags: 0

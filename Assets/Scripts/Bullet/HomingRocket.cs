@@ -7,8 +7,7 @@ public class HomingRocket : MonoBehaviour
     public enum MissileState
     {
         start,
-        fly,
-        end
+        fly
     }
 
     [SerializeField] private float _speedStart;

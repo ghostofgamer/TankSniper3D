@@ -137,9 +137,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4704393401054639804}
   - component: {fileID: 4704393401054639802}
   - component: {fileID: 1207407046}
+  - component: {fileID: 5963099935356635506}
   m_Layer: 0
   m_Name: FireballTank
   m_TagString: Untagged
@@ -385,6 +386,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2367399bd45747b418d1cc9123bde059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxPositionX: 0
+  _minPositionX: 0
+--- !u!114 &5963099935356635506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704393401054639800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fee5978edb9c34ebf06c0bd32e48d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MeshRenderer:
+  - {fileID: 4704393401003449685}
+  - {fileID: 4704393402530014667}
 --- !u!1 &4704393401285804425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,7 +1064,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

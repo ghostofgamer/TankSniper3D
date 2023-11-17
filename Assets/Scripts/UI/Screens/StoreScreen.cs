@@ -8,8 +8,7 @@ public class StoreScreen : AbstractScreen
     [SerializeField] private GameObject[] _tabs;
     [SerializeField] private GameObject[] _items;
     [SerializeField] private Load _load;
-
-    private int[] indexes = new int[] { 0, 0, 0};
+    [SerializeField] private MaterialContainer _materialContainer;
 
     private int _startIndex = 0;
 
@@ -19,7 +18,12 @@ public class StoreScreen : AbstractScreen
     {
         OffItem(_tabs);
         _tabs[index].SetActive(true);
-        _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
+
+        if (index == 0)
+        {
+            _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
+            _items[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        }
     }
 
     public void SetItem()

@@ -267,7 +267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -435,7 +435,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c0bec20650a9bc449a771546ccb28ab3, type: 2}
+  - {fileID: 2100000, guid: 546738ce5c5f3484bb590ed3d3f696ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1092,6 +1092,7 @@ GameObject:
   - component: {fileID: 8256347666278764838}
   - component: {fileID: 8256347666278764837}
   - component: {fileID: 848932663}
+  - component: {fileID: 8770582803391137042}
   m_Layer: 0
   m_Name: MissileTank
   m_TagString: Untagged
@@ -1300,6 +1301,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2367399bd45747b418d1cc9123bde059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxPositionX: 0
+  _minPositionX: 0
+--- !u!114 &8770582803391137042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256347666278764835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fee5978edb9c34ebf06c0bd32e48d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MeshRenderer:
+  - {fileID: 8256347665024829724}
+  - {fileID: 8256347665001093593}
 --- !u!1001 &8256347665234926403
 PrefabInstance:
   m_ObjectHideFlags: 0
