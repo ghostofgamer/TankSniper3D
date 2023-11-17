@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Agava.YandexGames;
 
 public class Initializator : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Initializator : MonoBehaviour
         Time.timeScale = 1;
         _indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
+        YandexGamesSdk.GameReady();
     }
 
     private void Init()

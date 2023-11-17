@@ -8,7 +8,7 @@ public class FightButton : AbstractButton
     [SerializeField] private Load _load;
     [SerializeField] private LoadScreen _loadScreen;
 
-    private int _startSceneIndex = 1;
+    private int _startSceneIndex = 2;
     private int _sceneNumber;
 
     private void Start()

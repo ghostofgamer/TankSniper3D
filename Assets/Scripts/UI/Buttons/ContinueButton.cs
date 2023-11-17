@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class ContinueButton : AbstractButton
 {
+    [SerializeField] private FullAds _fullVideo;
+
     private const string MainMenu = "MainScene";
 
     public override void OnClick()
     {
-        SceneManager.LoadScene(MainMenu);
+        _fullVideo.Show();
+        //SceneManager.LoadScene(MainMenu);
     }
 }

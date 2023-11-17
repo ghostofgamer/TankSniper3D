@@ -7,12 +7,28 @@ public class AttackTransition : Transition
     [SerializeField]private Alarm _alarm;
     [SerializeField] private EnemyAnimations _enemyAnimations;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_alarm.Warning)
-        {
-            _enemyAnimations.Shooting(true);
-            NeedTransit = true;
-        }
+        _alarm.AlarmChanged += OnAlarm;
     }
+
+    private void OnDisable()
+    {
+        _alarm.AlarmChanged -= OnAlarm;
+    }
+
+    private void OnAlarm()
+    {
+        _enemyAnimations.Shooting(true);
+        NeedTransit = true;
+    }
+
+    //private void Update()
+    //{
+    //    if (_alarm.Warning)
+    //    {
+    //        _enemyAnimations.Shooting(true);
+    //        NeedTransit = true;
+    //    }
+    //}
 }
