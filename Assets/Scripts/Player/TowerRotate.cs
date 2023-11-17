@@ -20,7 +20,7 @@ public class TowerRotate : MonoBehaviour
     private float _xRotation = 0f;
     private float _yRotation = 0f;
 
-    private float _speedSlerp = 30;
+    private float _speedSlerp = 10;
 
     public void Rotate()
     {
