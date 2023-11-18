@@ -7,8 +7,8 @@ public class TowerRotate : MonoBehaviour
     [SerializeField] private Transform _startTransform;
     [SerializeField] private GameObject _tower;
 
-    private const string s_MouseX = "Mouse X";
-    private const string s_MouseY = "Mouse Y";
+    private const string MouseX = "Mouse X";
+    private const string MouseY = "Mouse Y";
 
     private readonly float _limitAngles = 50f;
     private readonly float _speed = 1f;
@@ -24,8 +24,8 @@ public class TowerRotate : MonoBehaviour
 
     public void Rotate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * _sensivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * _sensivity * Time.deltaTime;
+        float mouseX = Input.GetAxis(MouseX) * _sensivity * Time.deltaTime;
+        float mouseY = Input.GetAxis(MouseY) * _sensivity * Time.deltaTime;
 
         _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);

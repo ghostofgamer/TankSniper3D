@@ -30,7 +30,6 @@ public class Alarm : MonoBehaviour
         if(other.TryGetComponent(out Bullet bullet))
         {
             Warning = true;
-            Debug.Log("тревога");
             AlarmChanged?.Invoke();
             gameObject.SetActive(false);
         }

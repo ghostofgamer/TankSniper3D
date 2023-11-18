@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BulletTrigger : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BulletTrigger : MonoBehaviour
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
     private Coroutine _coroutine;
+
+    //public event UnityAction hit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -47,6 +50,8 @@ public class BulletTrigger : MonoBehaviour
             Hit();
             player.ApplyDamage(_bullet.Damage);
         }
+
+        //hit?.Invoke();
     }
 
     public void Hit()

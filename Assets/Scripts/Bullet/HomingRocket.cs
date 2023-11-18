@@ -15,6 +15,7 @@ public class HomingRocket : MonoBehaviour
     [SerializeField] private float _speedRotate;
     [SerializeField] private BulletTrigger _bulletTrigger;
     [SerializeField] private Bullet _bullet;
+    [SerializeField] private int _distance = 16;
 
     private Transform _target;
     private Vector3 _startPosition;
@@ -27,6 +28,17 @@ public class HomingRocket : MonoBehaviour
         _startPosition = gameObject.transform.position;
     }
 
+    //private void OnEnable()
+    //{
+    //    _missileState = MissileState.start;
+    //}
+
+    private void OnDisable()
+    {
+        _missileState = MissileState.start;
+    }
+
+
     private void Update()
     {
         switch (_missileState)
@@ -35,7 +47,7 @@ public class HomingRocket : MonoBehaviour
                 float startDistance = Vector3.Distance(gameObject.transform.position, _startPosition);
                 gameObject.transform.Translate(Vector3.up * _speedStart * Time.deltaTime);
 
-                if (startDistance >= 16)
+                if (startDistance >= _distance)
                     _missileState = MissileState.fly;
 
                 break;
