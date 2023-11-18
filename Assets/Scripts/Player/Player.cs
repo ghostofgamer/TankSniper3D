@@ -30,6 +30,5 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Dying?.Invoke();
-        Debug.Log("Жизни игрока кончились");
     }
 }

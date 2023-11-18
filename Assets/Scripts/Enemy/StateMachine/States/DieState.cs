@@ -7,8 +7,8 @@ public class DieState : State
     [SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private Effect _effect;
     [SerializeField] private KilledInfo _killedInfo;
+    [SerializeField] private float _delay = 1.65f;
 
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
     private int _force = 300;
 
     private void OnEnable()
@@ -18,6 +18,7 @@ public class DieState : State
 
     private IEnumerator Die()
     {
+        WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
         SetPhisics();
         _killedInfo.ChangeValue();
         _effect.PlayEffect();
