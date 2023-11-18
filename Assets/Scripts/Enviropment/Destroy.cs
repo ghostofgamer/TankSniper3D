@@ -5,7 +5,6 @@ using UnityEngine;
 public class Destroy : MonoBehaviour
 {
     [SerializeField] private Transform _newGameObject;
-    [SerializeField] private Transform[] _objects;
     [SerializeField] private GameObject _oldGameObject;
 
     private List<Transform> _destroyObjects;

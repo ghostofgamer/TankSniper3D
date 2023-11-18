@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletDestroy : MonoBehaviour
 {
     private Coroutine _coroutine;
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
     private void OnEnable()
     {
