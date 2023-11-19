@@ -3025,6 +3025,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c176a30d8643f3143829f9f118f19407, type: 3}
+--- !u!1 &1501537559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4475014110657522388, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 1758740049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1501537560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4475014111651555247, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 1758740049}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1501537561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501537559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cedc3a5f74a6404f800d7feb44f92c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501537562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501537560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cedc3a5f74a6404f800d7feb44f92c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1521834827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3641,6 +3675,10 @@ PrefabInstance:
       propertyPath: _towerRotate
       value: 
       objectReference: {fileID: 524676780}
+    - target: {fileID: 4475014110657522383, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _fullVideo
+      value: 
+      objectReference: {fileID: 1501537561}
     - target: {fileID: 4475014111292667061, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
       value: 
@@ -3697,6 +3735,10 @@ PrefabInstance:
       propertyPath: _save
       value: 
       objectReference: {fileID: 124037597}
+    - target: {fileID: 4475014111651555234, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _fullVideo
+      value: 
+      objectReference: {fileID: 1501537562}
     - target: {fileID: 4475014111677056189, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _save
       value: 
@@ -4182,6 +4224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922342618}
   - component: {fileID: 1922342617}
+  - component: {fileID: 1922342619}
   m_Layer: 0
   m_Name: Alarm
   m_TagString: Untagged
@@ -4216,6 +4259,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1922342619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922342616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 139.57623, y: 55.48977, z: 26.836363}
+  m_Center: {x: -7.99279, y: 2.7448854, z: 11.581819}
 --- !u!4 &1951889172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4209018105610702, guid: ef140beec582a5a46a6362fcfc31784d, type: 3}

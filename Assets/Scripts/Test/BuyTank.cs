@@ -13,6 +13,7 @@ public class BuyTank : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _currentLevelText;
     [SerializeField] private Transform[] _tanks;
+    [SerializeField] private SaveSystem _saveSystem;
 
     private List<Transform> _positions;
     private float _offset = 1f;
@@ -40,6 +41,8 @@ public class BuyTank : MonoBehaviour
         var tank = Instantiate(_tanks[_currentTankIndex - 1], _container);
         tank.transform.position = new Vector3(position.x, position.y + _offset, position.z);
         ChangeValue();
+        //_saveSystem.AddTank(tank.gameObject);
+        //_saveSystem.Filter();
     }
 
     private Vector3 TryGetPosition()
