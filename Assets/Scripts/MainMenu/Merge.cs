@@ -46,7 +46,7 @@ public class Merge : MonoBehaviour
     //            if (Id < other.GetComponent<Merge>().Id)
     //                return;
 
-    //            GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity)as GameObject;
+    //            GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
     //            Destroy(other);
     //            Destroy(gameObject);
     //            Debug.Log("ענטדדונ ןנט לונהזו" + other.name);

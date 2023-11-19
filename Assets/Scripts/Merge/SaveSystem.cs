@@ -15,7 +15,7 @@ public class SaveSystem : MonoBehaviour
     private void Start()
     {
         filePath = Application.persistentDataPath + "/save.gamesave";
-        LoadGame();
+        //LoadGame();
     }
 
     public void AddTank(Tank tank)
@@ -25,23 +25,10 @@ public class SaveSystem : MonoBehaviour
 
     private void Update()
     {
-        //GameObject[] go = GameObject.FindGameObjectsWithTag("MyTag");
-
-
-
-
         Tank[] go = GameObject.FindObjectsOfType<Tank>();
-        //Debug.Log(go.Length);
         EnemySaves = new List<Tank>();
         for (int i = 0; i < go.Length; i++)
             EnemySaves.Add(go[i]);
-
-
-
-
-
-        //Tank[] objects = FindObjectOfType<Tank>();
-        //Filter();
     }
 
     public void Filter()
@@ -86,47 +73,29 @@ public class SaveSystem : MonoBehaviour
         Saves save = (Saves)bf.Deserialize(fs);
         fs.Close();
 
-        int i = 0;
+        //int i = 0;
 
         foreach (var enemy in save.EnemiesData)
         {
-            Debug.Log("колличество " + save.EnemiesData.Count);
             int number = enemy._id;
-            Debug.Log("ID" + enemy._id);
 
             switch (number)
             {
                 case 0:
                     Instantiate(_tanks[0], new Vector3(enemy.Position.x,enemy.Position.y,enemy.Position.z),Quaternion.identity);
                     EnemySaves.Add(_tanks[0]);
-                    //_tanks[0].GetComponent<Tank>().LoadData(enemy);
-                    //i++;
-
-                    Debug.Log(_tanks[0].transform.position.x + " " + _tanks[0].transform.position.y + " " + _tanks[0].transform.position.z);
-                    Debug.Log("1");
                     break;
 
                 case 1:
                     Instantiate(_tanks[1], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
                     EnemySaves.Add(_tanks[1]);
-                    //_tanks[1].GetComponent<Tank>().LoadData(enemy);
-                    //i++;
-                    Debug.Log(_tanks[1].transform.position.x + " " + _tanks[1].transform.position.y + " " + _tanks[1].transform.position.z);
-                    Debug.Log("2");
                     break;
 
                 case 2:
                     Instantiate(_tanks[2], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
                     EnemySaves.Add(_tanks[2]);
-                    //_tanks[2].GetComponent<Tank>().LoadData(enemy);
-                    Debug.Log(_tanks[2].transform.position.x + " " + _tanks[2].transform.position.y + " " + _tanks[2].transform.position.z);
-                    Debug.Log("3");
-                    //i++;
                     break;
             }
-
-            //EnemySaves[i].GetComponent<Tank>().LoadData(enemy);
-            //i++;
         }
     }
 }

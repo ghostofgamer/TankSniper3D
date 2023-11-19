@@ -4,6 +4,44 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
+    [SerializeField] private GameObject _prefab;
+    [SerializeField] private DragAndDrop _drag;
+    public int Id { get; private set; }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<PlayerLevel>(out PlayerLevel level))
+        {
+            if (level.Level == GetComponent<PlayerLevel>().Level)
+            {
+                if (Id < other.GetComponent<Merge>().Id)
+                    return;
+
+                //GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
+                //Destroy(other);
+                //Destroy(gameObject);
+                //Debug.Log("триггер при мердже" + other.name);
+
+
+                Debug.Log("Ну и что?" + _selectObject.name);
+                _selectObject.GetComponent<DragAndDrop>().Delete();
+                //other.gameObject.GetComponent<DragAndDrop>().Delete();
+                GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("что не так");
+                _drag.ResetPosition();
+            }
+        }
+    }
+
+    public void Delete()
+    {
+        Destroy(gameObject);
+    }
     //private Vector3 _mousePosition;
     //private Vector3 _mOffset;
     //private float _mZCoord;
@@ -28,6 +66,7 @@ public class DragAndDrop : MonoBehaviour
     private void Start()
     {
         _layerMask = 1 << _layerNumber;
+        Id = GetInstanceID();
     }
 
     private void Update()
@@ -47,7 +86,7 @@ public class DragAndDrop : MonoBehaviour
 
                     _selectObject = hit.collider.gameObject;
                     StartPosition = _selectObject.transform.position;
-                    Cursor.visible = false;
+                    //Cursor.visible = false;
                 }
             }
         }
@@ -80,9 +119,30 @@ public class DragAndDrop : MonoBehaviour
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             //_selectObject.transform.position = new Vector3(worldPosition.x, 3f, worldPosition.z);
-            GetRaycast();
+
+            var rayOrigin = Camera.main.transform.position;
+            var rayDirection = worldPosition - Camera.main.transform.position;
+
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(worldPosition, rayDirection, out hitInfo))
+            {
+                if (hitInfo.transform.tag == "Cub")
+                {
+                    _selectObject.transform.position = hitInfo.transform.position;
+                    Debug.Log("NENENENENENENENENENENENEN");
+                }
+            }
+            //transform .GetComponent<Collider>
+
+
+
+            //GetRaycast();
+
+
+
             _selectObject = null;
-            Cursor.visible = true;
+            //Cursor.visible = true;
         }
 
         if (_selectObject != null)

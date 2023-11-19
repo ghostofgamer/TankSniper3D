@@ -14,13 +14,13 @@ public class Cub : MonoBehaviour
             IsStay = true;
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.TryGetComponent(out Merge merge))
-    //    {
-    //        IsStay = true;
-    //    }
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out Merge merge))
+        {
+            IsStay = true;
+        }
+    }
 
     //private void OnTriggerExit(Collider other)
     //{
