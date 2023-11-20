@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DragAndDrop : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
     [SerializeField] private DragAndDrop _drag;
+
+    [SerializeField] private Save _save;
+
     public int Id { get; private set; }
 
+    public event UnityAction<int> LevelChanged;
+
+    public static int CurrentNumber { get; private set; } = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,22 +25,22 @@ public class DragAndDrop : MonoBehaviour
                 if (Id < other.GetComponent<Merge>().Id)
                     return;
 
-                //GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
-                //Destroy(other);
-                //Destroy(gameObject);
-                //Debug.Log("триггер при мердже" + other.name);
-
-
-                Debug.Log("Ну и что?" + _selectObject.name);
-                _selectObject.GetComponent<DragAndDrop>().Delete();
-                //other.gameObject.GetComponent<DragAndDrop>().Delete();
                 GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
-                Destroy(gameObject);
+                int levelTank = obj.GetComponent<PlayerLevel>().Level;
+
+                if (CurrentNumber < levelTank)
+                {
+                    CurrentNumber = levelTank;
+                    _save.SetData(Save.Level, CurrentNumber);
+                }
+
+                other.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
             else
             {
+                ResetPosition();
                 Debug.Log("что не так");
-                _drag.ResetPosition();
             }
         }
     }
@@ -65,13 +72,14 @@ public class DragAndDrop : MonoBehaviour
 
     private void Start()
     {
+        StartPosition = transform.position;
         _layerMask = 1 << _layerNumber;
         Id = GetInstanceID();
+        _save = FindObjectOfType<Save>();
     }
 
     private void Update()
     {
-
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (_selectObject == null)
@@ -80,12 +88,11 @@ public class DragAndDrop : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    Debug.Log(hit.collider.gameObject.name);
                     if (!hit.collider.CompareTag("drag"))
                         return;
 
                     _selectObject = hit.collider.gameObject;
-                    StartPosition = _selectObject.transform.position;
+                    //StartPosition = _selectObject.transform.position;
                     //Cursor.visible = false;
                 }
             }
@@ -130,17 +137,26 @@ public class DragAndDrop : MonoBehaviour
                 if (hitInfo.transform.tag == "Cub")
                 {
                     _selectObject.transform.position = hitInfo.transform.position;
-                    Debug.Log("NENENENENENENENENENENENEN");
+                    StartPosition = hitInfo.collider.gameObject.transform.position;
+                }
+
+                else if (/*hitInfo.transform.tag == "drag"*/hitInfo.collider.name != gameObject.name)
+                {
+                    Debug.Log(hitInfo.collider.name);
+                    Debug.Log("имя не то");
+                    ResetPosition();
+                    //if (hitInfo.collider.gameObject.GetComponent<PlayerLevel>().Level != GetComponent<PlayerLevel>().Level)
+                    //    ResetPosition();
+                }
+
+                else
+                {
+                    ResetPosition();
+                    Debug.Log("Else");
                 }
             }
-            //transform .GetComponent<Collider>
-
-
 
             //GetRaycast();
-
-
-
             _selectObject = null;
             //Cursor.visible = true;
         }
@@ -196,12 +212,10 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-
     public void ResetPosition()
     {
         _selectObject.transform.position = StartPosition;
     }
-
 
     private RaycastHit CastRay()
     {
@@ -223,75 +237,4 @@ public class DragAndDrop : MonoBehaviour
         Physics.Raycast(worldPosMousePosNear, worldPosMousePosFar - worldPosMousePosNear, out hit);
         return hit;
     }
-
-
-    //private void OnMouseDown()
-    //{
-    //    //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
-    //    //{
-    //    //    Debug.Log(hit.collider.gameObject.name);
-    //    //}
-    //    //Debug.Log("нажал");
-
-
-    //    //if (_selectObject == null)
-    //    //{
-    //    //    RaycastHit hit = CastRay();
-
-    //    //    if (hit.collider != null)
-    //    //    {
-    //    //        if (!hit.collider.CompareTag("drag"))
-    //    //            return;
-
-    //    //        _selectObject = hit.collider.gameObject;
-    //    //        StartPosition = _selectObject.transform.position;
-    //    //        Cursor.visible = false;
-    //    //    }
-    //    //}
-
-
-
-
-
-
-
-
-    //    //_mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-    //    //_mOffset = gameObject.transform.position - GetMouseWorldPos();
-    //    //_mouseButtonReleased = false;
-    //    //_offsetX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-    //    //_offsetY = Camera.main.ScreenToWorldPoint(Input.mousePosition).z - transform.position.z;
-    //    //_mousePosition = Input.mousePosition - GetMousePosition();
-    //}
-
-    //private void OnMouseDrag()
-    //{
-    //    //transform.position = GetMouseWorldPos() + _mOffset;
-    //    //_mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    //transform.position = new Vector3(_mousePosition.x - _offsetX, _mousePosition.z - _offsetY);
-    //    //transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - _mousePosition);
-    //}
-
-    //private void OnMouseUp()
-    //{
-    //    //Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
-    //    //Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-    //    ////_selectObject.transform.position = new Vector3(worldPosition.x, 3f, worldPosition.z);
-    //    //GetRaycast();
-    //    //_selectObject = null;
-    //    //Cursor.visible = true;
-
-
-
-
-
-    //    //_mouseButtonReleased = true;
-    //}
-
-    //private Vector3 GetMouseWorldPos()
-    //{
-    //    Vector3 mousePoint = Input.mousePosition;
-    //    mousePoint.z = _mZCoord;
-    //    return Camera.main.ScreenToWorldPoint(mousePoint);
-    //}
 }

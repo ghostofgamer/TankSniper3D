@@ -39,7 +39,7 @@ public class BuyTank : MonoBehaviour
             return;
 
         var tank = Instantiate(_tanks[_currentTankIndex - 1], _container);
-        tank.transform.position = new Vector3(position.x, position.y + _offset, position.z);
+        tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
         ChangeValue();
         //_saveSystem.AddTank(tank.gameObject);
         //_saveSystem.Filter();

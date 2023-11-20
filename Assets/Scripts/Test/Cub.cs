@@ -22,11 +22,11 @@ public class Cub : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.TryGetComponent(out Merge merge))
-    //        IsStay = false;
-    //}
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Merge merge))
+            IsStay = false;
+    }
 
     private void OnCollisionExit(Collision collision)
     {

@@ -7,8 +7,10 @@ public class StoreScreen : AbstractScreen
 {
     [SerializeField] private GameObject[] _tabs;
     [SerializeField] private GameObject[] _items;
+    [SerializeField] private GameObject[] _blocks;
     [SerializeField] private Load _load;
     [SerializeField] private MaterialContainer _materialContainer;
+    //[SerializeField] private TankView _tankView;
 
     private int _startIndex = 0;
 
@@ -23,6 +25,19 @@ public class StoreScreen : AbstractScreen
         {
             _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
             _items[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        }
+
+        OpenTanks();
+    }
+
+    private void OpenTanks()
+    {
+        int level = _load.Get(Save.Level, _startIndex);
+        Debug.Log("Прокачка" + level);
+
+        for (int i = 0; i < level; i++)
+        {
+            _blocks[i].SetActive(false);
         }
     }
 

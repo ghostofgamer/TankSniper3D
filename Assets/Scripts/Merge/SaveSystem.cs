@@ -27,6 +27,7 @@ public class SaveSystem : MonoBehaviour
     {
         Tank[] go = GameObject.FindObjectsOfType<Tank>();
         EnemySaves = new List<Tank>();
+
         for (int i = 0; i < go.Length; i++)
             EnemySaves.Add(go[i]);
     }
@@ -138,8 +139,6 @@ public class Saves
             //var em = enemy.GetComponent<Tank>();
             Vec3 pos = new Vec3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
             EnemiesData.Add(new EnemySaveData(pos, enemy.GetComponent<Tank>().Id));
-            Debug.Log(enemy.transform.position.x + " " + enemy.transform.position.y + " " + enemy.transform.position.z);
-            Debug.Log(enemy.Id);
         }
     }
 }
