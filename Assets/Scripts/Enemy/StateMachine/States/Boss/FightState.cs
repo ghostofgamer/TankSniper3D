@@ -11,7 +11,6 @@ public class FightState : AttackState
     {
         StartCoroutine(Destroyer());
         _enemyAnimations.Shooting(true);
-        Debug.Log("ô");
     }
 
     private void OnDisable()
