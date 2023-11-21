@@ -7,6 +7,7 @@ public class Cub : MonoBehaviour
     private Color _defaultColor = Color.red;
 
     public bool IsStay = false;
+    public GameObject Target;
 
     private void OnCollisionStay(Collision collision)
     {
@@ -16,17 +17,36 @@ public class Cub : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out Merge merge))
+        if (other.TryGetComponent(out DragItem dragItem))
         {
             IsStay = true;
+            Target = dragItem.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Merge merge))
+        if (other.TryGetComponent(out DragItem dragItem))
+        {
             IsStay = false;
+            Target = null;
+        }
     }
+
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.TryGetComponent(out Merge merge))
+    //    {
+    //        IsStay = true;
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.TryGetComponent(out Merge merge))
+    //        IsStay = false;
+    //}
 
     private void OnCollisionExit(Collision collision)
     {
@@ -39,32 +59,15 @@ public class Cub : MonoBehaviour
     //    GetRaycast();
     //}
 
-    public void ChangeColor()
-    {
-        GetComponent<Renderer>().material.color = Color.black;
-        Debug.Log("1");
-    }
+    //public void ChangeColor()
+    //{
+    //    GetComponent<Renderer>().material.color = Color.black;
+    //    Debug.Log("1");
+    //}
 
-    public void ResetColor()
-    {
-        GetComponent<Renderer>().material.color = _defaultColor;
-        Debug.Log("2");
-    }
-
-    private void GetRaycast()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(gameObject.transform.position, gameObject.transform.up);
-        Physics.Raycast(ray, out hit);
-
-        if (hit.collider.GetComponent<DragAndDrop>())
-        {
-            ChangeColor();
-        }
-        else
-        {
-            ResetColor();
-            return;
-        }
-    }
+    //public void ResetColor()
+    //{
+    //    GetComponent<Renderer>().material.color = _defaultColor;
+    //    Debug.Log("2");
+    //}
 }

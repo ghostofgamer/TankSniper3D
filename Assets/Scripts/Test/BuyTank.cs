@@ -14,17 +14,22 @@ public class BuyTank : MonoBehaviour
     [SerializeField] private TMP_Text _currentLevelText;
     [SerializeField] private Transform[] _tanks;
     [SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private Save _save;
+    [SerializeField] private Load _load;
 
     private List<Transform> _positions;
     private float _offset = 1f;
-    private int _currentLevel = 1;
+    private int _startLevel = 1;
+    private int _currentLevel;
     private int _currentTankIndex = 1;
-    private int _maxLevel = 3;
+    private int _maxLevel = 5;
 
     private void Start()
     {
+        _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
         _positions = new List<Transform>();
-        _slider.value = 0;
+        _slider.value = _load.Get(Save.ProgressSlider,0f);
+        _currentLevelText.text = _currentLevel.ToString();
         //ShowTankPlayer(_currentTankIndex);
 
         for (int i = 0; i < _position.childCount; i++)
@@ -38,7 +43,7 @@ public class BuyTank : MonoBehaviour
         if (position == Vector3.zero)
             return;
 
-        var tank = Instantiate(_tanks[_currentTankIndex - 1], _container);
+        var tank = Instantiate(_tanks[_currentLevel - 1], _container);
         tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
         ChangeValue();
         //_saveSystem.AddTank(tank.gameObject);
@@ -65,11 +70,16 @@ public class BuyTank : MonoBehaviour
             _currentLevel++;
 
             if (_currentLevel >= _maxLevel)
+            {
                 _currentLevel = _maxLevel;
+                _slider.value = 1;
+            }
         }
 
         _currentLevelText.text = _currentLevel.ToString();
         _currentTankIndex = _currentLevel;
+        _save.SetData(Save.ProgressLevel, _currentLevel);
+        _save.SetData(Save.ProgressSlider, _slider.value);
         //ShowTankPlayer(_currentTankIndex);
     }
 

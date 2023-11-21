@@ -96,6 +96,21 @@ public class SaveSystem : MonoBehaviour
                     Instantiate(_tanks[2], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
                     EnemySaves.Add(_tanks[2]);
                     break;
+
+                case 3:
+                    Instantiate(_tanks[3], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
+                    EnemySaves.Add(_tanks[3]);
+                    break;
+
+                case 4:
+                    Instantiate(_tanks[4], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
+                    EnemySaves.Add(_tanks[4]);
+                    break;
+
+                case 5:
+                    Instantiate(_tanks[5], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
+                    EnemySaves.Add(_tanks[5]);
+                    break;
             }
         }
     }

@@ -11,4 +11,12 @@ public class Load : MonoBehaviour
 
         return number;
     }
+
+    public float Get(string name, float number)
+    {
+        if (PlayerPrefs.HasKey(name))
+            return PlayerPrefs.GetFloat(name);
+
+        return number;
+    }
 }

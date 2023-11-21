@@ -8,7 +8,7 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private DragAndDrop _drag;
 
-    [SerializeField] private Save _save;
+    //[SerializeField] private Save _save;
 
     public int Id { get; private set; }
 
@@ -31,7 +31,7 @@ public class DragAndDrop : MonoBehaviour
                 if (CurrentNumber < levelTank)
                 {
                     CurrentNumber = levelTank;
-                    _save.SetData(Save.Level, CurrentNumber);
+                    //_save.SetData(Save.Level, CurrentNumber);
                 }
 
                 other.gameObject.SetActive(false);
@@ -75,7 +75,7 @@ public class DragAndDrop : MonoBehaviour
         StartPosition = transform.position;
         _layerMask = 1 << _layerNumber;
         Id = GetInstanceID();
-        _save = FindObjectOfType<Save>();
+        //_save = FindObjectOfType<Save>();
     }
 
     private void Update()
