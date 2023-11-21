@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class DragItem : MonoBehaviour
 {
-    public int Id { get; private set; }
+    [SerializeField] private int _level;
 
-    private void Start()
-    {
-        Id = GetInstanceID();
-    }
-
-    public void SetActive()
-    {
-        gameObject.SetActive(false);
-    }
+    public int Level => _level;
 }

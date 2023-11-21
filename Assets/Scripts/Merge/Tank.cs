@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    [SerializeField] private int _id;
+    [SerializeField] private int _level;
 
-    public int Id => _id; 
+    public int Level => _level;
 
-    public void LoadData(Saves.EnemySaveData save)
-    {
-        transform.position = new Vector3(save.Position.x, save.Position.y, save.Position.z);
-    }
+    //public void LoadData(Saves.EnemySaveData save)
+    //{
+    //    transform.position = new Vector3(save.Position.x, save.Position.y, save.Position.z);
+    //}
 }

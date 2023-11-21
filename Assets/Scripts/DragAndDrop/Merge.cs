@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DRAG : MonoBehaviour
+public class Merge : MonoBehaviour
 {
     [SerializeField] private GameObject[] _prefabs;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
     [SerializeField] private TankView _tankView;
+    [SerializeField] private Storage _storage;
 
     private int _currentLevel;
     private int _maxLevel = 4;
@@ -66,31 +67,31 @@ public class DRAG : MonoBehaviour
             {
                 if (hitInfo.transform.tag == "Cub")
                 {
-                    if (!hitInfo.collider.gameObject.GetComponent<Cub>().IsStay)
+                    if (!hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
                     {
                         _selectObject.transform.position = hitInfo.transform.position;
                         StartPosition = hitInfo.collider.gameObject.transform.position;
                     }
 
-                    if (hitInfo.collider.gameObject.GetComponent<Cub>().IsStay)
+                    if (hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
                     {
-                        var tank = hitInfo.collider.gameObject.GetComponent<Cub>().Target;
-                        var level = tank.GetComponent<PlayerLevel>().Level;
+                        var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
+                        var level = tank.GetComponent<DragItem>().Level;
 
-                        if (_selectObject.GetComponent<PlayerLevel>().Level == level&& _selectObject.GetComponent<PlayerLevel>().Level<=_maxLevel)
+                        if (_selectObject.GetComponent<DragItem>().Level == level&& _selectObject.GetComponent<DragItem>().Level<=_maxLevel)
                         {
                             var newTank = Instantiate(_prefabs[level]);
                             newTank.transform.position = tank.transform.transform.position;
                             _selectObject.SetActive(false);
                             tank.SetActive(false);
                             int newLevel = level + 1;
+                            //_storage.ListChanged();
 
                             if (_load.Get(Save.Level,0 )< newLevel)
                             {
                                 _save.SetData(Save.Level, newLevel);
                                 _save.SetData(Save.Tank, newLevel);
                                 _tankView.ViewTank();
-                                Debug.Log(_load.Get(Save.Level, 0));
                             }
                         }
                         else
@@ -104,6 +105,7 @@ public class DRAG : MonoBehaviour
                     _selectObject.transform.position = StartPosition;
                 }
             }
+            StartCoroutine(ChangeStorage());
             _selectObject = null;
         }
 
@@ -142,5 +144,11 @@ public class DRAG : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(worldPosMousePosNear, worldPosMousePosFar - worldPosMousePosNear, out hit);
         return hit;
+    }
+
+    private IEnumerator ChangeStorage()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _storage.ListChanged();
     }
 }

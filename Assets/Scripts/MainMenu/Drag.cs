@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DragAndDrop : MonoBehaviour
+public class Drag : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
-    [SerializeField] private DragAndDrop _drag;
+    [SerializeField] private Drag _drag;
 
     //[SerializeField] private Save _save;
 
@@ -22,8 +22,8 @@ public class DragAndDrop : MonoBehaviour
         {
             if (level.Level == GetComponent<PlayerLevel>().Level)
             {
-                if (Id < other.GetComponent<Merge>().Id)
-                    return;
+                //if (Id < other.GetComponent<MergeTest>().Id)
+                //    return;
 
                 GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity) as GameObject;
                 int levelTank = obj.GetComponent<PlayerLevel>().Level;
@@ -179,7 +179,7 @@ public class DragAndDrop : MonoBehaviour
 
         Debug.Log("Œ¡‹≈ “ —Õ»«” “”“ " + hit.collider.gameObject.name);
 
-        if (hit.collider.GetComponent<Cub>())
+        if (hit.collider.GetComponent<PositionTank>())
         {
             //Debug.Log(hit.collider.gameObject.name);
             Vector3 position = hit.collider.gameObject.transform.position;

@@ -33,7 +33,6 @@ public class StoreScreen : AbstractScreen
     private void OpenTanks()
     {
         int level = _load.Get(Save.Level, _startIndex);
-        Debug.Log("Прокачка" + level);
 
         for (int i = 0; i < level; i++)
         {

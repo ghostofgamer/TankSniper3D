@@ -13,9 +13,9 @@ public class BuyTank : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _currentLevelText;
     [SerializeField] private Transform[] _tanks;
-    [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
+    [SerializeField] private Storage _storage;
 
     private List<Transform> _positions;
     private float _offset = 1f;
@@ -46,13 +46,12 @@ public class BuyTank : MonoBehaviour
         var tank = Instantiate(_tanks[_currentLevel - 1], _container);
         tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
         ChangeValue();
-        //_saveSystem.AddTank(tank.gameObject);
-        //_saveSystem.Filter();
+        _storage.AddTank(tank.GetComponent<Tank>());
     }
 
     private Vector3 TryGetPosition()
     {
-        var filter = _positions.FirstOrDefault(p => !p.GetComponent<Cub>().IsStay);
+        var filter = _positions.FirstOrDefault(p => !p.GetComponent<PositionTank>().IsStay);
 
         if (filter == null)
             return Vector3.zero;
@@ -80,17 +79,5 @@ public class BuyTank : MonoBehaviour
         _currentTankIndex = _currentLevel;
         _save.SetData(Save.ProgressLevel, _currentLevel);
         _save.SetData(Save.ProgressSlider, _slider.value);
-        //ShowTankPlayer(_currentTankIndex);
     }
-
-    //private void ShowTankPlayer(int index)
-    //{
-    //    for (int i = 0; i < _tanks.Length; i++)
-    //    {
-    //        if (i == index - 1)
-    //            _tanks[i].gameObject.SetActive(true);
-    //        else
-    //            _tanks[i].gameObject.SetActive(false);
-    //    }
-    //}
 }
