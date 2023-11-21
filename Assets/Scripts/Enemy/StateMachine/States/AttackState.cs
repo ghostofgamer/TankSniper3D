@@ -25,7 +25,7 @@ public class AttackState : State
         Rotate();
     }
 
-    private void Rotate()
+    protected void Rotate()
     {
         transform.LookAt(Target.transform);
         //Vector3 relativePosition = transform.position - _target.position;

@@ -78,7 +78,7 @@ public class Merge : MonoBehaviour
                         var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
                         var level = tank.GetComponent<DragItem>().Level;
 
-                        if (_selectObject.GetComponent<DragItem>().Level == level&& _selectObject.GetComponent<DragItem>().Level<=_maxLevel)
+                        if (_selectObject.GetComponent<DragItem>().Level == level && _selectObject.GetComponent<DragItem>().Level <= _maxLevel)
                         {
                             var newTank = Instantiate(_prefabs[level]);
                             newTank.transform.position = tank.transform.transform.position;
@@ -87,7 +87,7 @@ public class Merge : MonoBehaviour
                             int newLevel = level + 1;
                             //_storage.ListChanged();
 
-                            if (_load.Get(Save.Level,0 )< newLevel)
+                            if (_load.Get(Save.Level, 0) < newLevel)
                             {
                                 _save.SetData(Save.Level, newLevel);
                                 _save.SetData(Save.Tank, newLevel);

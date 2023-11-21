@@ -28,8 +28,6 @@ public class Storage : MonoBehaviour
     //        _enemySaves.Add(tanks[i]);
     //}
 
-
-
     public void ListChanged()
     {
         _enemySaves = new List<Tank>();
@@ -44,13 +42,6 @@ public class Storage : MonoBehaviour
     public void AddTank(Tank tank)
     {
         _enemySaves.Add(tank);
-    }
-
-    public void Filter()
-    {
-        var filter = _enemySaves.Where(p => p.gameObject.activeSelf == true).ToList();
-        Debug.Log(filter.Count);
-        _enemySaves = filter;
     }
 
     private void OnApplicationQuit()
