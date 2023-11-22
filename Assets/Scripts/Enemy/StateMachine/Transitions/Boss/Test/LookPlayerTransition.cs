@@ -6,14 +6,13 @@ public class LookPlayerTransition : Transition
 {
     private void Start()
     {
-            
+
     }
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, Target.transform.position) <14)
+        if (Vector3.Distance(transform.position, Target.transform.position) < 5)
         {
-            Debug.Log("Игрок прям тут");
             NeedTransit = true;
         }
     }

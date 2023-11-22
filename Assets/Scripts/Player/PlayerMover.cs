@@ -12,7 +12,7 @@ public class PlayerMover : MonoBehaviour
     private Vector3 _target;
     private float _stepSize = 5f;
 
-    public bool _isDone { get; private set; } = true;
+    public bool _isHidden { get; private set; } = true;
 
     private void Start()
     {
@@ -22,14 +22,15 @@ public class PlayerMover : MonoBehaviour
     private void Update()
     {
         if (transform.position != _target)
+        {
             transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
-
-        //Debug.Log(transform.position.x);
+        }
     }
 
     public void Go()
     {
         _target = new Vector3(GetTarget(_stepSize), transform.position.y, transform.position.z);
+        _isHidden = false;
     }
 
     public void Hide()
@@ -41,6 +42,7 @@ public class PlayerMover : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         _target = new Vector3(GetTarget(-_stepSize), transform.position.y, transform.position.z);
+        _isHidden = true;
     }
 
     private float GetTarget(float step)

@@ -23,7 +23,6 @@ public class BulletTrigger : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out Block block))
             {
-                Debug.Log("блок");
                 Hit();
             }
 
@@ -49,7 +48,9 @@ public class BulletTrigger : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             Hit();
-            player.ApplyDamage(_bullet.Damage);
+
+            if (!player.GetComponent<PlayerMover>()._isHidden)
+                player.ApplyDamage(_bullet.Damage);
         }
 
         //hit?.Invoke();
