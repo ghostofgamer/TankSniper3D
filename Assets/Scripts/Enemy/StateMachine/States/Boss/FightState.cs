@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FightState : AttackState
 {
-    private int _damage = 15;
     [SerializeField] private EnemyAnimations _enemyAnimations;
+
+    private int _damage = 15;
 
     private void OnEnable()
     {

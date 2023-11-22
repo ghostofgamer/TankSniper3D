@@ -4,39 +4,49 @@ using UnityEngine;
 
 public class DestoroyHouse : State
 {
-
     [SerializeField] private EnemyAnimations _enemyAnimations;
 
-    private void Start()
+    private void OnEnable()
     {
-            
-    }
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10);
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out Destroy destroy))
+        for (int i = 0; i < hitColliders.Length; i++)
         {
-            Debug.Log("ÄÎÌÒðèããåð");
-            StartCoroutine(Punch(destroy));
-            transform.LookAt(destroy.transform);
+            if (hitColliders[i].gameObject.TryGetComponent(out Destroy destroy))
+            {
+                StartCoroutine(Punch(destroy));
+            }
+
+            if (hitColliders[i].gameObject.TryGetComponent(out Enemy enemy))
+            {
+                StartCoroutine(Punch(enemy));
+            }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnDisable()
     {
-        if (collision.collider.TryGetComponent(out Destroy destroy))
-        {
-            Debug.Log("ÄÎÌ");
-            destroy.GetDestroyObject();
-            transform.LookAt(destroy.transform);
-        }
+
     }
 
     private IEnumerator Punch(Destroy destroy)
     {
         _enemyAnimations.Shooting(true);
+        transform.LookAt(destroy.transform);
         yield return new WaitForSeconds(1.5f);
         destroy.GetDestroyObject();
         _enemyAnimations.Shooting(false);
+    }
+
+    private IEnumerator Punch(Enemy enemy)
+    {
+        if (enemy.GetComponent<EnemyShoot>())
+        {
+            _enemyAnimations.Shooting(true);
+            transform.LookAt(enemy.transform);
+            yield return new WaitForSeconds(1.5f);
+            enemy.TakeDamage(30);
+            _enemyAnimations.Shooting(false);
+        }
     }
 }

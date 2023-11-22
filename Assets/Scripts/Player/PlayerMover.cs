@@ -7,7 +7,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _maxPositionX;
     [SerializeField] private float _minPositionX;
 
-    private readonly float _speed = 6.5f;
+    private readonly float _speed = 10f;
 
     private Vector3 _target;
     private float _stepSize = 5f;

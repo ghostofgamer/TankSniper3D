@@ -11,12 +11,13 @@ public class TowerRotate : MonoBehaviour
     private const string MouseY = "Mouse Y";
 
     private readonly float _limitAngles = 50f;
+    private readonly float _limitAnglesY = 30f;
     private readonly float _speed = 1f;
 
     private float vertical;
     private float horizontal;
 
-    private float _sensivity = 65;
+    private float _sensivity = 15;
     private float _xRotation = 0f;
     private float _yRotation = 0f;
 
@@ -24,18 +25,30 @@ public class TowerRotate : MonoBehaviour
 
     public void Rotate()
     {
-        float mouseX = Input.GetAxis(MouseX) * _sensivity * Time.deltaTime;
-        float mouseY = Input.GetAxis(MouseY) * _sensivity * Time.deltaTime;
+        float mouseX = Input.GetAxis(MouseX)/* * _sensivity*/ /** Time.deltaTime*/;
+        float mouseY = Input.GetAxis(MouseY) /** _sensivity*/ /** Time.deltaTime*/;
 
-        _xRotation -= mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-        _yRotation -= mouseX;
-        _yRotation = Mathf.Clamp(_yRotation, -90f, 90f);
+        _xRotation -= Input.GetAxis(MouseY)/*mouseY*/;
+        _xRotation = Mathf.Clamp(_xRotation, -_limitAnglesY, _limitAnglesY);
+        _yRotation -=Input.GetAxis(MouseX) /*mouseX*/;
+        _yRotation = Mathf.Clamp(_yRotation, -_limitAngles, _limitAngles);
 
         //transform.localRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
-        Quaternion targetRotation = Quaternion.Euler(
-            Mathf.Clamp(_xRotation, -_limitAngles, _limitAngles),
-            Mathf.Clamp(-_yRotation, -_limitAngles, _limitAngles), 0);
+
+        Quaternion targetRotation = Quaternion.Euler(_xRotation,-_yRotation, 0);
+
+
+
+
+
+        //Quaternion targetRotation = Quaternion.Euler(
+        //    Mathf.Clamp(_xRotation, -_limitAnglesY, _limitAnglesY),
+        //    Mathf.Clamp(-_yRotation, -_limitAngles, _limitAngles), 0);
+
+
+
+
+
 
         Vector3 finalRotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime).eulerAngles;
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime);
