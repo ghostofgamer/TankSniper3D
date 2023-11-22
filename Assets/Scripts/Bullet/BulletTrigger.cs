@@ -23,6 +23,7 @@ public class BulletTrigger : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out Block block))
             {
+                Debug.Log("блок");
                 Hit();
             }
 
