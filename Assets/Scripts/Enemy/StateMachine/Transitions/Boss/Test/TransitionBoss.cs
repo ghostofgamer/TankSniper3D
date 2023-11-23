@@ -12,7 +12,7 @@ public class TransitionBoss : Transition
     {
         if (_currentTarget < _targets.Count)
         {
-            if (Vector3.Distance(transform.position, _targets[_currentTarget].position) < 13)
+            if (Vector3.Distance(transform.position, _targets[_currentTarget].position) < 10)
             {
                 NeedTransit = true;
                 _currentTarget++;

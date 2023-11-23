@@ -8,6 +8,7 @@ public class TurellsState : State
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Transform[] _shootPoints;
     [SerializeField] private GameObject[] _turrels;
+    [SerializeField] private ParticleSystem[] _effectsShoot;
 
     private Coroutine _coroutine;
 
@@ -31,7 +32,9 @@ public class TurellsState : State
         while (!_enemy.IsDying)
         {
             yield return new WaitForSeconds(1f);
-            _enemyShoot.Shooting(_shootPoints[Random.Range(0, _shootPoints.Length)]);
+            int randomIndex = Random.Range(0, _shootPoints.Length);
+            _enemyShoot.Shooting(_shootPoints[randomIndex]);
+            _effectsShoot[randomIndex].Play();
         }
     }
 

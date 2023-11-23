@@ -32,7 +32,9 @@ public class DestoroyHouse : State
     private IEnumerator Punch(Destroy destroy)
     {
         _enemyAnimations.Shooting(true);
-        transform.LookAt(destroy.transform);
+        transform.rotation = Quaternion.Slerp(transform.rotation, destroy.transform.rotation, Time.deltaTime * 8);
+transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
+        //transform.LookAt(destroy.transform);
         yield return new WaitForSeconds(1.5f);
         destroy.GetDestroyObject();
         _enemyAnimations.Shooting(false);

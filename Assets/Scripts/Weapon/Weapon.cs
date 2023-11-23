@@ -148,7 +148,6 @@ public abstract class Weapon : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            yield return new WaitForSeconds(delay);
 
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
@@ -157,6 +156,7 @@ public abstract class Weapon : MonoBehaviour
                 bullet.Init(_shootPosition);
             }
 
+            yield return new WaitForSeconds(delay);
             //yield return new WaitForSeconds(0.165f);
             //_audioSource.Stop();
         }
