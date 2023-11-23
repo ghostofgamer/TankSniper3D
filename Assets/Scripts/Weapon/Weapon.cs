@@ -23,6 +23,7 @@ public abstract class Weapon : MonoBehaviour
     private int _currentAmmo;
     private bool _autoExpand = true;
     private int _hitEnemy = 0;
+    private int _layerMask;
 
     public bool IsLastShoot { get; private set; } = false;
     public bool IsReload { get; private set; } = false;
@@ -35,6 +36,8 @@ public abstract class Weapon : MonoBehaviour
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
         _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
+        _layerMask = 1 << 7;
+        _layerMask = ~_layerMask;
     }
 
     public abstract void SuperShoot();
@@ -50,6 +53,13 @@ public abstract class Weapon : MonoBehaviour
 
             if (_currentAmmo > 0)
             {
+                if (_hitEnemy == 2)
+                {
+                    _hitEnemy = 0;
+                    Debug.Log("Супер");
+                    SuperShoot();
+                }
+
                 if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
                 {
                     AmmoChanger(bullet);
@@ -80,18 +90,21 @@ public abstract class Weapon : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
+        Debug.DrawLine(transform.position,transform.forward,Color.red,100f);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
         {
+            Debug.Log(hit.collider.name);
+
             if (hit.collider.GetComponent<Enemy>())
             {
                 _hitEnemy++;
-
-                if (_hitEnemy == 3)
-                {
-                    _hitEnemy = 0;
-                    SuperShoot();
-                }
+                Debug.Log(_hitEnemy);
+                //if (_hitEnemy == 3)
+                //{
+                //    _hitEnemy = 0;
+                //    SuperShoot();
+                //}
             }
         }
         else
