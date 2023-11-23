@@ -29,7 +29,7 @@ public abstract class Weapon : MonoBehaviour
     public bool IsReload { get; private set; } = false;
 
     public event UnityAction FirstShoot;
-    public event UnityAction<int> BulletsChanged;
+    public event UnityAction<int,int> BulletsChanged;
 
     private void Start()
     {
@@ -56,11 +56,10 @@ public abstract class Weapon : MonoBehaviour
                 if (_hitEnemy == 2)
                 {
                     _hitEnemy = 0;
-                    Debug.Log("Супер");
+                    BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
                     SuperShoot();
                 }
-
-                if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+                else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
                 {
                     AmmoChanger(bullet);
                     _audioSource.Play();
@@ -90,21 +89,13 @@ public abstract class Weapon : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
-        Debug.DrawLine(transform.position,transform.forward,Color.red,100f);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
         {
-            Debug.Log(hit.collider.name);
-
             if (hit.collider.GetComponent<Enemy>())
             {
-                _hitEnemy++;
-                Debug.Log(_hitEnemy);
-                //if (_hitEnemy == 3)
-                //{
-                //    _hitEnemy = 0;
-                //    SuperShoot();
-                //}
+                _hitEnemy++; 
+                BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
             }
         }
         else
@@ -134,7 +125,7 @@ public abstract class Weapon : MonoBehaviour
     {
         bullet.Init(_shootPosition);
         _currentAmmo--;
-        BulletsChanged?.Invoke(_currentAmmo);
+        BulletsChanged?.Invoke(_currentAmmo,_hitEnemy);
     }
 
     private IEnumerator Reload()
@@ -142,7 +133,7 @@ public abstract class Weapon : MonoBehaviour
         SetReload(true);
         yield return new WaitForSeconds(3f);
         _currentAmmo = _maxAmmo;
-        BulletsChanged?.Invoke(_currentAmmo);
+        BulletsChanged?.Invoke(_currentAmmo,_hitEnemy);
         SetReload(false);
     }
 
