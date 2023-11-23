@@ -11,9 +11,13 @@ public class BulletsInfo : MonoBehaviour
     [SerializeField] private Image _reload;
     [SerializeField] private GameObject _extraShootActivated;
 
+    private readonly int _extraNeedCount = 3;
+
     private void OnEnable()
     {
         _weapon.BulletsChanged += OnBulletsChanged;
+        OffImage(_extraImages);
+        _extraShootActivated.SetActive(false);
     }
 
     private void OnDisable()
@@ -23,29 +27,22 @@ public class BulletsInfo : MonoBehaviour
 
     private void OnBulletsChanged(int bulletsCount,int extraCount)
     {
-        OffImage();
-        _extraShootActivated.SetActive(extraCount == 2);
-        //if (extraCount == 2)
-        //{
-
-        //}
-        for (int i = 0; i < bulletsCount; i++)
-        {
-            _bulletsImages[i].gameObject.SetActive(true);
-        }
-
-        for (int i = 0; i < extraCount; i++)
-        {
-            _extraImages[i].gameObject.SetActive(true);
-        }
+        OffImage(_bulletsImages);
+        OffImage(_extraImages);
+        _extraShootActivated.SetActive(extraCount == _extraNeedCount);
+        ValueChanged(bulletsCount,_bulletsImages);
+        ValueChanged(extraCount, _extraImages);
     }
 
-    private void OffImage()
+    private void ValueChanged(int count,List<Image> images)
     {
-        foreach (var item in _bulletsImages)
-            item.gameObject.SetActive(false);
+        for (int i = 0; i < count; i++)
+            images[i].gameObject.SetActive(true);
+    }
 
-        foreach (var item in _extraImages)
+    private void OffImage(List<Image> images)
+    {
+        foreach (var item in images)
             item.gameObject.SetActive(false);
     }
 }

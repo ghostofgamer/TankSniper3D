@@ -34,14 +34,14 @@ public class AimInputButton : AbstractButton
             {
                 IsZoom = false;
 
-                if (_weapon.IsLastShoot)
-                {
-                    LastShootActivated();
-                }
-                else
+                if (!_weapon.IsLastShoot)
                 {
                     _weapon.Shoot();
                     OnSetCameraPause();
+                }
+                else
+                {
+                    LastShootActivated();
                 }
             }
         }

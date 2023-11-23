@@ -14,10 +14,11 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
 
     protected ObjectPool<Bullet> _pool;
 
-    private readonly int _maxAmmo = 4;
+    private readonly int _maxAmmo = 5;
 
     protected bool _isFirstShoot = false;
     private int _currentAmmo;
@@ -53,7 +54,7 @@ public abstract class Weapon : MonoBehaviour
 
             if (_currentAmmo > 0)
             {
-                if (_hitEnemy == 2)
+                if (_hitEnemy == 3)
                 {
                     _hitEnemy = 0;
                     BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
@@ -106,7 +107,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected void MultiShoot(int count, float delay)
     {
-        StartCoroutine(TripleShot(count, delay));
+        StartCoroutine(SomeShoot(count, delay));
     }
 
     protected void BigShoot()
@@ -143,7 +144,7 @@ public abstract class Weapon : MonoBehaviour
         IsReload = flag;
     }
 
-    private IEnumerator TripleShot(int count, float delay)
+    private IEnumerator SomeShoot(int count, float delay)
     {
         for (int i = 0; i < count; i++)
         {
@@ -151,9 +152,13 @@ public abstract class Weapon : MonoBehaviour
 
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
-                _audioSource.Play();
+                _audioSource.PlayOneShot(_audioClip);
+                //_audioSource.Play();
                 bullet.Init(_shootPosition);
             }
+
+            //yield return new WaitForSeconds(0.165f);
+            //_audioSource.Stop();
         }
     }
 

@@ -8,6 +8,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform _shootPosition;
     [SerializeField] private Transform _container;
     [SerializeField] private float _delay;
+    [SerializeField] private ParticleSystem _effectShooting;
     [Header("Звук")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
@@ -40,6 +41,7 @@ public class EnemyShoot : MonoBehaviour
         {
             _audioSource.PlayOneShot(_audioClip);
             bullet.Init(shootingPosition);
+            _effectShooting.Play();
         }
     }
 

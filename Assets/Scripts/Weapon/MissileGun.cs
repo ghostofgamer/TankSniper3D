@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MissileGun : Weapon
 {
-    private readonly int _count = 4;
+    private readonly int _count = 3;
+    private readonly float _delay = 0.13f;
 
     public override void SuperShoot()
     {
-        return;
-        //MultiShoot(_count);
+        MultiShoot(_count,_delay);
     }
 }

@@ -25,9 +25,6 @@ public class KilledInfo : MonoBehaviour
         _killedCount.text = _killed.ToString();
 
         if(_killed == _containerEnemy.childCount)
-        {
-            Debug.Log("победа");
             AllEnemysDying?.Invoke();
-        }
     }
 }
