@@ -40,6 +40,7 @@ public class EnemyShoot : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
         {
             _audioSource.PlayOneShot(_audioClip);
+            LookTarget(GetComponent<Enemy>().Target.transform);
             bullet.Init(shootingPosition);
             _effectShooting.Play();
         }
