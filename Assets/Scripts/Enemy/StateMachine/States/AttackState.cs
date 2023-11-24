@@ -6,8 +6,7 @@ public class AttackState : State
 {
     [SerializeField] private EnemyShoot _enemyShoot;
 
-    //private Transform _target;
-    //private float _speedRotation = 3f;
+    private float _speedRotation = 15f;
     private Coroutine _coroutine;
 
     private void OnEnable()
@@ -27,9 +26,10 @@ public class AttackState : State
 
     protected void Rotate()
     {
-        transform.LookAt(Target.transform);
-        //Vector3 relativePosition = transform.position - _target.position;
-        //Quaternion rotation = Quaternion.LookRotation(-relativePosition);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
+        //transform.LookAt(Target.transform);
+
+        Vector3 direction = transform.position - Target.transform.position;
+        Quaternion rotation = Quaternion.LookRotation(-direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
     }
 }

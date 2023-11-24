@@ -9,6 +9,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField] private float _delay;
     [SerializeField] private ParticleSystem _effectShooting;
+    [SerializeField] private Enemy _enemy;
     [Header("Звук")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
@@ -40,7 +41,7 @@ public class EnemyShoot : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
         {
             _audioSource.PlayOneShot(_audioClip);
-            LookTarget(GetComponent<Enemy>().Target.transform);
+            LookTarget(_enemy.Target.transform);
             bullet.Init(shootingPosition);
             _effectShooting.Play();
         }
