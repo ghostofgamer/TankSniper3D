@@ -5,6 +5,8 @@ using UnityEngine;
 public class FightState : AttackState
 {
     [SerializeField] private EnemyAnimations _enemyAnimations;
+    [SerializeField] private AudioClip _audioClip;
+    [SerializeField] private AudioSource _audioSource;
 
     private int _damage = 15;
 
@@ -23,7 +25,8 @@ public class FightState : AttackState
     {
         while (!Target.IsDead)
         {
-            yield return new WaitForSeconds(1.65f);
+            _audioSource.PlayOneShot(_audioClip);
+            yield return new WaitForSeconds(1.5f);
             Target.ApplyDamage(_damage);
         }
     }

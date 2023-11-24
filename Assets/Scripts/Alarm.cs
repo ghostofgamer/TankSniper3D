@@ -15,28 +15,29 @@ public class Alarm : MonoBehaviour
         _weapon = weapon;
     }
 
-    //private void OnEnable()
-    //{
-    //    _weapon.FirstShoot += SetAlarm;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _weapon.FirstShoot -= SetAlarm;
-    //}
-
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if(other.TryGetComponent(out Bullet bullet))
-        {
-            Warning = true;
-            AlarmChanged?.Invoke();
-            gameObject.SetActive(false);
-        }
+        _weapon.FirstShoot += SetAlarm;
     }
 
-    //private void SetAlarm()
+    private void OnDisable()
+    {
+        _weapon.FirstShoot -= SetAlarm;
+    }
+
+    //private void OnTriggerEnter(Collider other)
     //{
-    //    Warning = true;
+    //    if(other.TryGetComponent(out Bullet bullet))
+    //    {
+    //        Warning = true;
+    //        AlarmChanged?.Invoke();
+    //        gameObject.SetActive(false);
+    //    }
     //}
+
+    private void SetAlarm()
+    {
+        AlarmChanged?.Invoke();
+        Warning = true;
+    }
 }

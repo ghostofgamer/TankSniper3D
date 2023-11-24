@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private FlyDamage _flyDamage;
+    [SerializeField] private GameObject _canvas;
+    //[SerializeField] private Billboard _billboard;
 
     private Player _target;
     private Coroutine _coroutine;
@@ -30,6 +32,8 @@ public class Enemy : MonoBehaviour
         _currentHealth -= damage;
         _coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
         HealthChanged?.Invoke(_currentHealth, _health);
+        _canvas.SetActive(true);
+        //_billboard.enabled = true;
     }
 
     public void Init(Player player)

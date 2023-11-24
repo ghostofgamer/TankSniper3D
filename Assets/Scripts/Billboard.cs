@@ -8,7 +8,11 @@ public class Billboard : MonoBehaviour
 
     private void Start()
     {
-        _camera = Camera.main.gameObject.transform;
+    }
+
+    private void OnEnable()
+    {
+        //_camera = Camera.main.gameObject.transform;
     }
 
     private void LateUpdate()
