@@ -17,8 +17,8 @@ public class DestoroyHouse : State
             if (hitColliders[i].gameObject.TryGetComponent(out Destroy destroy))
                 StartCoroutine(Punch(destroy));
 
-            if (hitColliders[i].gameObject.TryGetComponent(out Enemy enemy))
-                StartCoroutine(Punch(enemy));
+            //if (hitColliders[i].gameObject.TryGetComponent(out Enemy enemy))
+            //    StartCoroutine(Punch(enemy));
         }
     }
 
@@ -34,7 +34,7 @@ public class DestoroyHouse : State
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 3 * Time.deltaTime);
         yield return new WaitForSeconds(1.5f);
         _audioSource.PlayOneShot(_audioClip);
-        destroy.GetDestroyObject();
+        destroy.Destruction();
         _enemyAnimations.Shooting(false);
     }
 

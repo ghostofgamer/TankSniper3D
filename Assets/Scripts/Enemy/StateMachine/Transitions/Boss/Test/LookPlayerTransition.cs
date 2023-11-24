@@ -12,8 +12,6 @@ public class LookPlayerTransition : Transition
     private void Update()
     {
         if (Vector3.Distance(transform.position, Target.transform.position) < 13)
-        {
             NeedTransit = true;
-        }
     }
 }

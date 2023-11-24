@@ -10,8 +10,10 @@ public class Wallet : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private Save _save;
 
-    private int _startMoney = 0;
+    private int _startMoney = 65;
     private int _money;
+
+    public int Money => _money;
 
     private void Start()
     {

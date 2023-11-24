@@ -27,7 +27,7 @@ public class Barrel : MonoBehaviour
                 enemy.TakeDamage(_damage);
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
-                destroy.GetDestroyObject();
+                destroy.Destruction();
         }
 
         yield return _waitForSeconds;

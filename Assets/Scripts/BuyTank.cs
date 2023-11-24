@@ -5,17 +5,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuyTank : MonoBehaviour
+public class BuyTank : AbstractButton
 {
     [SerializeField] private GameObject _prefab;
     [SerializeField] private Transform _position;
     [SerializeField] private Transform _container;
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _currentLevelText;
+    [SerializeField] private TMP_Text _currenPriceText;
     [SerializeField] private Transform[] _tanks;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
     [SerializeField] private Storage _storage;
+    [SerializeField] private Wallet _wallet;
+    [SerializeField] private GameObject _button;
 
     private List<Transform> _positions;
     private float _offset = 1f;
@@ -23,12 +26,20 @@ public class BuyTank : MonoBehaviour
     private int _currentLevel;
     private int _currentTankIndex = 1;
     private int _maxLevel = 5;
+    private int _price = 5;
 
     private void Start()
     {
+        if (_wallet.Money < _price)
+        {
+            _button.SetActive(true);
+            //return;
+        }
+
         _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
         _positions = new List<Transform>();
-        _slider.value = _load.Get(Save.ProgressSlider,0f);
+        _slider.value = _load.Get(Save.ProgressSlider, 0f);
+        _currenPriceText.text = _price.ToString();
         _currentLevelText.text = _currentLevel.ToString();
         //ShowTankPlayer(_currentTankIndex);
 
@@ -36,8 +47,12 @@ public class BuyTank : MonoBehaviour
             _positions.Add(_position.GetChild(i));
     }
 
-    public void OnClick()
+    public override void OnClick()
     {
+        if (_wallet.Money >= _price)
+        {
+            Sell();
+        }
         Vector3 position = TryGetPosition();
 
         if (position == Vector3.zero)
@@ -47,6 +62,13 @@ public class BuyTank : MonoBehaviour
         tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
         ChangeValue();
         _storage.AddTank(tank.GetComponent<Tank>());
+
+
+        if (_wallet.Money < _price)
+        {
+            _button.SetActive(true);
+            //return;
+        }
     }
 
     private Vector3 TryGetPosition()
@@ -67,6 +89,7 @@ public class BuyTank : MonoBehaviour
         {
             _slider.value = 0;
             _currentLevel++;
+            AddPrice();
 
             if (_currentLevel >= _maxLevel)
             {
@@ -79,5 +102,16 @@ public class BuyTank : MonoBehaviour
         _currentTankIndex = _currentLevel;
         _save.SetData(Save.ProgressLevel, _currentLevel);
         _save.SetData(Save.ProgressSlider, _slider.value);
+    }
+
+    private void Sell()
+    {
+        _wallet.DecreaseMoney(_price);
+    }
+
+    private void AddPrice()
+    {
+        Mathf.Clamp(_price = _currentLevel * 10, 0, 60);
+        _currenPriceText.text = _price.ToString();
     }
 }
