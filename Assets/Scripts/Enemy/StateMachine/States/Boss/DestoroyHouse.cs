@@ -8,7 +8,7 @@ public class DestoroyHouse : State
 
     private void OnEnable()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 13);
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
@@ -32,9 +32,11 @@ public class DestoroyHouse : State
     private IEnumerator Punch(Destroy destroy)
     {
         _enemyAnimations.Shooting(true);
-        transform.rotation = Quaternion.Slerp(transform.rotation, destroy.transform.rotation, Time.deltaTime * 8);
-transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
-        //transform.LookAt(destroy.transform);
+
+        Vector3 target = new Vector3(transform.position.x, destroy.transform.position.y, transform.position.z);
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(target.x, 0, target.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 3 * Time.deltaTime);
+
         yield return new WaitForSeconds(1.5f);
         destroy.GetDestroyObject();
         _enemyAnimations.Shooting(false);
@@ -45,7 +47,7 @@ transform.rotation = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
         if (enemy.GetComponent<EnemyShoot>())
         {
             _enemyAnimations.Shooting(true);
-            transform.LookAt(enemy.transform);
+            //transform.LookAt(enemy.transform);
             yield return new WaitForSeconds(1.5f);
             enemy.TakeDamage(30);
             _enemyAnimations.Shooting(false);
