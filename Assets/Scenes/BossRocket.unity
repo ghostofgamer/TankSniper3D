@@ -3389,6 +3389,7 @@ GameObject:
   - component: {fileID: 683608754}
   - component: {fileID: 683608753}
   - component: {fileID: 683608752}
+  - component: {fileID: 683608755}
   m_Layer: 0
   m_Name: BulletCameraSlowMo
   m_TagString: Untagged
@@ -3502,6 +3503,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 17.829, y: 13.075, z: 1.248}
+--- !u!114 &683608755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683608751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8926d666e88b204b9a9d1383fe13582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
+  _cinemachineVirtualCamera: {fileID: 683608753}
+  _fov: 95
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
