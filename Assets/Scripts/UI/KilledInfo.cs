@@ -12,6 +12,9 @@ public class KilledInfo : MonoBehaviour
 
     private int _killed;
 
+    public bool IsLastEnemy { get; private set; } = false;
+
+
     public event UnityAction AllEnemysDying;
 
     private void Start()
@@ -24,7 +27,10 @@ public class KilledInfo : MonoBehaviour
         _killed++;
         _killedCount.text = _killed.ToString();
 
-        if(_killed == _containerEnemy.childCount)
+        IsLastEnemy = _containerEnemy.childCount - _killed == 1;
+        Debug.Log(IsLastEnemy);
+
+        if (_killed == _containerEnemy.childCount)
             AllEnemysDying?.Invoke();
     }
 }

@@ -12,12 +12,18 @@ public class BulletTrigger : MonoBehaviour
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
     private Coroutine _coroutine;
+    private int _layerMask;
 
+    private void Start()
+    {
+        _layerMask = 1 << 8;
+        _layerMask = ~_layerMask;
+    }
     //public event UnityAction hit;
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius, _layerMask);
 
         foreach (var hitCollider in hitColliders)
         {

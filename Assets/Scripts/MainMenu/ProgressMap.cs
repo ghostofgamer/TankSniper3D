@@ -22,14 +22,8 @@ public class ProgressMap : Progress
         if (CurrentIndex > MaxIndex)
             SetEnviropment();
 
-        foreach (GameObject _enviropment in _enviropments)
-            _enviropment.SetActive(false);
-
-        foreach (GameObject point in _points)
-            point.SetActive(false);
-
-        _points[CurrentIndex].SetActive(true);
-        _enviropments[_indexEnviropments].SetActive(true);
+        SetElement(_enviropments, _indexEnviropments);
+        SetElement(_points, CurrentIndex);
     }
 
     private void SetEnviropment()
@@ -41,5 +35,14 @@ public class ProgressMap : Progress
             _indexEnviropments = 0;
 
         Save.SetData(Save.Enviropment, _indexEnviropments);
+        Save.SetData(Save.Map, CurrentIndex);
+    }
+
+    private void SetElement(GameObject[] gameObjects, int index)
+    {
+        foreach (var gameObject in gameObjects)
+            gameObject.SetActive(false);
+
+        gameObjects[index].SetActive(true);
     }
 }

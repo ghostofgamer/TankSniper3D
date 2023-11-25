@@ -12,7 +12,7 @@ public class ContinueButton : AbstractButton
 
     public override void OnClick()
     {
-        _fullVideo.Show();
-        //SceneManager.LoadScene(MainMenu);
+        //_fullVideo.Show();
+        SceneManager.LoadScene(MainMenu);
     }
 }

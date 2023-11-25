@@ -12,6 +12,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private GameObject _imageReload;
     [SerializeField] private EventTrigger _eventTrigger;
+    [SerializeField] private KilledInfo _killedInfo;
 
     private Coroutine _coroutine;
 
@@ -33,16 +34,28 @@ public class AimInputButton : AbstractButton
             if (!isPressed && IsZoom)
             {
                 IsZoom = false;
+                int randomNumber = Random.Range(0, 2);
 
-                if (!_weapon.IsLastShoot)
+                if (_killedInfo.IsLastEnemy && randomNumber == 0)
+                {
+                    LastShootActivated();
+                }
+                else
                 {
                     _weapon.Shoot();
                     OnSetCameraPause();
                 }
-                else
-                {
-                    LastShootActivated();
-                }
+
+
+                //if (!_weapon.IsLastShoot)
+                //{
+                //    _weapon.Shoot();
+                //    OnSetCameraPause();
+                //}
+                //else
+                //{
+                //    LastShootActivated();
+                //}
             }
         }
 

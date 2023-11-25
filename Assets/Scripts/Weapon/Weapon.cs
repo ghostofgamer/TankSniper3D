@@ -30,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
     public bool IsReload { get; private set; } = false;
 
     public event UnityAction FirstShoot;
-    public event UnityAction<int,int> BulletsChanged;
+    public event UnityAction<int, int> BulletsChanged;
 
     private void Start()
     {
@@ -48,12 +48,10 @@ public abstract class Weapon : MonoBehaviour
         if (!IsReload)
         {
             if (!_isFirstShoot)
-            {
                 SetFirstShoot();
-            }
 
-            if (_currentAmmo > 0)
-            {
+            //if (_currentAmmo > 0)
+            //{
                 if (_hitEnemy == 3)
                 {
                     _hitEnemy = 0;
@@ -67,7 +65,7 @@ public abstract class Weapon : MonoBehaviour
                     IsLastShoot = _currentAmmo == 1;
                     EnemyHitChanger();
                 }
-            }
+            //}
         }
     }
 
@@ -78,11 +76,6 @@ public abstract class Weapon : MonoBehaviour
             AmmoChanger(bullet);
             CinemachineMove(bullet);
             IsLastShoot = _currentAmmo == 1;
-        }
-
-        if (_currentAmmo <= 0)
-        {
-            StartCoroutine(Reload());
         }
     }
 
@@ -95,7 +88,7 @@ public abstract class Weapon : MonoBehaviour
         {
             if (hit.collider.GetComponent<Enemy>())
             {
-                _hitEnemy++; 
+                _hitEnemy++;
                 BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
             }
         }
@@ -110,9 +103,11 @@ public abstract class Weapon : MonoBehaviour
         StartCoroutine(SomeShoot(count, delay));
     }
 
-    protected void BigShoot()
+    protected void BigShoot(Bullet bullet)
     {
-        StartCoroutine(ScaleBullet());
+        Bullet bigFireball = Instantiate(bullet, _container.transform);
+        bigFireball.Init(_shootPosition);
+        //StartCoroutine(ScaleBullet(bullet));
     }
 
     private void CinemachineMove(Bullet bullet)
@@ -126,7 +121,10 @@ public abstract class Weapon : MonoBehaviour
     {
         bullet.Init(_shootPosition);
         _currentAmmo--;
-        BulletsChanged?.Invoke(_currentAmmo,_hitEnemy);
+        BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
+
+        if (_currentAmmo <= 0)
+            StartCoroutine(Reload());
     }
 
     private IEnumerator Reload()
@@ -134,7 +132,7 @@ public abstract class Weapon : MonoBehaviour
         SetReload(true);
         yield return new WaitForSeconds(3f);
         _currentAmmo = _maxAmmo;
-        BulletsChanged?.Invoke(_currentAmmo,_hitEnemy);
+        BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
         SetReload(false);
     }
 
@@ -162,16 +160,19 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    private IEnumerator ScaleBullet()
-    {
-        yield return new WaitForSeconds(0.15f);
+    //private IEnumerator ScaleBullet(Bullet bullet)
+    //{
+    //    yield return new WaitForSeconds(0.15f);
 
-        if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-        {
-            bullet.Init(_shootPosition);
-            bullet.transform.localScale += new Vector3(3, 3, 3);
-        }
-    }
+    //    //if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+    //    //{
+    //    //    bullet.Init(_shootPosition);
+    //    //    bullet.transform.localScale += new Vector3(3, 3, 3);
+    //    //}
+
+    //    Bullet bigFireball = Instantiate(bullet, _container.transform);
+    //    bigFireball.Init(_shootPosition);
+    //}
 
     protected void SetFirstShoot()
     {

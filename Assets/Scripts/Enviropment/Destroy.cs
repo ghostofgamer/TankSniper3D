@@ -17,7 +17,6 @@ public class Destroy : MonoBehaviour
 
         foreach (var hit in hitColliders)
         {
-            Debug.Log("Вокруг " + hit.name);
             if (hit.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(_destructionDamage);
