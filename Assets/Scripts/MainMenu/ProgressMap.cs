@@ -9,13 +9,11 @@ public class ProgressMap : Progress
     [SerializeField] private GameObject[] _advancement;
 
     private int _indexEnviropments;
-    //private int _indexAdvancement;
     private int _maxIndexEnviropment = 2;
 
     private void Start()
     {
         _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
-        //_indexAdvancement = Load.Get(Save.Enviropment, _startIndex);
         SetIndex();
         SetProgress();
     }
