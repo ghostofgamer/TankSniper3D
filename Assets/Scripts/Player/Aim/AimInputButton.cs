@@ -38,6 +38,7 @@ public class AimInputButton : AbstractButton
 
                 if (_killedInfo.IsLastEnemy && randomNumber == 0)
                 {
+
                     LastShootActivated();
                 }
                 else
@@ -45,7 +46,6 @@ public class AimInputButton : AbstractButton
                     _weapon.Shoot();
                     OnSetCameraPause();
                 }
-
 
                 //if (!_weapon.IsLastShoot)
                 //{
