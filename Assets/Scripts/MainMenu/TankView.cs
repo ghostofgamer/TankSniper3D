@@ -23,9 +23,10 @@ public class TankView : MonoBehaviour
         for (int i = 0; i < _tanks.Length; i++)
         {
             _tanks[i].SetActive(false);
+        }
+
             _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
             _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
-        }
     }
 
     public void SetLevelTank(int level)
@@ -34,5 +35,11 @@ public class TankView : MonoBehaviour
             _currentLevel = level;
 
         _save.SetData(Save.Level, _currentLevel);
+    }
+
+    public void OffActiveTanks()
+    {
+        foreach (var tank in _tanks)
+            tank.SetActive(false);
     }
 }

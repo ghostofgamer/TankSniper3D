@@ -105,6 +105,7 @@ public class Merge : MonoBehaviour
                     _selectObject.transform.position = StartPosition;
                 }
             }
+
             StartCoroutine(ChangeStorage());
             _selectObject = null;
         }

@@ -16,7 +16,7 @@ public class Storage : MonoBehaviour
     private void Start()
     {
         _filePath = Application.persistentDataPath + "/save.gamesave";
-        //LoadGame();
+        LoadGame();
     }
 
     //private void Update()
@@ -37,11 +37,14 @@ public class Storage : MonoBehaviour
             if(_positionTank[i].Target != null)
                 _enemySaves.Add(_positionTank[i].Target.GetComponent<Tank>());
         }
+
+        SaveGame();
     }
 
     public void AddTank(Tank tank)
     {
         _enemySaves.Add(tank);
+        SaveGame();
     }
 
     private void OnApplicationQuit()
