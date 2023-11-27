@@ -6426,6 +6426,7 @@ GameObject:
   - component: {fileID: 683608753}
   - component: {fileID: 683608752}
   - component: {fileID: 683608755}
+  - component: {fileID: 683608756}
   m_Layer: 0
   m_Name: BulletCameraSlowMo
   m_TagString: Untagged
@@ -6554,6 +6555,22 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _cinemachineVirtualCamera: {fileID: 683608753}
   _fov: 95
+--- !u!114 &683608756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683608751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limitAngles: 6
+  _minLimitAngles: 30
+  _limitAnglesY: 10
+  _minLimitAnglesY: 10
 --- !u!1 &698447894
 GameObject:
   m_ObjectHideFlags: 0
@@ -9401,6 +9418,7 @@ GameObject:
   - component: {fileID: 963194230}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9530,6 +9548,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667490db7bf14c34a89ddb746dee8455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limitAngles: 6
+  _minLimitAngles: 30
+  _limitAnglesY: 10
+  _minLimitAnglesY: 10
 --- !u!1 &979151467
 GameObject:
   m_ObjectHideFlags: 0
@@ -20744,6 +20778,7 @@ MonoBehaviour:
   _health: 60
   _flyDamage: {fileID: 65389220420181535}
   _canvas: {fileID: 0}
+  _isBoss: 0
 --- !u!81 &81434492069900027
 AudioListener:
   m_ObjectHideFlags: 0
@@ -23421,6 +23456,7 @@ MonoBehaviour:
   _health: 5
   _flyDamage: {fileID: 1820228085}
   _canvas: {fileID: 1311983807}
+  _isBoss: 0
 --- !u!4 &2778145094348060413
 Transform:
   m_ObjectHideFlags: 0
@@ -26319,6 +26355,7 @@ MonoBehaviour:
   _health: 100
   _flyDamage: {fileID: 5446083069628562141}
   _canvas: {fileID: 0}
+  _isBoss: 0
 --- !u!114 &5446083069628562141
 MonoBehaviour:
   m_ObjectHideFlags: 0

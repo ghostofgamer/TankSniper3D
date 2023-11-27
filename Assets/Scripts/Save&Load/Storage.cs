@@ -7,6 +7,13 @@ using System.Linq;
 
 public class Storage : MonoBehaviour
 {
+    public void ResetStorage()
+    {
+        _enemySaves.Clear();
+        SaveGame();
+        LoadGame();
+    }
+
     [SerializeField]private Tank[] _tanks;
     [SerializeField] private PositionTank[] _positionTank; 
 
