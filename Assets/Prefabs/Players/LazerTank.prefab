@@ -567,6 +567,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 3665089318211398761}
   _tower: {fileID: 3665089318672266398}
+  _limitAngles: 50
+  _minLimitAngles: 50
+  _limitAnglesY: 30
+  _minLimitAnglesY: 30
 --- !u!1 &3665089318742943755
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +751,7 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _bigFireball: {fileID: 0}
 --- !u!114 &3665089318860781905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,6 +1662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3665089320190549781}
   - component: {fileID: 3665089320190549786}
+  - component: {fileID: 86093526087136654}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1714,7 +1720,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 31.5
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1732,6 +1738,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &86093526087136654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665089320190549780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590cea7913ba17442b1a706b2ce4d591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 3665089320190549786}
+  _fovTarget: 30
+  _fovStart: 65
 --- !u!1 &4583607236436866715
 GameObject:
   m_ObjectHideFlags: 0
