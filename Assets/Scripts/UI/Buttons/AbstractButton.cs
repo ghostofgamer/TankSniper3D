@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public abstract class AbstractButton : MonoBehaviour
 {
-    protected Button _button;
+    protected Button Button;
 
     private void Awake()
     {
-        _button = GetComponent<Button>();
+        Button = GetComponent<Button>();
     }
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(OnClick);
+        Button.onClick.AddListener(OnClick);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(OnClick);
+        Button.onClick.RemoveListener(OnClick);
     }
 
     public abstract void OnClick();

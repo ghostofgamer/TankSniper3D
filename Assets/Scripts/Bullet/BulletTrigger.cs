@@ -8,6 +8,7 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _radius = 0.001f;
     [SerializeField] private Effect _effect;
+    //[SerializeField] private BulletMover _bulletMover;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
@@ -27,6 +28,8 @@ public class BulletTrigger : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
+            //_bulletMover.enabled = false;
+
             if (hitCollider.TryGetComponent(out Block block))
             {
                 Hit();
@@ -49,6 +52,8 @@ public class BulletTrigger : MonoBehaviour
                 Hit();
                 barrel.Explosion();
             }
+
+            Hit();
         }
 
         if (other.TryGetComponent(out Player player))
@@ -77,6 +82,7 @@ public class BulletTrigger : MonoBehaviour
         yield return _waitForSeconds;
         SetBullet(true);
         gameObject.SetActive(false);
+        //_bulletMover.enabled = true;
     }
 
     private void SetBullet(bool flag)

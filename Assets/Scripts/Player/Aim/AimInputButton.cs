@@ -15,9 +15,17 @@ public class AimInputButton : AbstractButton
     [SerializeField] private KilledInfo _killedInfo;
 
     private Coroutine _coroutine;
+    private Vector3 _startPosition;
+    private Vector3 _target;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
+
+    private void Start()
+    {
+        _startPosition = transform.position;
+        _target= new Vector3(transform.position.x, -160, transform.position.z);
+    }
 
     private void Update()
     {
@@ -29,6 +37,7 @@ public class AimInputButton : AbstractButton
             {
                 _towerRotate.Rotate();
                 IsZoom = true;
+                transform.position = Vector3.Lerp(transform.position, _target, 5 * Time.deltaTime);
             }
 
             if (!isPressed && IsZoom)
@@ -60,7 +69,10 @@ public class AimInputButton : AbstractButton
         }
 
         if (!IsZoom)
+        {
             _towerRotate.ResetRotate();
+            transform.position = Vector3.Lerp(transform.position, _startPosition, 5 * Time.deltaTime);
+        }
     }
 
     public override void OnClick()

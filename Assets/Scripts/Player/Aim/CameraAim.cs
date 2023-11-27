@@ -11,7 +11,7 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private Camera _cameraAim;
     [SerializeField] private CinemachineVirtualCamera _cinemachinecamera;
 
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.65f);
     private Vector3 _startPosition;
     private Quaternion _startRotation;
 

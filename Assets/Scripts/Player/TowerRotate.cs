@@ -10,8 +10,11 @@ public class TowerRotate : MonoBehaviour
     private const string MouseX = "Mouse X";
     private const string MouseY = "Mouse Y";
 
-    private readonly float _limitAngles = 50f;
-    private readonly float _limitAnglesY = 30f;
+    [SerializeField] private  float _limitAngles = 50f;
+    [SerializeField] private  float _minLimitAngles = 50f;
+    [SerializeField] private  float _limitAnglesY = 30f;
+    [SerializeField] private  float _minLimitAnglesY = 30f;
+
     private readonly float _speed = 1f;
 
     private float vertical;
@@ -29,9 +32,9 @@ public class TowerRotate : MonoBehaviour
         float mouseY = Input.GetAxis(MouseY) /** _sensivity*/ /** Time.deltaTime*/;
 
         _xRotation -= Input.GetAxis(MouseY)/*mouseY*/;
-        _xRotation = Mathf.Clamp(_xRotation, -_limitAnglesY, _limitAnglesY);
+        _xRotation = Mathf.Clamp(_xRotation, -_minLimitAnglesY, _limitAnglesY);
         _yRotation -=Input.GetAxis(MouseX) /*mouseX*/;
-        _yRotation = Mathf.Clamp(_yRotation, -_limitAngles, _limitAngles);
+        _yRotation = Mathf.Clamp(_yRotation, -_minLimitAngles, _limitAngles);
 
         //transform.localRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
 
@@ -51,7 +54,17 @@ public class TowerRotate : MonoBehaviour
 
 
         Vector3 finalRotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime).eulerAngles;
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime);
+
+
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 60 * Time.deltaTime);
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 30 * Time.deltaTime);
+
+
+
+
         //transform.rotation = Quaternion.Euler(finalRotation);
 
         //transform.rotation = Quaternion.Euler(
