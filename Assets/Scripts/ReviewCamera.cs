@@ -19,18 +19,17 @@ public class ReviewCamera : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            float mouseX = Input.GetAxis(MouseX);
+            float mouseY = Input.GetAxis(MouseY);
 
-        float mouseX = Input.GetAxis(MouseX);
-        float mouseY = Input.GetAxis(MouseY) ;
+            _xRotation -= Input.GetAxis(MouseY);
+            _xRotation = Mathf.Clamp(_xRotation, -_minLimitAnglesY, _limitAnglesY);
+            _yRotation -= Input.GetAxis(MouseX);
+            _yRotation = Mathf.Clamp(_yRotation, -_minLimitAngles, _limitAngles);
 
-        _xRotation -= Input.GetAxis(MouseY);
-        _xRotation = Mathf.Clamp(_xRotation, -_minLimitAnglesY, _limitAnglesY);
-        _yRotation -= Input.GetAxis(MouseX);
-        _yRotation = Mathf.Clamp(_yRotation, -_minLimitAngles, _limitAngles);
+            Quaternion targetRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
 
-        Quaternion targetRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
         }
     }
 }
