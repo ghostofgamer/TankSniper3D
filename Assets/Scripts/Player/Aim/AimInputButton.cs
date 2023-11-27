@@ -71,7 +71,7 @@ public class AimInputButton : AbstractButton
         if (!IsZoom)
         {
             _towerRotate.ResetRotate();
-            transform.position = Vector3.Lerp(transform.position, _startPosition, 5 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, _startPosition, 1 * Time.deltaTime);
         }
     }
 
@@ -99,6 +99,7 @@ public class AimInputButton : AbstractButton
         _playerMover.Go();
         _cameraAim.SetCamera();
         isPressed = true;
+        Button.enabled = false;
     }
 
     private void OnUp()
