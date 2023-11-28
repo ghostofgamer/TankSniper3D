@@ -35,15 +35,4 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetFloat(name, number);
         PlayerPrefs.Save();
     }
-
-    public void Reset()
-    {
-        PlayerPrefs.SetFloat(Money, 0);
-        PlayerPrefs.SetFloat(ProgressSlider, 0);
-        PlayerPrefs.SetFloat(ProgressLevel, 0);
-        PlayerPrefs.SetFloat(Level, 0);
-        PlayerPrefs.SetFloat(Tank, 0);
-        PlayerPrefs.SetFloat(Enviropment, 0);
-        PlayerPrefs.SetFloat(Map, 0);
-    }
 }

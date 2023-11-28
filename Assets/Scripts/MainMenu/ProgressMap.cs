@@ -47,4 +47,15 @@ public class ProgressMap : Progress
 
         gameObjects[index].SetActive(true);
     }
+
+    public override void ResetMap()
+    {
+        Save.SetData(Save.Map, 0);
+        Save.SetData(Save.Enviropment, 0);
+        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+        CurrentIndex = Load.Get(Save.Map, _startIndex);
+        SetElement(_enviropments, _indexEnviropments);
+        SetElement(_points, CurrentIndex);
+        SetElement(_advancement, _indexEnviropments);
+    }
 }

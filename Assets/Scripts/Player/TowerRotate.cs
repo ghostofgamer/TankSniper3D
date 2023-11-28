@@ -26,6 +26,11 @@ public class TowerRotate : MonoBehaviour
 
     private float _speedSlerp = 1.65f;
 
+    private void Start()
+    {
+        
+    }
+
     public void Rotate()
     {
         float mouseX = Input.GetAxis(MouseX)/* * _sensivity*/ /** Time.deltaTime*/;

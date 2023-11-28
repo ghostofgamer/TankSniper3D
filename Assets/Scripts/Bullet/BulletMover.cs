@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMover : MonoBehaviour
 {
-    private readonly int _speed = 50;
+    [SerializeField]private int _speed = 50;
 
     private void Update()
     {

@@ -20,4 +20,9 @@ public class FightButton : AbstractButton
     {
         _loadScreen.Loading(_sceneNumber);
     }
+
+    public void ResetSceneNumber()
+    {
+        _sceneNumber = _load.Get(Save.SceneNumber, _startSceneIndex);
+    }
 }

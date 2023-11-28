@@ -19,15 +19,4 @@ public class Load : MonoBehaviour
 
         return number;
     }
-
-    public void ResetLoad()
-    {
-        PlayerPrefs.GetFloat(Save.Money);
-        PlayerPrefs.GetFloat(Save.ProgressSlider);
-        PlayerPrefs.GetFloat(Save.ProgressLevel);
-        PlayerPrefs.GetFloat(Save.Level);
-        PlayerPrefs.GetFloat(Save.Tank);
-        PlayerPrefs.GetFloat(Save.Enviropment);
-        PlayerPrefs.GetFloat(Save.Map);
-    }
 }

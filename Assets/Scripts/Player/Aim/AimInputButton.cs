@@ -70,7 +70,7 @@ public class AimInputButton : AbstractButton
 
         if (!IsZoom)
         {
-            _towerRotate.ResetRotate();
+            //_towerRotate.ResetRotate();
             transform.position = Vector3.Lerp(transform.position, _startPosition, 1 * Time.deltaTime);
         }
     }
@@ -108,7 +108,7 @@ public class AimInputButton : AbstractButton
         _playerMover.Hide();
     }
 
-    private void LastShootActivated()
+    public void LastShootActivated()
     {
         _cameraAim.SetCinemachineCamera();
         _weapon.LastShoot();
