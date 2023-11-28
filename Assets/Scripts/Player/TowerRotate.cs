@@ -6,6 +6,7 @@ public class TowerRotate : MonoBehaviour
 {
     [SerializeField] private Transform _startTransform;
     [SerializeField] private GameObject _tower;
+    [SerializeField] private Transform _transformTower;
 
     private const string MouseX = "Mouse X";
     private const string MouseY = "Mouse Y";
@@ -65,8 +66,13 @@ public class TowerRotate : MonoBehaviour
         //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 60 * Time.deltaTime);
 
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime);
+
+
+
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
 
+
+        //_transformTower.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
 
 
 

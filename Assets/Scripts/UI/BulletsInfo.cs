@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class BulletsInfo : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
-    [SerializeField]private List<Image> _bulletsImages;
-    [SerializeField]private List<Image> _extraImages;
+    [SerializeField] private List<Image> _bulletsImages;
+    [SerializeField] private List<Image> _extraImages;
     [SerializeField] private Image _reload;
     [SerializeField] private GameObject _extraShootActivated;
 
@@ -25,16 +25,21 @@ public class BulletsInfo : MonoBehaviour
         _weapon.BulletsChanged -= OnBulletsChanged;
     }
 
-    private void OnBulletsChanged(int bulletsCount,int extraCount)
+    public void Init(Weapon weapon)
+    {
+        _weapon = weapon;
+    }
+
+    private void OnBulletsChanged(int bulletsCount, int extraCount)
     {
         OffImage(_bulletsImages);
         OffImage(_extraImages);
         _extraShootActivated.SetActive(extraCount == _extraNeedCount);
-        ValueChanged(bulletsCount,_bulletsImages);
+        ValueChanged(bulletsCount, _bulletsImages);
         ValueChanged(extraCount, _extraImages);
     }
 
-    private void ValueChanged(int count,List<Image> images)
+    private void ValueChanged(int count, List<Image> images)
     {
         for (int i = 0; i < count; i++)
             images[i].gameObject.SetActive(true);

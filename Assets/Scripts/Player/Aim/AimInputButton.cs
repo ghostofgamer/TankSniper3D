@@ -21,6 +21,7 @@ public class AimInputButton : AbstractButton
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
 
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -79,11 +80,12 @@ public class AimInputButton : AbstractButton
     {
     }
 
-    public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim)
+    public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim,PlayerMover playerMover)
     {
         _weapon = weapon;
         _towerRotate = towerRotate;
         _cameraAim = cameraAim;
+        _playerMover = playerMover;
     }
 
     private void OnSetCameraPause()
@@ -99,7 +101,7 @@ public class AimInputButton : AbstractButton
         _playerMover.Go();
         _cameraAim.SetCamera();
         isPressed = true;
-        Button.enabled = false;
+        //Button.enabled = false;
     }
 
     private void OnUp()

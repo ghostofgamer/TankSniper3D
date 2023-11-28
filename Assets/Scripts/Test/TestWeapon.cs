@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TestWeapon : MonoBehaviour
 {
+    private void Start()
+    {
+            
+    }
+
     public void Rotate(Vector3 target)
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;

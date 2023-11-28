@@ -32,6 +32,9 @@ public class TestAimCameraButton : MonoBehaviour
     [SerializeField] private ReviewCamera _reviewCamera;
     [SerializeField] private RayTest _rayTest;
 
+    [SerializeField] private CanvasGroup _canvasGroupe;
+
+    private Coroutine _coroutine;
 
     private void Update()
     {
@@ -43,7 +46,7 @@ public class TestAimCameraButton : MonoBehaviour
         else
         {
             _cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(_cinemachineVirtualCamera.m_Lens.FieldOfView, _fovStart, _speed * Time.deltaTime);
-            _towerRotate.ResetRotate();
+            //_towerRotate.ResetRotate();
         }
     }
 
@@ -55,23 +58,28 @@ public class TestAimCameraButton : MonoBehaviour
         _reviewCamera.Forward();
         _playerMover.Go();
         isPressed = true;
-        StartCoroutine(FadeOut(_aimImage));
-        StartCoroutine(FadeIn(_startImage));
+        //StartCoroutine(FadeOut(_aimImage));
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(FadeIn(_startImage));
     }
 
     public void OnUp()
     {
         //_camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, _fovStart, _speed * Time.deltaTime);
+        _reviewCamera.Back();
         _playerMover.Hide();
         isPressed = false;
-        _reviewCamera.Back();
 
         _weapon.Shoot();
         //_weapon.LastShoot();
         //_aimInputButton.LastShootActivated();
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
 
-        StartCoroutine(FadeIn(_aimImage));
-        StartCoroutine(FadeOut(_startImage));
+        //StartCoroutine(FadeIn(_aimImage));
+        _coroutine =  StartCoroutine(FadeOut(_startImage));
     }
 
     //private IEnumerator Fade(Image image)
@@ -103,27 +111,44 @@ public class TestAimCameraButton : MonoBehaviour
 
     IEnumerator FadeIn(Image image)
     {
-        float time = 1f;
+        //float time = 1f;
 
-        while (time > 0f)
+
+        while (_canvasGroupe.alpha != 1)
         {
-            time -= Time.deltaTime * Time.timeScale;
-            float a = _curve.Evaluate(time);
-            image.color = new Color(_aimImage.color.r, _aimImage.color.g, _aimImage.color.b, a);
-            yield return 0;
+            _canvasGroupe.alpha += 1.5f * Time.deltaTime;
+
+            yield return null;
         }
+        //while (time > 0f)
+        //{
+        //    time -= Time.deltaTime * Time.timeScale;
+        //    float a = _curve.Evaluate(time);
+        //    image.color = new Color(_aimImage.color.r, _aimImage.color.g, _aimImage.color.b, a);
+        //    yield return 0;
+        //}
     }
 
     IEnumerator FadeOut(Image image)
     {
-        float time = 0f;
+        //float time = 0f;
 
-        while (time < 1f)
+        while (_canvasGroupe.alpha != 0)
         {
-            time += Time.deltaTime * Time.timeScale;
-            float alpha = _curve.Evaluate(time);
-            image.color = new Color(_aimImage.color.r, _aimImage.color.g, _aimImage.color.b, alpha);
-            yield return 0;
+            _canvasGroupe.alpha -= 1.5f * Time.deltaTime;
+
+            //Debug.Log("àûà");
+            //Debug.Log(_canvasGroupe.alpha);
+
+            yield return null;
         }
+
+        //while (time < 1f)
+        //{
+        //    time += Time.deltaTime * Time.timeScale;
+        //    float alpha = _curve.Evaluate(time);
+        //    image.color = new Color(_aimImage.color.r, _aimImage.color.g, _aimImage.color.b, alpha);
+        //    yield return 0;
+        //}
     }
 }

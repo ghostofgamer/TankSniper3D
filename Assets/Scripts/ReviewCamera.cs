@@ -57,6 +57,5 @@ public class ReviewCamera : MonoBehaviour
     public void Back()
     {
         SetNextPosition(-10);
-
     }
 }

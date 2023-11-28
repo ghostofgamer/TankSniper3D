@@ -13,6 +13,8 @@ public class Initializator : MonoBehaviour
     [SerializeField] private PlayerHealthbar _playerHealthbar;
     [SerializeField] private AimInputButton[] _aimButton;
     [SerializeField] private FightScreen _fightScreen;
+    [SerializeField] private BulletsInfo _bulletsInfo;
+    [SerializeField] private AimInputButton _aimInputButton;
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
     [Header("Other")]
@@ -39,10 +41,18 @@ public class Initializator : MonoBehaviour
         _player = GetPlayer(_indexPlayer);
         _playerHealthbar.Init(_player);
         EnemyInit(_player);
+
+
+        _aimInputButton.Init(_player.GetComponent<Weapon>(),/* _player.GetComponent<TowerRotate>(),*/_player.GetComponentInChildren< TowerRotate >(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
+        _aimInputButton.gameObject.SetActive(true);
+
+
         _alarm.Init(_player.GetComponent<Weapon>());
+        _bulletsInfo.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
         GameOverScreenInit();
         _victoryScreen.Init(_progress);
+
     }
 
     private void EnemyInit(Player player)
@@ -57,7 +67,7 @@ public class Initializator : MonoBehaviour
             player.gameObject.SetActive(false);
 
         _players[index].gameObject.SetActive(true);
-        _aimButton[index].gameObject.SetActive(true);
+        //_aimButton[index].gameObject.SetActive(true);
         _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         return _players[index];
     }
