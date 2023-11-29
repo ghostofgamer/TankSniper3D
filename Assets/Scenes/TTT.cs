@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class TTT : MonoBehaviour
 {
-    private void Update()
-    {
-        Debug.Log(AudioListener.volume);
-    }
 }

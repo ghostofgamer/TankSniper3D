@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class RayTest : MonoBehaviour
 {
-    [SerializeField] private TestWeapon testWeapon;
+    [SerializeField] private TowerRotate _towerRotate;
+    [SerializeField] private TowerRotates _towerRotates;
+
+    public void Init(TowerRotate towerRotate)
+    {
+        _towerRotate = towerRotate;
+    }
 
     void Update()
     {
@@ -32,7 +38,8 @@ public class RayTest : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             //Debug.Log(hit.collider.name);
-            testWeapon.Rotate(hit.point);
+            //_towerRotate.Rotate(hit.point);
+            _towerRotate.Rotate(hit.point);
         }
     }
 }

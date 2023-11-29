@@ -25,10 +25,6 @@ public class BulletTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius, _layerMask);
-        foreach (var item in hitColliders)
-        {
-            Debug.Log("Около " + item.name);
-        }
 
         foreach (var hitCollider in hitColliders)
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerRotate : MonoBehaviour
+public class TowerRotates : MonoBehaviour
 {
     [SerializeField] private Transform _startTransform;
     [SerializeField] private GameObject _tower;
@@ -32,7 +32,7 @@ public class TowerRotate : MonoBehaviour
         
     }
 
-    public void Rotate()
+    public void Rotate(/*Vector3 target*/)
     {
         float mouseX = Input.GetAxis(MouseX)/* * _sensivity*/ /** Time.deltaTime*/;
         float mouseY = Input.GetAxis(MouseY) /** _sensivity*/ /** Time.deltaTime*/;
@@ -59,7 +59,7 @@ public class TowerRotate : MonoBehaviour
 
 
 
-        Vector3 finalRotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime).eulerAngles;
+        //Vector3 finalRotation = Quaternion.Slerp(transform.rotation, targetRotation, _speedSlerp * Time.deltaTime).eulerAngles;
 
 
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 100 * Time.deltaTime);
@@ -69,7 +69,23 @@ public class TowerRotate : MonoBehaviour
 
 
 
+
+
+
+
+        //Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;
+
+        //Debug.DrawRay(transform.position, forward, Color.red);
+        //transform.LookAt(target);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
+
+
+
+
+
+
+
 
 
         //_transformTower.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);

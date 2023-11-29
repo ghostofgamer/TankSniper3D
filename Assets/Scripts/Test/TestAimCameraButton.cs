@@ -7,17 +7,16 @@ using UnityEngine.UI;
 
 public class TestAimCameraButton : MonoBehaviour
 {
-    [SerializeField] private TowerRotate _towerRotate;
+    [SerializeField] private TowerRotates _towerRotate;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private PlayerMover _playerMover;
-    [SerializeField] private AimInputButton _aimInputButton;
+    //[SerializeField] private AimInputButton _aimInputButton;
 
     [SerializeField] private Camera _camera;
-    [SerializeField] private float _fovTarget;
+
+    //[SerializeField] private float _fovTarget;
     [SerializeField] private float _fovStart;
     private float _speed = 1f;
-
-
     [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
     [SerializeField] private float _fov;
 
@@ -31,7 +30,6 @@ public class TestAimCameraButton : MonoBehaviour
 
     [SerializeField] private ReviewCamera _reviewCamera;
     [SerializeField] private RayTest _rayTest;
-
     [SerializeField] private CanvasGroup _canvasGroupe;
 
     private Coroutine _coroutine;
@@ -55,7 +53,7 @@ public class TestAimCameraButton : MonoBehaviour
         //_camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, _fovTarget, _speed * Time.deltaTime);
         //_cinemachineVirtualCamera.m_Lens.FieldOfView = _fov;
         //_cinemachineVirtualCamera.m_Lens.FieldOfView=Mathf.Lerp(_cinemachineVirtualCamera.m_Lens.FieldOfView, _fov, _speed * Time.deltaTime);
-        _reviewCamera.Forward();
+        //_reviewCamera.Forward();
         _playerMover.Go();
         isPressed = true;
         //StartCoroutine(FadeOut(_aimImage));
@@ -68,7 +66,7 @@ public class TestAimCameraButton : MonoBehaviour
     public void OnUp()
     {
         //_camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, _fovStart, _speed * Time.deltaTime);
-        _reviewCamera.Back();
+        //_reviewCamera.Back();
         _playerMover.Hide();
         isPressed = false;
 
@@ -82,33 +80,6 @@ public class TestAimCameraButton : MonoBehaviour
         _coroutine =  StartCoroutine(FadeOut(_startImage));
     }
 
-    //private IEnumerator Fade(Image image)
-    //{
-    //    var color = image.color;
-
-    //    for (int i = 0; i < 255; i++)
-    //    {
-    //        //color.a = 1f - (1f / 255f * i);
-    //        color.a = 0f + (1f / 255f * i);
-
-    //        image.color = color;
-    //        yield return null;
-    //    }
-    //}
-
-    //private IEnumerator FadeOut(Image image)
-    //{
-    //    var color = image.color;
-
-    //    for (int i = 0; i < 255; i++)
-    //    {
-    //        color.a = 1f - (1f / 255f * i);
-
-    //        image.color = color;
-    //        yield return null;
-    //    }
-    //}
-
     IEnumerator FadeIn(Image image)
     {
         //float time = 1f;
@@ -117,7 +88,7 @@ public class TestAimCameraButton : MonoBehaviour
         while (_canvasGroupe.alpha != 1)
         {
             _canvasGroupe.alpha += 1.5f * Time.deltaTime;
-
+            //image.color.a = image.color.a - 1.5f * Time.deltaTime;
             yield return null;
         }
         //while (time > 0f)
@@ -136,10 +107,6 @@ public class TestAimCameraButton : MonoBehaviour
         while (_canvasGroupe.alpha != 0)
         {
             _canvasGroupe.alpha -= 1.5f * Time.deltaTime;
-
-            //Debug.Log("àûà");
-            //Debug.Log(_canvasGroupe.alpha);
-
             yield return null;
         }
 

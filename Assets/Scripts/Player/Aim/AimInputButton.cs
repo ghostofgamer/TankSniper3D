@@ -6,13 +6,15 @@ using UnityEngine.EventSystems;
 
 public class AimInputButton : AbstractButton
 {
-    [SerializeField] private TowerRotate _towerRotate;
+    [SerializeField] private TowerRotates _towerRotatesss;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private GameObject _imageReload;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private KilledInfo _killedInfo;
+    [SerializeField] private VisibilityAim _visibilityAim;
+    [SerializeField] private CameraMover _cameraMover;
 
     private Coroutine _coroutine;
     private Vector3 _startPosition;
@@ -21,11 +23,15 @@ public class AimInputButton : AbstractButton
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
 
+    [SerializeField] private RayTest _rayTest;
+    [SerializeField] private ReviewCamera _reviewCamera;
+
+    [SerializeField] private TowerRotate _towerRotate; 
 
     private void Start()
     {
         _startPosition = transform.position;
-        _target= new Vector3(transform.position.x, -160, transform.position.z);
+        _target = new Vector3(transform.position.x, -160, transform.position.z);
     }
 
     private void Update()
@@ -36,7 +42,10 @@ public class AimInputButton : AbstractButton
         {
             if (isPressed)
             {
-                _towerRotate.Rotate();
+                //_towerRotate.Rotate();
+                _rayTest.MoveRotate();
+                _cameraAim.CameraFovForward();
+
                 IsZoom = true;
                 transform.position = Vector3.Lerp(transform.position, _target, 5 * Time.deltaTime);
             }
@@ -48,30 +57,22 @@ public class AimInputButton : AbstractButton
 
                 if (_killedInfo.IsLastEnemy && randomNumber == 0)
                 {
-
                     LastShootActivated();
                 }
                 else
                 {
                     _weapon.Shoot();
-                    OnSetCameraPause();
-                }
 
-                //if (!_weapon.IsLastShoot)
-                //{
-                //    _weapon.Shoot();
-                //    OnSetCameraPause();
-                //}
-                //else
-                //{
-                //    LastShootActivated();
-                //}
+                    //OnSetCameraPause();
+                }
             }
         }
 
         if (!IsZoom)
         {
             //_towerRotate.ResetRotate();
+            _towerRotate.ResetRotate();
+            _cameraAim.CameraFovBack();
             transform.position = Vector3.Lerp(transform.position, _startPosition, 1 * Time.deltaTime);
         }
     }
@@ -80,7 +81,7 @@ public class AimInputButton : AbstractButton
     {
     }
 
-    public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim,PlayerMover playerMover)
+    public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim, PlayerMover playerMover)
     {
         _weapon = weapon;
         _towerRotate = towerRotate;
@@ -98,21 +99,24 @@ public class AimInputButton : AbstractButton
 
     private void OnDown()
     {
-        _playerMover.Go();
-        _cameraAim.SetCamera();
         isPressed = true;
-        //Button.enabled = false;
+        _playerMover.Go();
+        _cameraMover.Forward();
+        _visibilityAim.OnFadeIn();
     }
 
     private void OnUp()
     {
         isPressed = false;
         _playerMover.Hide();
+        _cameraMover.Back();
+        _visibilityAim.OnFadeOut();
     }
 
     public void LastShootActivated()
     {
-        _cameraAim.SetCinemachineCamera();
+        //_cameraAim.SetCinemachineCamera();
+        _cameraAim.SetCinCamera();
         _weapon.LastShoot();
         OnSetCameraPause();
     }

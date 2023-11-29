@@ -5,7 +5,7 @@ using UnityEngine;
 public class AimInput : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
-    [SerializeField] private TowerRotate _towerRotate;
+    [SerializeField] private TowerRotates _towerRotate;
     [SerializeField] private CameraAim _cameraAim;
     //[SerializeField] private AimButton _aimButton;
 
@@ -20,12 +20,12 @@ public class AimInput : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                _cameraAim.SetCamera();
+                //_cameraAim.SetCamera();
             }
 
             if (Input.GetMouseButton(0))
             {
-                _towerRotate.Rotate();
+                //_towerRotate.Rotate();
                 IsZoom = true;
             }
 
@@ -35,7 +35,7 @@ public class AimInput : MonoBehaviour
 
                 if (_weapon.IsLastShoot)
                 {
-                    _cameraAim.SetCinemachineCamera();
+                    //_cameraAim.SetCinemachineCamera();
                     _weapon.LastShoot();
                     OnSetCameraPause();
 
