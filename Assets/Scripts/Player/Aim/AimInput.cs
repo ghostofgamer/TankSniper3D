@@ -37,7 +37,7 @@ public class AimInput : MonoBehaviour
                 {
                     //_cameraAim.SetCinemachineCamera();
                     _weapon.LastShoot();
-                    OnSetCameraPause();
+                    //OnSetCameraPause();
 
                     //if (_coroutine != null)
                     //    StopCoroutine(_coroutine);
@@ -47,7 +47,7 @@ public class AimInput : MonoBehaviour
                 else
                 {
                     _weapon.Shoot();
-                    OnSetCameraPause();
+                    //OnSetCameraPause();
                     //if (_coroutine != null)
                     //    StopCoroutine(_coroutine);
 
@@ -62,11 +62,11 @@ public class AimInput : MonoBehaviour
         }
     }
 
-    private void OnSetCameraPause()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+    //private void OnSetCameraPause()
+    //{
+    //    if (_coroutine != null)
+    //        StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
-    }
+    //    _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+    //}
 }

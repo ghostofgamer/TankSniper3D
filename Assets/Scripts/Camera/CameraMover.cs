@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     private Vector3 _target;
+    private float _speed = 30f;
+    private float _step = 10;
 
     private void Start()
     {
@@ -14,7 +16,7 @@ public class CameraMover : MonoBehaviour
     private void Update()
     {
         if (transform.position != _target)
-            transform.position = Vector3.MoveTowards(transform.position, _target, 16.5f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
     }
 
     private void SetNextPosition(float step)
@@ -24,11 +26,11 @@ public class CameraMover : MonoBehaviour
 
     public void Forward()
     {
-        SetNextPosition(10);
+        SetNextPosition(_step);
     }
 
     public void Back()
     {
-        SetNextPosition(-10);
+        SetNextPosition(-_step);
     }
 }

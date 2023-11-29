@@ -15,39 +15,42 @@ public class AimInputButton : AbstractButton
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private VisibilityAim _visibilityAim;
     [SerializeField] private CameraMover _cameraMover;
+    [SerializeField] private ButtonMover _buttonMover;
 
-    private Coroutine _coroutine;
-    private Vector3 _startPosition;
-    private Vector3 _target;
+    //private Vector3 _startPosition;
+    //private Vector3 _target;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
 
     [SerializeField] private RayTest _rayTest;
     [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private TowerRotate _towerRotate;
 
-    [SerializeField] private TowerRotate _towerRotate; 
-
-    private void Start()
-    {
-        _startPosition = transform.position;
-        _target = new Vector3(transform.position.x, -160, transform.position.z);
-    }
+    //private void Start()
+    //{
+    //    _startPosition = transform.position;
+    //    //_target = new Vector3(transform.position.x, -160, transform.position.z);
+    //    _target = transform.position;
+    //}
 
     private void Update()
     {
         _eventTrigger.enabled = !_imageReload.activeSelf;
 
+
         if (!_weapon.IsReload)
         {
+            _buttonMover.Move();
+            //if (transform.position != _target)
+            //    transform.position = Vector3.Lerp(transform.position, _target, 15f * Time.deltaTime);
+
             if (isPressed)
             {
-                //_towerRotate.Rotate();
+                IsZoom = true;
                 _rayTest.MoveRotate();
                 _cameraAim.CameraFovForward();
-
-                IsZoom = true;
-                transform.position = Vector3.Lerp(transform.position, _target, 5 * Time.deltaTime);
+                //transform.position = Vector3.Lerp(transform.position, _target, 5 * Time.deltaTime);
             }
 
             if (!isPressed && IsZoom)
@@ -62,18 +65,18 @@ public class AimInputButton : AbstractButton
                 else
                 {
                     _weapon.Shoot();
-
                     //OnSetCameraPause();
                 }
+
+                _buttonMover.ButtonUp();
             }
         }
 
         if (!IsZoom)
         {
-            //_towerRotate.ResetRotate();
             _towerRotate.ResetRotate();
             _cameraAim.CameraFovBack();
-            transform.position = Vector3.Lerp(transform.position, _startPosition, 1 * Time.deltaTime);
+            //transform.position = Vector3.Lerp(transform.position, _startPosition, 1 * Time.deltaTime);
         }
     }
 
@@ -89,16 +92,9 @@ public class AimInputButton : AbstractButton
         _playerMover = playerMover;
     }
 
-    private void OnSetCameraPause()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(_cameraAim.SetCameraPause());
-    }
-
     private void OnDown()
     {
+        _buttonMover.ButtonDown();
         isPressed = true;
         _playerMover.Go();
         _cameraMover.Forward();
@@ -111,13 +107,18 @@ public class AimInputButton : AbstractButton
         _playerMover.Hide();
         _cameraMover.Back();
         _visibilityAim.OnFadeOut();
+        //NextTarget(160);
     }
 
     public void LastShootActivated()
     {
-        //_cameraAim.SetCinemachineCamera();
-        _cameraAim.SetCinCamera();
+        _cameraAim.OnCinemaMachine();
         _weapon.LastShoot();
-        OnSetCameraPause();
     }
+
+    //private void NextTarget(float target)
+    //{
+    //    float step = Mathf.Clamp(transform.position.y + target, -100, 30);
+    //    _target = new Vector3(transform.position.x, step, transform.position.z);
+    //}
 }

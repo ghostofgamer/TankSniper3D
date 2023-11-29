@@ -13,7 +13,7 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private float _fovStart;
     [SerializeField] private float _fov;
 
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.65f);
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
     private Vector3 _startPosition;
     private Quaternion _startRotation;
 
@@ -25,11 +25,11 @@ public class CameraAim : MonoBehaviour
         _startRotation = _mainCamera.transform.rotation;
     }
 
-    public IEnumerator SetCameraPause()
-    {
-        yield return _waitForSeconds;
-        STOPRes();
-    }
+    //public IEnumerator SetCameraPause()
+    //{
+    //    yield return _waitForSeconds;
+    //    STOPRes();
+    //}
 
     //public void SetCamera()
     //{
@@ -55,6 +55,17 @@ public class CameraAim : MonoBehaviour
     //    _cameraAim.enabled = false;
     //    Time.timeScale = 1f;
     //}
+    public void OnCinemaMachine()
+    {
+        StartCoroutine(ChangerCinemaMachine());
+    }
+
+    private IEnumerator ChangerCinemaMachine()
+    {
+        SetCinCamera();
+        yield return _waitForSeconds;
+        STOPRes();
+    }
 
     private void ResetMainCamera()
     {

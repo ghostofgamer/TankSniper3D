@@ -50,22 +50,19 @@ public abstract class Weapon : MonoBehaviour
             if (!_isFirstShoot)
                 SetFirstShoot();
 
-            //if (_currentAmmo > 0)
-            //{
-                if (_hitEnemy == 3)
-                {
-                    _hitEnemy = 0;
-                    BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
-                    SuperShoot();
-                }
-                else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-                {
-                    AmmoChanger(bullet);
-                    _audioSource.Play();
-                    IsLastShoot = _currentAmmo == 1;
-                    EnemyHitChanger();
-                }
-            //}
+            if (_hitEnemy == 3)
+            {
+                _hitEnemy = 0;
+                BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
+                SuperShoot();
+            }
+            else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+            {
+                AmmoChanger(bullet);
+                _audioSource.Play();
+                IsLastShoot = _currentAmmo == 1;
+                EnemyHitChanger();
+            }
         }
     }
 
