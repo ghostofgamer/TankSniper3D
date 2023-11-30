@@ -29,10 +29,12 @@ public class Initializator : MonoBehaviour
 
     [SerializeField] private int _indexPlayer;
     private Player _player;
+    private List<GameObject> _gameObjects;
 
     private void Awake()
     {
         Time.timeScale = 1;
+        _gameObjects = new List<GameObject>();
         //_indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
         YandexGamesSdk.GameReady();
@@ -44,20 +46,13 @@ public class Initializator : MonoBehaviour
         _playerHealthbar.Init(_player);
         EnemyInit(_player);
         _hitPoint.Init(_player.GetComponent<TowerRotate>());
-
-        _aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(),_player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
-        _aimInputButton.gameObject.SetActive(true);
-
-
+        AimInputButtonInit();
         _alarm.Init(_player.GetComponent<Weapon>());
-
-        _bulletsInfo.Init(_player.GetComponent<Weapon>());
-        _bulletsInfo.gameObject.SetActive(true);
-
+        BulletsInfoInit();
         FightScreenInit();
         GameOverScreenInit();
         _victoryScreen.Init(_progress);
-
+        SetActive();
     }
 
     private void EnemyInit(Player player)
@@ -80,12 +75,34 @@ public class Initializator : MonoBehaviour
     private void FightScreenInit()
     {
         _fightScreen.Init(_player.GetComponent<Weapon>());
-        _fightScreen.gameObject.SetActive(true);
+        //_fightScreen.gameObject.SetActive(true);
+        _gameObjects.Add(_fightScreen.gameObject);
     }
 
     private void GameOverScreenInit()
     {
         _gameOverScreen.Init(_player);
-        _gameOverScreen.gameObject.SetActive(true);
+        //_gameOverScreen.gameObject.SetActive(true);
+        _gameObjects.Add(_gameOverScreen.gameObject);
+    }
+
+    private void AimInputButtonInit()
+    {
+        _aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
+        //_aimInputButton.gameObject.SetActive(true);
+        _gameObjects.Add(_aimInputButton.gameObject);
+    }
+
+    private void BulletsInfoInit()
+    {
+        _bulletsInfo.Init(_player.GetComponent<Weapon>());
+        //_bulletsInfo.gameObject.SetActive(true);
+        _gameObjects.Add(_bulletsInfo.gameObject);
+    }
+
+    private void SetActive()
+    {
+        foreach (GameObject gameObject in _gameObjects)
+            gameObject.SetActive(true);
     }
 }
