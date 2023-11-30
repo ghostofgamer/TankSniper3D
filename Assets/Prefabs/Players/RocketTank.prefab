@@ -329,13 +329,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523818974150229}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 1.26, z: 0}
+  m_LocalPosition: {x: 0, y: 1.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4716523819232444262}
-  - {fileID: 4716523819206053023}
   - {fileID: 4716523820525239832}
+  - {fileID: 4716523819206053023}
   m_Father: {fileID: 4716523820379267454}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -346,13 +346,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523818974150229}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 4716523820155310792}
   _tower: {fileID: 4716523818974150229}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -380,13 +381,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523819206053022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 3.587}
+  m_LocalRotation: {x: -0, y: -0, z: -7.1054274e-15, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4716523818974150226}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4716523819232444185
 GameObject:
@@ -416,7 +417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523819232444185}
   m_LocalRotation: {x: -0.7071066, y: 0.00000015165914, z: 0.00000014420841, w: 0.707107}
-  m_LocalPosition: {x: -0, y: 0, z: -0}
+  m_LocalPosition: {x: -0, y: -0.5, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -493,6 +494,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &4716523819232444263
 MonoBehaviour:
@@ -513,6 +516,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &4716523819431561589
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 4716523820379267398}
   _bulletsImages:
   - {fileID: 4716523819431561587}
   - {fileID: 4716523820503898562}
@@ -1102,8 +1106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 4716523820525239833}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _aimInputButton: {fileID: 0}
 --- !u!114 &4716523820379267448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1189,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 4716523820379267455}
   _audioClip: {fileID: 8300000, guid: d373c70148cd53a4cabf9b94def2f003, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!82 &4716523820379267455
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2302,7 +2310,7 @@ PrefabInstance:
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 4716523818974150227}
+      objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023885, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 3

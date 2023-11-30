@@ -511,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089318542431367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.457, z: 4.21}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -544,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089318672266398}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 0.76, z: 0}
+  m_LocalPosition: {x: 0, y: 2.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -567,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 3665089318211398761}
   _tower: {fileID: 3665089318672266398}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -675,7 +676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089318860781907}
   m_LocalRotation: {x: -0.70710653, y: 0.00000015910977, z: -0.00000018361712, w: 0.7071071}
-  m_LocalPosition: {x: 0.15, y: -2.26, z: 0.83}
+  m_LocalPosition: {x: 0.15, y: -3.67, z: 0.83}
   m_LocalScale: {x: 0.01753055, y: 0.01753055, z: 0.01753055}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -751,6 +752,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &3665089318860781905
 MonoBehaviour:
@@ -771,6 +774,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &3665089319057867064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 3665089319957028438}
   _bulletsImages:
   - {fileID: 3665089319160984505}
   - {fileID: 3665089319375432998}
@@ -1446,8 +1450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 3665089320190549786}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _aimInputButton: {fileID: 0}
 --- !u!114 &3665089319957028432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,6 +1533,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 3665089319957028399}
   _audioClip: {fileID: 8300000, guid: 68ab3054477e2d54f950e44d74011b03, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!82 &3665089319957028399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2306,7 +2314,7 @@ PrefabInstance:
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 3665089318672266396}
+      objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023885, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 3

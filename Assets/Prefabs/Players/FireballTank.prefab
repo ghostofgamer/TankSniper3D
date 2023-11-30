@@ -369,8 +369,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 4704393402507997604}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _aimInputButton: {fileID: 0}
 --- !u!114 &4704393401054639809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +452,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 4704393401054639802}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 8512064316746545530, guid: a8caa48970aee034d98d89c9ef1579cd, type: 3}
 --- !u!82 &4704393401054639802
 AudioSource:
@@ -600,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4704393401285804425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.352, z: 4.348}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,13 +636,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4704393401310911711}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 1.43, z: 0}
+  m_LocalPosition: {x: 0, y: 1.73, z: -0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4704393402530014662}
-  - {fileID: 4704393401285804424}
   - {fileID: 4704393402507997605}
+  - {fileID: 4704393401285804424}
   m_Father: {fileID: 4704393401054639803}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -656,6 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 4704393401811594662}
   _tower: {fileID: 4704393401310911711}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -834,7 +839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 4704393401054639804}
   _bulletsImages:
   - {fileID: 4704393401506063670}
   - {fileID: 4704393402340283362}
@@ -1240,7 +1244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4704393402530014663}
   m_LocalRotation: {x: 0.00000022086996, y: 0.0000005241881, z: -0.70710665, w: 0.70710695}
-  m_LocalPosition: {x: -0, y: 0, z: -0}
+  m_LocalPosition: {x: -0, y: -0.34, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1317,6 +1321,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &4704393402530014665
 MonoBehaviour:
@@ -1337,6 +1343,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &4704393402583896740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2318,7 @@ PrefabInstance:
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 4704393401310911713}
+      objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023885, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 3

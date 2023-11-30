@@ -965,8 +965,6 @@ GameObject:
   - component: {fileID: 8256347665001093574}
   - component: {fileID: 8256347665001093594}
   - component: {fileID: 8256347665001093593}
-  - component: {fileID: 8256347665001093592}
-  - component: {fileID: 8256347665001093575}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1039,45 +1037,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8256347665001093592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256347665001093573}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c743ea6cd195940803c6284530009f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _image: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _audioClip: {fileID: 0}
-  _bigFireball: {fileID: 0}
---- !u!114 &8256347665001093575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256347665001093573}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _image: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _audioClip: {fileID: 0}
 --- !u!1 &8256347665010958307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,13 +1078,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665010958307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 8256347665126873644}
   _tower: {fileID: 8256347665010958307}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -1502,7 +1462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665312937862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.457, z: 4.21}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1756,7 +1716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 8256347666278764837}
   _bulletsImages:
   - {fileID: 8256347665078634399}
   - {fileID: 8256347665040345946}
@@ -1786,7 +1745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8256347666270985456
 Transform:
   m_ObjectHideFlags: 0
@@ -1926,8 +1885,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 8256347666270985457}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _aimInputButton: {fileID: 0}
 --- !u!114 &8256347666278764857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,6 +2064,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 8256347666278764838}
   _audioClip: {fileID: 8300000, guid: a1b3f841b40443d4b8b68bfcbe5cb1dd, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!114 &848932663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,7 +2354,7 @@ PrefabInstance:
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 8256347665010958309}
+      objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023885, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
