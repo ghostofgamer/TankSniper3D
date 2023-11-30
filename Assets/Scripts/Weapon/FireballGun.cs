@@ -6,8 +6,22 @@ public class FireballGun : Weapon
 {
     [SerializeField] private Bullet _bigFireball;
 
+    protected ObjectPool<Bullet> _poolBigFireball;
+
+    protected override void Start()
+    {
+        base.Start();
+        _poolBigFireball = new ObjectPool<Bullet>(_bigFireball, _maxAmmo, _container);
+        _poolBigFireball.GetAutoExpand(_autoExpand);
+    }
+
     public override void SuperShoot()
     {
-        BigShoot(_bigFireball);
+        if(_poolBigFireball.TryGetObject(out Bullet bullet, _bigFireball))
+        {
+            bullet.Init(_shootPosition);
+        }
+
+        //BigShoot(_bigFireball);
     }
 }

@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected Bullet _prefabBullet;
     [SerializeField] protected Transform _shootPosition;
-    [SerializeField] private Transform _container;
+    [SerializeField] protected Transform _container;
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
     [SerializeField] private AudioSource _audioSource;
@@ -20,11 +20,11 @@ public abstract class Weapon : MonoBehaviour
 
     protected ObjectPool<Bullet> _pool;
 
-    private readonly int _maxAmmo = 5;
+    protected readonly int _maxAmmo = 5;
 
     protected bool _isFirstShoot = false;
     private int _currentAmmo;
-    private bool _autoExpand = true;
+    protected bool _autoExpand = true;
     private int _hitEnemy = 0;
     private int _layerMask;
 
@@ -36,7 +36,7 @@ public abstract class Weapon : MonoBehaviour
     RaycastHit hit;
     Ray ray;
 
-    private void Start()
+    protected virtual void Start()
     {
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);

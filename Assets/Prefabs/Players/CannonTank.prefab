@@ -135,6 +135,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &1507926974646038927
 MonoBehaviour:
@@ -155,6 +157,8 @@ MonoBehaviour:
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &1507926974738849277
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 1507926976366429876}
   _tower: {fileID: 1507926975593297576}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -801,8 +806,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 1507926974761304307}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _aimInputButton: {fileID: 0}
 --- !u!114 &1507926975975700461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,13 +882,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
+  _prefabBullet: {fileID: 5195485957653858959, guid: 70a768ee8babc774e960fd93e226517a, type: 3}
   _shootPosition: {fileID: 1507926974278464718}
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
   _audioSource: {fileID: 1507926975975700471}
   _audioClip: {fileID: 8300000, guid: b7a51aaa5b5007c46a3c060aeb12af18, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!82 &1507926975975700471
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1137,7 +1146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1507926975975700469}
   _bulletsImages:
   - {fileID: 1507926975502298400}
   - {fileID: 1507926975998230501}
@@ -2322,7 +2330,7 @@ PrefabInstance:
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 1507926975593297574}
+      objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023885, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
