@@ -10,7 +10,7 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private Effect _effect;
     [SerializeField] private BulletMover _bulletMover;
 
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);
 
     private Coroutine _coroutine;
     private int _layerMask;
@@ -87,17 +87,17 @@ public class BulletTrigger : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        SetBullet(false);
+        //SetBullet(false);
         yield return _waitForSeconds;
-        SetBullet(true);
+        //SetBullet(true);
         gameObject.SetActive(false);
         //_bulletMover.enabled = true;
     }
 
     private void SetBullet(bool flag)
     {
-        GetComponent<Collider>().enabled = flag;
-        _bullet.enabled = flag;
+        //GetComponent<Collider>().enabled = flag;
+        //_bullet.enabled = flag;
         //_bullet.GetComponent<MeshRenderer>().enabled = flag;
     }
 }
