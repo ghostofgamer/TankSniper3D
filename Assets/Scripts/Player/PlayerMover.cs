@@ -40,7 +40,7 @@ public class PlayerMover : MonoBehaviour
 
     private IEnumerator GoHide()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         _target = new Vector3(GetTarget(-_stepSize), transform.position.y, transform.position.z);
         _isHidden = true;
     }

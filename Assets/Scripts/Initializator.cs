@@ -18,7 +18,7 @@ public class Initializator : MonoBehaviour
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
     [Header("Camera")]
-    [SerializeField] private RayTest _rayTest;
+    [SerializeField] private HitPoint _hitPoint;
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
     [SerializeField] private Progress _progress;
@@ -43,7 +43,7 @@ public class Initializator : MonoBehaviour
         _player = GetPlayer(_indexPlayer);
         _playerHealthbar.Init(_player);
         EnemyInit(_player);
-        _rayTest.Init(_player.GetComponent<TowerRotate>());
+        _hitPoint.Init(_player.GetComponent<TowerRotate>());
 
         _aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(),_player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
         _aimInputButton.gameObject.SetActive(true);

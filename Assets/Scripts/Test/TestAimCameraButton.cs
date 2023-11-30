@@ -29,7 +29,7 @@ public class TestAimCameraButton : MonoBehaviour
     [SerializeField] private AnimationCurve _curve;
 
     [SerializeField] private ReviewCamera _reviewCamera;
-    [SerializeField] private RayTest _rayTest;
+    [SerializeField] private HitPoint _rayTest;
     [SerializeField] private CanvasGroup _canvasGroupe;
 
     private Coroutine _coroutine;

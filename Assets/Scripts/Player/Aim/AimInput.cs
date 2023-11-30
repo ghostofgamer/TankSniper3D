@@ -14,53 +14,53 @@ public class AimInput : MonoBehaviour
     public bool IsZoom { get; private set; } = false;
     //public bool IsButtonClick { get; private set; } = false;
 
-    private void Update()
-    {
-        if (!_weapon.IsReload)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //_cameraAim.SetCamera();
-            }
+    //private void Update()
+    //{
+    //    if (!_weapon.IsReload)
+    //    {
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            //_cameraAim.SetCamera();
+    //        }
 
-            if (Input.GetMouseButton(0))
-            {
-                //_towerRotate.Rotate();
-                IsZoom = true;
-            }
+    //        if (Input.GetMouseButton(0))
+    //        {
+    //            //_towerRotate.Rotate();
+    //            IsZoom = true;
+    //        }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                IsZoom = false;
+    //        if (Input.GetMouseButtonUp(0))
+    //        {
+    //            //IsZoom = false;
 
-                if (_weapon.IsLastShoot)
-                {
-                    //_cameraAim.SetCinemachineCamera();
-                    _weapon.LastShoot();
-                    //OnSetCameraPause();
+    //            //if (_weapon.IsLastShoot)
+    //            //{
+    //            //    //_cameraAim.SetCinemachineCamera();
+    //            //    _weapon.LastShoot();
+    //            //    //OnSetCameraPause();
 
-                    //if (_coroutine != null)
-                    //    StopCoroutine(_coroutine);
+    //            //    //if (_coroutine != null)
+    //            //    //    StopCoroutine(_coroutine);
 
-                    //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
-                }
-                else
-                {
-                    _weapon.Shoot();
-                    //OnSetCameraPause();
-                    //if (_coroutine != null)
-                    //    StopCoroutine(_coroutine);
+    //            //    //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+    //            //}
+    //            else
+    //            {
+    //                _weapon.Shoot();
+    //                //OnSetCameraPause();
+    //                //if (_coroutine != null)
+    //                //    StopCoroutine(_coroutine);
 
-                    //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
-                }
-            }
-        }
+    //                //_coroutine = StartCoroutine(_cameraAim.SetCameraPause());
+    //            }
+    //        }
+    //    }
 
-        if (!IsZoom)
-        {
-            _towerRotate.ResetRotate();
-        }
-    }
+    //    if (!IsZoom)
+    //    {
+    //        _towerRotate.ResetRotate();
+    //    }
+    //}
 
     //private void OnSetCameraPause()
     //{

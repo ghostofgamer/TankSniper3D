@@ -14,10 +14,12 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private float _fov;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
+
     private Vector3 _startPosition;
     private Quaternion _startRotation;
-
     private float _speed = 3f;
+
+    [SerializeField] private AimInputButton _aimInputButton;
 
     private void Start()
     {
@@ -75,18 +77,26 @@ public class CameraAim : MonoBehaviour
 
     public void SetCinCamera()
     {
+        _aimInputButton.gameObject.SetActive(false);
         _cineMachineCamera.gameObject.SetActive(true);
         Time.timeScale = 0.3f;
         Time.fixedDeltaTime = Time.timeScale * 0.01f;
     }
 
+    public void CinemachineMove(Bullet bullet)
+    {
+        _cineMachineCamera.transform.parent = null;
+        _cineMachineCamera.Follow = bullet.transform;
+        _cineMachineCamera.LookAt = bullet.transform;
+    }
+
     public void STOPRes()
     {
+        _aimInputButton.gameObject.SetActive(true);
         _cineMachineCamera.gameObject.SetActive(false);
         ResetMainCamera();
         Time.timeScale = 1f;
     }
-
 
     private void CameraFovChanged(float target)
     {

@@ -8,19 +8,23 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _radius = 0.001f;
     [SerializeField] private Effect _effect;
-    //[SerializeField] private BulletMover _bulletMover;
+    [SerializeField] private BulletMover _bulletMover;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
     private Coroutine _coroutine;
     private int _layerMask;
 
+    private void OnEnable()
+    {
+        _bulletMover.enabled = true;
+    }
+
     private void Start()
     {
         _layerMask = 1 << 8;
         _layerMask = ~_layerMask;
     }
-    //public event UnityAction hit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,7 +32,7 @@ public class BulletTrigger : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            //_bulletMover.enabled = false;
+            _bulletMover.enabled = false;
 
             if (hitCollider.TryGetComponent(out Block block))
             {

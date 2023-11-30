@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ButtonMover : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class ButtonMover : MonoBehaviour
         _target = transform.position;
     }
 
-    public void ButtonUp()
+    public void Up()
     {
         NextTarget(_step);
     }
 
-    public void ButtonDown()
+    public void Down()
     {
         NextTarget(-_step);
     }

@@ -15,6 +15,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
+    [SerializeField] private KilledInfo _killedInfo;
+    [SerializeField] private CameraAim _cameraAim;
 
     protected ObjectPool<Bullet> _pool;
 
@@ -26,15 +28,19 @@ public abstract class Weapon : MonoBehaviour
     private int _hitEnemy = 0;
     private int _layerMask;
 
-    public bool IsLastShoot { get; private set; } = false;
     public bool IsReload { get; private set; } = false;
 
     public event UnityAction FirstShoot;
     public event UnityAction<int, int> BulletsChanged;
 
+    RaycastHit hit;
+    Ray ray;
+
     private void Start()
     {
+        Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
+
         _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
         _layerMask = 1 << 7;
@@ -56,11 +62,14 @@ public abstract class Weapon : MonoBehaviour
                 BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
                 SuperShoot();
             }
+            else if (_killedInfo.IsLastEnemy)
+            {
+                LastShoot();
+            }
             else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 AmmoChanger(bullet);
                 _audioSource.Play();
-                IsLastShoot = _currentAmmo == 1;
                 EnemyHitChanger();
             }
         }
@@ -71,8 +80,18 @@ public abstract class Weapon : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
             AmmoChanger(bullet);
-            CinemachineMove(bullet);
-            IsLastShoot = _currentAmmo == 1;
+            _audioSource.Play();
+            RaycastHit hit;
+            Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.GetComponent<Enemy>())
+                {
+                    _cameraAim.CinemachineMove(bullet);
+                    _cameraAim.OnCinemaMachine();
+                }
+            }
         }
     }
 
@@ -105,13 +124,6 @@ public abstract class Weapon : MonoBehaviour
         Bullet bigFireball = Instantiate(bullet, _container.transform);
         bigFireball.Init(_shootPosition);
         //StartCoroutine(ScaleBullet(bullet));
-    }
-
-    private void CinemachineMove(Bullet bullet)
-    {
-        _cinemachineCamera.transform.parent = null;
-        _cinemachineCamera.Follow = bullet.transform;
-        _cinemachineCamera.LookAt = bullet.transform;
     }
 
     private void AmmoChanger(Bullet bullet)
