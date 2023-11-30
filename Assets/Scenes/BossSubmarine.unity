@@ -504,6 +504,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6847c43f0ccf4f7448a57723363cbd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &105401275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 1758740049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3d3c79f24bc3746a73bfe34aa16e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &105401276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1064211687309001525, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 1758740049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &107118156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3988176718269912622}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
   m_Name: 
@@ -1760,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6094455062841686032, guid: d1c8fb568470b384fb5d9eaf1951a726, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6094455062841686040, guid: d1c8fb568470b384fb5d9eaf1951a726, type: 3}
       propertyPath: _killedInfo
@@ -2233,14 +2255,13 @@ GameObject:
   - component: {fileID: 683608753}
   - component: {fileID: 683608752}
   - component: {fileID: 683608755}
-  - component: {fileID: 683608756}
   m_Layer: 0
   m_Name: BulletCameraSlowMo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &683608752
 Camera:
   m_ObjectHideFlags: 0
@@ -2362,22 +2383,6 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _cinemachineVirtualCamera: {fileID: 683608753}
   _fov: 95
---- !u!114 &683608756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683608751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _limitAngles: 50
-  _minLimitAngles: 50
-  _limitAnglesY: 30
-  _minLimitAnglesY: 30
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,17 +2878,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.0000002, z: 1.0000001}
   m_Center: {x: -0.0000004172325, y: -0.0000029802322, z: 0.0000003874302}
---- !u!114 &888180064 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8256347665010958309, guid: 36652a77cc65d4c4da2bc61865cb301a, type: 3}
-  m_PrefabInstance: {fileID: 8256347666505694728}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &905327996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3191,6 +3185,9 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194233}
+  - component: {fileID: 963194232}
+  - component: {fileID: 963194234}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3336,6 +3333,43 @@ MonoBehaviour:
   _minLimitAngles: 50
   _limitAnglesY: 30
   _minLimitAnglesY: 30
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8b0ff1763baad44b49ad5ddb6ed5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963194233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3f5696a04d16e46981d2dd0820d9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _towerRotate: {fileID: 0}
+--- !u!114 &963194234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdf5e653663dd84abcaaa42188a6bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &971001352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2487179651370102008, guid: fd468510ec1b1d64bb00b6f08a149500, type: 3}
@@ -5245,12 +5279,15 @@ MonoBehaviour:
   - {fileID: 1240394864}
   - {fileID: 419452969}
   _fightScreen: {fileID: 756419462}
+  _bulletsInfo: {fileID: 105401276}
+  _aimInputButton: {fileID: 105401275}
   _enemysContainer: {fileID: 1342705773}
+  _hitPoint: {fileID: 963194233}
   _alarm: {fileID: 1922342617}
   _progress: {fileID: 1916890360}
   _load: {fileID: 932929924}
   _materialContainer: {fileID: 1400747944}
-  _indexPlayer: 3
+  _indexPlayer: 0
 --- !u!4 &1746644475
 Transform:
   m_ObjectHideFlags: 0
@@ -5615,7 +5652,7 @@ PrefabInstance:
     - target: {fileID: 4475014111292667061, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _towerRotate
       value: 
-      objectReference: {fileID: 888180064}
+      objectReference: {fileID: 0}
     - target: {fileID: 4475014111470520737, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
       value: 
@@ -5664,6 +5701,14 @@ PrefabInstance:
       propertyPath: _save
       value: 
       objectReference: {fileID: 107118157}
+    - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _hitPoint
+      value: 
+      objectReference: {fileID: 963194233}
+    - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _cameraMover
+      value: 
+      objectReference: {fileID: 963194232}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6655,7 +6700,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4716523818641063462}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
   m_Name: 
@@ -6873,7 +6918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3619271209236541146, guid: 580f0bac49f3d0548bce7f0e21b8853c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4139348268589511776, guid: 580f0bac49f3d0548bce7f0e21b8853c, type: 3}
       propertyPath: m_RootOrder
@@ -7807,6 +7852,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 526608135}
     - target: {fileID: 1821326189685271938, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
+      propertyPath: _killedInfo
+      value: 
+      objectReference: {fileID: 79749750}
+    - target: {fileID: 1821326189685271938, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
       propertyPath: _cinemachineCamera
       value: 
       objectReference: {fileID: 683608753}
@@ -7814,6 +7863,14 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
+      propertyPath: _aimInputButton
+      value: 
+      objectReference: {fileID: 105401275}
+    - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
+      propertyPath: _cineMachineCamera
+      value: 
+      objectReference: {fileID: 683608753}
     - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
       propertyPath: _cinemachinecamera
       value: 
@@ -8682,9 +8739,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2104693902683491522, guid: 53bfc4435614d7244806e123915f7040, type: 3}
+      propertyPath: _delay
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104693902683491522, guid: 53bfc4435614d7244806e123915f7040, type: 3}
       propertyPath: _killedInfo
       value: 
       objectReference: {fileID: 79749750}
+    - target: {fileID: 2543143841184339591, guid: 53bfc4435614d7244806e123915f7040, type: 3}
+      propertyPath: _delay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2543143841184339591, guid: 53bfc4435614d7244806e123915f7040, type: 3}
       propertyPath: _container
       value: 
@@ -8820,7 +8885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6750578771278506636, guid: a228721a834d3ac4abe1106d344d35d2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6750578771278506637, guid: a228721a834d3ac4abe1106d344d35d2, type: 3}
       propertyPath: _path

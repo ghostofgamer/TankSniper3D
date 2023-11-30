@@ -1046,7 +1046,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8256347665010958308}
-  - component: {fileID: 8256347665010958309}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1062,7 +1061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665010958307}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: -0.13, y: 1.14, z: -0.8}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1.3712, y: 1.3712, z: 1.3712}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1071,25 +1070,6 @@ Transform:
   m_Father: {fileID: 8256347666278764836}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &8256347665010958309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256347665010958307}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7473de7a77e969640be60f8e0677bdf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startTransform: {fileID: 8256347665126873644}
-  _tower: {fileID: 8256347665010958307}
-  _transformTower: {fileID: 0}
-  _limitAngles: 50
-  _minLimitAngles: 50
-  _limitAnglesY: 30
-  _minLimitAnglesY: 30
 --- !u!1 &8256347665024829722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665024829722}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.13, y: 0.09, z: -1.53}
+  m_LocalPosition: {x: -0, y: -0.66, z: 0}
   m_LocalScale: {x: 0.02298854, y: 0.02298854, z: 0.02298854}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1350,7 +1330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665126873643}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.57, y: -0.33, z: 0.13}
+  m_LocalPosition: {x: 0, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,7 +1442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256347665312937862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: -0, y: -0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1846,6 +1826,7 @@ GameObject:
   - component: {fileID: 8256347666278764837}
   - component: {fileID: 848932663}
   - component: {fileID: 8770582803391137042}
+  - component: {fileID: 596374710778112539}
   m_Layer: 0
   m_Name: MissileTank
   m_TagString: Untagged
@@ -1862,7 +1843,7 @@ Transform:
   m_GameObject: {fileID: 8256347666278764835}
   m_LocalRotation: {x: 0, y: 0.99144495, z: -0, w: -0.13052607}
   m_LocalPosition: {x: 1.88, y: -3.898, z: -5.02}
-  m_LocalScale: {x: 0.29431373, y: 0.29431367, z: 0.29431373}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8256347665024829723}
@@ -1886,8 +1867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cineMachineCamera: {fileID: 0}
-  _fovStart: 0
-  _fov: 0
+  _fovStart: 40
+  _fov: 15
   _aimInputButton: {fileID: 0}
 --- !u!114 &8256347666278764857
 MonoBehaviour:
@@ -1920,8 +1901,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.321401, y: 5.620735, z: 4.234186}
-  m_Center: {x: 1.0336424, y: 0.48959568, z: 1.3171189}
+  m_Size: {x: 10.321401, y: 5.9118977, z: 4.234186}
+  m_Center: {x: 1.033643, y: -0.15694235, z: 1.317119}
 --- !u!54 &8256347666278764839
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2065,7 +2046,7 @@ MonoBehaviour:
   _audioSource: {fileID: 8256347666278764838}
   _audioClip: {fileID: 8300000, guid: a1b3f841b40443d4b8b68bfcbe5cb1dd, type: 3}
   _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
+  _cameraAim: {fileID: 8256347666278764858}
 --- !u!114 &848932663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2076,20 @@ MonoBehaviour:
   _MeshRenderer:
   - {fileID: 8256347665024829724}
   - {fileID: 8256347665001093593}
+--- !u!114 &596374710778112539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256347666278764835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb96260f3f01cb488f5dc0df2b9cd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tower: {fileID: 8256347665010958307}
+  _startTransform: {fileID: 8256347665126873644}
 --- !u!1 &8441455199993484038
 GameObject:
   m_ObjectHideFlags: 0

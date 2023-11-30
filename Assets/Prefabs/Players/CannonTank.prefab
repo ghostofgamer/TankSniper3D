@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507926975585585780}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.22, z: -0}
+  m_LocalPosition: {x: 0, y: -1.51, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507926975593297576}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 0.917, z: -0}
+  m_LocalPosition: {x: -0, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 1507926975975700471}
   - component: {fileID: 996633304}
   - component: {fileID: 3918714868656042208}
+  - component: {fileID: 2851506037572454280}
   m_Layer: 0
   m_Name: CannonTank
   m_TagString: Untagged
@@ -328,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 1507926975975700473}
   m_LocalRotation: {x: 0, y: 0.99144495, z: -0, w: -0.13052607}
   m_LocalPosition: {x: 1.68, y: -4.773, z: -4.61}
-  m_LocalScale: {x: 0.6487607, y: 0.6487607, z: 0.6487607}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1507926975585585779}
@@ -351,8 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cineMachineCamera: {fileID: 0}
-  _fovStart: 0
-  _fov: 0
+  _fovStart: 40
+  _fov: 15
   _aimInputButton: {fileID: 0}
 --- !u!114 &1507926975975700461
 MonoBehaviour:
@@ -385,8 +386,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.8247626, y: 3.2902737, z: 1.2507637}
-  m_Center: {x: 0.1013259, y: 0.53423995, z: 0.67676145}
+  m_Size: {x: 3.8247623, y: 2.9106402, z: 1.2507637}
+  m_Center: {x: 0.10132648, y: 0.34442252, z: 0.6767599}
 --- !u!54 &1507926975975700463
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -434,7 +435,7 @@ MonoBehaviour:
   _audioSource: {fileID: 1507926975975700471}
   _audioClip: {fileID: 8300000, guid: b7a51aaa5b5007c46a3c060aeb12af18, type: 3}
   _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
+  _cameraAim: {fileID: 1507926975975700460}
 --- !u!82 &1507926975975700471
 AudioSource:
   m_ObjectHideFlags: 0
@@ -560,6 +561,20 @@ MonoBehaviour:
   _MeshRenderer:
   - {fileID: 1507926975585585778}
   - {fileID: 1507926974646038924}
+--- !u!114 &2851506037572454280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507926975975700473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb96260f3f01cb488f5dc0df2b9cd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tower: {fileID: 1507926975593297576}
+  _startTransform: {fileID: 1507926976366429876}
 --- !u!1 &1507926976366429877
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507926976366429877}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.72, z: -0}
+  m_LocalPosition: {x: -0, y: -1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

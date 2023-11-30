@@ -329,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523818974150229}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 1.69, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -382,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523819206053022}
   m_LocalRotation: {x: -0, y: -0, z: -7.1054274e-15, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -701,7 +701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523819948349497}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -2.13, z: 0}
+  m_LocalPosition: {x: 0, y: -2.62, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -851,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523820155310795}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -1.63, z: 0}
+  m_LocalPosition: {x: 0, y: -2.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1067,6 +1067,7 @@ GameObject:
   - component: {fileID: 4716523820379267455}
   - component: {fileID: 1754996580}
   - component: {fileID: 6111952614585682446}
+  - component: {fileID: 3602129538627678013}
   m_Layer: 0
   m_Name: RocketTank
   m_TagString: Untagged
@@ -1083,7 +1084,7 @@ Transform:
   m_GameObject: {fileID: 4716523820379267441}
   m_LocalRotation: {x: 0, y: 0.99144495, z: -0, w: -0.13052607}
   m_LocalPosition: {x: 1.84, y: -4.45, z: -4.7}
-  m_LocalScale: {x: 0.38721138, y: 0.3872113, z: 0.38721138}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4716523819948349446}
@@ -1107,8 +1108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cineMachineCamera: {fileID: 0}
-  _fovStart: 0
-  _fov: 0
+  _fovStart: 40
+  _fov: 15
   _aimInputButton: {fileID: 0}
 --- !u!114 &4716523820379267448
 MonoBehaviour:
@@ -1141,8 +1142,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.366068, y: 6.032648, z: 3.72553}
-  m_Center: {x: 0.06788334, y: 0.9962068, z: 1.5714592}
+  m_Size: {x: 6.366068, y: 5.2920856, z: 3.7255301}
+  m_Center: {x: 0.06788349, y: 0.6259224, z: 1.5714592}
 --- !u!54 &4716523820379267450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1190,7 +1191,7 @@ MonoBehaviour:
   _audioSource: {fileID: 4716523820379267455}
   _audioClip: {fileID: 8300000, guid: d373c70148cd53a4cabf9b94def2f003, type: 3}
   _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
+  _cameraAim: {fileID: 4716523820379267449}
 --- !u!82 &4716523820379267455
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1201,7 +1202,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 01e761cd92a092a448e85e490d547d2c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1840b3459d173124cba15afdbe1125ca, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1316,6 +1317,20 @@ MonoBehaviour:
   _MeshRenderer:
   - {fileID: 4716523819948349447}
   - {fileID: 4716523819232444261}
+--- !u!114 &3602129538627678013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716523820379267441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb96260f3f01cb488f5dc0df2b9cd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tower: {fileID: 4716523818974150229}
+  _startTransform: {fileID: 4716523820155310792}
 --- !u!1 &4716523820381765248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4716523820525239832
 Transform:
   m_ObjectHideFlags: 0
@@ -2433,7 +2448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196247684762289530, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196247684762289531, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_Camera

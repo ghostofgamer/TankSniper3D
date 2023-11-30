@@ -4809,7 +4809,7 @@ Transform:
   - {fileID: 1475763610290975619}
   - {fileID: 5783358161766511485}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4603732414560555747
 MonoBehaviour:
@@ -4823,7 +4823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc2e07b5c63c3f4bba9b03d066e0afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 65
 --- !u!114 &5348015512477163572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,6 +4840,7 @@ MonoBehaviour:
   _radius: 6
   _effect: {fileID: 5458211804717960790}
   _bulletMover: {fileID: 4603732414560555747}
+  _meshRenderer: {fileID: 4851561661194556326}
 --- !u!114 &6661292686757236980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4852,7 +4853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1305024c4480ecb48a13bec70fe1e16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 6
+  _damage: 16
 --- !u!114 &5458211804717960790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14679,6 +14680,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da075b833485908438b582e110b6288b, type: 3}
+--- !u!23 &4851561661194556326 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: da075b833485908438b582e110b6288b, type: 3}
+  m_PrefabInstance: {fileID: 6094953599551754018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5989534053575436489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da075b833485908438b582e110b6288b, type: 3}

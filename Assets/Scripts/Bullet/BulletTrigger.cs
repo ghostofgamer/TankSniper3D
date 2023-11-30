@@ -9,6 +9,7 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private float _radius = 0.001f;
     [SerializeField] private Effect _effect;
     [SerializeField] private BulletMover _bulletMover;
+    [SerializeField] private MeshRenderer _meshRenderer;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);
 
@@ -17,7 +18,8 @@ public class BulletTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        _bulletMover.enabled = true;
+        if (_bulletMover != null)
+            _bulletMover.enabled = true;
     }
 
     private void Start()
@@ -32,7 +34,9 @@ public class BulletTrigger : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            _bulletMover.enabled = false;
+            //if (_bulletMover != null)
+            //    _bulletMover.enabled = false;
+
 
             if (hitCollider.TryGetComponent(out Block block))
             {
@@ -78,6 +82,9 @@ public class BulletTrigger : MonoBehaviour
 
     public void Hit()
     {
+        if (_bulletMover != null)
+            _bulletMover.enabled = false;
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -87,9 +94,9 @@ public class BulletTrigger : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        //SetBullet(false);
+        SetBullet(false);
         yield return _waitForSeconds;
-        //SetBullet(true);
+        SetBullet(true);
         gameObject.SetActive(false);
         //_bulletMover.enabled = true;
     }
@@ -98,6 +105,7 @@ public class BulletTrigger : MonoBehaviour
     {
         //GetComponent<Collider>().enabled = flag;
         //_bullet.enabled = flag;
+        _meshRenderer.enabled = flag;
         //_bullet.GetComponent<MeshRenderer>().enabled = flag;
     }
 }

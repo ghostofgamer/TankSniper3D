@@ -119,13 +119,6 @@ public abstract class Weapon : MonoBehaviour
         StartCoroutine(SomeShoot(count, delay));
     }
 
-    protected void BigShoot(Bullet bullet)
-    {
-        Bullet bigFireball = Instantiate(bullet, _container.transform);
-        bigFireball.Init(_shootPosition);
-        //StartCoroutine(ScaleBullet(bullet));
-    }
-
     private void AmmoChanger(Bullet bullet)
     {
         bullet.Init(_shootPosition);
@@ -168,20 +161,6 @@ public abstract class Weapon : MonoBehaviour
             //_audioSource.Stop();
         }
     }
-
-    //private IEnumerator ScaleBullet(Bullet bullet)
-    //{
-    //    yield return new WaitForSeconds(0.15f);
-
-    //    //if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-    //    //{
-    //    //    bullet.Init(_shootPosition);
-    //    //    bullet.transform.localScale += new Vector3(3, 3, 3);
-    //    //}
-
-    //    Bullet bigFireball = Instantiate(bullet, _container.transform);
-    //    bigFireball.Init(_shootPosition);
-    //}
 
     protected void SetFirstShoot()
     {

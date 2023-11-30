@@ -480,7 +480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089318211398760}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.74, z: 0}
+  m_LocalPosition: {x: 0, y: -1.29, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -544,7 +544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089318672266398}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000037252897}
-  m_LocalPosition: {x: 0, y: 2.36, z: 0}
+  m_LocalPosition: {x: 0, y: 1.81, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1337,7 +1337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665089319767588269}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.39, z: 0}
+  m_LocalPosition: {x: -0, y: -2.94, z: 0}
   m_LocalScale: {x: 3.9787, y: 3.9787, z: 3.9787}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 3665089319957028399}
   - component: {fileID: 1380924104}
   - component: {fileID: 4922745851847986409}
+  - component: {fileID: 4770656026866026815}
   m_Layer: 0
   m_Name: LazerTank
   m_TagString: Untagged
@@ -1427,7 +1428,7 @@ Transform:
   m_GameObject: {fileID: 3665089319957028393}
   m_LocalRotation: {x: 0, y: 0.99144495, z: -0, w: -0.13052607}
   m_LocalPosition: {x: 1.74, y: -4.123, z: -4.62}
-  m_LocalScale: {x: 0.33929783, y: 0.33929777, z: 0.33929783}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3665089319767588306}
@@ -1451,8 +1452,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cineMachineCamera: {fileID: 0}
-  _fovStart: 0
-  _fov: 0
+  _fovStart: 40
+  _fov: 15
   _aimInputButton: {fileID: 0}
 --- !u!114 &3665089319957028432
 MonoBehaviour:
@@ -1485,8 +1486,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.857902, y: 6.147892, z: 3.1566966}
-  m_Center: {x: 0.026276058, y: 0.85838634, z: 1.8558745}
+  m_Size: {x: 5.9230413, y: 6.140998, z: 5.0089216}
+  m_Center: {x: -0.0062948484, y: -0.07693242, z: 0.92976075}
 --- !u!54 &3665089319957028434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1534,7 +1535,7 @@ MonoBehaviour:
   _audioSource: {fileID: 3665089319957028399}
   _audioClip: {fileID: 8300000, guid: 68ab3054477e2d54f950e44d74011b03, type: 3}
   _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
+  _cameraAim: {fileID: 3665089319957028433}
 --- !u!82 &3665089319957028399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1660,6 +1661,20 @@ MonoBehaviour:
   _MeshRenderer:
   - {fileID: 3665089319767588307}
   - {fileID: 3665089318860781911}
+--- !u!114 &4770656026866026815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665089319957028393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb96260f3f01cb488f5dc0df2b9cd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tower: {fileID: 3665089318672266398}
+  _startTransform: {fileID: 3665089318211398761}
 --- !u!1 &3665089320190549780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3665089320190549781
 Transform:
   m_ObjectHideFlags: 0

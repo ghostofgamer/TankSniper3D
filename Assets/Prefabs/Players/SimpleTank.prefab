@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 1821326189685271967}
   - component: {fileID: 3323233339149155251}
   - component: {fileID: 7197479396609903363}
+  - component: {fileID: 157949893343919629}
   m_Layer: 0
   m_Name: SimpleTank
   m_TagString: Untagged
@@ -523,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 1821326189685271947}
   m_LocalRotation: {x: 0, y: 0.99144495, z: -0, w: -0.13052607}
   m_LocalPosition: {x: 1.4390998, y: -4.380346, z: -4.509205}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7116148567761325874}
@@ -551,8 +552,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
   _cineMachineCamera: {fileID: 0}
-  _fovStart: 0
-  _fov: 0
+  _fovStart: 40
+  _fov: 15
   _aimInputButton: {fileID: 0}
 --- !u!114 &1821326189685271945
 MonoBehaviour:
@@ -585,8 +586,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3019772, y: 2.7903504, z: 1.3312224}
-  m_Center: {x: -0.07224476, y: 0.47175455, z: 0.6365302}
+  m_Size: {x: 2.3019772, y: 1.9236746, z: 1.3312224}
+  m_Center: {x: -0.07224461, y: 0.03841591, z: 0.6365297}
 --- !u!54 &1821326189685271942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -634,7 +635,7 @@ MonoBehaviour:
   _audioSource: {fileID: 1821326189685271967}
   _audioClip: {fileID: 8300000, guid: d373c70148cd53a4cabf9b94def2f003, type: 3}
   _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
+  _cameraAim: {fileID: 1821326189685271944}
 --- !u!82 &1821326189685271967
 AudioSource:
   m_ObjectHideFlags: 0
@@ -761,6 +762,20 @@ MonoBehaviour:
   - {fileID: 1272641324809065240}
   - {fileID: 7552061056607269046}
   - {fileID: 889512447930336273}
+--- !u!114 &157949893343919629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821326189685271947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb96260f3f01cb488f5dc0df2b9cd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tower: {fileID: 4744537221027862358}
+  _startTransform: {fileID: 3988176717548472912}
 --- !u!1 &2332539309128724240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,7 +1952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4744537221027862358}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000017881392}
-  m_LocalPosition: {x: 0, y: 0.511, z: 0}
+  m_LocalPosition: {x: -0, y: 0.217, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2473,7 +2488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7570665060726954898}
   m_LocalRotation: {x: -0.000000021855701, y: -0.000000014901159, z: 3.553904e-16, w: -1}
-  m_LocalPosition: {x: 0, y: -0.292, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

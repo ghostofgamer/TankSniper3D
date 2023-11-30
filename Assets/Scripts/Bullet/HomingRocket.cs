@@ -28,10 +28,11 @@ public class HomingRocket : MonoBehaviour
         _startPosition = gameObject.transform.position;
     }
 
-    //private void OnEnable()
-    //{
-    //    _missileState = MissileState.start;
-    //}
+    private void OnEnable()
+    {
+        //_missileState = MissileState.start;
+        _speedMove = 35f;
+    }
 
     private void OnDisable()
     {
@@ -57,6 +58,9 @@ public class HomingRocket : MonoBehaviour
                 Vector3 target = new Vector3(_target.transform.position.x, _target.transform.position.y + _correctVector, _target.transform.position.z);
                 Vector3 _targetVector = target - gameObject.transform.position;
                 gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, _targetVector, _speedRotate * Time.deltaTime);
+
+                if (Vector3.Distance(transform.position, _target.position) < 1)
+                    _speedMove = 0f;
                 break;
         }
     }

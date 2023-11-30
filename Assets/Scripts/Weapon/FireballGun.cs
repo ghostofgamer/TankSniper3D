@@ -21,7 +21,5 @@ public class FireballGun : Weapon
         {
             bullet.Init(_shootPosition);
         }
-
-        //BigShoot(_bigFireball);
     }
 }
