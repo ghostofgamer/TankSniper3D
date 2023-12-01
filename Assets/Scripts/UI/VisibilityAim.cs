@@ -16,7 +16,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_startImage,1,_speed,-_speed));
+        _coroutine = StartCoroutine(Fade(_startImage,1,_speed,-_speed,0));
     }
 
     public void OnFadeOut()
@@ -24,11 +24,13 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_startImage, 0, -_speed, _speed));
+        _coroutine = StartCoroutine(Fade(_startImage, 0, -_speed, _speed,1));
     }
 
-    IEnumerator Fade(Image image,int alpha,float speed,float speedImage)
+    IEnumerator Fade(Image image,int alpha,float speed,float speedImage,float time)
     {
+        yield return new WaitForSeconds(time);
+
         while (_canvasGroupe.alpha != alpha)
         {
             _canvasGroupe.alpha += speed * Time.deltaTime;

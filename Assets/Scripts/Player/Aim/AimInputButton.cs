@@ -68,9 +68,10 @@ public class AimInputButton : AbstractButton
 
     private void DoShoot()
     {
-        IsZoom = false;
-        _weapon.Shoot();
-        _buttonMover.Up();
+        //_weapon.Shoot();
+        StartCoroutine(PauseZoomOff());
+        //_buttonMover.Up();
+        //IsZoom = false;
     }
 
     private void OnDown()
@@ -90,11 +91,19 @@ public class AimInputButton : AbstractButton
         _playerMover.Hide();
         _cameraMover.Back();
         _visibilityAim.OnFadeOut();
+        _weapon.Shoot();
     }
 
     public void LastShootActivated()
     {
         _cameraAim.OnCinemaMachine();
         _weapon.LastShoot();
+    }
+
+    private IEnumerator PauseZoomOff()
+    {
+        yield return new WaitForSeconds(1f);
+        _buttonMover.Up();
+        IsZoom = false;
     }
 }
