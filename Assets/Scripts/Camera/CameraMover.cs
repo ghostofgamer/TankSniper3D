@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     private Vector3 _target;
-    private float _speed = 30f;
+    private float _speed = 60f;
     private float _step = 10;
 
     private void Start()

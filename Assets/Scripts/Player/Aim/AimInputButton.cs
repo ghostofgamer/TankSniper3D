@@ -69,17 +69,7 @@ public class AimInputButton : AbstractButton
     private void DoShoot()
     {
         IsZoom = false;
-        int randomNumber = Random.Range(0, 2);
         _weapon.Shoot();
-        //if (_killedInfo.IsLastEnemy && randomNumber == 0)
-        //{
-        //    LastShootActivated();
-        //}
-        //else
-        //{
-        //    _weapon.Shoot();
-        //}
-
         _buttonMover.Up();
     }
 

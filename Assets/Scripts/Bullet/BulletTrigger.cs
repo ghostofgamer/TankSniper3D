@@ -61,7 +61,7 @@ public class BulletTrigger : MonoBehaviour
                 barrel.Explosion();
             }
 
-            if (hitCollider.TryGetComponent(out EnviropmentTest enviropmentTest))
+            if (hitCollider.TryGetComponent(out Enviropment enviropmentTest))
             {
                 Hit();
             }

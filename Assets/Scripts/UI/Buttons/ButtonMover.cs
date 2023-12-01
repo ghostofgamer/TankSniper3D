@@ -7,9 +7,10 @@ public class ButtonMover : MonoBehaviour
 {
     private Vector3 _target;
     private float _step = 160f;
-    private float _speed = 16.5f;
+    private float _speed = 30f;
     private float _min = -100;
     private float _max = 30;
+    private Coroutine _coroutine;
 
     private void Start()
     {
@@ -18,7 +19,11 @@ public class ButtonMover : MonoBehaviour
 
     public void Up()
     {
-        NextTarget(_step);
+        //NextTarget(_step);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(OnUp());
     }
 
     public void Down()
@@ -36,5 +41,11 @@ public class ButtonMover : MonoBehaviour
     {
         float step = Mathf.Clamp(transform.position.y + target, _min, _max);
         _target = new Vector3(transform.position.x, step, transform.position.z);
+    }
+
+    private IEnumerator OnUp()
+    {
+        yield return new WaitForSeconds(0.5f);
+        NextTarget(_step);
     }
 }

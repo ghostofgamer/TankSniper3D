@@ -47,6 +47,7 @@ public class PlayerMover : MonoBehaviour
 
     private float GetTarget(float step)
     {
+        Debug.Log(transform.position.x + step);
         return Mathf.Clamp(transform.position.x + step, _minPositionX, _maxPositionX);
     }
 }

@@ -10,6 +10,7 @@ public class KilledInfo : MonoBehaviour
     [SerializeField] private TMP_Text _killedCount;
     [SerializeField] private TMP_Text _enemyCount;
     [SerializeField] private Transform _containerEnemy;
+    [SerializeField] private ButtonMover _buttonMover;
 
     private int _killed;
     private int _lastEnemy = 1;
@@ -31,6 +32,9 @@ public class KilledInfo : MonoBehaviour
         IsLastEnemy = _containerEnemy.childCount - _killed == _lastEnemy;
 
         if (_killed == _containerEnemy.childCount)
+        {
+            _buttonMover.Down();
             AllEnemysDying?.Invoke();
+        }
     }
 }

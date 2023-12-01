@@ -23,6 +23,7 @@ public class CameraAim : MonoBehaviour
 
     private void Start()
     {
+        _fovStart = _mainCamera.fieldOfView;
         _startPosition = _mainCamera.transform.position;
         _startRotation = _mainCamera.transform.rotation;
     }
@@ -77,7 +78,8 @@ public class CameraAim : MonoBehaviour
 
     public void SetCinCamera()
     {
-        _aimInputButton.gameObject.SetActive(false);
+        //_aimInputButton.gameObject.SetActive(false);
+        _aimInputButton.enabled=false;
         _cineMachineCamera.gameObject.SetActive(true);
         Time.timeScale = 0.3f;
         Time.fixedDeltaTime = Time.timeScale * 0.01f;
@@ -92,7 +94,8 @@ public class CameraAim : MonoBehaviour
 
     public void STOPRes()
     {
-        _aimInputButton.gameObject.SetActive(true);
+        //_aimInputButton.gameObject.SetActive(true);
+        _aimInputButton.enabled=true;
         _cineMachineCamera.gameObject.SetActive(false);
         ResetMainCamera();
         Time.timeScale = 1f;
