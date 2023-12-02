@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ReviewCamera : MonoBehaviour
 {
+    float runningTime = 0;
+    float t = 0.0f;
+    public float minimum = -1.0F;
+    public float maximum = 1.0F;
     private const string MouseX = "Mouse X";
     private const string MouseY = "Mouse Y";
 
@@ -20,7 +24,10 @@ public class ReviewCamera : MonoBehaviour
     public Transform target;
     public Vector3 offset;
     public float sensitivity = 3; // чувствительность мышки
-    public float limit = 80; // ограничение вращения по Y
+    public float minlimitX = 80; // ограничение вращения по Y
+    public float maxlimitX = 80; // ограничение вращения по Y
+    public float minlimitY = 80; // ограничение вращения по Y
+    public float maxlimitY = 80; // ограничение вращения по Y
     public float zoom = 0.25f; // чувствительность при увеличении, колесиком мышки
     public float zoomMax = 10; // макс. увеличение
     public float zoomMin = 3; // мин. увеличение
@@ -55,8 +62,8 @@ public class ReviewCamera : MonoBehaviour
 
     private void Start()
     {
-        limit = Mathf.Abs(limit);
-        if (limit > 90) limit = 90;
+        minlimitX = Mathf.Abs(minlimitX);
+        if (minlimitX > 90) minlimitX = 90;
         //offset = new Vector3(offset.x, offset.y, -Mathf.Abs(zoomMax) / 2);
         transform.position = target.position + offset;
         //_xRotation = transform.rotation.y;
@@ -162,23 +169,37 @@ public class ReviewCamera : MonoBehaviour
 
     public void RoatteNew()
     {
-
         //if (Input.GetAxis("Mouse ScrollWheel") > 0) offset.z += zoom;
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0) offset.z -= zoom;
         //offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
 
-        X = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivity*Time.deltaTime;
+        X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        X = Mathf.Clamp(X, -minlimitY, maxlimitY);
+        Debug.Log(X);
         Y += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-        Y = Mathf.Clamp(Y, -limit, limit);
+        Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
         //Quaternion targetRotation = Quaternion.Euler(-Y, X, 0);
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
+        //float playerRotationY = Mathf.Lerp(transform.localEulerAngles.y, X, Time.deltaTime * 10);
+        //Vector3 targetNew = Vector3.Lerp(transform.localEulerAngles, new Vector3(-Y, X, 0), Time.deltaTime * 10);
         transform.localEulerAngles = new Vector3(-Y, X, 0);
-        //transform.localEulerAngles = Vector3.MoveTowards(transform.localEulerAngles, new Vector3(-Y, X, 0), 100*Time.deltaTime);
-        //transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, new Vector3(-Y, X, 0), 16*Time.deltaTime);
-        //transform.position = transform.localRotation * offset + target.position;
-        transform.position = Vector3.MoveTowards(transform.position, transform.localRotation * offset + target.position, 65 * Time.deltaTime);
 
-        //transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + target.position, 13 * Time.deltaTime);
+
+        //transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, new Vector3(-Y, X, 0), t);
+
+        transform.position = transform.localRotation * offset + target.position;
+
+
+        //transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + target.position, 1f);
+        //transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + target.position, t);
+        //t += 0.5f * Time.deltaTime;
+        //if (t > 1.0f)
+        //{
+        //    float temp = maximum;
+        //    maximum = minimum;
+        //    minimum = temp;
+        //    t = 0.0f;
+        //}
     }
 
     public void Rotate()

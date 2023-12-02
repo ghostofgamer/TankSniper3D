@@ -17,7 +17,7 @@ public class CameraAim : MonoBehaviour
 
     private Vector3 _startPosition;
     private Quaternion _startRotation;
-    private float _speed = 3f;
+    private float _speed = 5f;
 
     [SerializeField] private AimInputButton _aimInputButton;
 

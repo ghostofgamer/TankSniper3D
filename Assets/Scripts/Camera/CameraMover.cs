@@ -13,11 +13,11 @@ public class CameraMover : MonoBehaviour
         _target = transform.position;
     }
 
-    private void Update()
-    {
-        if (transform.position != _target)
-            transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
-    }
+    //private void Update()
+    //{
+    //    if (transform.position != _target)
+    //        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+    //}
 
     private void SetNextPosition(float step)
     {
@@ -32,5 +32,10 @@ public class CameraMover : MonoBehaviour
     public void Back()
     {
         SetNextPosition(-_step);
+    }
+
+    public void GOGOGO()
+    {
+        transform.position = transform.forward * 10f;
     }
 }
