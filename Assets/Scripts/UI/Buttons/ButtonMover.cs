@@ -45,7 +45,7 @@ public class ButtonMover : MonoBehaviour
 
     private IEnumerator OnUp()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         NextTarget(_step);
     }
 }

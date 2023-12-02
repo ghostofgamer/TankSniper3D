@@ -102,7 +102,7 @@ public class AimInputButton : AbstractButton
 
     private IEnumerator PauseZoomOff()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         _buttonMover.Up();
         IsZoom = false;
     }

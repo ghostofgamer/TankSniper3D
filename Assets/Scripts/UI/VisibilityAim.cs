@@ -24,7 +24,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_startImage, 0, -_speed, _speed,1));
+        _coroutine = StartCoroutine(Fade(_startImage, 0, -_speed, _speed,0.6f));
     }
 
     IEnumerator Fade(Image image,int alpha,float speed,float speedImage,float time)
