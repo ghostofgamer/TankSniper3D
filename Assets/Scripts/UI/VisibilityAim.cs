@@ -52,4 +52,9 @@ public class VisibilityAim : MonoBehaviour
             yield return null;
         }
     }
+
+    public void OffCanvasActive()
+    {
+        NeedCanvasGroup.alpha = 0;
+    } 
 }

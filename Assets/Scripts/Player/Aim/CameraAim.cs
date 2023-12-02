@@ -12,6 +12,7 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _cineMachineCamera;
     [SerializeField] private float _fovStart;
     [SerializeField] private float _fov;
+    [SerializeField] private VisibilityAim _visibilityAim;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
@@ -66,6 +67,7 @@ public class CameraAim : MonoBehaviour
     private IEnumerator ChangerCinemaMachine()
     {
         SetCinCamera();
+        _visibilityAim.OffCanvasActive();
         yield return _waitForSeconds;
         STOPRes();
     }

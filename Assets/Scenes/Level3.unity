@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 1, y: 1, z: 1}
+  m_FollowOffset: {x: 1.5, y: 1.5, z: 1.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3876,6 +3876,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6105146996523825081, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
   m_PrefabInstance: {fileID: 6105146996763540067}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &386382645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8180100204507754559, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 4475014111474850075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bc38a555a1ef34e971224e7b6ae598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &392182232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2728934378432759341, guid: 498ffc2acd0c3ec4cbee65c743654e80, type: 3}
@@ -27420,6 +27431,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1507926975975700460, guid: 52fbd91e6c3f2ac4faa13a9fdf7dc893, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
+    - target: {fileID: 1507926975975700460, guid: 52fbd91e6c3f2ac4faa13a9fdf7dc893, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 1986696716}
@@ -29849,6 +29864,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 3665089319957028433, guid: 5b7b1e53126e661489fac85f88770744, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
+    - target: {fileID: 3665089319957028433, guid: 5b7b1e53126e661489fac85f88770744, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 1986696716}
@@ -30287,6 +30306,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
+    - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 1986696716}
@@ -30634,11 +30657,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 231587566, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 772240644759235398, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211841143450704070, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4475014109690174720, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -30672,6 +30699,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4475014109813775989, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4475014109818599027, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _load
       value: 
@@ -30682,23 +30713,27 @@ PrefabInstance:
       objectReference: {fileID: 1269387612}
     - target: {fileID: 4475014109818599036, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475014109818599037, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4475014109922661481, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4475014109922661481, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475014109922661481, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2200.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475014109922661481, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.007785797
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475014110062956421, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
@@ -30858,7 +30893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475014111011502443, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -61
       objectReference: {fileID: 0}
     - target: {fileID: 4475014111292667061, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
@@ -30886,7 +30921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475014111400003608, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.22167969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475014111470520737, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
@@ -30952,9 +30987,21 @@ PrefabInstance:
       propertyPath: _save
       value: 
       objectReference: {fileID: 1269387612}
+    - target: {fileID: 5019792024477479322, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019792024477479322, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5617918816654598958, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6732239987722938939, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _hitPoint
@@ -30966,7 +31013,7 @@ PrefabInstance:
       objectReference: {fileID: 963194233}
     - target: {fileID: 9040864061917325336, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31439,6 +31486,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 4704393401054639808, guid: b6bace8ff13b2ab46a802e8fdbe2d37b, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
+    - target: {fileID: 4704393401054639808, guid: b6bace8ff13b2ab46a802e8fdbe2d37b, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 1986696716}
@@ -31617,6 +31668,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 4716523820379267449, guid: dc35648fb70f7014c810398a795d7b3a, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
     - target: {fileID: 4716523820379267449, guid: dc35648fb70f7014c810398a795d7b3a, type: 3}
       propertyPath: _aimInputButton
       value: 
@@ -34333,6 +34388,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 8256347666278764858, guid: 36652a77cc65d4c4da2bc61865cb301a, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 386382645}
     - target: {fileID: 8256347666278764858, guid: 36652a77cc65d4c4da2bc61865cb301a, type: 3}
       propertyPath: _aimInputButton
       value: 

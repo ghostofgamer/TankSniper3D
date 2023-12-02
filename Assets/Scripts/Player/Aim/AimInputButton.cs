@@ -40,7 +40,7 @@ public class AimInputButton : AbstractButton
             }
         }
 
-        if (!IsZoom)
+        if (!IsZoom|| _weapon.IsReload)
         {
             _towerRotate.ResetRotate();
             _cameraAim.CameraFovBack();

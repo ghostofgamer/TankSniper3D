@@ -3294,7 +3294,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 90
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -4292,6 +4292,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd468510ec1b1d64bb00b6f08a149500, type: 3}
+--- !u!114 &1351468463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8180100204507754559, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 1758740049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bc38a555a1ef34e971224e7b6ae598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1380924092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3665089319957028398, guid: 5b7b1e53126e661489fac85f88770744, type: 3}
@@ -5801,6 +5812,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 772240644759235398, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4475014109690174727, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _weapon
       value: 
@@ -6025,6 +6040,10 @@ PrefabInstance:
       propertyPath: _save
       value: 
       objectReference: {fileID: 107118157}
+    - target: {fileID: 6732239987722938939, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _hitPoint
       value: 
@@ -7304,6 +7323,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 1507926975975700460, guid: 52fbd91e6c3f2ac4faa13a9fdf7dc893, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
+    - target: {fileID: 1507926975975700460, guid: 52fbd91e6c3f2ac4faa13a9fdf7dc893, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 105401275}
@@ -7934,6 +7957,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 3665089319957028433, guid: 5b7b1e53126e661489fac85f88770744, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
+    - target: {fileID: 3665089319957028433, guid: 5b7b1e53126e661489fac85f88770744, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 105401275}
@@ -8010,6 +8037,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
     - target: {fileID: 1821326189685271944, guid: eca7e884ec7bc0644bf6363f1b341fe3, type: 3}
       propertyPath: _aimInputButton
       value: 
@@ -8536,6 +8567,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 4704393401054639808, guid: b6bace8ff13b2ab46a802e8fdbe2d37b, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
+    - target: {fileID: 4704393401054639808, guid: b6bace8ff13b2ab46a802e8fdbe2d37b, type: 3}
       propertyPath: _aimInputButton
       value: 
       objectReference: {fileID: 105401275}
@@ -8764,6 +8799,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 4716523820379267449, guid: dc35648fb70f7014c810398a795d7b3a, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
     - target: {fileID: 4716523820379267449, guid: dc35648fb70f7014c810398a795d7b3a, type: 3}
       propertyPath: _aimInputButton
       value: 
@@ -9379,6 +9418,10 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 8256347666278764858, guid: 36652a77cc65d4c4da2bc61865cb301a, type: 3}
+      propertyPath: _visibilityAim
+      value: 
+      objectReference: {fileID: 1351468463}
     - target: {fileID: 8256347666278764858, guid: 36652a77cc65d4c4da2bc61865cb301a, type: 3}
       propertyPath: _aimInputButton
       value: 
