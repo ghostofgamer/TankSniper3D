@@ -6,17 +6,29 @@ using UnityEngine.UI;
 public class VisibilityAim : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _canvasGroupe;
+    [SerializeField] private CanvasGroup _canvasGroupeMobile;
     [SerializeField] private Image _startImage;
 
     private Coroutine _coroutine;
     private readonly float _speed = 10f;
+    private CanvasGroup NeedCanvasGroup;
+
+    private void Awake()
+    {
+        if (Application.isMobilePlatform)
+        {
+            NeedCanvasGroup = _canvasGroupeMobile;
+        }
+        else
+            NeedCanvasGroup = _canvasGroupe;
+    }
 
     public void OnFadeIn()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_startImage,1,_speed,-_speed,0));
+        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage,1,_speed,-_speed,0));
     }
 
     public void OnFadeOut()
@@ -24,16 +36,16 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_startImage, 0, -_speed, _speed,0.6f));
+        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage, 0, -_speed, _speed,0.6f));
     }
 
-    IEnumerator Fade(Image image,int alpha,float speed,float speedImage,float time)
+    IEnumerator Fade(CanvasGroup canvasGroup ,Image image,int alpha,float speed,float speedImage,float time)
     {
         yield return new WaitForSeconds(time);
 
-        while (_canvasGroupe.alpha != alpha)
+        while (canvasGroup.alpha != alpha)
         {
-            _canvasGroupe.alpha += speed * Time.deltaTime;
+            canvasGroup.alpha += speed * Time.deltaTime;
             float a = _startImage.color.a;
             a += speedImage * Time.deltaTime;
             _startImage.color = new Color(_startImage.color.r, _startImage.color.g, _startImage.color.b, a);
