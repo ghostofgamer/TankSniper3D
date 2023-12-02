@@ -62,10 +62,10 @@ public class ReviewCamera : MonoBehaviour
 
     private void Start()
     {
+        transform.position = target.position + offset;
         minlimitX = Mathf.Abs(minlimitX);
         if (minlimitX > 90) minlimitX = 90;
         //offset = new Vector3(offset.x, offset.y, -Mathf.Abs(zoomMax) / 2);
-        transform.position = target.position + offset;
         //_xRotation = transform.rotation.y;
         //_yRotation = transform.rotation.x;
         //Input.GetAxis(MouseY) = transform.rotation.x;
@@ -175,7 +175,6 @@ public class ReviewCamera : MonoBehaviour
 
         X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
-        Debug.Log(X);
         Y += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
         Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
         //Quaternion targetRotation = Quaternion.Euler(-Y, X, 0);

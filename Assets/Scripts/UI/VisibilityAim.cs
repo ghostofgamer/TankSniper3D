@@ -9,7 +9,7 @@ public class VisibilityAim : MonoBehaviour
     [SerializeField] private Image _startImage;
 
     private Coroutine _coroutine;
-    private readonly float _speed = 3f;
+    private readonly float _speed = 10f;
 
     public void OnFadeIn()
     {
