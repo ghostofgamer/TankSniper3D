@@ -1,4 +1,5 @@
 using Cinemachine;
+using Plugins.Audio.Core;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform _container;
     [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
-    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private SourceAudio _sourceAudio;
+    [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
@@ -69,7 +72,9 @@ public abstract class Weapon : MonoBehaviour
             else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 AmmoChanger(bullet);
-                _audioSource.Play();
+                //_audioSource.Play();
+                //_sourceAudio.Play("Shoot1Lvl");
+                _audioPlugin.PlayKey();
                 EnemyHitChanger();
             }
         }
@@ -80,7 +85,9 @@ public abstract class Weapon : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
             AmmoChanger(bullet);
-            _audioSource.Play();
+            //_audioSource.Play();
+            //_sourceAudio.Play("Shoot1Lvl");
+            _audioPlugin.PlayKey();
             RaycastHit hit;
             Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
 
@@ -160,7 +167,9 @@ public abstract class Weapon : MonoBehaviour
 
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
-                _audioSource.PlayOneShot(_audioClip);
+                //_audioSource.PlayOneShot(_audioClip);
+                //_sourceAudio.PlayOneShot("Shoot1Lvl");
+                _audioPlugin.PlayOneShootKey();
                 //_audioSource.Play();
                 Transform transformmm = _shootPosition;
                 bullet.Init(transformmm);

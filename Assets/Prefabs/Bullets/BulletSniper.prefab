@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 50
+  _rigidbody: {fileID: 0}
 --- !u!54 &5404578274796631214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,13 +331,69 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 132352, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8921000436320842682}
+    - targetCorrespondingSourceObject: {fileID: 132352, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 226269448073753225}
   m_SourcePrefab: {fileID: 100100000, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
 --- !u!4 &418892367510758722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 448740, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
   m_PrefabInstance: {fileID: 418892367511109030}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &418892367510976678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 132352, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
+  m_PrefabInstance: {fileID: 418892367511109030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8921000436320842682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418892367510976678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+--- !u!114 &226269448073753225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418892367510976678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 8921000436320842682}
+  _clip:
+    _id: 9a581d1d-6fa6-4003-8b57-f48c83cc5c29
+    _key: Bullet
 --- !u!198 &418892367529056172 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19802634, guid: 71b02155078e4bf4e962f302d3675af2, type: 3}
