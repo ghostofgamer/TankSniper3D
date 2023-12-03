@@ -63,6 +63,8 @@ GameObject:
   - component: {fileID: 4005297672459215073}
   - component: {fileID: 232923963}
   - component: {fileID: 2885482070935656431}
+  - component: {fileID: -7915958792211378721}
+  - component: {fileID: 4375217116016208356}
   m_Layer: 0
   m_Name: BTR
   m_TagString: Untagged
@@ -210,7 +212,7 @@ MonoBehaviour:
   _delay: 0.5
   _effectShooting: {fileID: 8740163126049139370}
   _enemy: {fileID: 2885482070935656431}
-  _audioSource: {fileID: 232923963}
+  _audioPlugin: {fileID: -7915958792211378721}
   _audioClip: {fileID: 8300000, guid: 60664b8d09887dd4eb6caaa81e55b14e, type: 3}
 --- !u!114 &4005297672459215087
 MonoBehaviour:
@@ -472,6 +474,51 @@ MonoBehaviour:
   _flyDamage: {fileID: 4005297672459214994}
   _canvas: {fileID: 4005297672544798691}
   _isBoss: 0
+--- !u!114 &-7915958792211378721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005297672459215085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 4375217116016208356}
+  _clip:
+    _id: 04a99dc3-e66c-416e-8ed6-ac87cdaa9c89
+    _key: ShootBTR
+--- !u!114 &4375217116016208356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005297672459215085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!1 &4005297672544798691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,13 +1170,69 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 105310, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7020518079071265846}
+    - targetCorrespondingSourceObject: {fileID: 105310, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5366099403546542601}
   m_SourcePrefab: {fileID: 100100000, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
 --- !u!198 &4005297672752464606 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19811046, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
   m_PrefabInstance: {fileID: 4005297672770701368}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4005297672770802534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 105310, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}
+  m_PrefabInstance: {fileID: 4005297672770701368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7020518079071265846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005297672770802534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 5366099403546542601}
+  _clip:
+    _id: bf2244d0-7f5b-4596-afa3-c393794b9c2e
+    _key: ExplosionRocket
+--- !u!114 &5366099403546542601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005297672770802534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!4 &4005297672770842632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 407600, guid: e6ea0c2b13012484ba2f5dc1054e6d75, type: 3}

@@ -7259,6 +7259,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0.66
       objectReference: {fileID: 0}
+    - target: {fileID: 2482728081838297373, guid: 1655ad8223f244d34a1dc63ee78eac3f, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2482728081838297375, guid: 1655ad8223f244d34a1dc63ee78eac3f, type: 3}
       propertyPath: m_Name
       value: SliderLoadingBar
@@ -9237,7 +9241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 996725953}
-  _cinemachineVirtualCamera: {fileID: 0}
   _fov: 90
 --- !u!1 &1013093206
 GameObject:
@@ -22217,8 +22220,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!114 &1507926975262261778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22236,8 +22241,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!23 &1507926975262261779
 MeshRenderer:
@@ -22519,7 +22526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1507926975518311530}
   _bulletsImages:
   - {fileID: 1507926975983263423}
   - {fileID: 1507926975520918650}
@@ -22685,8 +22691,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 1507926975518311528}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 8300000, guid: b7a51aaa5b5007c46a3c060aeb12af18, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!54 &1507926975518311536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22760,8 +22768,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 1507926975088276332}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!1 &1507926975520918648
 GameObject:
   m_ObjectHideFlags: 0
@@ -23161,6 +23172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 1507926975622280491}
   _tower: {fileID: 1507926975934268727}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -23560,8 +23572,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 3988176717590806621}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!114 &1821326189479598101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23664,8 +23679,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 1821326189479598083}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 8300000, guid: d373c70148cd53a4cabf9b94def2f003, type: 3}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &1821326189786484838
 GameObject:
   m_ObjectHideFlags: 0
@@ -24144,8 +24161,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 3665089318672777091}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!114 &3665089318672777212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24171,8 +24190,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 3665089318437093046}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!54 &3665089318672777214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24493,7 +24515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 3665089318672777210}
   _bulletsImages:
   - {fileID: 3665089319471108629}
   - {fileID: 3665089318998707338}
@@ -24932,8 +24953,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!23 &3665089319775377659
 MeshRenderer:
@@ -25009,8 +25032,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &3665089319775377663
 GameObject:
   m_ObjectHideFlags: 0
@@ -25077,6 +25102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 3665089320149962181}
   _tower: {fileID: 3665089319955436850}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -30406,7 +30432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1821326189479598110}
   _bulletsImages:
   - {fileID: 3988176717997169419}
   - {fileID: 3988176718610440442}
@@ -40392,8 +40417,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!120 &3988176717930234755
 LineRenderer:
   serializedVersion: 2
@@ -40512,6 +40539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 3988176717930234783}
   _tower: {fileID: 0}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -41250,8 +41278,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!23 &4366399400579943331
 MeshRenderer:
@@ -41327,8 +41357,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &4366399400579943335
 GameObject:
   m_ObjectHideFlags: 0
@@ -41760,8 +41792,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &4704393400899895037
 MonoBehaviour:
@@ -41780,8 +41814,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!33 &4704393400899895038
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42201,6 +42237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 4704393402362476178}
   _tower: {fileID: 4704393401867323371}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -42533,7 +42570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 4704393402650193288}
   _bulletsImages:
   - {fileID: 4704393402058259970}
   - {fileID: 4704393401817450710}
@@ -42792,8 +42828,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 4704393402650193294}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!65 &4704393402650193290
 BoxCollider:
@@ -42996,8 +43034,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 4704393400911424144}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!114 &4704393402650193397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43185,8 +43226,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!4 &4716523819100805969
 Transform:
   m_ObjectHideFlags: 0
@@ -43262,8 +43305,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!33 &4716523819100805973
 MeshFilter:
@@ -43304,6 +43349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 4716523820292126463}
   _tower: {fileID: 4716523819378399842}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -43817,8 +43863,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 4716523819856796206}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!114 &4716523819978147151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43848,8 +43897,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 4716523819978147144}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!224 &4716523819981691574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44340,7 +44391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 4716523819978147185}
   _bulletsImages:
   - {fileID: 4716523819027377476}
   - {fileID: 4716523820102794741}
@@ -44975,6 +45025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 3988176717611515852}
   _tower: {fileID: 7570665060663897614}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -45009,6 +45060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 0}
   _tower: {fileID: 7570665060357367423}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30
@@ -45471,8 +45523,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 0}
-  _cameraAim: {fileID: 8256347664766619881}
-  _cinemachinecamera: {fileID: 0}
+  _cineMachineCamera: {fileID: 0}
+  _fovStart: 0
+  _fov: 0
+  _visibilityAim: {fileID: 0}
+  _aimInputButton: {fileID: 0}
 --- !u!1 &8256347664758906171
 GameObject:
   m_ObjectHideFlags: 0
@@ -45534,8 +45589,10 @@ MonoBehaviour:
   _container: {fileID: 702151550}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 8256347664758906174}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!82 &8256347664758906174
 AudioSource:
   m_ObjectHideFlags: 0
@@ -45797,7 +45854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5ee7c45b0f7ef4db9bd597c0d0bf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 8256347664758906173}
   _bulletsImages:
   - {fileID: 8256347665992518535}
   - {fileID: 8256347666005641026}
@@ -45931,8 +45987,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!23 &8256347665902294465
 MeshRenderer:
@@ -46036,8 +46094,10 @@ MonoBehaviour:
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 0}
 --- !u!1 &8256347665920492802
 GameObject:
   m_ObjectHideFlags: 0
@@ -46170,6 +46230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTransform: {fileID: 8256347665776514612}
   _tower: {fileID: 8256347665926050811}
+  _transformTower: {fileID: 0}
   _limitAngles: 50
   _minLimitAngles: 50
   _limitAnglesY: 30

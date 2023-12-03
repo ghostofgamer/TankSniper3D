@@ -1495,6 +1495,8 @@ GameObject:
   - component: {fileID: 1591013797}
   - component: {fileID: 1486075565}
   - component: {fileID: 73074354944907583}
+  - component: {fileID: 5689232332788048122}
+  - component: {fileID: 5294852983757485371}
   m_Layer: 0
   m_Name: EnemySniper
   m_TagString: Untagged
@@ -1552,7 +1554,7 @@ MonoBehaviour:
   _delay: 1.3
   _effectShooting: {fileID: 1492403325338412279}
   _enemy: {fileID: 73074354944907583}
-  _audioSource: {fileID: 1486075565}
+  _audioPlugin: {fileID: 5689232332788048122}
   _audioClip: {fileID: 8300000, guid: f7ada98b031dd3b4c87d8017d7540d5e, type: 3}
 --- !u!114 &6094455062841686047
 MonoBehaviour:
@@ -1846,6 +1848,51 @@ MonoBehaviour:
   _flyDamage: {fileID: 6094455062841687011}
   _canvas: {fileID: 6094455064934833150}
   _isBoss: 0
+--- !u!114 &5689232332788048122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094455062841686032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 5294852983757485371}
+  _clip:
+    _id: 4f031d98-42b9-4bf9-9cad-f36fd0528f9d
+    _key: SniperShoot
+--- !u!114 &5294852983757485371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094455062841686032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!1 &6094455063075773595
 GameObject:
   m_ObjectHideFlags: 0

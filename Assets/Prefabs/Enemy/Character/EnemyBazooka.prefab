@@ -1495,6 +1495,8 @@ GameObject:
   - component: {fileID: 404762936}
   - component: {fileID: 1808951596}
   - component: {fileID: 1065867574639497544}
+  - component: {fileID: 1157576301358396345}
+  - component: {fileID: 2569487862431919956}
   m_Layer: 0
   m_Name: EnemyBazooka
   m_TagString: Untagged
@@ -1552,7 +1554,7 @@ MonoBehaviour:
   _delay: 3
   _effectShooting: {fileID: 5675368918189278006}
   _enemy: {fileID: 1065867574639497544}
-  _audioSource: {fileID: 1808951596}
+  _audioPlugin: {fileID: 1157576301358396345}
   _audioClip: {fileID: 8300000, guid: a65283f0d3759484791603806b05416d, type: 3}
 --- !u!114 &6105146996523825080
 MonoBehaviour:
@@ -1843,6 +1845,51 @@ MonoBehaviour:
   _flyDamage: {fileID: 6105146996523825024}
   _canvas: {fileID: 6105146996456803239}
   _isBoss: 0
+--- !u!114 &1157576301358396345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105146996523825077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 2569487862431919956}
+  _clip:
+    _id: b5bae30a-a625-4ac1-9fdd-af62b308b2a5
+    _key: Bazuka
+--- !u!114 &2569487862431919956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105146996523825077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!1 &6105146996769748484
 GameObject:
   m_ObjectHideFlags: 0

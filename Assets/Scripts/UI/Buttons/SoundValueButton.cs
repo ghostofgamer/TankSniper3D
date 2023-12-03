@@ -33,14 +33,21 @@ public class SoundValueButton : AbstractButton
 
     private void SetValue()
     {
-        AudioListener.pause = !AudioListener.pause;
+        AudioListener.volume = 0;
+
+        //if (AudioListener.volume > 0)
+        //    AudioListener.volume = 0;
+        //if (AudioListener.volume == 0)
+        //    AudioListener.volume = 1;
+
+        //AudioListener.pause = !AudioListener.pause;
         _mute.gameObject.SetActive(!_mute.gameObject.activeSelf);
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
 
-        if (AudioListener.pause == true)
-            _save.SetData(Save.Sound, _settingsScreen.SoundOff);
+        //if (AudioListener.pause == true)
+        //    _save.SetData(Save.Sound, _settingsScreen.SoundOff);
 
-        else
-            _save.SetData(Save.Sound, _settingsScreen.SoundOn);
+        //else
+        //    _save.SetData(Save.Sound, _settingsScreen.SoundOn);
     }
 }

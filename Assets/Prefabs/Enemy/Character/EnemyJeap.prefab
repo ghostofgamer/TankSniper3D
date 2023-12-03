@@ -1217,6 +1217,8 @@ GameObject:
   - component: {fileID: 4427102641654296584}
   - component: {fileID: 4427102641654296628}
   - component: {fileID: 494857086}
+  - component: {fileID: 1341496557838349098}
+  - component: {fileID: 2380906977282914794}
   m_Layer: 0
   m_Name: EnemyBazooka
   m_TagString: Untagged
@@ -1275,7 +1277,7 @@ MonoBehaviour:
   _delay: 3.5
   _effectShooting: {fileID: 3594933407746727946}
   _enemy: {fileID: 0}
-  _audioSource: {fileID: 494857086}
+  _audioPlugin: {fileID: 2380906977282914794}
   _audioClip: {fileID: 8300000, guid: a65283f0d3759484791603806b05416d, type: 3}
 --- !u!82 &494857086
 AudioSource:
@@ -1373,6 +1375,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1341496557838349098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427102641654296581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+--- !u!114 &2380906977282914794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427102641654296581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 1341496557838349098}
+  _clip:
+    _id: b5bae30a-a625-4ac1-9fdd-af62b308b2a5
+    _key: Bazuka
 --- !u!1 &4427102641714199389
 GameObject:
   m_ObjectHideFlags: 0
@@ -4007,7 +4054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _flyDamage: {fileID: 7622884141629759357}
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 7622884141629759301}
   _isBoss: 0
 --- !u!114 &7622884141629759356
 MonoBehaviour:
@@ -4803,7 +4850,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.554, y: 1}
   m_AnchoredPosition: {x: 0.91700745, y: 0}
   m_SizeDelta: {x: 0.175, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5088,7 +5135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7622884142173154817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6626,13 +6673,69 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4588154721802469259}
+    - targetCorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7358977615175932753}
   m_SourcePrefab: {fileID: 100100000, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
 --- !u!4 &7622884141532461480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 404992, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
   m_PrefabInstance: {fileID: 7622884141532845992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7622884141532763766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+  m_PrefabInstance: {fileID: 7622884141532845992}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4588154721802469259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622884141532763766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 7358977615175932753}
+  _clip:
+    _id: 29895de8-659d-436f-8c9c-4b64cfc77064
+    _key: ExplosionGrenade
+--- !u!114 &7358977615175932753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622884141532763766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!198 &7622884141551896846 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19848870, guid: a7c694f0877ea874fa57e033221095c3, type: 3}

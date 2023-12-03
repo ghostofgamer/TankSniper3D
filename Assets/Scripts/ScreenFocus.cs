@@ -31,7 +31,8 @@ public class ScreenFocus : MonoBehaviour
 
     private void MuteAudio(bool value)
     {
-        AudioListener.volume= value ? 0 : 1;
+        //AudioListener.volume= value ? 0 : 1;
+        AudioListener.pause = value ? true : false;
     }
 
     private void PauseGame(bool value)

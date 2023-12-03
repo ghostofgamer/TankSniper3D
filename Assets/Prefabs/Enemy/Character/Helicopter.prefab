@@ -1012,6 +1012,8 @@ GameObject:
   - component: {fileID: 4538311402113166430}
   - component: {fileID: 4538311402113166431}
   - component: {fileID: 123237009}
+  - component: {fileID: 1997418681415265700}
+  - component: {fileID: 4974045333903053063}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -1286,7 +1288,7 @@ MonoBehaviour:
   _delay: 1
   _effectShooting: {fileID: 5431425619429768052}
   _enemy: {fileID: 4538311402113166431}
-  _audioSource: {fileID: 123237009}
+  _audioPlugin: {fileID: 1997418681415265700}
   _audioClip: {fileID: 8300000, guid: e01da3f3919d17142a336966f306fec0, type: 3}
 --- !u!114 &4538311402113166428
 MonoBehaviour:
@@ -1441,6 +1443,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1997418681415265700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619271209236541146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 4974045333903053063}
+  _clip:
+    _id: 7893e2d3-f070-49fb-8192-80e78658c324
+    _key: ShootHelicopter
+--- !u!114 &4974045333903053063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619271209236541146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!1 &3714726864665768043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,8 +3451,64 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 180860, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 213904253245136911}
+    - targetCorrespondingSourceObject: {fileID: 180860, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4039908647887431012}
   m_SourcePrefab: {fileID: 100100000, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+--- !u!1 &4538311400957214820 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 180860, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}
+  m_PrefabInstance: {fileID: 4538311400957395480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &213904253245136911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538311400957214820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 4039908647887431012}
+  _clip:
+    _id: 135b6d3d-e30d-4df3-b60a-4e7ea60f6ad8
+    _key: ExplosionGas
+--- !u!114 &4039908647887431012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4538311400957214820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!4 &4538311400957519260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 419716, guid: 89fdb9fee1f1fe94cb02018221255e50, type: 3}

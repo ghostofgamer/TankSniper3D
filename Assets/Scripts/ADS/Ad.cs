@@ -7,18 +7,22 @@ using UnityEngine.SceneManagement;
 
 public abstract class Ad : MonoBehaviour
 {
+    private bool _isActive;
+
     public abstract void Show();
 
     protected virtual void OnOpen()
     {
         Time.timeScale = 0;
         AudioListener.volume = 0f;
+        //AudioListener.pause = true;
     }
 
     protected virtual void OnClose(bool isClosed)
     {
         Time.timeScale = 1;
         AudioListener.volume = 1f;
+        //AudioListener.pause = false;
         SceneManager.LoadScene("MainScene");
     }
 

@@ -11,7 +11,8 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private ParticleSystem _effectShooting;
     [SerializeField] private Enemy _enemy;
     [Header("Звук")]
-    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioClip _audioClip;
 
     private readonly int _ammoCount = 10;
@@ -40,7 +41,8 @@ public class EnemyShoot : MonoBehaviour
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
         {
-            _audioSource.PlayOneShot(_audioClip);
+            //_audioSource.PlayOneShot(_audioClip);
+            _audioPlugin.PlayOneShootKey();
             LookTarget(_enemy.Target.transform);
             bullet.Init(shootingPosition);
             _effectShooting.Play();

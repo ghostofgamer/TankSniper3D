@@ -1827,6 +1827,8 @@ GameObject:
   - component: {fileID: 848932663}
   - component: {fileID: 8770582803391137042}
   - component: {fileID: 596374710778112539}
+  - component: {fileID: 5746408254864802424}
+  - component: {fileID: 4402340903818862274}
   m_Layer: 0
   m_Name: MissileTank
   m_TagString: Untagged
@@ -1869,6 +1871,7 @@ MonoBehaviour:
   _cineMachineCamera: {fileID: 0}
   _fovStart: 40
   _fov: 15
+  _visibilityAim: {fileID: 0}
   _aimInputButton: {fileID: 0}
 --- !u!114 &8256347666278764857
 MonoBehaviour:
@@ -2039,11 +2042,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabBullet: {fileID: 6661292686757236980, guid: 49f8b6acd002c09428cb867f158da88d, type: 3}
-  _shootPosition: {fileID: 8256347665312937863}
+  _shootPosition: {fileID: 0}
   _container: {fileID: 0}
   _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioSource: {fileID: 8256347666278764838}
+  _audioPlugin: {fileID: 4402340903818862274}
   _audioClip: {fileID: 8300000, guid: a1b3f841b40443d4b8b68bfcbe5cb1dd, type: 3}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 8256347666278764858}
@@ -2090,6 +2093,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tower: {fileID: 8256347665010958307}
   _startTransform: {fileID: 8256347665126873644}
+--- !u!114 &5746408254864802424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256347666278764835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+--- !u!114 &4402340903818862274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256347666278764835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 5746408254864802424}
+  _clip:
+    _id: 64a45a32-31c5-4c6a-aca1-8864f29f3303
+    _key: Shoot4Lvl
 --- !u!1 &8441455199993484038
 GameObject:
   m_ObjectHideFlags: 0
