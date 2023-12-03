@@ -4115,6 +4115,7 @@ MonoBehaviour:
   _minLimitAngles: 50
   _limitAnglesY: 30
   _minLimitAnglesY: 30
+  _cameraSpeed: 6.531
   target: {fileID: 731349677}
   offset: {x: 3.651, y: 3.5, z: -10}
   sensitivity: 50
@@ -9044,6 +9045,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6918335804879130623, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _hitPoint
       value: 
@@ -12418,6 +12423,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7391737771818701980, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
   m_PrefabInstance: {fileID: 6279469141111178849}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4674612301084156016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8951879712904608213, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
+  m_PrefabInstance: {fileID: 6279469141111178849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a80a4103b2fb7e46808373a587eb66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4704393402210985729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12948,6 +12964,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5323100679137767640, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
+      propertyPath: _enemy
+      value: 
+      objectReference: {fileID: 4674612301084156016}
     - target: {fileID: 5918626513872429029, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
       propertyPath: _alarm
       value: 
@@ -12995,6 +13015,14 @@ PrefabInstance:
     - target: {fileID: 7391737771818701980, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951879712904608213, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
+      propertyPath: _health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951879712904608213, guid: fb2c09d1abd4cb041b2a35c8661ac9c7, type: 3}
+      propertyPath: _isBoss
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

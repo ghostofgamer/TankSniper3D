@@ -15,6 +15,7 @@ public class ReviewCamera : MonoBehaviour
     [SerializeField] private float _minLimitAngles = 50f;
     [SerializeField] private float _limitAnglesY = 30f;
     [SerializeField] private float _minLimitAnglesY = 30f;
+    [SerializeField]private float _cameraSpeed;
 
     private float _xRotation = 0;
     private float _yRotation = 0;
@@ -93,8 +94,20 @@ public class ReviewCamera : MonoBehaviour
             ////transform.position = _target.position - transform.forward * _distanceFromTarget;
             //transform.position = _target.position - transform.localRotation * offset/** _distanceFromTarget*/;
             ////transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + _target.position, 3 * Time.deltaTime);
-            RoatteNew();
+            ///
+
+
+            //RoatteNew();
+
             //Rotate();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            RoatteNew();
         }
     }
 
@@ -173,20 +186,42 @@ public class ReviewCamera : MonoBehaviour
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0) offset.z -= zoom;
         //offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
 
-        X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X")/* * sensitivity*//* * Time.deltaTime*/;
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
-        Y += Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        Y += Input.GetAxis("Mouse Y")/* * sensitivity*//* * Time.deltaTime*/;
         Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
         //Quaternion targetRotation = Quaternion.Euler(-Y, X, 0);
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
         //float playerRotationY = Mathf.Lerp(transform.localEulerAngles.y, X, Time.deltaTime * 10);
         //Vector3 targetNew = Vector3.Lerp(transform.localEulerAngles, new Vector3(-Y, X, 0), Time.deltaTime * 10);
-        transform.localEulerAngles = new Vector3(-Y, X, 0);
+
+        Quaternion newRotation = Quaternion.Euler(-Y, X, 0f);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _cameraSpeed * Time.deltaTime);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,   Time.deltaTime/ 0.5f);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
+        Quaternion quater = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * _cameraSpeed);
+        transform.rotation = quater;
 
 
+
+
+        //transform.localEulerAngles = new Vector3(-Y, X, 0);
+        //Vector3 newPosition = newRotation * new Vector3(0f, 0f, tmpPositionZ) + tempPositionBot;
+        //transform.position = newPosition;
         //transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, new Vector3(-Y, X, 0), t);
+        //transform.position = transform.localRotation * offset + target.position;
 
-        transform.position = transform.localRotation * offset + target.position;
+        Vector3 velocity = new Vector3(0,0,0);
+        Vector3 move = Vector3.Slerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, _cameraSpeed * Time.deltaTime);
+        transform.position = move;
+        //transform.position = Vector3.Lerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, _cameraSpeed * Time.deltaTime);
+        //transform.position = Vector3.Slerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, Time.deltaTime/0.5f);
+        //transform.position = Vector3.MoveTowards(transform.position, /*transform.localRotation*/newRotation * offset + target.position, Time.deltaTime*3f);
+        //transform.position = Vector3.SmoothDamp(transform.position, /*transform.localRotation*/newRotation * offset + target.position,ref velocity, 0.1f);
+
+
+
+        //transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + target.position, 3 * Time.deltaTime);
 
 
         //transform.position = Vector3.Lerp(transform.position, transform.localRotation * offset + target.position, 1f);

@@ -86,10 +86,19 @@ public abstract class Weapon : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.GetComponent<Enemy>())
+                if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    _cameraAim.CinemachineMove(bullet);
-                    _cameraAim.OnCinemaMachine();
+                    if (enemy.IsBoss && enemy.CurrentHealth < 30)
+                    {
+                        _cameraAim.CinemachineMove(bullet);
+                        _cameraAim.OnCinemaMachine();
+                    }
+
+                    if (!enemy.IsBoss)
+                    {
+                        _cameraAim.CinemachineMove(bullet);
+                        _cameraAim.OnCinemaMachine();
+                    }
                 }
             }
         }
@@ -153,7 +162,10 @@ public abstract class Weapon : MonoBehaviour
             {
                 _audioSource.PlayOneShot(_audioClip);
                 //_audioSource.Play();
-                bullet.Init(_shootPosition);
+                Transform transformmm = _shootPosition;
+                bullet.Init(transformmm);
+                Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
+                transformmm.position = vector;
             }
 
             yield return new WaitForSeconds(delay);

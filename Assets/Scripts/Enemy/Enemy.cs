@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     public Player Target => _target;
     public bool IsDying => _currentHealth <= 0;
+    public bool IsBoss => _isBoss;
+    public int CurrentHealth => _currentHealth;
 
     public event UnityAction<int, int> HealthChanged;
 
@@ -30,8 +32,8 @@ public class Enemy : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _currentHealth -= damage;
         _coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
+        _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);
         _canvas.SetActive(true);
         //_billboard.enabled = true;
