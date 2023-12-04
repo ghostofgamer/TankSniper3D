@@ -165,19 +165,21 @@ public abstract class Weapon : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
 
+                Transform transformmm = _shootPosition;
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 //_audioSource.PlayOneShot(_audioClip);
                 //_sourceAudio.PlayOneShot("Shoot1Lvl");
                 _audioPlugin.PlayOneShootKey();
                 //_audioSource.Play();
-                Transform transformmm = _shootPosition;
                 bullet.Init(transformmm);
-                Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
-                transformmm.position = vector;
+                //Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
+                //transformmm.position = vector;
             }
 
             yield return new WaitForSeconds(delay);
+            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
+            transformmm.position = vector;
             //yield return new WaitForSeconds(0.165f);
             //_audioSource.Stop();
         }

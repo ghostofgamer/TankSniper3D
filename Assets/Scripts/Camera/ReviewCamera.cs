@@ -194,7 +194,7 @@ public class ReviewCamera : MonoBehaviour
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
         //float playerRotationY = Mathf.Lerp(transform.localEulerAngles.y, X, Time.deltaTime * 10);
         //Vector3 targetNew = Vector3.Lerp(transform.localEulerAngles, new Vector3(-Y, X, 0), Time.deltaTime * 10);
-
+        Debug.Log("Õ" + X);
         Quaternion newRotation = Quaternion.Euler(-Y, X, 0f);
         //transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _cameraSpeed * Time.deltaTime);
         //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,   Time.deltaTime/ 0.5f);
