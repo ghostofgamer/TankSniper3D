@@ -20,7 +20,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
-
+    [SerializeField]private Transform _defPos;
     protected ObjectPool<Bullet> _pool;
 
     protected readonly int _maxAmmo = 5;
@@ -95,13 +95,13 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    if (enemy.IsBoss && enemy.CurrentHealth < 30)
-                    {
-                        _cameraAim.CinemachineMove(bullet);
-                        _cameraAim.OnCinemaMachine();
-                    }
+                    //if (enemy.IsBoss && enemy.CurrentHealth < 30)
+                    //{
+                    //    _cameraAim.CinemachineMove(bullet);
+                    //    _cameraAim.OnCinemaMachine();
+                    //}
 
-                    if (!enemy.IsBoss)
+                    if (!enemy.IsBoss|| enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
                         _cameraAim.CinemachineMove(bullet);
                         _cameraAim.OnCinemaMachine();
@@ -164,25 +164,26 @@ public abstract class Weapon : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-
-                Transform transformmm = _shootPosition;
+            //Transform transformmm = _shootPosition;
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 //_audioSource.PlayOneShot(_audioClip);
                 //_sourceAudio.PlayOneShot("Shoot1Lvl");
                 _audioPlugin.PlayOneShootKey();
                 //_audioSource.Play();
-                bullet.Init(transformmm);
+                bullet.Init(_shootPosition);
                 //Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
                 //transformmm.position = vector;
             }
 
             yield return new WaitForSeconds(delay);
-            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
-            transformmm.position = vector;
+            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.5f;
+            _shootPosition.position = vector;
             //yield return new WaitForSeconds(0.165f);
             //_audioSource.Stop();
         }
+
+        _shootPosition = _defPos;
     }
 
     protected void SetFirstShoot()

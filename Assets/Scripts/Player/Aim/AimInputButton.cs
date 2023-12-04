@@ -23,11 +23,14 @@ public class AimInputButton : AbstractButton
 
     private void Update()
     {
+        //if (!_killedInfo.AllDie)
+        //{
         _eventTrigger.enabled = !_imageReload.activeSelf;
 
         if (!_weapon.IsReload)
         {
-            _buttonMover.Move();
+            if (!_killedInfo.AllDie)
+                _buttonMover.Move();
 
             if (isPressed)
             {
@@ -40,11 +43,12 @@ public class AimInputButton : AbstractButton
             }
         }
 
-        if (!IsZoom|| _weapon.IsReload)
+        if (!IsZoom || _weapon.IsReload)
         {
             _towerRotate.ResetRotate();
             _cameraAim.CameraFovBack();
         }
+        //}
     }
 
     public override void OnClick()
@@ -68,8 +72,8 @@ public class AimInputButton : AbstractButton
 
     private void DoShoot()
     {
-        //_weapon.Shoot();
         StartCoroutine(PauseZoomOff());
+        //_weapon.Shoot();
         //_buttonMover.Up();
         //IsZoom = false;
     }

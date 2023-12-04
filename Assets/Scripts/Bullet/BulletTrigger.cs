@@ -74,7 +74,9 @@ public class BulletTrigger : MonoBehaviour
             Hit();
 
             if (!player.GetComponent<PlayerMover>()._isHidden)
+            {
                 player.ApplyDamage(_bullet.Damage);
+            }
         }
 
         //hit?.Invoke();

@@ -33,7 +33,11 @@ public class SoundValueButton : AbstractButton
 
     private void SetValue()
     {
+        if(AudioListener.volume!=0)
         AudioListener.volume = 0;
+
+        else 
+            AudioListener.volume = 1;
 
         //if (AudioListener.volume > 0)
         //    AudioListener.volume = 0;

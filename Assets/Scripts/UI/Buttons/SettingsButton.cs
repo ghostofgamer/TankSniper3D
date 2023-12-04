@@ -9,5 +9,6 @@ public class SettingsButton : AbstractButton
     public override void OnClick()
     {
         _settingsScreen.Open();
+        AudioListener.pause = true;
     }
 }

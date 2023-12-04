@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ScreenFocus : MonoBehaviour
 {
+    [SerializeField] private SettingsScreen _settingsScreen;
+
     private void OnEnable()
     {
         Application.focusChanged += OnInBackgroundChangeApp;
@@ -19,14 +21,21 @@ public class ScreenFocus : MonoBehaviour
 
     private void OnInBackgroundChangeApp(bool inApp)
     {
-        MuteAudio(!inApp);
-        PauseGame(!inApp);
+        if (_settingsScreen.GetComponent<CanvasGroup>().alpha == 0)
+        {
+            MuteAudio(!inApp);
+            PauseGame(!inApp);
+        }
     }
 
     private void OnInBackgroundChangeWeb(bool isBackground)
     {
-        MuteAudio(isBackground);
-        PauseGame(isBackground);
+        if (_settingsScreen.GetComponent<CanvasGroup>().alpha == 0)
+        {
+            MuteAudio(isBackground);
+            PauseGame(isBackground);
+
+        }
     }
 
     private void MuteAudio(bool value)
