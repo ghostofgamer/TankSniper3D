@@ -11,19 +11,34 @@ public class SoundValueButton : AbstractButton
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
 
+    private int _soundVolumeValue;
+    private int _defaultValue = 1;
+
     private void Start()
     {
-        if (AudioListener.pause == true)
+        _soundVolumeValue = _load.Get(Save.Volume, _defaultValue);
+
+        if (_soundVolumeValue == 0)
         {
             _mute.gameObject.SetActive(true);
             _unMute.gameObject.SetActive(false);
         }
         else
         {
-            //_save.SetSound(_settingsScreen.SoundOn);
             _mute.gameObject.SetActive(false);
             _unMute.gameObject.SetActive(true);
         }
+        //if (AudioListener.pause == true)
+        //{
+        //    _mute.gameObject.SetActive(true);
+        //    _unMute.gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    //_save.SetSound(_settingsScreen.SoundOn);
+        //    _mute.gameObject.SetActive(false);
+        //    _unMute.gameObject.SetActive(true);
+        //}
     }
 
     public override void OnClick()
@@ -33,10 +48,9 @@ public class SoundValueButton : AbstractButton
 
     private void SetValue()
     {
-        if(AudioListener.volume!=0)
-        AudioListener.volume = 0;
-
-        else 
+        if (AudioListener.volume != 0)
+            AudioListener.volume = 0;
+        else
             AudioListener.volume = 1;
 
         //if (AudioListener.volume > 0)
@@ -47,6 +61,8 @@ public class SoundValueButton : AbstractButton
         //AudioListener.pause = !AudioListener.pause;
         _mute.gameObject.SetActive(!_mute.gameObject.activeSelf);
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
+
+        _save.SetData(Save.Volume, AudioListener.volume);
 
         //if (AudioListener.pause == true)
         //    _save.SetData(Save.Sound, _settingsScreen.SoundOff);

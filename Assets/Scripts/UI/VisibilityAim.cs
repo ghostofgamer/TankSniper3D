@@ -29,7 +29,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage,1,_speed,-_speedImage, 0));
+        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage, 1, _speed, -_speedImage, 0, 0, false));
     }
 
     public void OnFadeOut()
@@ -37,19 +37,20 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage, 0, -_speed, _speedImage, 0.6f));
+        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _startImage, 0, -_speed, _speedImage, 0.6f, 255, true));
     }
 
-    IEnumerator Fade(CanvasGroup canvasGroup ,Image image,int alpha,float speed,float speedImage,float time)
+    IEnumerator Fade(CanvasGroup canvasGroup, Image image, int alpha, float speed, float speedImage, float time, int color, bool flag)
     {
         yield return new WaitForSeconds(time);
-
+        //_startImage.color = new Color(_startImage.color.r, _startImage.color.g, _startImage.color.b, color);
+        _startImage.gameObject.SetActive(flag);
         while (canvasGroup.alpha != alpha)
         {
             canvasGroup.alpha += speed * Time.deltaTime;
-            float a = _startImage.color.a;
-            a += speedImage * Time.deltaTime;
-            _startImage.color = new Color(_startImage.color.r, _startImage.color.g, _startImage.color.b, a);
+            //float a = _startImage.color.a;
+            //a += speedImage * Time.deltaTime;
+            //_startImage.color = new Color(_startImage.color.r, _startImage.color.g, _startImage.color.b, a);
             yield return null;
         }
     }
@@ -57,5 +58,5 @@ public class VisibilityAim : MonoBehaviour
     public void OffCanvasActive()
     {
         NeedCanvasGroup.alpha = 0;
-    } 
+    }
 }

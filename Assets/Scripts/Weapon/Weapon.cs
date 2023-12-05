@@ -100,7 +100,6 @@ public abstract class Weapon : MonoBehaviour
                     //    _cameraAim.CinemachineMove(bullet);
                     //    _cameraAim.OnCinemaMachine();
                     //}
-
                     if (!enemy.IsBoss|| enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
                         _cameraAim.CinemachineMove(bullet);

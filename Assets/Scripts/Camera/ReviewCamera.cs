@@ -15,7 +15,17 @@ public class ReviewCamera : MonoBehaviour
     [SerializeField] private float _minLimitAngles = 50f;
     [SerializeField] private float _limitAnglesY = 30f;
     [SerializeField] private float _minLimitAnglesY = 30f;
-    [SerializeField]private float _cameraSpeed;
+    [SerializeField] private float _cameraSpeed;
+    private bool _isZoomStart = false;
+    private Coroutine coroutine;
+    Vector3 targetPos;
+    Vector3 NewTargetPos;
+    Quaternion targetRot;
+    Quaternion NewtargetRot;
+
+
+
+
 
     private float _xRotation = 0;
     private float _yRotation = 0;
@@ -40,32 +50,37 @@ public class ReviewCamera : MonoBehaviour
 
 
 
-    [SerializeField]
-    private float _mouseSensitivity = 3.0f;
+    //[SerializeField]
+    //private float _mouseSensitivity = 3.0f;
 
-    private float _rotationY;
-    private float _rotationX;
+    //private float _rotationY;
+    //private float _rotationX;
 
-    [SerializeField]
-    private Transform _target;
+    //[SerializeField]
+    //private Transform _target;
 
-    [SerializeField]
-    private float _distanceFromTarget = 3.0f;
+    //[SerializeField]
+    //private float _distanceFromTarget = 3.0f;
 
-    private Vector3 _currentRotation;
-    private Vector3 _smoothVelocity = Vector3.zero;
+    //private Vector3 _currentRotation;
+    //private Vector3 _smoothVelocity = Vector3.zero;
 
-    [SerializeField]
-    private float _smoothTime = 0.2f;
+    //[SerializeField]
+    //private float _smoothTime = 0.2f;
 
-    [SerializeField]
-    private Vector2 _rotationXMinMax = new Vector2(-40, 40);
+    //[SerializeField]
+    //private Vector2 _rotationXMinMax = new Vector2(-40, 40);
 
     private void Start()
     {
         transform.position = target.position + offset;
-        minlimitX = Mathf.Abs(minlimitX);
-        if (minlimitX > 90) minlimitX = 90;
+
+
+        //minlimitX = Mathf.Abs(minlimitX);
+        //if (minlimitX > 90) minlimitX = 90;
+
+
+
         //offset = new Vector3(offset.x, offset.y, -Mathf.Abs(zoomMax) / 2);
         //_xRotation = transform.rotation.y;
         //_yRotation = transform.rotation.x;
@@ -76,17 +91,17 @@ public class ReviewCamera : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            if (!_isZoomStart)
+                RoatteNew();
             //float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
             //float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
 
             //_rotationY -= mouseX;
             //_rotationX -= mouseY;
-
             //// Apply clamping for x rotation 
             //_rotationX = Mathf.Clamp(_rotationX, _rotationXMinMax.x, _rotationXMinMax.y);
 
             //Vector3 nextRotation = new Vector3(_rotationX, -_rotationY);
-
             //// Apply damping between rotation changes
             //_currentRotation = Vector3.SmoothDamp(_currentRotation, nextRotation, ref _smoothVelocity, _smoothTime);
             //transform.localEulerAngles = _currentRotation;
@@ -97,95 +112,38 @@ public class ReviewCamera : MonoBehaviour
             ///
 
 
-            //RoatteNew();
-
             //Rotate();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (Input.GetMouseButton(0))
+        else
         {
-            RoatteNew();
+            //Y = transform.rotation.x;
+            //Debug.Log(transform.rotation.x);
+            //X = -transform.rotation.y;
+            Stay();
         }
     }
 
-    //private void PIZDEC()
+    //private void FixedUpdate()
     //{
-    //    float screenYdistance = 15; // отступ от края экрана
+    //    if (Input.GetMouseButton(0))
+    //    {
+    //        if (!_isZoomStart)
+    //            RoatteNew();
+    //    }
+    //    else
+    //    {
 
-    //    float mouseX = Input.GetAxis("Mouse X");
-    //    float mouseY = Input.GetAxis("Mouse Y");
+    //        Stay();
+    //    }
 
-    //    float rotationY = Camera.main.transform.localEulerAngles.y;
-    //    float height = Camera.main.transform.position.z;
-
-    //    //Управление зумом
-    //    if (scrollWheel != 0) cameraZoom += scrollWheel * zoomSpeed;
-    //    cameraZoom = Mathf.Clamp(cameraZoom, zoomMin, zoomMax);
-
-    //    //Управление наклоном
-    //    float playerY = Camera.main.WorldToScreenPoint(transform.position).y; //Кэшируем положение в стек
-    //    if ((playerY <= Camera.main.pixelHeight - screenYdistance && mouseY < 0) || (playerY >= screenYdistance && mouseY > 0)) //Наклоняем камеру, если игрок в кадре
-    //        rotationX -= mouseY * sensitivity;
-
-    //    //Поддержание дистанции
-    //    Vector3 position = transform.position - ((transform.position -
-    //    Camera.main.transform.position).normalized * cameraZoom);
-    //    position = new Vector3(position.x, transform.position.y + cameraZoom / 2, position.z); // корректировка высоты
-
-    //    //Управление вращением и наклоном
-    //    Camera.main.transform.RotateAround(transform.position, Vector3.up, mouseX);
-    //    Quaternion lookRotation = Quaternion.LookRotation((transform.position + Vector3.up * cameraZoom) - Camera.main.transform.position); //Поворот в точку над игроком
-    //    Camera.main.transform.position = (transform.position + Vector3.up * cameraZoom) + lookRotation * Vector3.back * cameraZoom;
-    //    Camera.main.transform.localEulerAngles = new Vector3(rotationX, lookRotation.eulerAngles.y, 0);
     //}
-
-    //private void LateUpdate()
-    //{
-    //    RoatteNew();
-    //}
-
-
-
-    //private void NEW()
-    //{
-    //    float mouseSence = 2.5f;
-    //    float rotationX=0;
-    //    float rotationY=0;
-
-    //    rotationX += Input.GetAxis(MouseX) * (mouseSence);
-
-    //    rotationY -= (Input.GetAxis("Mouse Y") * (mouseSence));
-    //    //Приближаем камеру
-    //    var position = Mathf.Clamp(transform.position + (Input.GetAxis("Mouse ScrollWheel") * 13), -90, 90);
-
-    //    //Ограничиваем угол повора камеры по оси Y, если нужно
-    //    rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-    //    //Ограничиваем угол повора камеры по оси Y, если нужно
-    //    rotationX = Mathf.Clamp(rotationX, minimumX, maximumX);
-    //    //Определяем позицию обьекта, вокруг которого вращаемся
-    //    tempPositionBot = new Vector3(targetObj.transform.position.x,
-    //                                   targetObj.transform.position.y + tmpPositionY,//Здесь определяется точка фокуса камеры
-    //                                   targetObj.transform.position.z);
-
-    //    tmpPositionZ = cameraPositionZ * 0.1f;
-
-    //    newRotation = Quaternion.Euler(rotationY, rotationX, 0f);
-    //    newPosition = newRotation * new Vector3(0f, 0f, tmpPositionZ) + tempPositionBot;
-
-    //    transform.rotation = newRotation;
-    //    transform.position = newPosition;
-    //}
-
 
     public void RoatteNew()
     {
         //if (Input.GetAxis("Mouse ScrollWheel") > 0) offset.z += zoom;
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0) offset.z -= zoom;
         //offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
-
+        Debug.Log("Х" + X);
         X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X")/* * sensitivity*//* * Time.deltaTime*/;
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
         Y += Input.GetAxis("Mouse Y")/* * sensitivity*//* * Time.deltaTime*/;
@@ -195,12 +153,22 @@ public class ReviewCamera : MonoBehaviour
         //float playerRotationY = Mathf.Lerp(transform.localEulerAngles.y, X, Time.deltaTime * 10);
         //Vector3 targetNew = Vector3.Lerp(transform.localEulerAngles, new Vector3(-Y, X, 0), Time.deltaTime * 10);
         //Debug.Log("Х" + X);
-        Quaternion newRotation = Quaternion.Euler(-Y, X, 0f);
+
+        //Quaternion newRotation = Quaternion.Euler(-Y, X, 0f);
+        targetRot = Quaternion.Euler(-Y, X, 0f);
+
         //transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _cameraSpeed * Time.deltaTime);
         //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation,   Time.deltaTime/ 0.5f);
         //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
-        Quaternion quater = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * _cameraSpeed);
-        transform.rotation = quater;
+
+
+        //Quaternion quater = Quaternion.Slerp(transform.rotation, newRotation, _cameraSpeed * Time.deltaTime);
+        //Quaternion quater = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+        NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+        //Debug.Log("1" + targetRot);
+        Debug.Log(X + " и " + Y);
+        //transform.rotation = quater;
+        transform.rotation = NewtargetRot;
 
 
 
@@ -211,9 +179,16 @@ public class ReviewCamera : MonoBehaviour
         //transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, new Vector3(-Y, X, 0), t);
         //transform.position = transform.localRotation * offset + target.position;
 
-        Vector3 velocity = new Vector3(0,0,0);
-        Vector3 move = Vector3.Slerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, _cameraSpeed * Time.deltaTime);
-        transform.position = move;
+        //Vector3 velocity = new Vector3(0, 0, 0);
+
+        //Vector3 move = Vector3.Slerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, _cameraSpeed * Time.deltaTime);
+        targetPos = targetRot * offset + target.position;
+        //Vector3 move = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+        NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+
+        //Vector3 move = Vector3.Slerp(transform.position, transform.rotation * offset + target.position, _cameraSpeed * Time.deltaTime);
+        //transform.position = move;
+        transform.position = NewTargetPos;
         //transform.position = Vector3.Lerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, _cameraSpeed * Time.deltaTime);
         //transform.position = Vector3.Slerp(transform.position, /*transform.localRotation*/newRotation * offset + target.position, Time.deltaTime/0.5f);
         //transform.position = Vector3.MoveTowards(transform.position, /*transform.localRotation*/newRotation * offset + target.position, Time.deltaTime*3f);
@@ -236,18 +211,58 @@ public class ReviewCamera : MonoBehaviour
         //}
     }
 
-    public void Rotate()
+    //public void Rotate()
+    //{
+    //    _xRotation -= Input.GetAxis(MouseY)/* * 5*/;
+    //    Debug.Log(_xRotation);
+    //    _xRotation = Mathf.Clamp(_xRotation, -_minLimitAnglesY, _limitAnglesY);
+    //    _yRotation -= Input.GetAxis(MouseX)/* * 5*/;
+    //    _yRotation = Mathf.Clamp(_yRotation, -_minLimitAngles, _limitAngles);
+
+    //    Quaternion targetRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
+
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
+    //    //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
+    //    //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 130 * Time.deltaTime);
+    //}
+
+    public void Zoom()
     {
-        _xRotation -= Input.GetAxis(MouseY)/* * 5*/;
-        Debug.Log(_xRotation);
-        _xRotation = Mathf.Clamp(_xRotation, -_minLimitAnglesY, _limitAnglesY);
-        _yRotation -= Input.GetAxis(MouseX)/* * 5*/;
-        _yRotation = Mathf.Clamp(_yRotation, -_minLimitAngles, _limitAngles);
+        if (coroutine != null)
+            StopCoroutine(coroutine);
 
-        Quaternion targetRotation = Quaternion.Euler(_xRotation, -_yRotation, 0);
+        coroutine = StartCoroutine(ZoomChanger());
+    }
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.5f);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 130 * Time.deltaTime);
+    private IEnumerator ZoomChanger()
+    {
+        _isZoomStart = true;
+        yield return new WaitForSeconds(0.165f);
+        _isZoomStart = false;
+    }
+
+    public void Stay()
+    {
+        NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+        transform.rotation = NewtargetRot;
+        targetPos = targetRot * offset + target.position;
+        //Vector3 move = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+        NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+
+        //Vector3 move = Vector3.Slerp(transform.position, transform.rotation * offset + target.position, _cameraSpeed * Time.deltaTime);
+        //transform.position = move;
+        transform.position = NewTargetPos;
+
+
+
+        //NewtargetRot = targetRot;
+        //NewTargetPos = targetPos;
+        //transform.rotation = NewtargetRot;
+        //transform.position = NewTargetPos;
+
+
+
+        //Debug.Log("Сохр" + targetRot);
+        //Debug.Log("СохрСвой"+ transform.rotation);
     }
 }

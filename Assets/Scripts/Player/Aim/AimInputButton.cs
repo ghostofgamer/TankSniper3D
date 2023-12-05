@@ -23,13 +23,14 @@ public class AimInputButton : AbstractButton
 
     private void Update()
     {
-        //if (!_killedInfo.AllDie)
+        if (_killedInfo.AllDie)
+            _eventTrigger.enabled = false;
         //{
-        _eventTrigger.enabled = !_imageReload.activeSelf;
+        //_eventTrigger.enabled = !_imageReload.activeSelf;
 
         if (!_weapon.IsReload)
         {
-            if (!_killedInfo.AllDie)
+            //if (!_killedInfo.AllDie)
                 _buttonMover.Move();
 
             if (isPressed)
@@ -84,7 +85,7 @@ public class AimInputButton : AbstractButton
         _buttonMover.Down();
         isPressed = true;
         _playerMover.Go();
-        _cameraMover.Forward();
+        //_cameraMover.Forward();
         _visibilityAim.OnFadeIn();
     }
 
@@ -93,7 +94,7 @@ public class AimInputButton : AbstractButton
         //IsZoom = false;
         isPressed = false;
         _playerMover.Hide();
-        _cameraMover.Back();
+        //_cameraMover.Back();
         _visibilityAim.OnFadeOut();
         _weapon.Shoot();
     }
