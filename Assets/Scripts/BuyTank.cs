@@ -49,14 +49,15 @@ public class BuyTank : AbstractButton
 
     public override void OnClick()
     {
-        if (_wallet.Money >= _price)
-        {
-            Sell();
-        }
         Vector3 position = TryGetPosition();
 
         if (position == Vector3.zero)
             return;
+
+        if (_wallet.Money >= _price)
+        {
+            Sell();
+        }
 
         var tank = Instantiate(_tanks[_currentLevel - 1], _container);
         tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
