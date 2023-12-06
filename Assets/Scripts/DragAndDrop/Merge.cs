@@ -93,7 +93,8 @@ public class Merge : MonoBehaviour
                             {
                                 _save.SetData(Save.Level, newLevel);
                                 _save.SetData(Save.Tank, newLevel);
-                                _tankView.ViewTank();
+                                //_tankView.ViewTank();
+                                _tankView.NewLevelTankView();
                             }
                         }
                         else
