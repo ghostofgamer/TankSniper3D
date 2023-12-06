@@ -16,7 +16,7 @@ public class Storage : MonoBehaviour
     private void Start()
     {
         _filePath = Application.persistentDataPath + "/save.gamesave";
-        LoadGame();
+        //LoadGame();
     }
 
     //private void Update()
