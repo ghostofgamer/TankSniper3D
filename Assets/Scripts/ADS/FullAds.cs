@@ -12,6 +12,12 @@ public class FullAds : Ad
             InterstitialAd.Show(OnOpen, OnClose);
     }
 
+    public void ShowContinue()
+    {
+        if (YandexGamesSdk.IsInitialized)
+            InterstitialAd.Show(OnOpen, OnCloseContinue);
+    }
+
     //protected override void OnClose(bool isClosed)
     //{
     //    base.OnClose(isClosed);

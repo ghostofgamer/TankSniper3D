@@ -25,6 +25,13 @@ public abstract class Ad : MonoBehaviour
         //AudioListener.pause = false;
         SceneManager.LoadScene("MainScene");
     }
+    protected virtual void OnCloseContinue(bool isClosed)
+    {
+        Time.timeScale = 1;
+        AudioListener.volume = 1f;
+        //AudioListener.pause = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     protected void OnClose()
     {

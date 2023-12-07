@@ -31,4 +31,10 @@ public class Player : MonoBehaviour
     {
         Dying?.Invoke();
     }
+
+    public void Revive()
+    {
+        _currentHealth = _maxHealth;
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
 }
