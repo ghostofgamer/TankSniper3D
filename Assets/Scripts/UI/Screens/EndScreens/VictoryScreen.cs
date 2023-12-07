@@ -9,12 +9,14 @@ public class VictoryScreen : EndGame
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private Save _save;
     [SerializeField] private GameObject _panelInfo;
+    [SerializeField] private TMP_Text _levelNumber;
 
     private Progress _progress;
 
     private void OnEnable()
     {
         Reward = _levelConfig.RewardVictory;
+        _levelNumber.text = _levelConfig.LevelNumber.ToString();
         _killedInfo.AllEnemysDying += OnEndGame;
     }
 
