@@ -143,7 +143,7 @@ public class ReviewCamera : MonoBehaviour
         //if (Input.GetAxis("Mouse ScrollWheel") > 0) offset.z += zoom;
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0) offset.z -= zoom;
         //offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
-        Debug.Log("Õ" + X);
+        //Debug.Log("Õ" + X);
         X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X")/* * sensitivity*//* * Time.deltaTime*/;
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
         Y += Input.GetAxis("Mouse Y")/* * sensitivity*//* * Time.deltaTime*/;
@@ -166,7 +166,7 @@ public class ReviewCamera : MonoBehaviour
         //Quaternion quater = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
         NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
         //Debug.Log("1" + targetRot);
-        Debug.Log(X + " è " + Y);
+        //Debug.Log(X + " è " + Y);
         //transform.rotation = quater;
         transform.rotation = NewtargetRot;
 

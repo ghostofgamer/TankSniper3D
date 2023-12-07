@@ -20,11 +20,14 @@ public class SoundValueButton : AbstractButton
 
         if (_soundVolumeValue == 0)
         {
+            AudioListener.volume = 0;
+            Debug.Log("ûגאûגאûגאûג");
             _mute.gameObject.SetActive(true);
             _unMute.gameObject.SetActive(false);
         }
         else
         {
+            AudioListener.volume = 1;
             _mute.gameObject.SetActive(false);
             _unMute.gameObject.SetActive(true);
         }

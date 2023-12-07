@@ -8,6 +8,7 @@ public class VictoryScreen : EndGame
 {
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private Save _save;
+    [SerializeField] private GameObject _panelInfo;
 
     private Progress _progress;
 
@@ -32,6 +33,7 @@ public class VictoryScreen : EndGame
     protected override void OnEndGame()
     {
         base.OnEndGame();
+        _panelInfo.SetActive(false);
         int index = SceneManager.GetActiveScene().buildIndex;
         _save.SetData(Save.SceneNumber, ++index);
         _save.SetData(Save.Map, _progress.AddIndex());
