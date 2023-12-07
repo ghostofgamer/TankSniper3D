@@ -30,18 +30,17 @@ public class BuyTank : AbstractButton
 
     private void Start()
     {
-            Debug.Log("денег" + _wallet.Money);
-            Debug.Log("цена" + _price);
         if (_wallet.Money < _price)
         {
-            //_button.SetActive(true);
-
+            _button.SetActive(true);
+            gameObject.SetActive(false);
             //Image colors = GetComponent<Image>();
             // colors.color = new Color(colors.color.r, colors.color.g, colors.color.b, 0);
             //return;
         }
 
         _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
+        _price = _currentLevel * 10;
         _positions = new List<Transform>();
         _slider.value = _load.Get(Save.ProgressSlider, 0f);
         _currenPriceText.text = _price.ToString();
