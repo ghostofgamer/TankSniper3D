@@ -14,6 +14,8 @@ public class EndGame : AbstractScreen
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
+    public int ViewReward => Reward;
+
     protected virtual void OnEndGame()
     {
         StartCoroutine(OpenScreen());

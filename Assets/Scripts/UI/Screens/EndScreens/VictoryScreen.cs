@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class VictoryScreen : EndGame
@@ -12,6 +13,8 @@ public class VictoryScreen : EndGame
     [SerializeField] private TMP_Text _levelNumber;
 
     private Progress _progress;
+
+    public event UnityAction ChangeReward;
 
     private void OnEnable()
     {
@@ -39,5 +42,11 @@ public class VictoryScreen : EndGame
         int index = SceneManager.GetActiveScene().buildIndex;
         _save.SetData(Save.SceneNumber, ++index);
         _save.SetData(Save.Map, _progress.AddIndex());
+    }
+
+    public void ChangeRewardRoulette(int reward)
+    {
+        Reward = reward;
+        _rewardCountText.text = Reward.ToString();
     }
 }

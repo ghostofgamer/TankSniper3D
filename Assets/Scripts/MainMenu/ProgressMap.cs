@@ -8,14 +8,17 @@ public class ProgressMap : Progress
     [SerializeField] private GameObject[] _points;
     [SerializeField] private GameObject[] _advancement;
     [SerializeField] private ProgressPoint[] _progressPoint;
+    [SerializeField] private bool _isMainScene;
 
     private int _indexEnviropments;
     private int _maxIndexEnviropment = 2;
 
     private void Start()
     {
+        if (_isMainScene)
+            _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+
         ProgressPointImage();
-        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
         SetIndex();
         SetProgress();
     }
@@ -23,23 +26,28 @@ public class ProgressMap : Progress
     private void SetProgress()
     {
         if (CurrentIndex > MaxIndex)
+        {
             SetEnviropment();
+            SetElement(_enviropments, _indexEnviropments);
+        }
 
-        SetElement(_enviropments, _indexEnviropments);
         SetElement(_points, CurrentIndex);
         SetElement(_advancement, _indexEnviropments);
     }
 
     private void SetEnviropment()
     {
-        CurrentIndex = 0;
-        _indexEnviropments++;
+        if (_isMainScene)
+        {
+            CurrentIndex = 0;
+            _indexEnviropments++;
 
-        if (_indexEnviropments > _maxIndexEnviropment)
-            _indexEnviropments = 0;
+            if (_indexEnviropments > _maxIndexEnviropment)
+                _indexEnviropments = 0;
 
-        Save.SetData(Save.Enviropment, _indexEnviropments);
-        Save.SetData(Save.Map, CurrentIndex);
+            Save.SetData(Save.Enviropment, _indexEnviropments);
+            Save.SetData(Save.Map, CurrentIndex);
+        }
     }
 
     private void SetElement(GameObject[] gameObjects, int index)
@@ -52,11 +60,15 @@ public class ProgressMap : Progress
 
     public override void ResetMap()
     {
+        if (_isMainScene)
+        {
+            _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+            SetElement(_enviropments, _indexEnviropments);
+        }
+
         Save.SetData(Save.Map, 0);
         Save.SetData(Save.Enviropment, 0);
-        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
         CurrentIndex = Load.Get(Save.Map, _startIndex);
-        SetElement(_enviropments, _indexEnviropments);
         SetElement(_points, CurrentIndex);
         SetElement(_advancement, _indexEnviropments);
     }

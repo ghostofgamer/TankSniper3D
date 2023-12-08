@@ -8,6 +8,7 @@ public class FightScreen : MonoBehaviour
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private ResetButton _resetButton;
     [SerializeField] private PlayerHealthbar _playerHealthbar;
+    [SerializeField]private ProgressMap _progressMap;
 
     private Weapon _weapon;
 
@@ -30,6 +31,7 @@ public class FightScreen : MonoBehaviour
     {
         _wallet.gameObject.SetActive(false);
         _killedInfo.gameObject.SetActive(true);
+        _progressMap.gameObject.SetActive(false);
         _resetButton.gameObject.SetActive(true);
         _playerHealthbar.gameObject.SetActive(true);
     }
