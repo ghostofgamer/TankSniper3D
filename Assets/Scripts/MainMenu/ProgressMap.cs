@@ -7,12 +7,14 @@ public class ProgressMap : Progress
     [SerializeField] private GameObject[] _enviropments;
     [SerializeField] private GameObject[] _points;
     [SerializeField] private GameObject[] _advancement;
+    [SerializeField] private ProgressPoint[] _progressPoint;
 
     private int _indexEnviropments;
     private int _maxIndexEnviropment = 2;
 
     private void Start()
     {
+        ProgressPointImage();
         _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
         SetIndex();
         SetProgress();
@@ -57,5 +59,20 @@ public class ProgressMap : Progress
         SetElement(_enviropments, _indexEnviropments);
         SetElement(_points, CurrentIndex);
         SetElement(_advancement, _indexEnviropments);
+    }
+
+    private void ProgressPointImage()
+    {
+        foreach (var progressPoint in _progressPoint)
+        {
+            progressPoint.NoComplite();
+        }
+
+        CurrentIndex = Load.Get(Save.Map, _startIndex);
+
+        for (int i = 0; i < CurrentIndex; i++)
+        {
+            _progressPoint[i].Complite();
+        }
     }
 }
