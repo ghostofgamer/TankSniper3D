@@ -25,23 +25,22 @@ public class AimInputButton : AbstractButton
     {
         if (_killedInfo.AllDie)
             _eventTrigger.enabled = false;
-        //{
-        //_eventTrigger.enabled = !_imageReload.activeSelf;
+
+        _eventTrigger.enabled = !_imageReload.activeSelf;
 
         if (!_weapon.IsReload)
         {
+        //_buttonMover.Move();
             //if (!_killedInfo.AllDie)
-                _buttonMover.Move();
-
             if (isPressed)
             {
                 DoZoom();
             }
+        }
 
-            if (!isPressed && IsZoom)
-            {
-                DoShoot();
-            }
+        if (!isPressed && IsZoom)
+        {
+            DoShoot();
         }
 
         if (!IsZoom || _weapon.IsReload)
@@ -49,7 +48,6 @@ public class AimInputButton : AbstractButton
             _towerRotate.ResetRotate();
             _cameraAim.CameraFovBack();
         }
-        //}
     }
 
     public override void OnClick()
@@ -107,7 +105,7 @@ public class AimInputButton : AbstractButton
 
     private IEnumerator PauseZoomOff()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.165f);
         _buttonMover.Up();
         IsZoom = false;
     }

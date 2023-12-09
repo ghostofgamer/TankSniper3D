@@ -27,8 +27,8 @@ public class Initializator : MonoBehaviour
 
     private readonly int _startIndex = 0;
 
-    //[SerializeField] private int _indexPlayer;
-    private int _indexPlayer;
+    [SerializeField] private int _indexPlayer;
+    //private int _indexPlayer;
     private Player _player;
     private List<GameObject> _gameObjects;
 
@@ -36,7 +36,7 @@ public class Initializator : MonoBehaviour
     {
         Time.timeScale = 1;
         _gameObjects = new List<GameObject>();
-        _indexPlayer = _load.Get(Save.Tank, _startIndex);
+        //_indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
         YandexGamesSdk.GameReady();
     }
@@ -69,7 +69,7 @@ public class Initializator : MonoBehaviour
 
         _players[index].gameObject.SetActive(true);
         //_aimButton[index].gameObject.SetActive(true);
-        _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        //_players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         return _players[index];
     }
 
