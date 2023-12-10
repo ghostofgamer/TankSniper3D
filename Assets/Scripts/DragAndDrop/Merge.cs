@@ -10,6 +10,7 @@ public class Merge : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private TankView _tankView;
     [SerializeField] private Storage _storage;
+    [SerializeField] private AudioPlugin _audioPlugin;
 
     private int _currentLevel;
     private int _maxLevel = 4;
@@ -82,6 +83,7 @@ public class Merge : MonoBehaviour
                             _selectObject.GetComponent<DragItem>().Level <= _maxLevel &&
                             _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
                         {
+                            _audioPlugin.PlayKey();
                             var newTank = Instantiate(_prefabs[level]);
                             newTank.transform.position = tank.transform.transform.position;
                             _selectObject.SetActive(false);
