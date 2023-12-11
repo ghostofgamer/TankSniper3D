@@ -29531,6 +29531,8 @@ GameObject:
   - component: {fileID: 8844662903252703337}
   - component: {fileID: 8844662903252703338}
   - component: {fileID: 8844662903252703339}
+  - component: {fileID: 8451939041763598365}
+  - component: {fileID: 8598869989143431327}
   m_Layer: 0
   m_Name: RocketBoss
   m_TagString: Untagged
@@ -29618,10 +29620,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d94ed5ed2be3e2947b147d840bb94f76, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -29740,6 +29742,8 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 16
   _enemyAnimations: {fileID: 8844662903252703342}
+  _audioPlugin: {fileID: 8451939041763598365}
+  _audioName: BossRocketMotor
 --- !u!114 &8844662903252703342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29770,6 +29774,7 @@ MonoBehaviour:
   _flyDamage: {fileID: 8844662903252703341}
   _canvas: {fileID: 8815445710472881168}
   _isBoss: 1
+  _isHelicopter: 0
 --- !u!114 &8844662903252703341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29816,7 +29821,7 @@ MonoBehaviour:
   _delay: 1.5
   _effectShooting: {fileID: 7585910670052436318}
   _enemy: {fileID: 8844662903252703340}
-  _audioSource: {fileID: 8844662903252703328}
+  _audioPlugin: {fileID: 8451939041763598365}
   _audioClip: {fileID: 8300000, guid: e01da3f3919d17142a336966f306fec0, type: 3}
 --- !u!114 &8844662903252703318
 MonoBehaviour:
@@ -29861,6 +29866,7 @@ MonoBehaviour:
   _targetState: {fileID: 8816269735935459461}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 8844662903252703342}
+  _audioPlugin: {fileID: 8451939041763598365}
 --- !u!114 &8844662903252703337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29905,6 +29911,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 8815445710584926513}
+--- !u!114 &8451939041763598365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814616832268086824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 8598869989143431327}
+  _clip:
+    _id: 7893e2d3-f070-49fb-8192-80e78658c324
+    _key: ShootHelicopter
+--- !u!114 &8598869989143431327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814616832268086824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _provider: 0
+  _volume: 1
+  _loop: 0
+  _mute: 0
+  _pitch: 1
+  _output: {fileID: 0}
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZones: 0
+  _stereoPan: 0
+  _spatialBlend: 0
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
 --- !u!1 &8814991779743465912
 GameObject:
   m_ObjectHideFlags: 0
@@ -30170,7 +30221,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.554, y: 1}
   m_AnchoredPosition: {x: 0.91700745, y: 0}
   m_SizeDelta: {x: 0.175, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

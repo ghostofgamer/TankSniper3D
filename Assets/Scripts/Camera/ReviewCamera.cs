@@ -75,7 +75,10 @@ public class ReviewCamera : MonoBehaviour
     {
         transform.position = target.position + offset;
 
-
+        //X = transform.rotation.x;
+        X = transform.rotation.y;
+        //Y = transform.rotation.y;
+        Y = transform.rotation.x;
         //minlimitX = Mathf.Abs(minlimitX);
         //if (minlimitX > 90) minlimitX = 90;
 
@@ -148,6 +151,15 @@ public class ReviewCamera : MonoBehaviour
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
         Y += Input.GetAxis("Mouse Y")/* * sensitivity*//* * Time.deltaTime*/;
         Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
+        //if (X < transform.rotation.x)
+        //{
+        //    X = transform.rotation.x;
+        //}
+        //if (Y < transform.rotation.y)
+        //{
+        //    Y = transform.rotation.y;
+        //}
+        Debug.Log(X);
         //Quaternion targetRotation = Quaternion.Euler(-Y, X, 0);
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 13 * Time.deltaTime);
         //float playerRotationY = Mathf.Lerp(transform.localEulerAngles.y, X, Time.deltaTime * 10);

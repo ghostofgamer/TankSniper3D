@@ -26,10 +26,16 @@ public class AudioPlugin : MonoBehaviour
     public void Play(string key)
     {
         _source.Play(key);
+        _source.Loop = true;
     }
 
     public void PlayOnShoot(string key)
     {
         _source.PlayOneShot(key);
+    }
+
+    public void StopSound()
+    {
+        _source.Stop();
     }
 }

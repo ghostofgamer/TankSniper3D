@@ -445,6 +445,8 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 5
   _enemyAnimations: {fileID: 2728934378432759343}
+  _audioPlugin: {fileID: 6370575599967238394}
+  _audioName: Motor
 --- !u!65 &2728934378432759339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,6 +544,7 @@ MonoBehaviour:
   _targetState: {fileID: 2728934377824136343}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 2728934378432759343}
+  _audioPlugin: {fileID: 6370575599967238394}
 --- !u!95 &2728934378432759377
 Animator:
   serializedVersion: 5
@@ -659,10 +662,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f37b8b8ee3b472d4082ad36430c8c594, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -760,6 +763,7 @@ MonoBehaviour:
   _flyDamage: {fileID: 2728934378432759378}
   _canvas: {fileID: 2728934378482442531}
   _isBoss: 0
+  _isHelicopter: 0
 --- !u!114 &3562073290449869545
 MonoBehaviour:
   m_ObjectHideFlags: 0

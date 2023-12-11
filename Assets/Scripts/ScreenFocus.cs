@@ -34,7 +34,6 @@ public class ScreenFocus : MonoBehaviour
         {
             MuteAudio(isBackground);
             PauseGame(isBackground);
-
         }
     }
 

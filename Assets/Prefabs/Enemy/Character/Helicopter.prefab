@@ -1220,6 +1220,7 @@ MonoBehaviour:
   _targetState: {fileID: 4538311402113166425}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 4538311402113166430}
+  _audioPlugin: {fileID: 1997418681415265700}
 --- !u!114 &4538311402113166424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1271,8 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 5
   _enemyAnimations: {fileID: 4538311402113166430}
+  _audioPlugin: {fileID: 1997418681415265700}
+  _audioName: Helicopter
 --- !u!114 &4538311402113166427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,6 +1350,7 @@ MonoBehaviour:
   _flyDamage: {fileID: 4538311402113166403}
   _canvas: {fileID: 4538311400770496931}
   _isBoss: 0
+  _isHelicopter: 0
 --- !u!82 &123237009
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1358,10 +1362,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 419019224046c0f40baf9c9d6fbe62c7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

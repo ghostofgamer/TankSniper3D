@@ -5,7 +5,7 @@ using UnityEngine;
 public class PartBuilding : MonoBehaviour
 {
     private Coroutine _coroutine;
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
+    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
     private void OnEnable()
     {

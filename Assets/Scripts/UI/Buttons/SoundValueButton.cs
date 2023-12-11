@@ -17,6 +17,7 @@ public class SoundValueButton : AbstractButton
     private void Start()
     {
         _soundVolumeValue = _load.Get(Save.Volume, _defaultValue);
+        Debug.Log("Value" + _soundVolumeValue);
 
         if (_soundVolumeValue == 0)
         {
@@ -64,7 +65,8 @@ public class SoundValueButton : AbstractButton
         _mute.gameObject.SetActive(!_mute.gameObject.activeSelf);
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
 
-        _save.SetData(Save.Volume, AudioListener.volume);
+        _soundVolumeValue = (int)AudioListener.volume;
+        _save.SetData(Save.Volume, _soundVolumeValue);
 
         //if (AudioListener.pause == true)
         //    _save.SetData(Save.Sound, _settingsScreen.SoundOff);

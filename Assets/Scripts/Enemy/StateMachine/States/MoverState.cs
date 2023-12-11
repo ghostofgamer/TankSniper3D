@@ -7,6 +7,8 @@ public class MoverState : State
     [SerializeField] private Transform _path;
     [SerializeField] private float _speedMove = 5;
     [SerializeField] private EnemyAnimations _enemyAnimations;
+    [SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private string _audioName;
 
     private List<Transform> _points;
     private int _currentPoint = 0;
@@ -15,11 +17,22 @@ public class MoverState : State
     private void Start()
     {
         _points = new List<Transform>();
-        
+
         for (int i = 0; i < _path.childCount; i++)
             _points.Add(_path.GetChild(i));
 
         _enemyAnimations.Walking(true);
+
+        if (_audioPlugin != null)
+        {
+            //if (GetComponent<Enemy>().IsHelicopter)
+            //{
+            //    _audioPlugin.Play("Helicopter");
+            //    return;
+            //}
+
+            _audioPlugin.Play(_audioName);
+        }
     }
 
     private void Update()

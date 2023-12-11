@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private FlyDamage _flyDamage;
     [SerializeField] private GameObject _canvas;
     [SerializeField] private bool _isBoss;
+    [SerializeField] private bool _isHelicopter;
     //[SerializeField] private Billboard _billboard;
 
     private Player _target;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     public Player Target => _target;
     public bool IsDying => _currentHealth <= 0;
     public bool IsBoss => _isBoss;
+    public bool IsHelicopter => _isHelicopter;
     public int CurrentHealth => _currentHealth;
 
     public event UnityAction<int, int> HealthChanged;

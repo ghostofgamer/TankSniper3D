@@ -2682,6 +2682,8 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 5
   _enemyAnimations: {fileID: 3447504427245463992}
+  _audioPlugin: {fileID: 3430733179822256002}
+  _audioName: JeapMotor
 --- !u!114 &3447504427245463992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2733,6 +2735,7 @@ MonoBehaviour:
   _flyDamage: {fileID: 3447504427245463996}
   _canvas: {fileID: 3447504426656454863}
   _isBoss: 0
+  _isHelicopter: 0
 --- !u!114 &3447504427245463997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,6 +2870,7 @@ MonoBehaviour:
   _targetState: {fileID: 8894092332157028041}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 3447504427245463992}
+  _audioPlugin: {fileID: 3430733179822256002}
 --- !u!114 &3447504427245463986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5832,10 +5836,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5c70b8544483c0b419993329daacc892, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

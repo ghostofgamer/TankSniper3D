@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 6824278425590236812}
   - component: {fileID: 399878421825467787}
   - component: {fileID: 399878421825467796}
+  - component: {fileID: 574517358067414892}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -351,7 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _newGameObject: {fileID: 8634016435429378903}
   _oldGameObject: {fileID: 399878421825467786}
-  _radius: 5
+  _radius: 3
 --- !u!65 &399878421825467796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,6 +374,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.20625688, y: 0.02, z: 0.2038568}
   m_Center: {x: 0.018218936, y: 0.000000014901161, z: 0.091928385}
+--- !u!114 &574517358067414892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399878421825467786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 7662411590756027817}
+  - {fileID: 3717161397155001548}
+  - {fileID: 421224230747375836}
+  _minCountPart: 1
 --- !u!1 &421224230747375836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3426,6 +3444,7 @@ GameObject:
   - component: {fileID: 6519285206114052314}
   - component: {fileID: 3009134823801363850}
   - component: {fileID: 3009134823801363851}
+  - component: {fileID: 4062110995658195769}
   m_Layer: 0
   m_Name: Wall3
   m_TagString: Untagged
@@ -3536,6 +3555,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10026065, y: 0.019999996, z: 0.24992023}
   m_Center: {x: -0.034779187, y: 0.000000007450581, z: 0.11496007}
+--- !u!114 &4062110995658195769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3009134823801363849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 1023563361031729124}
+  - {fileID: 3717161397155001548}
+  _minCountPart: 0
 --- !u!1 &3364534532525400220
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,6 +4296,7 @@ GameObject:
   - component: {fileID: 1182981815598339889}
   - component: {fileID: 1182981815598339890}
   - component: {fileID: 1182981815598339891}
+  - component: {fileID: 3871177730156550948}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -4347,7 +4383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _newGameObject: {fileID: 8634016433898194102}
   _oldGameObject: {fileID: 4717830358171456886}
-  _radius: 5
+  _radius: 3
 --- !u!65 &1182981815598339891
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4369,6 +4405,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18611132, y: 0.019999998, z: 0.2038568}
   m_Center: {x: 0.008146144, y: 0, z: 0.09192839}
+--- !u!114 &3871177730156550948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4717830358171456886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 1023563361031729124}
+  - {fileID: 7662411590756027817}
+  - {fileID: 3717161397155001548}
+  - {fileID: 421224230747375836}
+  _minCountPart: 1
 --- !u!1 &5067023630464784141
 GameObject:
   m_ObjectHideFlags: 0
@@ -7174,7 +7228,7 @@ Transform:
   - {fileID: 7302612137814551724}
   - {fileID: 8634016433666256708}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8180191203000815595
 GameObject:
@@ -8258,6 +8312,7 @@ GameObject:
   - component: {fileID: 1990113779146994157}
   - component: {fileID: 1990113779146994158}
   - component: {fileID: 1990113779146994159}
+  - component: {fileID: 8763872254975853354}
   m_Layer: 0
   m_Name: Wall4
   m_TagString: Untagged
@@ -8366,6 +8421,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10728804, y: 0.019999996, z: 0.24992022}
   m_Center: {x: -0.031265486, y: 0.000000007450581, z: 0.114960045}
+--- !u!114 &8763872254975853354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945770242227523085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 3009134823801363849}
+  - {fileID: 421224230747375836}
+  _minCountPart: 1
 --- !u!1 &8969155559414508557
 GameObject:
   m_ObjectHideFlags: 0

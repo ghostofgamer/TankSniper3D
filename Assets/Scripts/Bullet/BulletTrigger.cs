@@ -40,33 +40,33 @@ public class BulletTrigger : MonoBehaviour
 
             if (hitCollider.TryGetComponent(out Block block))
             {
-                Hit();
+                //Hit();
             }
 
             if (hitCollider.TryGetComponent(out Enemy enemy))
             {
-                Hit();
+                //Hit();
                 enemy.TakeDamage(_bullet.Damage);
             }
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
             {
-                Hit();
+                //Hit();
                 destroy.Destruction();
             }
 
             if (hitCollider.TryGetComponent(out Barrel barrel))
             {
-                Hit();
+                //Hit();
                 barrel.Explosion();
             }
 
             if (hitCollider.TryGetComponent(out Enviropment enviropmentTest))
             {
-                Hit();
+                //Hit();
             }
 
-            //Hit();
+            Hit();
         }
 
         if (other.TryGetComponent(out Player player))

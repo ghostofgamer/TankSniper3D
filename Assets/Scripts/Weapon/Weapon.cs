@@ -68,6 +68,7 @@ public abstract class Weapon : MonoBehaviour
             else if (_killedInfo.IsLastEnemy)
             {
                 LastShoot();
+                EnemyHitChanger();
             }
             else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {

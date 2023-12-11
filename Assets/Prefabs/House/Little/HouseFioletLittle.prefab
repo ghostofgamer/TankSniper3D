@@ -1691,6 +1691,7 @@ GameObject:
   - component: {fileID: 7846011260227687133}
   - component: {fileID: 7846011260227687134}
   - component: {fileID: 7846011260227687135}
+  - component: {fileID: 2552604657808222664}
   m_Layer: 0
   m_Name: Wall4
   m_TagString: Untagged
@@ -1799,6 +1800,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10728804, y: 0.019999996, z: 0.24992022}
   m_Center: {x: -0.031265486, y: 0.000000007450581, z: 0.114960045}
+--- !u!114 &2552604657808222664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817736452363775293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 8260887523325160428}
+  - {fileID: 6827022136046829241}
+  _minCountPart: 1
 --- !u!1 &842786778865198909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,7 +2576,7 @@ Transform:
   m_GameObject: {fileID: 1846912369893980084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.33, y: -1.8428075, z: -9.7}
-  m_LocalScale: {x: 0.38128, y: 0.38128, z: 0.38128}
+  m_LocalScale: {x: 0.38128006, y: 0.38128, z: 0.38128006}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4029492152643845981}
@@ -2572,7 +2589,7 @@ Transform:
   - {fileID: 1307446145472581532}
   - {fileID: 49218986804726900}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022440861500264699
 GameObject:
@@ -4619,6 +4636,7 @@ GameObject:
   - component: {fileID: 7428168523505005569}
   - component: {fileID: 7428168523505005570}
   - component: {fileID: 7428168523505005571}
+  - component: {fileID: 3904131681695932080}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -4727,6 +4745,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.18611132, y: 0.019999998, z: 0.2038568}
   m_Center: {x: 0.008146144, y: 0, z: 0.09192839}
+--- !u!114 &3904131681695932080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892787851194119750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 8739377119439228116}
+  - {fileID: 2101693272612531865}
+  - {fileID: 4966044061942896636}
+  - {fileID: 8260887523325160428}
+  _minCountPart: 1
 --- !u!1 &4062137093650301478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,6 +6517,7 @@ GameObject:
   - component: {fileID: 3244222312867662826}
   - component: {fileID: 6827022136046829242}
   - component: {fileID: 6827022136046829243}
+  - component: {fileID: 7425835211949801351}
   m_Layer: 0
   m_Name: Wall3
   m_TagString: Untagged
@@ -6590,6 +6627,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10026065, y: 0.019999996, z: 0.24992023}
   m_Center: {x: -0.034779187, y: 0.000000007450581, z: 0.11496007}
+--- !u!114 &7425835211949801351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827022136046829241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 4966044061942896636}
+  - {fileID: 8739377119439228116}
+  _minCountPart: 0
 --- !u!1 &7037157216222196335
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,6 +8102,7 @@ GameObject:
   - component: {fileID: 3010754524128716220}
   - component: {fileID: 8282202271110698683}
   - component: {fileID: 8282202271110698660}
+  - component: {fileID: 1541599009502600272}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -8157,6 +8211,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.20625688, y: 0.02, z: 0.2038568}
   m_Center: {x: 0.018218936, y: 0.000000014901161, z: 0.091928385}
+--- !u!114 &1541599009502600272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8282202271110698682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cedf996d3814240a6aabb7b63d26aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseParts:
+  - {fileID: 2101693272612531865}
+  - {fileID: 4966044061942896636}
+  - {fileID: 8260887523325160428}
+  _minCountPart: 1
 --- !u!1 &8677612395841203141
 GameObject:
   m_ObjectHideFlags: 0
