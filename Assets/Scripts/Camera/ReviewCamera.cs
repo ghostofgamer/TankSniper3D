@@ -42,7 +42,7 @@ public class ReviewCamera : MonoBehaviour
     public float zoom = 0.25f; // чувствительность при увеличении, колесиком мышки
     public float zoomMax = 10; // макс. увеличение
     public float zoomMin = 3; // мин. увеличение
-    private float X, Y;
+    [SerializeField]private float X, Y;
 
 
 
@@ -73,12 +73,17 @@ public class ReviewCamera : MonoBehaviour
 
     private void Start()
     {
-        transform.position = target.position + offset;
-
+        //transform.position = target.position + offset;
+        transform.position = targetRot * offset + target.position;
+        WHAT();
+        //transform.localRotation = new Quaternion(5, 5, 5, 5);
+        //transform.rotation = new Quaternion(10f, 5f, 0f, 0);
         //X = transform.rotation.x;
-        X = transform.rotation.y;
+        //X = transform.rotation.y;
         //Y = transform.rotation.y;
-        Y = transform.rotation.x;
+        //Y = transform.localRotation.x;
+        Debug.Log(Y);
+
         //minlimitX = Mathf.Abs(minlimitX);
         //if (minlimitX > 90) minlimitX = 90;
 
@@ -147,9 +152,10 @@ public class ReviewCamera : MonoBehaviour
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0) offset.z -= zoom;
         //offset.z = Mathf.Clamp(offset.z, -Mathf.Abs(zoomMax), -Mathf.Abs(zoomMin));
         //Debug.Log("Х" + X);
+
         X += /*transform.localEulerAngles.y + */Input.GetAxis("Mouse X")/* * sensitivity*//* * Time.deltaTime*/;
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
-        Y += Input.GetAxis("Mouse Y")/* * sensitivity*//* * Time.deltaTime*/;
+        Y += Input.GetAxis("Mouse Y")/* * sensitivity *//* * Time.deltaTime*/;
         Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
         //if (X < transform.rotation.x)
         //{
@@ -180,6 +186,7 @@ public class ReviewCamera : MonoBehaviour
         //Debug.Log("1" + targetRot);
         //Debug.Log(X + " и " + Y);
         //transform.rotation = quater;
+        //transform.localRotation = NewtargetRot;
         transform.rotation = NewtargetRot;
 
 
@@ -276,5 +283,23 @@ public class ReviewCamera : MonoBehaviour
 
         //Debug.Log("Сохр" + targetRot);
         //Debug.Log("СохрСвой"+ transform.rotation);
+    }
+
+    private void WHAT()
+    {
+        X += Input.GetAxis("Mouse X");
+        X = Mathf.Clamp(X, -minlimitY, maxlimitY);
+        Y += Input.GetAxis("Mouse Y");
+        Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
+        Debug.Log(X);
+
+        targetRot = Quaternion.Euler(-Y, X, 0f);
+
+        NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+
+        transform.rotation = NewtargetRot;
+        targetPos = targetRot * offset + target.position;
+        NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+        transform.position = NewTargetPos;
     }
 }
