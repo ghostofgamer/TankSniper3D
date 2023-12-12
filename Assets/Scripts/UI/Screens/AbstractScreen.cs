@@ -14,18 +14,19 @@ public class AbstractScreen : MonoBehaviour
 
     public virtual void Open()
     {
-        SetValue(0, 1, true);
+        SetValue(0, 1, true,true);
     }
 
     public virtual void Close()
     {
-        SetValue(1, 0, false);
+        SetValue(1, 0, false,false);
     }
 
-    private void SetValue(int timeScale,int alpha,bool raycast)
+    private void SetValue(int timeScale,int alpha,bool raycast,bool interactable)
     {
         Time.timeScale = timeScale;
         _canvasGroup.alpha = alpha;
         _canvasGroup.blocksRaycasts = raycast;
+        _canvasGroup.interactable = interactable;
     }
 }
