@@ -119,7 +119,7 @@ public class Merge : MonoBehaviour
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-            Vector3 currentPosition = new Vector3(worldPosition.x, 10f, worldPosition.z);
+            Vector3 currentPosition = new Vector3(worldPosition.x/* + 10f*/, 30f, worldPosition.z/*+100f*/);
             _selectObject.transform.position = Vector3.Lerp(_selectObject.transform.position, currentPosition, 10 * Time.deltaTime);
 
             //_selectObject.transform.position = new Vector3(worldPosition.x, 10f, worldPosition.z);

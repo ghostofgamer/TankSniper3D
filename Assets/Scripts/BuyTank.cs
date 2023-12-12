@@ -53,9 +53,10 @@ public class BuyTank : AbstractButton
 
     public override void OnClick()
     {
-        Vector3 position = TryGetPosition();
+        //Vector3 position = TryGetPosition();
+        Transform position = TryGetPosition();
 
-        if (position == Vector3.zero)
+        if (position == null)
             return;
 
         if (_wallet.Money >= _price)
@@ -64,8 +65,9 @@ public class BuyTank : AbstractButton
         }
 
         var tank = Instantiate(_tanks[_currentLevel - 1], _container);
-        tank.transform.position = new Vector3(position.x, position.y /*+ _offset*/, position.z);
-        ChangeValue();
+        tank.transform.position = position.position; 
+        //new Vector3(position.x, position.y /*+ _offset*/, position.z);
+        //tank.transform.rotation = position.rotation;
         _storage.AddTank(tank.GetComponent<Tank>());
 
 
@@ -76,14 +78,15 @@ public class BuyTank : AbstractButton
         }
     }
 
-    private Vector3 TryGetPosition()
+    private Transform TryGetPosition()
     {
         var filter = _positions.FirstOrDefault(p => !p.GetComponent<PositionTank>().IsStay);
 
         if (filter == null)
-            return Vector3.zero;
+            return null;
 
-        return filter.position;
+        return filter.transform;
+        //return filter.position;
     }
 
     private void ChangeValue()
