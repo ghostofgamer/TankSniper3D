@@ -8,7 +8,8 @@ public class ContinueButton : AbstractButton
 {
     [SerializeField] private FullAds _fullVideo;
 
-    private const string MainMenu = "MainScene";
+    //private const string MainMenu = "MainScene";
+    private const string MainMenu = "MainTestScene";
 
     public override void OnClick()
     {

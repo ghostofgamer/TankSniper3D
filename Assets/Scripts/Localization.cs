@@ -13,13 +13,19 @@ public enum Language
 
 public class Localization : MonoBehaviour
 {
-    private const string EnglishCode = "en";
-    private const string RussianCode = "ru";
-    private const string TurkishCode = "tr";
+    [SerializeField] private LeanLocalization _leanLanguage;
+
+    //private const string EnglishCode = "en";
+    //private const string RussianCode = "ru";
+    //private const string TurkishCode = "tr";
+
+    private const string EnglishCode = "English";
+    private const string RussianCode = "Russian";
+    private const string TurkishCode = "Turkish";
 
     private void Awake()
     {
-#if UNITY_WEBGL&& !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         ChangeLanguage();
 #endif
     }
@@ -28,14 +34,39 @@ public class Localization : MonoBehaviour
     {
         string languageCode = YandexGamesSdk.Environment.i18n.lang;
 
-        string language = languageCode switch
+        switch (languageCode)
         {
-            EnglishCode => Language.english.ToString(),
-            RussianCode => Language.russian.ToString(),
-            TurkishCode => Language.turkish.ToString(),
-            _ => Language.english.ToString()
-        };
+            case "en":
+                _leanLanguage.SetCurrentLanguage("English");
+                break;
+            case "tr":
+                _leanLanguage.SetCurrentLanguage("Turkish");
+                break;
+            case "ru":
+                _leanLanguage.SetCurrentLanguage("Russian");
+                break;
+        }
+        //switch (languageCode)
+        //{
+        //    case "en":
+        //        _leanLanguage.SetCurrentLanguage("English");
+        //        break;
+        //    case "tr":
+        //        _leanLanguage.SetCurrentLanguage("Turkish");
+        //        break;
+        //    case "ru":
+        //        _leanLanguage.SetCurrentLanguage("Russian");
+        //        break;
+        //}
 
-        LeanLocalization.SetCurrentLanguageAll(language);
+        //string language = languageCode switch
+        //{
+        //    EnglishCode => Language.english.ToString(),
+        //    RussianCode => Language.russian.ToString(),
+        //    TurkishCode => Language.turkish.ToString(),
+        //    _ => Language.english.ToString()
+        //};
+        //_leanLanguage.SetCurrentLanguage(language);
+        //LeanLocalization.SetCurrentLanguageAll(language);
     }
 }
