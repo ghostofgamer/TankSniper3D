@@ -9,9 +9,16 @@ public class BuyButton : AbstractButton
     {
         Zebra,
         Winter,
-        Leopard
+        Leopard,
+        Giraffe,
+        Jaguar,
+        Orange,
+        Pink,
+        Tigr,
+        Yellow
     }
 
+    [SerializeField] private GameObject _AdButton;
     [SerializeField] private Image _imageBlock;
     [SerializeField] private Coloring _coloring;
     [SerializeField] private Save _save;
@@ -45,15 +52,42 @@ public class BuyButton : AbstractButton
                 _save.SetData(Save.Leopard, _index);
                 _rewardVideo.Show();
                 break;
+            case Coloring.Giraffe:
+                _save.SetData(Save.Giraffe, _index);
+                _rewardVideo.Show();
+                break;
+            case Coloring.Jaguar:
+                _save.SetData(Save.Jaguar, _index);
+                _rewardVideo.Show();
+                break;
+            case Coloring.Orange:
+                _save.SetData(Save.Orange, _index);
+                _rewardVideo.Show();
+                break;
+            case Coloring.Pink:
+                _save.SetData(Save.Pink, _index);
+                _rewardVideo.Show();
+                break;
+            case Coloring.Tigr:
+                _save.SetData(Save.Tigr, _index);
+                _rewardVideo.Show();
+                break;
+            case Coloring.Yellow:
+                _save.SetData(Save.Yellow, _index);
+                _rewardVideo.Show();
+                break;
             default:
                 break;
         }
-        //OffActive();
+
+        //_imageBlock.gameObject.SetActive(false);
+        //_AdButton.SetActive(false);
+        OffActive();
     }
 
     public void OffActive()
     {
         _imageBlock.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        _AdButton.SetActive(false);
     }
 }

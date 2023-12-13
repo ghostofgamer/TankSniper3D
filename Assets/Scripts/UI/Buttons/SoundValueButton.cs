@@ -17,7 +17,6 @@ public class SoundValueButton : AbstractButton
     private void Start()
     {
         _soundVolumeValue = _load.Get(Save.Volume, _defaultValue);
-        Debug.Log("Value" + _soundVolumeValue);
 
         if (_soundVolumeValue == 0)
         {

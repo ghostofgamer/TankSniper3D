@@ -9,6 +9,7 @@ public class BuyTank : AbstractButton
 {
     [SerializeField] private GameObject _prefab;
     [SerializeField] private Transform _position;
+    [SerializeField] private Transform[] _positionsIndex;
     [SerializeField] private Transform _container;
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _currentLevelText;
@@ -47,9 +48,22 @@ public class BuyTank : AbstractButton
         _currentLevelText.text = _currentLevel.ToString();
         //ShowTankPlayer(_currentTankIndex);
 
-        for (int i = 0; i < _position.childCount; i++)
-            _positions.Add(_position.GetChild(i));
+        //for (int i = 0; i < _position.childCount; i++)
+        //    _positions.Add(_position.GetChild(i));
+
+        int index = _load.Get(Save.Enviropment, 0);
+        
+        for (int i = 0; i < _positionsIndex[index].childCount; i++)
+            _positions.Add(_positionsIndex[index].GetChild(i));
+
+        _storage.Init(_positions);
     }
+
+    //public void GetList(Transform transforms)
+    //{
+    //    for (int i = 0; i < transforms.childCount; i++)
+    //        _positions.Add(transforms.GetChild(i));
+    //}
 
     public override void OnClick()
     {

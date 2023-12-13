@@ -15,9 +15,16 @@ public class Save : MonoBehaviour
     public const string Level = "Level";
     public const string ProgressLevel = "ProgressLevel";
     public const string ProgressSlider = "ProgressSlider";
+    [Header("Pattern")]
     public const string Zebra = "Zebra";
     public const string Winter = "Winter";
     public const string Leopard = "Leopard";
+    public const string Giraffe = "Giraffe";
+    public const string Jaguar = "Jaguar";
+    public const string Orange = "Orange";
+    public const string Pink = "Pink";
+    public const string Tigr = "Tigr";
+    public const string Yellow = "Yellow";
     public const string Color = "Color";
 
     private void Start()

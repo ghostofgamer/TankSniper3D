@@ -8,7 +8,10 @@ public class ProgressMap : Progress
     [SerializeField] private GameObject[] _points;
     [SerializeField] private GameObject[] _advancement;
     [SerializeField] private ProgressPoint[] _progressPoint;
+    //[SerializeField] private GameObject[] _platforms;
     [SerializeField] private bool _isMainScene;
+    [SerializeField] private BuyTank _buyTank;
+    [SerializeField] private Transform[] _positions;
 
     private int _indexEnviropments;
     private int _maxIndexEnviropment = 2;
@@ -16,7 +19,11 @@ public class ProgressMap : Progress
     private void Start()
     {
         if (_isMainScene)
+        {
             _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+            SetElement(_enviropments, _indexEnviropments);
+            //_buyTank.GetList(_positions[_indexEnviropments]);
+        }
 
         ProgressPointImage();
         SetIndex();

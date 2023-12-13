@@ -7,8 +7,14 @@ using System.Linq;
 
 public class Storage : MonoBehaviour
 {
-    [SerializeField]private Tank[] _tanks;
-    [SerializeField] private PositionTank[] _positionTank; 
+    [SerializeField] private Tank[] _tanks;
+    //[SerializeField] private PositionTank[] _positionTank;
+    [SerializeField] private List<Transform> _positionsss;
+
+    //[SerializeField] private Transform[] _positionsList;
+    [SerializeField] private Load _load;
+    private List<PositionTank> _positions;
+    //private List<Transform> _pos;
 
     private List<Tank> _enemySaves = new List<Tank>();
     private string _filePath;
@@ -16,9 +22,19 @@ public class Storage : MonoBehaviour
     private void Start()
     {
         _filePath = Application.persistentDataPath + "/save.gamesave";
-        //LoadGame();
+        LoadGame();
     }
 
+    public void Init(List<Transform> transform)
+    {
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    Debug.Log(transform.childCount);
+
+        //    _positions.Add(transform.GetChild(i).GetComponent<PositionTank>());
+        //}
+        _positionsss = transform;
+    }
     //private void Update()
     //{
     //    Tank[] tanks = GameObject.FindObjectsOfType<Tank>();
@@ -32,12 +48,17 @@ public class Storage : MonoBehaviour
     {
         _enemySaves = new List<Tank>();
 
-        for (int i = 0; i < _positionTank.Length; i++)
-        {
-            if(_positionTank[i].Target != null)
-                _enemySaves.Add(_positionTank[i].Target.GetComponent<Tank>());
-        }
+        //for (int i = 0; i < _positionTank.Length; i++)
+        //{
+        //    if (_positionTank[i].Target != null)
+        //        _enemySaves.Add(_positionTank[i].Target.GetComponent<Tank>());
+        //}
 
+        for (int i = 0; i < _positionsss.Count; i++)
+        {
+            if (_positionsss[i].GetComponent<PositionTank>().Target != null)
+                _enemySaves.Add(_positionsss[i].GetComponent<PositionTank>().Target.GetComponent<Tank>());
+        }
         SaveGame();
     }
 
@@ -88,7 +109,8 @@ public class Storage : MonoBehaviour
         {
             //int number = enemy._id;
 
-            Instantiate(_tanks[enemy._id], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.identity);
+            Instantiate(_tanks[enemy._id], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.Euler(/*_tanks[enemy._id].transform.position*/  new Vector3(0, -135, 0)));
+            //tank.transform.rotation = new Vector3(0, 0, 0); 
             _enemySaves.Add(_tanks[enemy._id]);
         }
     }
