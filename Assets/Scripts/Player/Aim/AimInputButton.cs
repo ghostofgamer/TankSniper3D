@@ -18,6 +18,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private ButtonMover _buttonMover;
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
+    [SerializeField] private CancelShoot _cancelShoot;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
@@ -32,7 +33,7 @@ public class AimInputButton : AbstractButton
 
         if (!_weapon.IsReload)
         {
-        //_buttonMover.Move();
+            //_buttonMover.Move();
             //if (!_killedInfo.AllDie)
             if (isPressed)
             {
@@ -87,16 +88,31 @@ public class AimInputButton : AbstractButton
         _playerMover.Go();
         //_cameraMover.Forward();
         _visibilityAim.OnFadeIn();
+        _cancelShoot.gameObject.SetActive(true);
     }
 
     private void OnUp()
     {
-        //IsZoom = false;
         isPressed = false;
         _playerMover.Hide();
-        //_cameraMover.Back();
         _visibilityAim.OnFadeOut();
-        _weapon.Shoot();
+
+        if (!_cancelShoot.IsCancelShoot)
+        {
+            Debug.Log("Не хочу стрелять");
+            _weapon.Shoot();
+        }
+        //else
+        //{
+        //    Debug.Log("хочу стрелять");
+        //    //IsZoom = false;
+        //    isPressed = false;
+        //    _playerMover.Hide();
+        //    //_cameraMover.Back();
+        //    _visibilityAim.OnFadeOut();
+
+        //}
+        _cancelShoot.gameObject.SetActive(false);
     }
 
     public void LastShootActivated()
@@ -110,10 +126,5 @@ public class AimInputButton : AbstractButton
         yield return new WaitForSeconds(0.165f);
         _buttonMover.Up();
         IsZoom = false;
-    }
-
-    public void TriggerCheck()
-    {
-        Debug.Log("выаывапыаыпвп");
     }
 }

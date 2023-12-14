@@ -11,7 +11,7 @@ public class ContinueButton : AbstractButton
     [SerializeField] private EndGame _endGameScreen;
 
     //private const string MainMenu = "MainScene";
-    private const string MainMenu = "MainTestScene";
+    private const string MainMenu = "MainScene";
 
     public override void OnClick()
     {
