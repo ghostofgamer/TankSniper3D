@@ -11,6 +11,7 @@ public class VictoryScreen : EndGame
     [SerializeField] private Save _save;
     [SerializeField] private GameObject _panelInfo;
     [SerializeField] private TMP_Text _levelNumber;
+    [SerializeField] private TMP_Text _enoughtAmountText;
 
     private Progress _progress;
 
@@ -38,6 +39,7 @@ public class VictoryScreen : EndGame
     protected override void OnEndGame()
     {
         base.OnEndGame();
+        _enoughtAmountText.text = Reward.ToString();
         _panelInfo.SetActive(false);
         int index = SceneManager.GetActiveScene().buildIndex;
         _save.SetData(Save.SceneNumber, ++index);
@@ -47,6 +49,6 @@ public class VictoryScreen : EndGame
     public void ChangeRewardRoulette(int reward)
     {
         Reward = reward;
-        _rewardCountText.text = Reward.ToString();
+        //_rewardCountText.text = Reward.ToString();
     }
 }

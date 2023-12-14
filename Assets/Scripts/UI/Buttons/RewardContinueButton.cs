@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RewardContinueButton : AbstractButton
 {
     [SerializeField] private FullAds _fullVideo;
-    [SerializeField] private Player _player;
+    //[SerializeField] private Player _player;
     [SerializeField] private GameOverScreen _gameOverScreen;
 
     private const string MainMenu = "MainScene";
@@ -14,7 +14,7 @@ public class RewardContinueButton : AbstractButton
     public override void OnClick()
     {
         //_fullVideo.Show();
-        _player.Revive();
+        _gameOverScreen._player.Revive();
         _gameOverScreen.Close();
     }
 }

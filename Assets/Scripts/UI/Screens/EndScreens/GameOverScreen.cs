@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameOverScreen : EndGame
 {
-    private Player _player;
+    public Player _player { get; private set; }
 
     public void Init(Player player)
     {

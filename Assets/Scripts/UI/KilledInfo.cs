@@ -25,6 +25,11 @@ public class KilledInfo : MonoBehaviour
         _enemyCount.text = _containerEnemy.childCount.ToString();
     }
 
+    public void Init(ButtonMover buttonMover)
+    {
+        _buttonMover = buttonMover;
+    }
+
     public void ChangeValue()
     {
         _killed++;

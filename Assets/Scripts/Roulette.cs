@@ -7,12 +7,13 @@ using UnityEngine.Events;
 public class Roulette : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    //[SerializeField] private TMP_Text _winText;
+    [SerializeField] private TMP_Text _winText;
     [SerializeField] private VictoryScreen _victoryScreen;
 
     private int _coef = 1;
     private int _watWeWin;
     private float _rew;
+    public int Win { get; private set; }
 
     public event UnityAction ChangeReward;
 
@@ -53,10 +54,9 @@ public class Roulette : MonoBehaviour
         //win = Mathf.Lerp(win, _rew * current, 35 * Time.deltaTime);
         //    _winText.text = win.ToString("0");
         //    Debug.Log(win);
-        int win = (int)_rew * _coef;
-        //_winText.text = win.ToString();
-        _victoryScreen.ChangeRewardRoulette(win);
-
+        Win = (int)_rew * _coef;
+        _winText.text = Win.ToString();
+        //_victoryScreen.ChangeRewardRoulette(win);
 
         //Debug.Log(win);
         //int needMount = Mathf.Lerp();
@@ -64,6 +64,5 @@ public class Roulette : MonoBehaviour
         //_winText.text = (_reward *= _coef).ToString();
         //switch (_watWeWin)
         //{
-
     }
 }

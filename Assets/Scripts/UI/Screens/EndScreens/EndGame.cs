@@ -27,8 +27,8 @@ public class EndGame : AbstractScreen
         Open();
     }
 
-    public void AddReward() 
-    {
-        _wallet.AddMoney(Reward);
-    }
+    //public void AddReward() 
+    //{
+    //    _wallet.AddMoney(Reward);
+    //}
 }

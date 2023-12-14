@@ -29,6 +29,11 @@ public class CameraAim : MonoBehaviour
         _startRotation = _mainCamera.transform.rotation;
     }
 
+    public void Init(AimInputButton aimInputButton) 
+    {
+        _aimInputButton = aimInputButton;
+    }
+
     //public IEnumerator SetCameraPause()
     //{
     //    yield return _waitForSeconds;

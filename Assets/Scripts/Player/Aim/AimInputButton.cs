@@ -111,4 +111,9 @@ public class AimInputButton : AbstractButton
         _buttonMover.Up();
         IsZoom = false;
     }
+
+    public void TriggerCheck()
+    {
+        Debug.Log("тћрћтряћрћятя");
+    }
 }
