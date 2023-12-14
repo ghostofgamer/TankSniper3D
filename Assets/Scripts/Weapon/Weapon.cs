@@ -21,6 +21,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField]private Transform _defPos;
+    [SerializeField] private ReloadSlider _reload;
     protected ObjectPool<Bullet> _pool;
 
     protected readonly int _maxAmmo = 5;
@@ -156,7 +157,8 @@ public abstract class Weapon : MonoBehaviour
 
     private void SetReload(bool flag)
     {
-        _image.gameObject.SetActive(flag);
+        _reload.gameObject.SetActive(flag);
+        //_image.gameObject.SetActive(flag);
         IsReload = flag;
     }
 

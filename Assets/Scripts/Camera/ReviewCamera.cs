@@ -295,11 +295,14 @@ public class ReviewCamera : MonoBehaviour
 
         targetRot = Quaternion.Euler(-Y, X, 0f);
 
-        NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+        //NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
+        NewtargetRot = targetRot;
 
         transform.rotation = NewtargetRot;
         targetPos = targetRot * offset + target.position;
-        NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
-        transform.position = NewTargetPos;
+        NewTargetPos = targetPos;
+        //NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
+        //transform.position = NewTargetPos;
+        transform.position = targetPos;
     }
 }

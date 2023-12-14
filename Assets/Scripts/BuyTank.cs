@@ -27,11 +27,11 @@ public class BuyTank : AbstractButton
     private int _currentLevel;
     private int _currentTankIndex = 1;
     private int _maxLevel = 5;
-    private int _price = 5;
+    public int Price { get; private set; } = 5;
 
     private void Start()
     {
-        if (_wallet.Money < _price)
+        if (_wallet.Money < Price)
         {
             _button.SetActive(true);
             gameObject.SetActive(false);
@@ -41,10 +41,10 @@ public class BuyTank : AbstractButton
         }
 
         _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
-        _price = _currentLevel * 10;
+        Price = _currentLevel * 10;
         _positions = new List<Transform>();
         _slider.value = _load.Get(Save.ProgressSlider, 0f);
-        _currenPriceText.text = _price.ToString();
+        _currenPriceText.text = Price.ToString();
         _currentLevelText.text = _currentLevel.ToString();
         //ShowTankPlayer(_currentTankIndex);
 
@@ -73,7 +73,7 @@ public class BuyTank : AbstractButton
         if (position == null)
             return;
 
-        if (_wallet.Money >= _price)
+        if (_wallet.Money >= Price)
         {
             Sell();
         }
@@ -85,11 +85,21 @@ public class BuyTank : AbstractButton
         _storage.AddTank(tank.GetComponent<Tank>());
 
 
-        if (_wallet.Money < _price)
+        if (_wallet.Money < Price)
         {
             _button.SetActive(true);
             //return;
         }
+    }
+
+    public void GetTank()
+    {
+        Transform position = TryGetPosition();
+        var tank = Instantiate(_tanks[_currentLevel - 1], _container);
+        tank.transform.position = position.position;
+        //new Vector3(position.x, position.y /*+ _offset*/, position.z);
+        //tank.transform.rotation = position.rotation;
+        _storage.AddTank(tank.GetComponent<Tank>());
     }
 
     private Transform TryGetPosition()
@@ -128,12 +138,12 @@ public class BuyTank : AbstractButton
 
     private void Sell()
     {
-        _wallet.DecreaseMoney(_price);
+        _wallet.DecreaseMoney(Price);
     }
 
     private void AddPrice()
     {
-        Mathf.Clamp(_price = _currentLevel * 10, 0, 60);
-        _currenPriceText.text = _price.ToString();
+        Mathf.Clamp(Price = _currentLevel * 10, 0, 60);
+        _currenPriceText.text = Price.ToString();
     }
 }

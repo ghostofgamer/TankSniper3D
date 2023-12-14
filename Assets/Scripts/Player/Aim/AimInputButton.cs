@@ -10,6 +10,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private GameObject _imageReload;
+    [SerializeField] private ReloadSlider _reloadSlider;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private VisibilityAim _visibilityAim;
@@ -26,7 +27,8 @@ public class AimInputButton : AbstractButton
         if (_killedInfo.AllDie)
             _eventTrigger.enabled = false;
 
-        _eventTrigger.enabled = !_imageReload.activeSelf;
+        //_eventTrigger.enabled = !_imageReload.activeSelf;
+        _eventTrigger.enabled = !_reloadSlider.gameObject.activeSelf;
 
         if (!_weapon.IsReload)
         {

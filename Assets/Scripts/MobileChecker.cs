@@ -11,6 +11,8 @@ public class MobileChecker : MonoBehaviour
     [SerializeField] private GameObject _prefabVariant;
     [SerializeField] private GameObject _prefamMobileVariant;
     [SerializeField] private bool _isMenu;
+    [SerializeField] private CanvasGroup _PC;
+    [SerializeField] private CanvasGroup _mobile;
 
     private void Awake()
     {
@@ -18,8 +20,17 @@ public class MobileChecker : MonoBehaviour
         {
             if (Application.isMobilePlatform)
             {
-                _prefabVariant.SetActive(false);
-                _prefamMobileVariant.SetActive(true);
+                //_prefabVariant.SetActive(false);
+                //_prefamMobileVariant.SetActive(true);
+                _mobile.alpha = 1;
+                _mobile.interactable = true;
+                _mobile.blocksRaycasts = true;
+            }
+            else
+            {
+                _PC.alpha = 1;
+                _PC.interactable = true;
+                _PC.blocksRaycasts = true;
             }
         }
 
