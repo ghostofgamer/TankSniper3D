@@ -14,14 +14,16 @@ public abstract class Ad : MonoBehaviour
     protected virtual void OnOpen()
     {
         Time.timeScale = 0;
-        AudioListener.volume = 0f;
+        //AudioListener.volume = 0f;
+        AudioListener.pause = true;
         //AudioListener.pause = true;
     }
 
     protected virtual void OnClose(bool isClosed)
     {
         Time.timeScale = 1;
-        AudioListener.volume = 1f;
+        //AudioListener.volume = 1f;
+        AudioListener.pause = false;
         //AudioListener.pause = false;
         SceneManager.LoadScene("MainScene");
     }
@@ -37,6 +39,7 @@ public abstract class Ad : MonoBehaviour
     protected void OnClose()
     {
         Time.timeScale = 1;
-        AudioListener.volume = 1f;
+        //AudioListener.volume = 1f;
+        AudioListener.pause = false;
     }
 }

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SdkInitialization : MonoBehaviour
 {
-    //private const string MainScene = "MainScene";
-    private const string MainScene = "MainTestScene";
+    private const string MainScene = "MainScene";
+    //private const string MainScene = "MainTestScene";
 
     private void Awake()
     {

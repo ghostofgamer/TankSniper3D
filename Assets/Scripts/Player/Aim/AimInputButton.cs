@@ -99,7 +99,6 @@ public class AimInputButton : AbstractButton
 
         if (!_cancelShoot.IsCancelShoot && !_playerMover.GetComponent<Player>().IsDead)
         {
-            Debug.Log("Огонь");
             _weapon.Shoot();
         }
         //else
@@ -123,7 +122,7 @@ public class AimInputButton : AbstractButton
 
     private IEnumerator PauseZoomOff()
     {
-        yield return new WaitForSeconds(0.165f);
+        yield return new WaitForSeconds(0.65f);
         _buttonMover.Up();
         IsZoom = false;
     }

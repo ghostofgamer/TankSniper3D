@@ -20,7 +20,6 @@ public class EndGame : AbstractScreen
 
     protected virtual void OnEndGame()
     {
-        Debug.Log("ONENDGAME");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 

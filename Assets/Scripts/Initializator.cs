@@ -14,7 +14,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private PlayerHealthbar _playerHealthbar;
     //[SerializeField] private AimInputButton[] _aimButton;
     [SerializeField] private FightScreen _fightScreen;
-    [SerializeField] private BulletsInfo _bulletsInfo;
+    [SerializeField] private BulletsInfo[] _bulletsInfo;
     [SerializeField] private AimInputButton[] _aimInputButton;
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
@@ -28,8 +28,8 @@ public class Initializator : MonoBehaviour
 
     private readonly int _startIndex = 0;
 
-    [SerializeField] private int _indexPlayer;
-    //private int _indexPlayer;
+    //[SerializeField] private int _indexPlayer;
+    private int _indexPlayer;
     private Player _player;
     private List<GameObject> _gameObjects;
 
@@ -37,7 +37,7 @@ public class Initializator : MonoBehaviour
     {
         Time.timeScale = 1;
         _gameObjects = new List<GameObject>();
-        //_indexPlayer = _load.Get(Save.Tank, _startIndex);
+        _indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
         YandexGamesSdk.GameReady();
     }
@@ -53,7 +53,7 @@ public class Initializator : MonoBehaviour
         //AimInputButtonPCInit();
 
         _alarm.Init(_player.GetComponent<Weapon>());
-        BulletsInfoInit();
+        //BulletsInfoInit();
         FightScreenInit();
         GameOverScreenInit();
         _victoryScreen.Init(_progress);
@@ -103,12 +103,16 @@ public class Initializator : MonoBehaviour
             _aimInputButton[0].gameObject.SetActive(true);
             _player.GetComponent<CameraAim>().Init(_aimInputButton[0]);
             _killedInfo.Init(_aimInputButton[0].GetComponent<ButtonMover>());
+            _bulletsInfo[0].Init(_player.GetComponent<Weapon>());
+            _gameObjects.Add(_bulletsInfo[0].gameObject);
         }
         else
         {
             _aimInputButton[1].gameObject.SetActive(true);
             _player.GetComponent<CameraAim>().Init(_aimInputButton[1]);
             _killedInfo.Init(_aimInputButton[1].GetComponent<ButtonMover>());
+            _bulletsInfo[1].Init(_player.GetComponent<Weapon>());
+            _gameObjects.Add(_bulletsInfo[1].gameObject);
         }
 
 
@@ -117,12 +121,12 @@ public class Initializator : MonoBehaviour
         //_gameObjects.Add(_aimInputButton.gameObject);
     }
 
-    private void BulletsInfoInit()
-    {
-        _bulletsInfo.Init(_player.GetComponent<Weapon>());
-        //_bulletsInfo.gameObject.SetActive(true);
-        _gameObjects.Add(_bulletsInfo.gameObject);
-    }
+    //private void BulletsInfoInit()
+    //{
+    //    _bulletsInfo.Init(_player.GetComponent<Weapon>());
+    //    //_bulletsInfo.gameObject.SetActive(true);
+    //    _gameObjects.Add(_bulletsInfo.gameObject);
+    //}
 
     private void SetActive()
     {
