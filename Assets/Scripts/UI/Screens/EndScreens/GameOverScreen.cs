@@ -7,6 +7,9 @@ public class GameOverScreen : EndGame
 {
     public Player _player { get; private set; }
 
+    [SerializeField] private AimInputButton _aimInputButton;
+    [SerializeField] private PanelInfo _panelInfo;
+
     public void Init(Player player)
     {
         _player = player;
@@ -26,6 +29,13 @@ public class GameOverScreen : EndGame
 
     protected override void OnEndGame()
     {
-        Open();
+        _aimInputButton.ReturnHide();
+        _panelInfo.Close();
+        //Open();
+        base.OnEndGame();
     }
+    //protected override void OnEndGame()
+    //{
+    //    Open();
+    //}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class AbstractScreen : MonoBehaviour
 {
-    private CanvasGroup _canvasGroup;
+    protected CanvasGroup _canvasGroup;
 
     private void Start()
     {

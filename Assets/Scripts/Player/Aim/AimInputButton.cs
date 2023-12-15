@@ -26,7 +26,9 @@ public class AimInputButton : AbstractButton
     private void Update()
     {
         if (_killedInfo.AllDie)
+        {
             _eventTrigger.enabled = false;
+        }
 
         //_eventTrigger.enabled = !_imageReload.activeSelf;
         _eventTrigger.enabled = !_reloadSlider.gameObject.activeSelf;
@@ -93,13 +95,11 @@ public class AimInputButton : AbstractButton
 
     private void OnUp()
     {
-        isPressed = false;
-        _playerMover.Hide();
-        _visibilityAim.OnFadeOut();
+        ReturnHide();
 
-        if (!_cancelShoot.IsCancelShoot)
+        if (!_cancelShoot.IsCancelShoot && !_playerMover.GetComponent<Player>().IsDead)
         {
-            Debug.Log("Не хочу стрелять");
+            Debug.Log("Огонь");
             _weapon.Shoot();
         }
         //else
@@ -126,5 +126,12 @@ public class AimInputButton : AbstractButton
         yield return new WaitForSeconds(0.165f);
         _buttonMover.Up();
         IsZoom = false;
+    }
+
+    public void ReturnHide()
+    {
+        isPressed = false;
+        _playerMover.Hide();
+        _visibilityAim.OnFadeOut();
     }
 }

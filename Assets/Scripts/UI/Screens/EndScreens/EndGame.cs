@@ -12,12 +12,18 @@ public class EndGame : AbstractScreen
 
     protected int Reward;
 
+    protected Coroutine _coroutine;
+
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
     public int ViewReward => Reward;
 
     protected virtual void OnEndGame()
     {
+        Debug.Log("ONENDGAME");
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
         StartCoroutine(OpenScreen());
     }
 

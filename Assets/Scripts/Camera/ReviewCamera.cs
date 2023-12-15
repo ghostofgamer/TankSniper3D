@@ -82,7 +82,7 @@ public class ReviewCamera : MonoBehaviour
         //X = transform.rotation.y;
         //Y = transform.rotation.y;
         //Y = transform.localRotation.x;
-        Debug.Log(Y);
+        //Debug.Log(Y);
 
         //minlimitX = Mathf.Abs(minlimitX);
         //if (minlimitX > 90) minlimitX = 90;

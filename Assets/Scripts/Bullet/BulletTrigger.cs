@@ -72,9 +72,9 @@ public class BulletTrigger : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             Hit();
-                Debug.Log("попал");
+                //Debug.Log("попал");
 
-            if (!player.GetComponent<PlayerMover>()._isHidden)
+            if (!player.GetComponent<PlayerMover>()._isHidden&&!player.IsDead)
             {
                 player.ApplyDamage(_bullet.Damage);
             }
