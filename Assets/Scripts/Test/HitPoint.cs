@@ -28,6 +28,7 @@ public class HitPoint : MonoBehaviour
         {
             //Debug.Log(hit.collider.name);
             //_towerRotate.Rotate(hit.point);
+            Debug.Log(hit.collider.name);
             _towerRotate.Rotate(hit.point);
         }
     }
