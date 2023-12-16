@@ -17,7 +17,7 @@ public class RouletteContinueButton : AbstractButton
         //Time.timeScale = 0;
         _roulette.GetComponent<Animator>().enabled = false;
         _wallet.AddMoney(_roulette.Win);
-        //_fullVideo.Show();
+        _fullVideo.Show();
 
         //_victoryScreen.ChangeRewardRoulette(_roulette.Win);
         //SceneManager.LoadScene(MainMenu);
