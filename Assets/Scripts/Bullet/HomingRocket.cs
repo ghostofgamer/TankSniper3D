@@ -15,7 +15,7 @@ public class HomingRocket : MonoBehaviour
     [SerializeField] private float _speedRotate;
     [SerializeField] private BulletTrigger _bulletTrigger;
     [SerializeField] private Bullet _bullet;
-    [SerializeField] private int _distance = 16;
+    [SerializeField] private int _distance;
 
     private Transform _target;
     private Vector3 _startPosition;
@@ -59,7 +59,7 @@ public class HomingRocket : MonoBehaviour
                 Vector3 _targetVector = target - gameObject.transform.position;
                 gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, _targetVector, _speedRotate * Time.deltaTime);
 
-                Debug.Log("До цели " + Vector3.Distance(transform.position, _target.position));
+                //Debug.Log("До цели " + Vector3.Distance(transform.position, _target.position));
 
                 if (Vector3.Distance(transform.position, _target.position) < 1)
                     _speedMove = 0f;

@@ -291,7 +291,7 @@ public class ReviewCamera : MonoBehaviour
         X = Mathf.Clamp(X, -minlimitY, maxlimitY);
         Y += Input.GetAxis("Mouse Y");
         Y = Mathf.Clamp(Y, -minlimitX, maxlimitX);
-        Debug.Log(X);
+        //Debug.Log(X);
 
         targetRot = Quaternion.Euler(-Y, X, 0f);
 

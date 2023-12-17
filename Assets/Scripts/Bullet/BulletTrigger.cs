@@ -10,6 +10,7 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private Effect _effect;
     [SerializeField] private BulletMover _bulletMover;
     [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private HomingRocket _homingRocket;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);
 
@@ -20,6 +21,9 @@ public class BulletTrigger : MonoBehaviour
     {
         if (_bulletMover != null)
             _bulletMover.enabled = true;
+
+        if (_homingRocket != null && _homingRocket.enabled == false)
+            _homingRocket.enabled = true;
     }
 
     private void Start()
@@ -72,9 +76,9 @@ public class BulletTrigger : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             Hit();
-                //Debug.Log("попал");
+            //Debug.Log("попал");
 
-            if (!player.GetComponent<PlayerMover>()._isHidden&&!player.IsDead)
+            if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
             {
                 player.ApplyDamage(_bullet.Damage);
             }
@@ -87,6 +91,9 @@ public class BulletTrigger : MonoBehaviour
     {
         if (_bulletMover != null)
             _bulletMover.enabled = false;
+
+        if (_homingRocket != null)
+            _homingRocket.enabled = false;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
