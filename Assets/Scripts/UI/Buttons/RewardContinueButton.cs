@@ -17,8 +17,8 @@ public class RewardContinueButton : AbstractButton
     {
         //_fullVideo.Show();
         _rewardVideo.Show();
-        _panelInfo.Open();
+        //_panelInfo.Open();
         //_gameOverScreen.Player.Revive();
-        _gameOverScreen.Close();
+        //_gameOverScreen.Close();
     }
 }

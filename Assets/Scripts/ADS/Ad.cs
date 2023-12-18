@@ -16,7 +16,6 @@ public abstract class Ad : MonoBehaviour
         Time.timeScale = 0;
         //AudioListener.volume = 0f;
         AudioListener.pause = true;
-        //AudioListener.pause = true;
     }
 
     protected virtual void OnClose(bool isClosed)

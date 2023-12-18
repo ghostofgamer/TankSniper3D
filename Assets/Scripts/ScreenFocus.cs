@@ -7,6 +7,8 @@ public class ScreenFocus : MonoBehaviour
 {
     [SerializeField] private SettingsScreen _settingsScreen;
 
+    private AimInputButton _aimInputButton;
+
     private void OnEnable()
     {
         Application.focusChanged += OnInBackgroundChangeApp;
@@ -17,6 +19,11 @@ public class ScreenFocus : MonoBehaviour
     {
         Application.focusChanged -= OnInBackgroundChangeApp;
         WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
+    }
+
+    public void Init(AimInputButton aimInputButton)
+    {
+        _aimInputButton = aimInputButton;
     }
 
     private void OnInBackgroundChangeApp(bool inApp)
@@ -32,6 +39,11 @@ public class ScreenFocus : MonoBehaviour
     {
         if (_settingsScreen.GetComponent<CanvasGroup>().alpha == 0)
         {
+            if (isBackground)
+            {
+                _aimInputButton.ReturnHide();
+            }
+
             MuteAudio(isBackground);
             PauseGame(isBackground);
         }
@@ -39,7 +51,7 @@ public class ScreenFocus : MonoBehaviour
 
     private void MuteAudio(bool value)
     {
-        //AudioListener.volume= value ? 0 : 1;
+        //AudioListener.volume = value ? 0 : 1;
         AudioListener.pause = value ? true : false;
     }
 

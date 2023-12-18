@@ -25,11 +25,12 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Progress _progress;
     [SerializeField] private Load _load;
     [SerializeField] private MaterialContainer _materialContainer;
+    [SerializeField] private ScreenFocus _screenFocus;
 
     private readonly int _startIndex = 0;
 
-    [SerializeField] private int _indexPlayer;
-    //private int _indexPlayer;
+    //[SerializeField] private int _indexPlayer;
+    private int _indexPlayer;
     private Player _player;
     private List<GameObject> _gameObjects;
 
@@ -37,7 +38,7 @@ public class Initializator : MonoBehaviour
     {
         Time.timeScale = 1;
         _gameObjects = new List<GameObject>();
-        //_indexPlayer = _load.Get(Save.Tank, _startIndex);
+        _indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
         YandexGamesSdk.GameReady();
     }
@@ -48,6 +49,7 @@ public class Initializator : MonoBehaviour
         _playerHealthbar.Init(_player);
         EnemyInit(_player);
         _hitPoint.Init(_player.GetComponent<TowerRotate>());
+
 
         AimInputButtonInit();
         //AimInputButtonPCInit();
@@ -73,7 +75,7 @@ public class Initializator : MonoBehaviour
 
         _players[index].gameObject.SetActive(true);
         //_aimButton[index].gameObject.SetActive(true);
-        //_players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         return _players[index];
     }
 
@@ -105,6 +107,7 @@ public class Initializator : MonoBehaviour
             _killedInfo.Init(_aimInputButton[0].GetComponent<ButtonMover>());
             _bulletsInfo[0].Init(_player.GetComponent<Weapon>());
             _gameObjects.Add(_bulletsInfo[0].gameObject);
+            _screenFocus.Init(_aimInputButton[0]);
         }
         else
         {
@@ -113,6 +116,7 @@ public class Initializator : MonoBehaviour
             _killedInfo.Init(_aimInputButton[1].GetComponent<ButtonMover>());
             _bulletsInfo[1].Init(_player.GetComponent<Weapon>());
             _gameObjects.Add(_bulletsInfo[1].gameObject);
+            _screenFocus.Init(_aimInputButton[1]);
         }
 
 

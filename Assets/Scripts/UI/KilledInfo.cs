@@ -23,6 +23,8 @@ public class KilledInfo : MonoBehaviour
     private void Start()
     {
         _enemyCount.text = _containerEnemy.childCount.ToString();
+        _killed = 0;
+        _killedCount.text = _killed.ToString();
     }
 
     public void Init(ButtonMover buttonMover)

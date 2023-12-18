@@ -20,7 +20,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private AudioClip _audioClip;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
-    [SerializeField]private Transform _defPos;
+    [SerializeField] private Transform _defPos;
     [SerializeField] private ReloadSlider _reload;
     protected ObjectPool<Bullet> _pool;
 
@@ -31,6 +31,7 @@ public abstract class Weapon : MonoBehaviour
     protected bool _autoExpand = true;
     private int _hitEnemy = 0;
     private int _layerMask;
+    private bool _isLastShoot = false;
 
     public bool IsReload { get; private set; } = false;
 
@@ -69,10 +70,11 @@ public abstract class Weapon : MonoBehaviour
             else if (_killedInfo.IsLastEnemy)
             {
                 LastShoot();
-                EnemyHitChanger();
+                //EnemyHitChanger();
             }
             else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
+                GetBullet(bullet);
                 AmmoChanger(bullet);
                 //_audioSource.Play();
                 //_sourceAudio.Play("Shoot1Lvl");
@@ -86,7 +88,9 @@ public abstract class Weapon : MonoBehaviour
     {
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
-            AmmoChanger(bullet);
+            GetBullet(bullet);
+            EnemyHitChanger();
+            //AmmoChanger(bullet);
             //_audioSource.Play();
             //_sourceAudio.Play("Shoot1Lvl");
             _audioPlugin.PlayKey();
@@ -102,13 +106,15 @@ public abstract class Weapon : MonoBehaviour
                     //    _cameraAim.CinemachineMove(bullet);
                     //    _cameraAim.OnCinemaMachine();
                     //}
-                    if (!enemy.IsBoss|| enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
+                    if (!enemy.IsBoss || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
+                        _isLastShoot = true;
                         _cameraAim.CinemachineMove(bullet);
                         _cameraAim.OnCinemaMachine();
                     }
                 }
             }
+            AmmoChanger(bullet);
         }
     }
 
@@ -136,13 +142,19 @@ public abstract class Weapon : MonoBehaviour
         StartCoroutine(SomeShoot(count, delay));
     }
 
-    private void AmmoChanger(Bullet bullet)
+    private void GetBullet(Bullet bullet)
     {
         bullet.Init(_shootPosition);
+    }
+
+
+    private void AmmoChanger(Bullet bullet)
+    {
+        //bullet.Init(_shootPosition);
         _currentAmmo--;
         BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
 
-        if (_currentAmmo <= 0)
+        if (_currentAmmo <= 0 && !_isLastShoot)
             StartCoroutine(Reload());
     }
 

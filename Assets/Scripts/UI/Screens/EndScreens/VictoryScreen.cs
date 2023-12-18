@@ -14,6 +14,7 @@ public class VictoryScreen : EndGame
     [SerializeField] private TMP_Text _enoughtAmountText;
 
     private Progress _progress;
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
     public event UnityAction ChangeReward;
 
@@ -38,7 +39,8 @@ public class VictoryScreen : EndGame
 
     protected override void OnEndGame()
     {
-        base.OnEndGame();
+        StartCoroutine(OnActiveButton());
+        //base.OnEndGame();
         _enoughtAmountText.text = Reward.ToString();
         _panelInfo.SetActive(false);
         int index = SceneManager.GetActiveScene().buildIndex;
@@ -50,5 +52,14 @@ public class VictoryScreen : EndGame
     {
         Reward = reward;
         //_rewardCountText.text = Reward.ToString();
+    }
+
+    private IEnumerator OnActiveButton()
+    {
+        yield return _waitForSeconds;
+        Open();
+        Time.timeScale = 1;
+        yield return _waitForSeconds;
+        _continueButton.gameObject.SetActive(true);
     }
 }

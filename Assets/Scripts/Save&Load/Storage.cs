@@ -59,6 +59,7 @@ public class Storage : MonoBehaviour
             if (_positionsss[i].GetComponent<PositionTank>().Target != null)
                 _enemySaves.Add(_positionsss[i].GetComponent<PositionTank>().Target.GetComponent<Tank>());
         }
+        
         SaveGame();
     }
 

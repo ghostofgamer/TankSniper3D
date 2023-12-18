@@ -16,11 +16,12 @@ public class ProgressMap : Progress
     private int _indexEnviropments;
     private int _maxIndexEnviropment = 2;
 
-    private void Start()
+    private void Awake()
     {
+        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+
         if (_isMainScene)
         {
-            _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
             SetElement(_enviropments, _indexEnviropments);
             //_buyTank.GetList(_positions[_indexEnviropments]);
         }
@@ -29,6 +30,20 @@ public class ProgressMap : Progress
         SetIndex();
         SetProgress();
     }
+
+    //private void Start()
+    //{
+    //    if (_isMainScene)
+    //    {
+    //        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+    //        SetElement(_enviropments, _indexEnviropments);
+    //        //_buyTank.GetList(_positions[_indexEnviropments]);
+    //    }
+
+    //    ProgressPointImage();
+    //    SetIndex();
+    //    SetProgress();
+    //}
 
     private void SetProgress()
     {

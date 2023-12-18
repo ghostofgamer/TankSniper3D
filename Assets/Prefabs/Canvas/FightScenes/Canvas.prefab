@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9de093265a5aa994dbf93a678fa66d60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8a8f330094e3eb489bb3583b67b69cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9de093265a5aa994dbf93a678fa66d60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07e453e0d61970d4aa865aef2cb1f55f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8507,7 +8507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07e453e0d61970d4aa865aef2cb1f55f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8a8f330094e3eb489bb3583b67b69cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15034,9 +15034,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wallet: {fileID: 7092953220679466088}
-  _levelConfig: {fileID: 11400000, guid: cfb8f40448aea7d479eeb825a69936a6, type: 2}
+  _levelConfig: {fileID: 11400000, guid: 49227e967043ede4e8f38344ebae879c, type: 2}
   _rewardCountText: {fileID: 7029454153562433474}
-  _continueButton: {fileID: 7785631949908235158}
+  _continueButton: {fileID: 6549575548716934084}
   _killedInfo: {fileID: 4475014109724710405}
   _save: {fileID: 0}
   _panelInfo: {fileID: 4475014111400003609}
@@ -24084,7 +24084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 07e453e0d61970d4aa865aef2cb1f55f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9de093265a5aa994dbf93a678fa66d60, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -24992,7 +24992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2467713892766361784
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26869,6 +26869,7 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _wallet: {fileID: 7092953220679466088}
   _fullVideo: {fileID: 868703534488886732}
+  _rewardVideo: {fileID: 0}
 --- !u!224 &6920612055137811124 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -27660,6 +27661,7 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _wallet: {fileID: 7092953220679466088}
   _fullVideo: {fileID: 7009333398907028855}
+  _rewardVideo: {fileID: 0}
 --- !u!224 &5812310516234039572 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -28129,6 +28131,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6191533084568070349}
+    - targetCorrespondingSourceObject: {fileID: 8948961942402484085, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3396604910238523348}
   m_SourcePrefab: {fileID: 100100000, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
 --- !u!224 &359203506456015465 stripped
 RectTransform:
@@ -28203,3 +28208,18 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _wallet: {fileID: 7092953220679466088}
   _fullVideo: {fileID: 1824761955420066592}
+  _rewardVideo: {fileID: 3396604910238523348}
+--- !u!114 &3396604910238523348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359203506456015470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6a35bedff4b6741b5681960dfd5f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 7092953220679466088}
+  _roulette: {fileID: 4925953474847345268}

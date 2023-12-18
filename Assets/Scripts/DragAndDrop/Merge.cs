@@ -11,6 +11,7 @@ public class Merge : MonoBehaviour
     [SerializeField] private TankView _tankView;
     [SerializeField] private Storage _storage;
     [SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private BuyTank _buytank;
 
     private int _currentLevel;
     private int _maxLevel = 4;
@@ -30,6 +31,7 @@ public class Merge : MonoBehaviour
     {
         _layerMask = 1 << 3;
         _layerMask = ~_layerMask;
+        StartCoroutine(ChangeStorage());
     }
 
     private void Update()
@@ -80,16 +82,25 @@ public class Merge : MonoBehaviour
                         var level = tank.GetComponent<DragItem>().Level;
 
                         if (_selectObject.GetComponent<DragItem>().Level == level &&
-                            _selectObject.GetComponent<DragItem>().Level <= _maxLevel &&
+                            //_selectObject.GetComponent<DragItem>().Level <= _maxLevel &&
                             _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
                         {
+
+                            if(_selectObject.GetComponent<DragItem>().Level > _maxLevel)
+                            {
+                                //int newLevel = 0;
+                            }
+
                             _audioPlugin.PlayKey();
                             var newTank = Instantiate(_prefabs[level]);
+                            newTank.GetComponent<DragItem>().Add();
                             newTank.transform.position = tank.transform.transform.position;
                             _selectObject.SetActive(false);
                             tank.SetActive(false);
                             int newLevel = level + 1;
                             //_storage.ListChanged();
+
+
 
                             if (_load.Get(Save.Level, 0) < newLevel)
                             {
@@ -98,6 +109,8 @@ public class Merge : MonoBehaviour
                                 //_tankView.ViewTank();
                                 _tankView.NewLevelTankView();
                             }
+
+                            StartCoroutine(LevelCheck());
                         }
                         else
                         {
@@ -156,5 +169,11 @@ public class Merge : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         _storage.ListChanged();
+    }
+
+    private IEnumerator LevelCheck()
+    {
+        yield return new WaitForSeconds(0.1f);
+        _buytank.SetValue();
     }
 }

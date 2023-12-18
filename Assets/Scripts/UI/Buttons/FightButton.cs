@@ -14,6 +14,11 @@ public class FightButton : AbstractButton
     private void Start()
     {
         _sceneNumber = _load.Get(Save.SceneNumber, _startSceneIndex);
+
+        if (_sceneNumber >= 16)
+        {
+            _sceneNumber = _startSceneIndex;
+        }
     }
 
     public override void OnClick()
