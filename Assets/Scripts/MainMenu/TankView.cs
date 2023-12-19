@@ -12,13 +12,15 @@ public class TankView : MonoBehaviour
     [SerializeField] private AudioPlugin _audioPlugin;
 
     private int _startIndex = 0;
+    private int _currentIndex = 0;
     private int _currentLevel = 0;
-    private int _currentIndex = 1;
 
     private void Start()
     {
         ViewTank();
-        _currentLevel = _load.Get(Save.Level, _startIndex);
+        _currentIndex = _load.Get(Save.Level, _startIndex);
+        _currentLevel = _load.Get(Save.CurrentLevel, 0);
+        Debug.Log("Current " + _currentLevel);
     }
 
     public void ViewTank()
@@ -37,16 +39,23 @@ public class TankView : MonoBehaviour
         //Debug.Log("LVL " + _currentIndex);
         //Debug.Log("IND " + level);
 
-        if (_currentIndex <= level)
+        if (_currentLevel < level)
         {
+
+            Debug.Log("Current " + _currentLevel);
+            //Debug.Log("LEVELS " + level);
+
             _effect.Play();
             _audioPlugin.PlayKey();
             OffActiveTanks();
             _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
             _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
 
-            if (_currentIndex < level)
-                _currentIndex = level;
+            if (_currentLevel < level)
+            {
+                _currentLevel = level;
+                _save.SetData(Save.CurrentLevel, _currentLevel);
+            }
         }
         //_currentIndex = _load.Get(Save.LevelBuy, 1);
         ////Debug.Log("Level " + _currentIndex);
@@ -59,10 +68,10 @@ public class TankView : MonoBehaviour
 
     public void SetLevelTank(int level)
     {
-        if (_currentLevel < level)
-            _currentLevel = level;
+        if (_currentIndex < level)
+            _currentIndex = level;
 
-        _save.SetData(Save.Level, _currentLevel);
+        _save.SetData(Save.Level, _currentIndex);
     }
 
     public void OffActiveTanks()

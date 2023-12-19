@@ -90,7 +90,7 @@ public class BuyTank : AbstractButton
         }
 
         //_tanks[_currentLevel - 1].GetComponent<DragItem>().SetLevel(_load.Get(_tanks[_currentLevel - 1].GetComponent<DragItem>().TankName, _tanks[_currentLevel - 1].GetComponent<DragItem>().Level));
-        Debug.Log("Ломается " + (_currentLevel - 1));
+        //Debug.Log("Ломается " + (_currentLevel - 1));
         int needNumber = _load.Get(_tanks[_currentLevel - 1].GetComponent<DragItem>().TankName, _tanks[_currentLevel - 1].GetComponent<DragItem>().Level);
         //Debug.Log("Загружается " + needNumber);
 
@@ -250,6 +250,8 @@ public class BuyTank : AbstractButton
         if (max > _maxLevel)
         {
             _isWaveEnd = true;
+            int _allOpen = 1;
+            _save.SetData(Save.AllTanksOpen, _allOpen);
         }
 
         if (_isWaveEnd)
@@ -262,7 +264,7 @@ public class BuyTank : AbstractButton
 
             if (_slider.value == 1 && _maxLevel>max /*|| min == _startLevel && _slider.value == 1*/)
             {
-                Debug.Log("Внутри");
+                //Debug.Log("Внутри");
                 _currentLevel = _startLevel;
                 _slider.value = 0;
                 _levelBuy++;

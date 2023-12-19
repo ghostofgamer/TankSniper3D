@@ -16,6 +16,8 @@ public class Save : MonoBehaviour
     public const string ProgressLevel = "ProgressLevel";
     public const string ProgressSlider = "ProgressSlider";
     public const string LevelBuy = "LevelBuy";
+    public const string CurrentLevel = "CurrentLevel";
+    public const string AllTanksOpen = "AllTanksOpen";
     [Header("Pattern")]
     public const string Zebra = "Zebra";
     public const string Winter = "Winter";

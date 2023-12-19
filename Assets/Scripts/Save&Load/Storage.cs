@@ -22,7 +22,7 @@ public class Storage : MonoBehaviour
     private void Start()
     {
         _filePath = Application.persistentDataPath + "/save.gamesave";
-        //LoadGame();
+        LoadGame();
     }
 
     public void Init(List<Transform> transform)

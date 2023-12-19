@@ -32,12 +32,26 @@ public class StoreScreen : AbstractScreen
 
     private void OpenTanks()
     {
-        int level = _load.Get(Save.Level, _startIndex);
+        int allOpen = _load.Get(Save.AllTanksOpen, 0);
 
-        for (int i = 0; i < level; i++)
+        if (allOpen == 0)
         {
-            _blocks[i].SetActive(false);
+            int level = _load.Get(Save.Level, _startIndex);
+
+            for (int i = 0; i < level; i++)
+            {
+                _blocks[i].SetActive(false);
+            }
+
         }
+        else
+        {
+            foreach (var block in _blocks)
+            {
+                block.SetActive(false);
+            }
+        }
+
     }
 
     public void SetItem()
