@@ -134,7 +134,7 @@ public class Merge : MonoBehaviour
                             _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
                         {
                             int newLevel = ++level;
-
+                            //Debug.Log("Merge " + levelMerge);
                             if (_selectObject.GetComponent<DragItem>().Level > _maxLevel)
                             {
                                 newLevel = 0;
@@ -142,7 +142,8 @@ public class Merge : MonoBehaviour
                                 _save.SetData(Save.Tank, newLevel);
                                 //if (_firstMaxWaveMerge)
                                 //{
-                                _tankView.NewLevelTankView();
+                                //Debug.Log("Merge " + levelMerge);
+                                _tankView.NewLevelTankView(levelMerge);
                                 //_firstMaxWaveMerge = false;
                                 //}
                             }
@@ -170,7 +171,7 @@ public class Merge : MonoBehaviour
                                 _save.SetData(Save.Tank, newLevel);
                                 //_tankView.ViewTank();
 
-                                _tankView.NewLevelTankView();
+                                _tankView.NewLevelTankView(levelMerge);
                                 //_firstMaxWaveMerge = true;
                             }
 

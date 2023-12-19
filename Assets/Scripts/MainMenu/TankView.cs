@@ -13,6 +13,7 @@ public class TankView : MonoBehaviour
 
     private int _startIndex = 0;
     private int _currentLevel = 0;
+    private int _currentIndex = 1;
 
     private void Start()
     {
@@ -27,17 +28,33 @@ public class TankView : MonoBehaviour
             _tanks[i].SetActive(false);
         }
 
-            _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
-    }
-
-    public void NewLevelTankView()
-    {
-        _effect.Play();
-        _audioPlugin.PlayKey();
-        OffActiveTanks();
         _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
         _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+    }
+
+    public void NewLevelTankView(int level/*GameObject objectMerge*/)
+    {
+        //Debug.Log("LVL " + _currentIndex);
+        //Debug.Log("IND " + level);
+
+        if (_currentIndex <= level)
+        {
+            _effect.Play();
+            _audioPlugin.PlayKey();
+            OffActiveTanks();
+            _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
+            _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+
+            if (_currentIndex < level)
+                _currentIndex = level;
+        }
+        //_currentIndex = _load.Get(Save.LevelBuy, 1);
+        ////Debug.Log("Level " + _currentIndex);
+        ////Debug.Log("покупка " + _load.Get(Save.LevelBuy, 1));
+        //if (_currentIndex == _load.Get(Save.LevelBuy, 1))
+        //{
+        //_currentIndex = _load.Get(Save.LevelBuy, 1);
+        //}
     }
 
     public void SetLevelTank(int level)

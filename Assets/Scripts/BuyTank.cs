@@ -161,6 +161,28 @@ public class BuyTank : AbstractButton
         //_positions
     }
 
+    private int GetMinPositionsLevel()
+    {
+        List<int> indexes = new List<int>();
+
+        foreach (var position in _positions)
+        {
+            if (position.GetComponent<PositionTank>().Target)
+            {
+                int index = position.GetComponent<PositionTank>().Target.GetComponent<Tank>().Level;
+                //int index = position.GetComponent<PositionTank>().Target.GetComponent<DragItem>().LevelMerge;
+                indexes.Add(index);
+            }
+        }
+
+        if (indexes.Count > 0)
+            return indexes.Min();
+
+        else
+            return 0;
+        //_positions
+    }
+
     private int GetMaxLevel()
     {
         List<int> indexes = new List<int>();
@@ -186,9 +208,9 @@ public class BuyTank : AbstractButton
     private void ChangeValue()
     {
         int index = CheckPositionsLevel() + 1;
-        Debug.Log(index);
+        //Debug.Log(index);
 
-        if(index == _levelBuy|| _slider.value != 1)
+        if (index == _levelBuy || _slider.value != 1)
             _slider.value += 0.3f;
 
 
@@ -221,7 +243,7 @@ public class BuyTank : AbstractButton
     {
         int index = CheckPositionsLevel() + 1;
         //Debug.Log("индекс" + index);
-
+        int min = GetMinPositionsLevel()+1;
         int max = GetMaxLevel() + 1;
         //Debug.Log("MSX " + max);
 
@@ -232,8 +254,15 @@ public class BuyTank : AbstractButton
 
         if (_isWaveEnd)
         {
-            if (_slider.value == 1 && max == _startLevel)
+
+            //Debug.Log("максимум " + max);
+            //Debug.Log("минимум " + min);
+            //Debug.Log("cnfhn " + _startLevel);
+
+
+            if (_slider.value == 1 && _maxLevel>max /*|| min == _startLevel && _slider.value == 1*/)
             {
+                Debug.Log("Внутри");
                 _currentLevel = _startLevel;
                 _slider.value = 0;
                 _levelBuy++;
@@ -241,16 +270,25 @@ public class BuyTank : AbstractButton
                 _isWaveEnd = false;
                 _save.SetData(Save.LevelBuy, _levelBuy);
             }
+            //if (_slider.value == 1 && max == _startLevel || min == _startLevel && _slider.value == 1)
+            //{
+            //    _currentLevel = _startLevel;
+            //    _slider.value = 0;
+            //    _levelBuy++;
+            //    AddPrice();
+            //    _isWaveEnd = false;
+            //    _save.SetData(Save.LevelBuy, _levelBuy);
+            //}
         }
 
 
         //if (_slider.value == 1 && index > _currentLevel)
-        Debug.Log("Индекс " + index);
-        Debug.Log("LevelBuy " + _levelBuy);
+        //Debug.Log("Индекс " + index);
+        //Debug.Log("LevelBuy " + _levelBuy);
 
-        if (_slider.value == 1 && index-1 > _levelBuy)
+        if (_slider.value == 1 && index - 1 > _levelBuy)
         {
-            Debug.Log("ААА");
+            //Debug.Log("ААА");
             _slider.value = 0;
             _currentLevel++;
             _levelBuy++;
