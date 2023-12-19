@@ -15,6 +15,7 @@ public class Save : MonoBehaviour
     public const string Level = "Level";
     public const string ProgressLevel = "ProgressLevel";
     public const string ProgressSlider = "ProgressSlider";
+    public const string LevelBuy = "LevelBuy";
     [Header("Pattern")]
     public const string Zebra = "Zebra";
     public const string Winter = "Winter";
@@ -26,6 +27,13 @@ public class Save : MonoBehaviour
     public const string Tigr = "Tigr";
     public const string Yellow = "Yellow";
     public const string Color = "Color";
+    [Header("Tanks")]
+    public const string SimpleTank = "SimpleTank";
+    public const string CannonTank = "CannonTank";
+    public const string RocketTank = "RocketTank";
+    public const string FireballTank = "FireballTank";
+    public const string MissileTank = "MissileTank";
+    public const string LazerTank = "LazerTank";
 
     private void Start()
     {

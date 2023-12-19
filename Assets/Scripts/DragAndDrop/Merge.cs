@@ -15,7 +15,7 @@ public class Merge : MonoBehaviour
 
     private int _currentLevel;
     private int _maxLevel = 4;
-
+    private bool _firstMaxWaveMerge = true;
     public static int CurrentNumber { get; private set; } = 0;
 
     public event UnityAction<int> LevelChanged;
@@ -76,38 +76,102 @@ public class Merge : MonoBehaviour
                         StartPosition = hitInfo.collider.gameObject.transform.position;
                     }
 
+                    //if (hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
+                    //{
+                    //    var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
+                    //    var level = tank.GetComponent<DragItem>().Level;
+
+                    //    if (_selectObject.GetComponent<DragItem>().Level == level &&
+                    //        //_selectObject.GetComponent<DragItem>().Level <= _maxLevel &&
+                    //        _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
+                    //    {
+                    //        int newLevel = level;
+
+                    //        if (_selectObject.GetComponent<DragItem>().Level > _maxLevel)
+                    //        {
+                    //            newLevel = 0;
+                    //        }
+
+                    //        _audioPlugin.PlayKey();
+                    //        _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge + 1);
+                    //        var newTank = Instantiate(_prefabs[newLevel]);
+                    //        //newTank.GetComponent<DragItem>().Add();
+                    //        newTank.transform.position = tank.transform.transform.position;
+                    //        _selectObject.SetActive(false);
+                    //        tank.SetActive(false);
+                    //        //newLevel = level + 1;
+                    //        newLevel++;
+                    //        //_storage.ListChanged();
+
+                    //        Debug.Log("Сохранение 1 " + newLevel);
+
+                    //            Debug.Log("Save " + _load.Get(Save.Level, 0));
+
+                    //        if (_load.Get(Save.Level, 0) < newLevel)
+                    //        {
+                    //            _save.SetData(Save.Level, newLevel);
+                    //            _save.SetData(Save.Tank, newLevel);
+                    //            //_tankView.ViewTank();
+                    //            Debug.Log("Сохранение " + newLevel);
+                    //            _tankView.NewLevelTankView();
+                    //        }
+
+                    //        StartCoroutine(LevelCheck());
+                    //    }
+                    //    else
+                    //    {
+                    //        _selectObject.transform.position = StartPosition;
+                    //    }
+                    //}
                     if (hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
                     {
                         var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
                         var level = tank.GetComponent<DragItem>().Level;
+                        var levelMerge = tank.GetComponent<DragItem>().LevelMerge;
 
-                        if (_selectObject.GetComponent<DragItem>().Level == level &&
+                        if (_selectObject.GetComponent<DragItem>().Level == level /*_selectObject.GetComponent<DragItem>().LevelMerge == levelMerge*/ &&
                             //_selectObject.GetComponent<DragItem>().Level <= _maxLevel &&
                             _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
                         {
+                            int newLevel = ++level;
 
-                            if(_selectObject.GetComponent<DragItem>().Level > _maxLevel)
+                            if (_selectObject.GetComponent<DragItem>().Level > _maxLevel)
                             {
-                                //int newLevel = 0;
+                                newLevel = 0;
+                                _save.SetData(Save.Level, newLevel);
+                                _save.SetData(Save.Tank, newLevel);
+                                //if (_firstMaxWaveMerge)
+                                //{
+                                _tankView.NewLevelTankView();
+                                //_firstMaxWaveMerge = false;
+                                //}
                             }
 
                             _audioPlugin.PlayKey();
-                            var newTank = Instantiate(_prefabs[level]);
-                            newTank.GetComponent<DragItem>().Add();
+                            //Debug.Log("Создание " + newLevel);
+                            _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
+                            string name = _prefabs[newLevel].GetComponent<DragItem>().TankName;
+                            int number = _selectObject.GetComponent<DragItem>().LevelMerge/* + 1*/;
+                            _save.SetData(name, number);
+                            //Debug.Log("Как тут сохраняется " + number);
+
+                            var newTank = Instantiate(_prefabs[newLevel]);
+                            //newTank.GetComponent<DragItem>().Add();
                             newTank.transform.position = tank.transform.transform.position;
                             _selectObject.SetActive(false);
                             tank.SetActive(false);
-                            int newLevel = level + 1;
+                            //newLevel = level + 1;
+                            //newLevel++;
                             //_storage.ListChanged();
-
-
 
                             if (_load.Get(Save.Level, 0) < newLevel)
                             {
                                 _save.SetData(Save.Level, newLevel);
                                 _save.SetData(Save.Tank, newLevel);
                                 //_tankView.ViewTank();
+
                                 _tankView.NewLevelTankView();
+                                //_firstMaxWaveMerge = true;
                             }
 
                             StartCoroutine(LevelCheck());
