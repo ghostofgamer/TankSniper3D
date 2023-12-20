@@ -139,7 +139,7 @@ public class BuyTank : AbstractButton
         //return filter.position;
     }
 
-    private int CheckPositionsLevel()
+    private int GetMinLevel()
     {
         List<int> indexes = new List<int>();
 
@@ -161,7 +161,29 @@ public class BuyTank : AbstractButton
         //_positions
     }
 
-    private int GetMinPositionsLevel()
+    private int GetMaxLevel()
+    {
+        List<int> indexes = new List<int>();
+
+        foreach (var position in _positions)
+        {
+            if (position.GetComponent<PositionTank>().Target)
+            {
+                //int index = position.GetComponent<PositionTank>().Target.GetComponent<Tank>().Level;
+                int index = position.GetComponent<PositionTank>().Target.GetComponent<DragItem>().LevelMerge;
+                indexes.Add(index);
+            }
+        }
+
+        if (indexes.Count > 0)
+            return indexes.Max();
+
+        else
+            return 0;
+        //_positions
+    }
+
+    private int GetMinIndex()
     {
         List<int> indexes = new List<int>();
 
@@ -183,7 +205,7 @@ public class BuyTank : AbstractButton
         //_positions
     }
 
-    private int GetMaxLevel()
+    private int GetMaxIndex()
     {
         List<int> indexes = new List<int>();
 
@@ -207,17 +229,14 @@ public class BuyTank : AbstractButton
 
     private void ChangeValue()
     {
-        int index = CheckPositionsLevel() + 1;
-        //Debug.Log(index);
+        int index = GetMinLevel() + 1;
 
-        if (index == _levelBuy || _slider.value != 1)
-            _slider.value += 0.3f;
+        if (/*index == _levelBuy &&*/ _slider.value < 1)
+            _slider.value += 0.25f;
 
 
         //if (index == _currentLevel || _slider.value != 1)
         //    _slider.value += 0.3f;
-
-        //Debug.Log("Merge" + index);
 
         StartCoroutine(OnSetValue());
         //if (_slider.value == 1 && index > _currentLevel)
@@ -241,15 +260,15 @@ public class BuyTank : AbstractButton
 
     public void SetValue()
     {
-        int index = CheckPositionsLevel() + 1;
+        int minLevelMerge = GetMinLevel() + 1;
         //Debug.Log("индекс" + index);
-        int min = GetMinPositionsLevel()+1;
-        int max = GetMaxLevel() + 1;
+        int minIndex = GetMinIndex() + 1;
+        int maxIndex = GetMaxIndex() + 1;
         //Debug.Log("MSX " + max);
 
-        if (max > _maxLevel)
+        if (maxIndex > _maxLevel)
         {
-            _isWaveEnd = true;
+            //_isWaveEnd = true;
             int _allOpen = 1;
             _save.SetData(Save.AllTanksOpen, _allOpen);
         }
@@ -262,7 +281,7 @@ public class BuyTank : AbstractButton
             //Debug.Log("cnfhn " + _startLevel);
 
 
-            if (_slider.value == 1 && _maxLevel>max /*|| min == _startLevel && _slider.value == 1*/)
+            if (_slider.value == 1 && _maxLevel > maxIndex /*|| min == _startLevel && _slider.value == 1*/)
             {
                 //Debug.Log("Внутри");
                 _currentLevel = _startLevel;
@@ -272,6 +291,9 @@ public class BuyTank : AbstractButton
                 _isWaveEnd = false;
                 _save.SetData(Save.LevelBuy, _levelBuy);
             }
+
+
+
             //if (_slider.value == 1 && max == _startLevel || min == _startLevel && _slider.value == 1)
             //{
             //    _currentLevel = _startLevel;
@@ -287,14 +309,34 @@ public class BuyTank : AbstractButton
         //if (_slider.value == 1 && index > _currentLevel)
         //Debug.Log("Индекс " + index);
         //Debug.Log("LevelBuy " + _levelBuy);
+        Debug.Log("MinLevelMerge " + minLevelMerge);
+        Debug.Log("LevelBuy " + _levelBuy);
 
-        if (_slider.value == 1 && index - 1 > _levelBuy)
+        if (_slider.value == 1 /*&& minLevelMerge - 1 > _levelBuy*/)
         {
-            //Debug.Log("ААА");
-            _slider.value = 0;
-            _currentLevel++;
-            _levelBuy++;
-            AddPrice();
+            if (minLevelMerge - 1 > _levelBuy)
+            {
+                _slider.value = 0;
+                _levelBuy++;
+                _currentLevel++;
+
+
+
+                Debug.Log("CurrentLevel " + _currentLevel);
+
+                //if (_currentLevel > _maxLevel)
+                    if (_currentLevel > 6)
+                    _currentLevel = _startLevel;
+
+                AddPrice();
+            }
+
+            //if()
+
+            //_slider.value = 0;
+            //_currentLevel++;
+            //_levelBuy++;
+            //AddPrice();
 
             if (_currentLevel > _maxLevel)
             {
@@ -315,6 +357,82 @@ public class BuyTank : AbstractButton
         _save.SetData(Save.LevelBuy, _levelBuy);
     }
 
+    //public void SetValue()
+    //{
+    //    int index = CheckPositionsLevel() + 1;
+    //    //Debug.Log("индекс" + index);
+    //    int min = GetMinPositionsLevel() + 1;
+    //    int max = GetMaxLevel() + 1;
+    //    //Debug.Log("MSX " + max);
+
+    //    if (max > _maxLevel)
+    //    {
+    //        _isWaveEnd = true;
+    //        int _allOpen = 1;
+    //        _save.SetData(Save.AllTanksOpen, _allOpen);
+    //    }
+
+    //    if (_isWaveEnd)
+    //    {
+
+    //        //Debug.Log("максимум " + max);
+    //        //Debug.Log("минимум " + min);
+    //        //Debug.Log("cnfhn " + _startLevel);
+
+
+    //        if (_slider.value == 1 && _maxLevel > max /*|| min == _startLevel && _slider.value == 1*/)
+    //        {
+    //            //Debug.Log("Внутри");
+    //            _currentLevel = _startLevel;
+    //            _slider.value = 0;
+    //            _levelBuy++;
+    //            AddPrice();
+    //            _isWaveEnd = false;
+    //            _save.SetData(Save.LevelBuy, _levelBuy);
+    //        }
+    //        //if (_slider.value == 1 && max == _startLevel || min == _startLevel && _slider.value == 1)
+    //        //{
+    //        //    _currentLevel = _startLevel;
+    //        //    _slider.value = 0;
+    //        //    _levelBuy++;
+    //        //    AddPrice();
+    //        //    _isWaveEnd = false;
+    //        //    _save.SetData(Save.LevelBuy, _levelBuy);
+    //        //}
+    //    }
+
+
+    //    //if (_slider.value == 1 && index > _currentLevel)
+    //    //Debug.Log("Индекс " + index);
+    //    //Debug.Log("LevelBuy " + _levelBuy);
+
+    //    if (_slider.value == 1 && index - 1 > _levelBuy)
+    //    {
+    //        //Debug.Log("ААА");
+    //        _slider.value = 0;
+    //        _currentLevel++;
+    //        _levelBuy++;
+    //        AddPrice();
+
+    //        if (_currentLevel > _maxLevel)
+    //        {
+    //            //_currentLevel = _startLevel;
+    //            //_slider.value = 0;
+    //            //_currentLevel = _maxLevel;
+    //            //_slider.value = 1;
+    //        }
+    //    }
+
+    //    //_currentLevelText.text = _currentLevel.ToString();
+    //    //Debug.Log("При след уровне " + _levelBuy);
+    //    //_levelBuy++;
+    //    _currentLevelText.text = _levelBuy.ToString();
+    //    _currentTankIndex = _currentLevel;
+    //    _save.SetData(Save.ProgressLevel, _currentLevel);
+    //    _save.SetData(Save.ProgressSlider, _slider.value);
+    //    _save.SetData(Save.LevelBuy, _levelBuy);
+    //}
+
     private void Sell()
     {
         _wallet.DecreaseMoney(Price);
@@ -329,7 +447,7 @@ public class BuyTank : AbstractButton
 
     private IEnumerator OnSetValue()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         SetValue();
     }
 }

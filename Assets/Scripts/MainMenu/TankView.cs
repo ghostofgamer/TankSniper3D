@@ -20,7 +20,7 @@ public class TankView : MonoBehaviour
         ViewTank();
         _currentIndex = _load.Get(Save.Level, _startIndex);
         _currentLevel = _load.Get(Save.CurrentLevel, 0);
-        Debug.Log("Current " + _currentLevel);
+        //Debug.Log("Current " + _currentLevel);
     }
 
     public void ViewTank()

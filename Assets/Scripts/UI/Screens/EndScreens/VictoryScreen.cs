@@ -12,16 +12,19 @@ public class VictoryScreen : EndGame
     [SerializeField] private GameObject _panelInfo;
     [SerializeField] private TMP_Text _levelNumber;
     [SerializeField] private TMP_Text _enoughtAmountText;
+    [SerializeField] private Load _load;
 
     private Progress _progress;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
+    private int _firstLevel = 1;
+    private int _currentLevel;
 
     public event UnityAction ChangeReward;
 
     private void OnEnable()
     {
         Reward = _levelConfig.RewardVictory;
-        _levelNumber.text = _levelConfig.LevelNumber.ToString();
+        //_levelNumber.text = _levelConfig.LevelNumber.ToString();
         _killedInfo.AllEnemysDying += OnEndGame;
     }
 
@@ -39,6 +42,10 @@ public class VictoryScreen : EndGame
 
     protected override void OnEndGame()
     {
+        _currentLevel = _load.Get(Save.LevelComplited, _firstLevel);
+        _levelNumber.text = _currentLevel.ToString();
+        _currentLevel++;
+        _save.SetData(Save.LevelComplited, _currentLevel);
         StartCoroutine(OnActiveButton());
         //base.OnEndGame();
         _enoughtAmountText.text = Reward.ToString();

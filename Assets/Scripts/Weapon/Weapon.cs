@@ -160,6 +160,7 @@ public abstract class Weapon : MonoBehaviour
 
     private IEnumerator Reload()
     {
+        yield return new WaitForSeconds(1f);
         SetReload(true);
         yield return new WaitForSeconds(3f);
         _currentAmmo = _maxAmmo;

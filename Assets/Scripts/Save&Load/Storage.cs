@@ -110,9 +110,12 @@ public class Storage : MonoBehaviour
         {
             //int number = enemy._id;
 
-            Instantiate(_tanks[enemy._id], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.Euler(/*_tanks[enemy._id].transform.position*/  new Vector3(0, -135, 0)));
+            var tanksss = Instantiate(_tanks[enemy._id], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.Euler(/*_tanks[enemy._id].transform.position*/  new Vector3(0, -135, 0)));
+            int level = _load.Get(_tanks[enemy._id].GetComponent<DragItem>().TankName, _tanks[enemy._id].GetComponent<DragItem>().Level);
+            tanksss.GetComponent<DragItem>().SetLevel(level);
             //tank.transform.rotation = new Vector3(0, 0, 0); 
-            _enemySaves.Add(_tanks[enemy._id]);
+            _enemySaves.Add(tanksss);
+            //_enemySaves.Add(_tanks[enemy._id]);
         }
     }
 }

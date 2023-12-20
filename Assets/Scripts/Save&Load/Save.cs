@@ -18,6 +18,7 @@ public class Save : MonoBehaviour
     public const string LevelBuy = "LevelBuy";
     public const string CurrentLevel = "CurrentLevel";
     public const string AllTanksOpen = "AllTanksOpen";
+    public const string LevelComplited = "LevelComplited";
     [Header("Pattern")]
     public const string Zebra = "Zebra";
     public const string Winter = "Winter";
