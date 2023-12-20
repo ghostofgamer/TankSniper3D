@@ -19,8 +19,8 @@ public class Effect : MonoBehaviour
     {
         //var effect = Instantiate(_effect, transform.position, Quaternion.identity);
         //effect.Play();
-
-        _effect.Play();
+        if (_effect != null)
+            _effect.Play();
 
         if (_audioPlugin != null)
             _audioPlugin.PlayKey();

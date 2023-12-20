@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 86
-  _rigidbody: {fileID: 0}
 --- !u!136 &6329143248810968279
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +173,7 @@ MonoBehaviour:
   _effect: {fileID: 6118556187100775670}
   _bulletMover: {fileID: -3636979647608790300}
   _meshRenderer: {fileID: 2657221843112198961}
+  _homingRocket: {fileID: 0}
 --- !u!114 &6118556187100775670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29900,7 +29900,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:
@@ -29953,7 +29953,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 0
       maxCurve:

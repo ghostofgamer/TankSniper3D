@@ -8572,6 +8572,8 @@ MonoBehaviour:
   _isMenu: 0
   _PC: {fileID: 0}
   _mobile: {fileID: 0}
+  _merge: {fileID: 0}
+  _buyTanks: []
 --- !u!1001 &701299570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12467,6 +12469,8 @@ MonoBehaviour:
   _isMenu: 0
   _PC: {fileID: 0}
   _mobile: {fileID: 0}
+  _merge: {fileID: 0}
+  _buyTanks: []
 --- !u!4 &967991978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4757266655548042592, guid: 50c7a139714f21046b794de202dc26d4, type: 3}
@@ -17242,6 +17246,10 @@ PrefabInstance:
       value: 2.0394576
       objectReference: {fileID: 0}
     - target: {fileID: 5126551525191714667, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126551525191714667, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}
       propertyPath: m_Center.x
       value: 0.070232905
       objectReference: {fileID: 0}
@@ -17320,6 +17328,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5600564600264023498, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1350463104}
+    - targetCorrespondingSourceObject: {fileID: 5600564600264023498, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1350463105}
   m_SourcePrefab: {fileID: 100100000, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}
 --- !u!4 &1350463100 stripped
 Transform:
@@ -17338,6 +17349,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6847c43f0ccf4f7448a57723363cbd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1350463105
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237312323}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: dfed2e9fb3d8ac84da441095f9422543, type: 3}
 --- !u!1 &1350607248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5600564600264023498, guid: 49dd69d2bc765ed4dac3ccc0351a953f, type: 3}

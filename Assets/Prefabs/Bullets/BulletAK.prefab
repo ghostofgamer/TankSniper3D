@@ -104,7 +104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 50
-  _rigidbody: {fileID: 0}
 --- !u!54 &7323796394294382019
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,6 +182,7 @@ MonoBehaviour:
   _effect: {fileID: 7323796394294382023}
   _bulletMover: {fileID: -2849310051366253111}
   _meshRenderer: {fileID: 8242378578496754010}
+  _homingRocket: {fileID: 0}
 --- !u!114 &7323796394294382023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
       propertyPath: m_RootOrder
