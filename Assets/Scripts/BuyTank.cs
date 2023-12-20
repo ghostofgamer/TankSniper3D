@@ -45,7 +45,7 @@ public class BuyTank : AbstractButton
 
         _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
         _levelBuy = _load.Get(Save.LevelBuy, _startLevel);
-        Price = _currentLevel * 10;
+        Price = _levelBuy * 10;
         _positions = new List<Transform>();
         _slider.value = _load.Get(Save.ProgressSlider, 0f);
         _currenPriceText.text = Price.ToString();
@@ -275,12 +275,6 @@ public class BuyTank : AbstractButton
 
         if (_isWaveEnd)
         {
-
-            //Debug.Log("максимум " + max);
-            //Debug.Log("минимум " + min);
-            //Debug.Log("cnfhn " + _startLevel);
-
-
             if (_slider.value == 1 && _maxLevel > maxIndex /*|| min == _startLevel && _slider.value == 1*/)
             {
                 //Debug.Log("Внутри");
@@ -291,8 +285,6 @@ public class BuyTank : AbstractButton
                 _isWaveEnd = false;
                 _save.SetData(Save.LevelBuy, _levelBuy);
             }
-
-
 
             //if (_slider.value == 1 && max == _startLevel || min == _startLevel && _slider.value == 1)
             //{
@@ -307,10 +299,6 @@ public class BuyTank : AbstractButton
 
 
         //if (_slider.value == 1 && index > _currentLevel)
-        //Debug.Log("Индекс " + index);
-        //Debug.Log("LevelBuy " + _levelBuy);
-        Debug.Log("MinLevelMerge " + minLevelMerge);
-        Debug.Log("LevelBuy " + _levelBuy);
 
         if (_slider.value == 1 /*&& minLevelMerge - 1 > _levelBuy*/)
         {
@@ -321,9 +309,6 @@ public class BuyTank : AbstractButton
                 _currentLevel++;
 
 
-
-                Debug.Log("CurrentLevel " + _currentLevel);
-
                 //if (_currentLevel > _maxLevel)
                     if (_currentLevel > 6)
                     _currentLevel = _startLevel;
@@ -332,19 +317,10 @@ public class BuyTank : AbstractButton
             }
 
             //if()
-
             //_slider.value = 0;
             //_currentLevel++;
             //_levelBuy++;
             //AddPrice();
-
-            if (_currentLevel > _maxLevel)
-            {
-                //_currentLevel = _startLevel;
-                //_slider.value = 0;
-                //_currentLevel = _maxLevel;
-                //_slider.value = 1;
-            }
         }
 
         //_currentLevelText.text = _currentLevel.ToString();
@@ -440,8 +416,7 @@ public class BuyTank : AbstractButton
 
     private void AddPrice()
     {
-        Mathf.Clamp(Price = _currentLevel * 10, 0, 60);
-
+        Price = _levelBuy * 10;
         _currenPriceText.text = Price.ToString();
     }
 

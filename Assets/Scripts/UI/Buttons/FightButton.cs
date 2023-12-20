@@ -14,8 +14,9 @@ public class FightButton : AbstractButton
     private void Start()
     {
         _sceneNumber = _load.Get(Save.SceneNumber, _startSceneIndex);
+        //Debug.Log("Номер сцены " + _sceneNumber);
 
-        if (_sceneNumber >= 16)
+        if (_sceneNumber > 16)
         {
             _sceneNumber = _startSceneIndex;
         }

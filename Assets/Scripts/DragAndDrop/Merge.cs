@@ -11,7 +11,7 @@ public class Merge : MonoBehaviour
     [SerializeField] private TankView _tankView;
     [SerializeField] private Storage _storage;
     [SerializeField] private AudioPlugin _audioPlugin;
-    [SerializeField] private BuyTank _buytank;
+     private BuyTank _buytank;
 
     private int _currentLevel;
     private int _maxLevel = 4;
@@ -134,19 +134,50 @@ public class Merge : MonoBehaviour
                             _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
                         {
                             int newLevel = ++level;
-                            //Debug.Log("Merge " + levelMerge);
-                            if (_selectObject.GetComponent<DragItem>().Level > _maxLevel)
+
+                            Debug.Log("ваываываываыаываываываываыаыаыаыаы " + newLevel);
+                            if (newLevel > 5)
                             {
                                 newLevel = 0;
-                                _save.SetData(Save.Level, newLevel);
-                                _save.SetData(Save.Tank, newLevel);
-                                //if (_firstMaxWaveMerge)
-                                //{
-                                //Debug.Log("Merge " + levelMerge);
-                                _tankView.NewLevelTankView(levelMerge);
-                                //_firstMaxWaveMerge = false;
-                                //}
+                                _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
+                                Debug.Log("Обнуление " + _prefabs[newLevel].GetComponent<DragItem>().LevelMerge);
+                                Debug.Log("Уровень на сцене " + _load.Get(Save.CurrentLevel, 0));
+
+                                if (_prefabs[newLevel].GetComponent<DragItem>().LevelMerge > _load.Get(Save.CurrentLevel, 0))
+                                {
+                                    Debug.Log("Сохраняет");
+                                    _save.SetData(Save.Level, newLevel);
+                                    _save.SetData(Save.Tank, newLevel);
+                                    _tankView.NewLevelTankView(levelMerge);
+                                }
+
                             }
+                            //Debug.Log("Merge " + levelMerge);
+                            //if (_selectObject.GetComponent<DragItem>().Level > _maxLevel)
+                            //{
+                            //    newLevel = 0;
+                            //    _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
+                            //    Debug.Log("LevelMergeInMergeMergeMerge " + _prefabs[newLevel].GetComponent<DragItem>().LevelMerge);
+                            //    Debug.Log("LevelBuyMergeScript " + _load.Get(Save.LevelBuy, 0));
+
+                            //    if (_prefabs[newLevel].GetComponent<DragItem>().LevelMerge < _load.Get(Save.LevelBuy, 0))
+                            //    {
+                            //        _save.SetData(Save.Level, newLevel);
+                            //        _save.SetData(Save.Tank, newLevel);
+                            //        _tankView.NewLevelTankView(levelMerge);
+                            //    }
+
+                            //    //_save.SetData(Save.Level, newLevel);
+                            //    //_save.SetData(Save.Tank, newLevel);
+                            //    //_tankView.NewLevelTankView(levelMerge);
+                            //    //_firstMaxWaveMerge = false;
+
+                            //    //if (_firstMaxWaveMerge)
+                            //    //{
+                            //    //Debug.Log("Merge " + levelMerge);
+                            //    //_firstMaxWaveMerge = false;
+                            //    //}
+                            //}
 
                             _audioPlugin.PlayKey();
                             //Debug.Log("Создание " + newLevel);
@@ -202,6 +233,11 @@ public class Merge : MonoBehaviour
 
             //_selectObject.transform.position = new Vector3(worldPosition.x, 10f, worldPosition.z);
         }
+    }
+
+    public void Init(BuyTank buyTank)
+    {
+        _buytank = buyTank;
     }
 
     public void ResetPosition()
