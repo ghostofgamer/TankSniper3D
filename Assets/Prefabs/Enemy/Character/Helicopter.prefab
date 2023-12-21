@@ -1289,6 +1289,8 @@ MonoBehaviour:
   _shootPosition: {fileID: 4538311400795092112}
   _container: {fileID: 0}
   _delay: 1
+  _minTimeShoot: 3
+  _maxTimeShoot: 5
   _effectShooting: {fileID: 5431425619429768052}
   _enemy: {fileID: 4538311402113166431}
   _audioPlugin: {fileID: 1997418681415265700}
@@ -1346,11 +1348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a80a4103b2fb7e46808373a587eb66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
+  _health: 30
   _flyDamage: {fileID: 4538311402113166403}
   _canvas: {fileID: 4538311400770496931}
   _isBoss: 0
-  _isHelicopter: 0
+  _isHelicopter: 1
 --- !u!82 &123237009
 AudioSource:
   m_ObjectHideFlags: 0

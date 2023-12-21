@@ -23,7 +23,10 @@ public class VictoryScreen : EndGame
 
     private void OnEnable()
     {
-        Reward = _levelConfig.RewardVictory;
+        //Reward = _levelConfig.RewardVictory;
+        int levelNumber = _load.Get(Save.LevelComplited, _firstLevel);
+        Reward = _load.Get(Save.Reward, 0) + 500;
+        _save.SetData(Save.Reward, Reward);
         //_levelNumber.text = _levelConfig.LevelNumber.ToString();
         _killedInfo.AllEnemysDying += OnEndGame;
     }
@@ -35,7 +38,7 @@ public class VictoryScreen : EndGame
 
     public void Init(Progress progress)
     {
-        Reward = _levelConfig.RewardVictory;
+        //Reward = _levelConfig.RewardVictory;
         _rewardCountText.text = Reward.ToString();
         _progress = progress;
     }

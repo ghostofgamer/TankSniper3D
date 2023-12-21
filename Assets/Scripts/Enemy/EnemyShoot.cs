@@ -8,6 +8,9 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform _shootPosition;
     [SerializeField] private Transform _container;
     [SerializeField] private float _delay;
+    [SerializeField] private float _minTimeShoot;
+    [SerializeField] private float _maxTimeShoot;
+
     [SerializeField] private ParticleSystem _effectShooting;
     [SerializeField] private Enemy _enemy;
     [Header("Звук")]
@@ -28,6 +31,8 @@ public class EnemyShoot : MonoBehaviour
 
     public IEnumerator Shoot()
     {
+        _delay = Random.Range(_minTimeShoot, _maxTimeShoot);
+
         WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
 
         while (true)

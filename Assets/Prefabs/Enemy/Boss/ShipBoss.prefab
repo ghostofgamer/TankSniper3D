@@ -3849,10 +3849,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a80a4103b2fb7e46808373a587eb66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
+  _health: 100
   _flyDamage: {fileID: 5323100679137767640}
   _canvas: {fileID: 5842892146303139398}
   _isBoss: 1
+  _isHelicopter: 0
 --- !u!114 &5323100679137767640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3866,7 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textPosition: {fileID: 451905004335232650}
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 8951879712904608213}
 --- !u!114 &5344024921758786661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3909,6 +3910,7 @@ MonoBehaviour:
   _targetState: {fileID: 1505206035186673451}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 8680593573732187415}
+  _audioPlugin: {fileID: 0}
 --- !u!114 &5024187577281908109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4079,13 +4081,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43967852706024b8a25f3b1300cda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7248432830309723069, guid: 32d789eec3bd44a4ba7f0066f40bca5f, type: 3}
+  _prefab: {fileID: 305152047693513705, guid: 32d789eec3bd44a4ba7f0066f40bca5f, type: 3}
   _shootPosition: {fileID: 1404473377209800458}
   _container: {fileID: 0}
   _delay: 0.1
+  _minTimeShoot: 0.1
+  _maxTimeShoot: 1
   _effectShooting: {fileID: 7962778041347871994}
   _enemy: {fileID: 8951879712904608213}
-  _audioSource: {fileID: 9153459081131807178}
+  _audioPlugin: {fileID: 0}
   _audioClip: {fileID: 8300000, guid: a1b3f841b40443d4b8b68bfcbe5cb1dd, type: 3}
 --- !u!82 &9153459081131807178
 AudioSource:

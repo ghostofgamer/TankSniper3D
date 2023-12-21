@@ -9,7 +9,7 @@ public class Barrel : MonoBehaviour
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
 
-    private int _damage = 50;
+    private int _damage = 30;
 
     public void Explosion()
     {

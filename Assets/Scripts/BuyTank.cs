@@ -45,7 +45,7 @@ public class BuyTank : AbstractButton
 
         _currentLevel = _load.Get(Save.ProgressLevel, _startLevel);
         _levelBuy = _load.Get(Save.LevelBuy, _startLevel);
-        Price = _levelBuy * 10;
+        Price = _levelBuy * 3000;
         _positions = new List<Transform>();
         _slider.value = _load.Get(Save.ProgressSlider, 0f);
         _currenPriceText.text = Price.ToString();
@@ -416,7 +416,7 @@ public class BuyTank : AbstractButton
 
     private void AddPrice()
     {
-        Price = _levelBuy * 10;
+        Price = _levelBuy * 3000;
         _currenPriceText.text = Price.ToString();
     }
 
