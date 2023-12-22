@@ -7,8 +7,10 @@ public class ReviewCamera : MonoBehaviour
     [SerializeField] private float _cameraSpeed;
     [SerializeField] private float _x, _y;
     [SerializeField] private Vector3 _offset;
-    [Range(0.1f,0.99f)]
+    [Range(0.1f, 0.99f)]
     [SerializeField] private float _speed;
+    [Range(1f, 99f)]
+    [SerializeField] private float _speedTime;
     public Transform target;
     public float minlimitX = 80;
     public float maxlimitX = 80;
@@ -38,9 +40,9 @@ public class ReviewCamera : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButton(0))
-        //{
-        //    if (!_isZoomStart)
-                RoatteNew();
+            //{
+            //    if (!_isZoomStart)
+            RoatteNew();
 
         //}
         //else
@@ -61,12 +63,23 @@ public class ReviewCamera : MonoBehaviour
         //Debug.Log("Camera " + fracComplete);
         targetRot = Quaternion.Euler(-_y, _x, 0f);
         //NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
-        NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _speed);
+        //NewtargetRot = Quaternion.Lerp(transform.rotation, targetRot, _speed);
+        //NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _speed);
         //NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, fracComplete);
         transform.rotation = NewtargetRot;
         targetPos = targetRot * _offset + target.position;
+
+        float time = 0;
+        int number = 0;
+
+        while (number < 100)
+        {
+            number++;
+            Debug.Log(number);
+        }
         //NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
-        NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _speed);
+        //NewTargetPos = Vector3.Lerp(transform.position, /*transform.localRotation*/targetPos, _speed);
+        //NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _speed);
         //NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, fracComplete);
         transform.position = NewTargetPos;
     }

@@ -26,6 +26,8 @@ public class DieState : State
     private IEnumerator Die()
     {
         _animator.enabled = false;
+        var rigidbody = GetComponent<Rigidbody>();
+        rigidbody.isKinematic = false;
         _effect.PlayEffect();
         _killedInfo.ChangeValue();
 
@@ -48,8 +50,8 @@ public class DieState : State
 
     private void TechniqueFire()
     {
-        var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = false;
+        //var rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.isKinematic = false;
 
         foreach (ParticleSystem effect in effects)
             effect.gameObject.SetActive(true);

@@ -31,10 +31,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
+        _flyDamage.SetText(damage);
+
+        //if (_coroutine != null)
+        //    StopCoroutine(_coroutine);
+
+
+        //_coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);
         _canvas.SetActive(true);

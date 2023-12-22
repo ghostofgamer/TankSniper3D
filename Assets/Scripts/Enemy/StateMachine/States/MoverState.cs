@@ -9,6 +9,7 @@ public class MoverState : State
     [SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private string _audioName;
+    private Enemy _enemy;
 
     private List<Transform> _points;
     private int _currentPoint = 0;
@@ -16,6 +17,7 @@ public class MoverState : State
 
     private void Start()
     {
+        _enemy = GetComponent<Enemy>();
         _points = new List<Transform>();
 
         for (int i = 0; i < _path.childCount; i++)
@@ -37,6 +39,7 @@ public class MoverState : State
 
     private void Update()
     {
+        if(!_enemy.IsDying)
         Move();
     }
 
