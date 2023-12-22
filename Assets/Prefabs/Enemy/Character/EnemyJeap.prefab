@@ -3963,6 +3963,7 @@ GameObject:
   - component: {fileID: 7622884141629759345}
   - component: {fileID: 7622884141629759344}
   - component: {fileID: 7622884141629759347}
+  - component: {fileID: 6439895756966812872}
   m_Layer: 0
   m_Name: EnemyJeap
   m_TagString: Untagged
@@ -4101,10 +4102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
-  _enemyAnimations: {fileID: 7622884141629759353}
   _effect: {fileID: 7622884141629759352}
   _killedInfo: {fileID: 0}
   _delay: 1.65
+  _coloringChanger: {fileID: 6439895756966812872}
+  _animator: {fileID: 7622884141629759302}
+  _technique: 1
+  _newMaterial: {fileID: 0}
+  effects: []
 --- !u!114 &7622884141629759355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4210,6 +4215,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slider: {fileID: 7622884140974181334}
   _enemy: {fileID: 7622884141629759359}
+--- !u!114 &6439895756966812872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622884141629759301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69fee5978edb9c34ebf06c0bd32e48d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MeshRenderer:
+  - {fileID: 2972221518215786737}
 --- !u!1 &7622884141742236210
 GameObject:
   m_ObjectHideFlags: 0

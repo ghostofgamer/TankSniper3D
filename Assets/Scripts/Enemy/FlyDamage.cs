@@ -11,6 +11,7 @@ public class FlyDamage : MonoBehaviour
     {
         if (!_enemy.IsDying)
         {
+            Debug.Log("Зашел");
             float damageText = damage;
             float textSize = damageText / 100;
             GameObject text = Instantiate(Resources.Load("DamageText"), _textPosition.localPosition, Quaternion.identity) as GameObject;
@@ -18,7 +19,8 @@ public class FlyDamage : MonoBehaviour
             text.GetComponent<TMPro.TextMeshPro>().SetText(damageText.ToString("0"));
             text.name = damageText.ToString("0");
             text.GetComponent<TMPro.TextMeshPro>().fontSize = textSize;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Вышел");
             text.SetActive(false);
         }
     }

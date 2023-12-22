@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class DieState : State
 {
-    [SerializeField] private EnemyAnimations _enemyAnimations;
+    //[SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private Effect _effect;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private float _delay = 1.65f;
+    [SerializeField] private ColoringChanger _coloringChanger;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private bool _technique;
+    [SerializeField] private Material _newMaterial;
+    [SerializeField] private ParticleSystem[] effects;
 
-    private int _force = 300;
+    private Material[] materials;
+
+    //private int _force = 300;
 
     private void OnEnable()
     {
@@ -18,19 +25,35 @@ public class DieState : State
 
     private IEnumerator Die()
     {
-        WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
-        SetPhisics();
-        _killedInfo.ChangeValue();
+        _animator.enabled = false;
         _effect.PlayEffect();
-        _enemyAnimations.Die(true);
+        _killedInfo.ChangeValue();
+
+        if (_technique)
+            TechniqueFire();
+
+        WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
+        //SetPhisics();
+        //_enemyAnimations.Die(true);
         yield return _waitForSeconds;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
-    private void SetPhisics()
+    //private void SetPhisics()
+    //{
+    //    var rigidbody = GetComponent<Rigidbody>();
+    //    rigidbody.isKinematic = false;
+    //    rigidbody.AddForce(transform.up * _force, ForceMode.Force);
+    //}
+
+    private void TechniqueFire()
     {
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = false;
-        rigidbody.AddForce(transform.up * _force, ForceMode.Force);
+
+        foreach (ParticleSystem effect in effects)
+            effect.gameObject.SetActive(true);
+
+        _coloringChanger.SetMaterial(_newMaterial);
     }
 }
