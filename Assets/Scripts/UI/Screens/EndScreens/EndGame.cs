@@ -11,7 +11,6 @@ public class EndGame : AbstractScreen
     [SerializeField] protected ContinueButton _continueButton;
 
     protected int Reward;
-
     protected Coroutine _coroutine;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
@@ -31,9 +30,4 @@ public class EndGame : AbstractScreen
         yield return _waitForSeconds;
         Open();
     }
-
-    //public void AddReward() 
-    //{
-    //    _wallet.AddMoney(Reward);
-    //}
 }

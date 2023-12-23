@@ -79,10 +79,6 @@ public class BuyButton : AbstractButton
             default:
                 break;
         }
-
-        //_imageBlock.gameObject.SetActive(false);
-        //_AdButton.SetActive(false);
-        //OffActive();
     }
 
     public void OffActive()

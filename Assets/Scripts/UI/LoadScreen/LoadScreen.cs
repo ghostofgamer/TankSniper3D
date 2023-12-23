@@ -13,6 +13,8 @@ public class LoadScreen : MonoBehaviour
     [SerializeField] private TMP_Text _percentText;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
+    private float _progress = .9f;
+    private int _factor = 100;
 
     public void Loading(int index)
     {
@@ -29,9 +31,9 @@ public class LoadScreen : MonoBehaviour
         while (!loadAsync.isDone)
         {
             _slider.value = loadAsync.progress;
-            _percentText.text = (_slider.value * 100).ToString();
+            _percentText.text = (_slider.value * _factor).ToString();
 
-            if (loadAsync.progress >= .9f && !loadAsync.allowSceneActivation)
+            if (loadAsync.progress >= _progress && !loadAsync.allowSceneActivation)
             {
                 yield return _waitForSeconds;
                 loadAsync.allowSceneActivation = true;

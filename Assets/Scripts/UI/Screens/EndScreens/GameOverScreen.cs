@@ -31,7 +31,6 @@ public class GameOverScreen : EndGame
     {
         _aimInputButton.ReturnHide();
         _panelInfo.Close();
-        //Open();
         base.OnEndGame();
     }
 }

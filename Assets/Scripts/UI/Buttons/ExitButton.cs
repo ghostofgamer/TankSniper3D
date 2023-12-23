@@ -7,11 +7,8 @@ public class ExitButton : AbstractButton
 {
     [SerializeField] private FullAds _fullVideo;
 
-    private const string MainMenu = "MainScene";
-
     public override void OnClick()
     {
         _fullVideo.Show();
-        //SceneManager.LoadScene(MainMenu);
     }
 }

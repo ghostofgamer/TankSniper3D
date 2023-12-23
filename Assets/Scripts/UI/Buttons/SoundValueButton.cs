@@ -13,34 +13,16 @@ public class SoundValueButton : AbstractButton
 
     private int _soundVolumeValue;
     private int _defaultValue = 1;
+    private int _minValue = 0;
 
     private void Start()
     {
         _soundVolumeValue = _load.Get(Save.Volume, _defaultValue);
 
         if (_soundVolumeValue == 0)
-        {
-            AudioListener.volume = 0;
-            _mute.gameObject.SetActive(true);
-            _unMute.gameObject.SetActive(false);
-        }
+            SetStartValue(_minValue, true);
         else
-        {
-            AudioListener.volume = 1;
-            _mute.gameObject.SetActive(false);
-            _unMute.gameObject.SetActive(true);
-        }
-        //if (AudioListener.pause == true)
-        //{
-        //    _mute.gameObject.SetActive(true);
-        //    _unMute.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        //    //_save.SetSound(_settingsScreen.SoundOn);
-        //    _mute.gameObject.SetActive(false);
-        //    _unMute.gameObject.SetActive(true);
-        //}
+            SetStartValue(_defaultValue, false);
     }
 
     public override void OnClick()
@@ -55,22 +37,16 @@ public class SoundValueButton : AbstractButton
         else
             AudioListener.volume = 1;
 
-        //if (AudioListener.volume > 0)
-        //    AudioListener.volume = 0;
-        //if (AudioListener.volume == 0)
-        //    AudioListener.volume = 1;
-
-        //AudioListener.pause = !AudioListener.pause;
         _mute.gameObject.SetActive(!_mute.gameObject.activeSelf);
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
-
         _soundVolumeValue = (int)AudioListener.volume;
         _save.SetData(Save.Volume, _soundVolumeValue);
+    }
 
-        //if (AudioListener.pause == true)
-        //    _save.SetData(Save.Sound, _settingsScreen.SoundOff);
-
-        //else
-        //    _save.SetData(Save.Sound, _settingsScreen.SoundOn);
+    private void SetStartValue(int volume, bool flag)
+    {
+        AudioListener.volume = volume;
+        _mute.gameObject.SetActive(flag);
+        _unMute.gameObject.SetActive(!flag);
     }
 }

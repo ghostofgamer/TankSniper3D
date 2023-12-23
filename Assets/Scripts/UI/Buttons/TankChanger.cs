@@ -34,17 +34,11 @@ public class TankChanger : AbstractButton
         _tanks[_currentIndex].SetActive(true);
         _tanks[_currentIndex].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         _save.SetData(Save.Tank, _currentIndex);
-
-        //_tanksName[_currentIndex].gameObject.SetActive(true);
-        //_tankLevel.text = _tankConfig.Level.ToString();
     }
 
     private void OffTanks()
     {
         foreach (GameObject tank in _tanks)
             tank.SetActive(false);
-
-        //foreach (var tankName in _tanksName)
-        //    tankName.gameObject.SetActive(false);
     }
 }
