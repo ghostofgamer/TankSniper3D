@@ -1,12 +1,9 @@
 using Agava.WebUtility;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenFocus : MonoBehaviour
 {
-    [SerializeField] private SettingsScreen _settingsScreen;
-
     private AimInputButton _aimInputButton;
 
     private void OnEnable()
@@ -28,30 +25,21 @@ public class ScreenFocus : MonoBehaviour
 
     private void OnInBackgroundChangeApp(bool inApp)
     {
-        if (_settingsScreen.GetComponent<CanvasGroup>().alpha == 0)
-        {
-            MuteAudio(!inApp);
-            PauseGame(!inApp);
-        }
+        MuteAudio(!inApp);
+        PauseGame(!inApp);
     }
 
     private void OnInBackgroundChangeWeb(bool isBackground)
     {
-        if (_settingsScreen.GetComponent<CanvasGroup>().alpha == 0)
-        {
-            if (isBackground)
-            {
-                _aimInputButton.ReturnHide();
-            }
+        if (isBackground)
+            _aimInputButton.ReturnHide();
 
-            MuteAudio(isBackground);
-            PauseGame(isBackground);
-        }
+        MuteAudio(isBackground);
+        PauseGame(isBackground);
     }
 
     private void MuteAudio(bool value)
     {
-        //AudioListener.volume = value ? 0 : 1;
         AudioListener.pause = value ? true : false;
     }
 

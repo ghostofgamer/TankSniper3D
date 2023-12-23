@@ -10,7 +10,6 @@ public class StoreScreen : AbstractScreen
     [SerializeField] private GameObject[] _blocks;
     [SerializeField] private Load _load;
     [SerializeField] private MaterialContainer _materialContainer;
-    //[SerializeField] private TankView _tankView;
 
     private int _startIndex = 0;
 
@@ -39,17 +38,13 @@ public class StoreScreen : AbstractScreen
             int level = _load.Get(Save.Level, _startIndex);
 
             for (int i = 0; i < level; i++)
-            {
                 _blocks[i].SetActive(false);
-            }
 
         }
         else
         {
-            foreach (var block in _blocks)
-            {
+            foreach (GameObject block in _blocks)
                 block.SetActive(false);
-            }
         }
 
     }

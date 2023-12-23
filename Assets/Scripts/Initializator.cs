@@ -12,7 +12,6 @@ public class Initializator : MonoBehaviour
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private PlayerHealthbar _playerHealthbar;
-    //[SerializeField] private AimInputButton[] _aimButton;
     [SerializeField] private FightScreen _fightScreen;
     [SerializeField] private BulletsInfo[] _bulletsInfo;
     [SerializeField] private AimInputButton[] _aimInputButton;
@@ -32,6 +31,8 @@ public class Initializator : MonoBehaviour
 
     //[SerializeField] private int _indexPlayer;
     private int _indexPlayer;
+    private int _mobileIndex = 0;
+    private int _pcIndex = 1;
     private Player _player;
     private List<GameObject> _gameObjects;
 
@@ -50,13 +51,8 @@ public class Initializator : MonoBehaviour
         _playerHealthbar.Init(_player);
         EnemyInit(_player);
         _hitPoint.Init(_player.GetComponent<TowerRotate>());
-
-
-        AimInputButtonInit();
-        //AimInputButtonPCInit();
-
+        PlatformInit();
         _alarm.Init(_player.GetComponent<Weapon>());
-        //BulletsInfoInit();
         FightScreenInit();
         GameOverScreenInit();
         _victoryScreen.Init(_progress);
@@ -75,7 +71,6 @@ public class Initializator : MonoBehaviour
             player.gameObject.SetActive(false);
 
         _players[index].gameObject.SetActive(true);
-        //_aimButton[index].gameObject.SetActive(true);
         _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         return _players[index];
     }
@@ -83,57 +78,36 @@ public class Initializator : MonoBehaviour
     private void FightScreenInit()
     {
         _fightScreen.Init(_player.GetComponent<Weapon>());
-        //_fightScreen.gameObject.SetActive(true);
         _gameObjects.Add(_fightScreen.gameObject);
     }
 
     private void GameOverScreenInit()
     {
         _gameOverScreen.Init(_player);
-        //_gameOverScreen.gameObject.SetActive(true);
         _gameObjects.Add(_gameOverScreen.gameObject);
     }
 
-    private void AimInputButtonInit()
+    private void PlatformInit()
     {
-        foreach (var item in _aimInputButton)
-        {
-            item.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
-        }
+        foreach (AimInputButton aimInputButton in _aimInputButton)
+            aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
 
         if (Application.isMobilePlatform)
-        {
-            _aimInputButton[0].gameObject.SetActive(true);
-            _player.GetComponent<CameraAim>().Init(_aimInputButton[0]);
-            _killedInfo.Init(_aimInputButton[0].GetComponent<ButtonMover>());
-            _bulletsInfo[0].Init(_player.GetComponent<Weapon>());
-            _gameObjects.Add(_bulletsInfo[0].gameObject);
-            _screenFocus.Init(_aimInputButton[0]);
-            _reviewCamera.Init(_aimInputButton[0]);
-        }
+            SetObject(_mobileIndex);
         else
-        {
-            _aimInputButton[1].gameObject.SetActive(true);
-            _player.GetComponent<CameraAim>().Init(_aimInputButton[1]);
-            _killedInfo.Init(_aimInputButton[1].GetComponent<ButtonMover>());
-            _bulletsInfo[1].Init(_player.GetComponent<Weapon>());
-            _gameObjects.Add(_bulletsInfo[1].gameObject);
-            _screenFocus.Init(_aimInputButton[1]);
-            _reviewCamera.Init(_aimInputButton[1]);
-        }
-
-
-        //_aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
-        //_aimInputButton.gameObject.SetActive(true);
-        //_gameObjects.Add(_aimInputButton.gameObject);
+            SetObject(_pcIndex);
     }
 
-    //private void BulletsInfoInit()
-    //{
-    //    _bulletsInfo.Init(_player.GetComponent<Weapon>());
-    //    //_bulletsInfo.gameObject.SetActive(true);
-    //    _gameObjects.Add(_bulletsInfo.gameObject);
-    //}
+    private void SetObject(int index)
+    {
+        _aimInputButton[index].gameObject.SetActive(true);
+        _player.GetComponent<CameraAim>().Init(_aimInputButton[index]);
+        _killedInfo.Init(_aimInputButton[index].GetComponent<ButtonMover>());
+        _bulletsInfo[index].Init(_player.GetComponent<Weapon>());
+        _gameObjects.Add(_bulletsInfo[index].gameObject);
+        _screenFocus.Init(_aimInputButton[index]);
+        _reviewCamera.Init(_aimInputButton[index]);
+    }
 
     private void SetActive()
     {

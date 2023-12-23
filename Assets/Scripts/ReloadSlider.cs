@@ -9,8 +9,7 @@ public class ReloadSlider : MonoBehaviour
 
     private void OnEnable()
     {
-        _slider.value = 0;
-        _slider.maxValue = 3f;
+        SetValue();
     }
 
     private void OnDisable()
@@ -20,13 +19,18 @@ public class ReloadSlider : MonoBehaviour
 
     private void Start()
     {
-        _slider.value = 0;
-        _slider.maxValue = 3f;
+        SetValue();
     }
 
 
     private void Update()
     {
         _slider.value += Time.deltaTime;   
+    }
+
+    private void SetValue()
+    {
+        _slider.value = 0;
+        _slider.maxValue = 3f;
     }
 }

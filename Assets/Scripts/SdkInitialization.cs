@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Agava.YandexGames;
 using UnityEngine.SceneManagement;
@@ -7,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SdkInitialization : MonoBehaviour
 {
     private const string MainScene = "MainScene";
-    //private const string MainScene = "MainTestScene";
 
     private void Awake()
     {

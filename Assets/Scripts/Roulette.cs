@@ -6,63 +6,37 @@ using UnityEngine.Events;
 
 public class Roulette : MonoBehaviour
 {
-    [SerializeField] private Transform target;
     [SerializeField] private TMP_Text _winText;
     [SerializeField] private VictoryScreen _victoryScreen;
 
-    private int _coef = 1;
-    private int _watWeWin;
-    private float _rew;
-    public int Win { get; private set; }
+    private int _factor = 1;
+    private int _angle;
+    private float _startReward;
 
-    public event UnityAction ChangeReward;
+    public int Win { get; private set; }
 
     private void Start()
     {
-        _rew = _victoryScreen.ViewReward;
+        _startReward = _victoryScreen.ViewReward;
     }
 
     private void Update()
     {
-        _watWeWin = Mathf.RoundToInt(transform.eulerAngles.z);
+        _angle = Mathf.RoundToInt(transform.eulerAngles.z);
 
-        if (_watWeWin <= 90 && _watWeWin >= 65)
-        {
-            _coef = 2;
-        }
+        if (_angle <= 90 && _angle >= 65)
+            _factor = 2;
 
-        if (_watWeWin < 65 && _watWeWin >= 0)
-        {
-            _coef = 3;
-        }
+        if (_angle < 65 && _angle >= 0)
+            _factor = 3;
 
-        if (_watWeWin <= 360 && _watWeWin >= 300)
-        {
-            _coef = 4;
-        }
+        if (_angle <= 360 && _angle >= 300)
+            _factor = 4;
 
-        if (_watWeWin < 300 && _watWeWin >= 271)
-        {
-            _coef = 5;
-        }
-        //int current = 1;
-        //int target = _coef;
+        if (_angle < 300 && _angle >= 271)
+            _factor = 5;
 
-        //if (target != current)
-        //    current = target;
-
-        //win = Mathf.Lerp(win, _rew * current, 35 * Time.deltaTime);
-        //    _winText.text = win.ToString("0");
-        //    Debug.Log(win);
-        Win = (int)_rew * _coef;
+        Win = (int)_startReward * _factor;
         _winText.text = Win.ToString();
-        //_victoryScreen.ChangeRewardRoulette(win);
-
-        //Debug.Log(win);
-        //int needMount = Mathf.Lerp();
-
-        //_winText.text = (_reward *= _coef).ToString();
-        //switch (_watWeWin)
-        //{
     }
 }

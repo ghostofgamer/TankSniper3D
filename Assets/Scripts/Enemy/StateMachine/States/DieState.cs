@@ -21,14 +21,36 @@ public class DieState : State
 
     private void OnEnable()
     {
-        StartCoroutine(Die());
+        //StartCoroutine(Die());
+        Die();
     }
 
-    private IEnumerator Die()
+    //private IEnumerator Die()
+    //{
+    //    if (_audioPlugin != null)
+    //        _audioPlugin.StopSound();
+        
+    //    _animator.enabled = false;
+    //    var rigidbody = GetComponent<Rigidbody>();
+    //    rigidbody.isKinematic = false;
+    //    _effect.PlayEffect();
+    //    _killedInfo.ChangeValue();
+
+    //    if (_technique)
+    //        TechniqueFire();
+
+    //    WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
+    //    //SetPhisics();
+    //    //_enemyAnimations.Die(true);
+    //    yield return _waitForSeconds;
+    //    //gameObject.SetActive(false);
+    //}
+
+    private void Die()
     {
         if (_audioPlugin != null)
             _audioPlugin.StopSound();
-        
+
         _animator.enabled = false;
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = false;
@@ -38,13 +60,7 @@ public class DieState : State
         if (_technique)
             TechniqueFire();
 
-        WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
-        //SetPhisics();
-        //_enemyAnimations.Die(true);
-        yield return _waitForSeconds;
-        //gameObject.SetActive(false);
     }
-
     //private void SetPhisics()
     //{
     //    var rigidbody = GetComponent<Rigidbody>();

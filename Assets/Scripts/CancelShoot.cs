@@ -11,7 +11,7 @@ public class CancelShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        IsCancelShoot = false;
+        DontCancel();
     }
 
     public void TryCancelShoot()
@@ -21,7 +21,6 @@ public class CancelShoot : MonoBehaviour
 
     public void DontCancel()
     {
-        Debug.Log("DEBUG ");
         IsCancelShoot = false;
     }
 }

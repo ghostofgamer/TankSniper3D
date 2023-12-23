@@ -12,7 +12,6 @@ public class ResetGame : AbstractButton
 
     public override void OnClick()
     {
-        _progressMap.ResetMap();
         _save.SetData(Save.SceneNumber, 2);
         _fightButton.ResetSceneNumber();
     }

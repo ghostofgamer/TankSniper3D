@@ -12,34 +12,32 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Bullet _prefabBullet;
     [SerializeField] protected Transform _shootPosition;
     [SerializeField] protected Transform _container;
-    [SerializeField] private Image _image;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
-    //[SerializeField] private AudioSource _audioSource;
-    //[SerializeField] private SourceAudio _sourceAudio;
     [SerializeField] private AudioPlugin _audioPlugin;
-    [SerializeField] private AudioClip _audioClip;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField] private Transform _defPos;
     [SerializeField] private ReloadSlider _reload;
-    protected ObjectPool<Bullet> _pool;
 
     protected readonly int _maxAmmo = 5;
 
+    protected ObjectPool<Bullet> _pool;
     protected bool _isFirstShoot = false;
     private int _currentAmmo;
     protected bool _autoExpand = true;
     private int _hitEnemy = 0;
+    private int _maxHitEnemy = 3;
     private int _layerMask;
+    private int _maskIndex = 7;
+    private float _factor = 1.5f;
     private bool _isLastShoot = false;
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
+    private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
 
     public bool IsReload { get; private set; } = false;
 
     public event UnityAction FirstShoot;
     public event UnityAction<int, int> BulletsChanged;
-
-    RaycastHit hit;
-    Ray ray;
 
     protected virtual void Start()
     {
@@ -48,7 +46,7 @@ public abstract class Weapon : MonoBehaviour
 
         _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
-        _layerMask = 1 << 7;
+        _layerMask = 1 << _maskIndex;
         _layerMask = ~_layerMask;
     }
 
@@ -61,7 +59,7 @@ public abstract class Weapon : MonoBehaviour
             if (!_isFirstShoot)
                 SetFirstShoot();
 
-            if (_hitEnemy == 3)
+            if (_hitEnemy == _maxHitEnemy)
             {
                 _hitEnemy = 0;
                 BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
@@ -70,14 +68,11 @@ public abstract class Weapon : MonoBehaviour
             else if (_killedInfo.IsLastEnemy)
             {
                 LastShoot();
-                //EnemyHitChanger();
             }
             else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
                 GetBullet(bullet);
                 AmmoChanger(bullet);
-                //_audioSource.Play();
-                //_sourceAudio.Play("Shoot1Lvl");
                 _audioPlugin.PlayKey();
                 EnemyHitChanger();
             }
@@ -90,9 +85,6 @@ public abstract class Weapon : MonoBehaviour
         {
             GetBullet(bullet);
             EnemyHitChanger();
-            //AmmoChanger(bullet);
-            //_audioSource.Play();
-            //_sourceAudio.Play("Shoot1Lvl");
             _audioPlugin.PlayKey();
             RaycastHit hit;
             Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
@@ -101,11 +93,6 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    //if (enemy.IsBoss && enemy.CurrentHealth < 30)
-                    //{
-                    //    _cameraAim.CinemachineMove(bullet);
-                    //    _cameraAim.OnCinemaMachine();
-                    //}
                     if (!enemy.IsBoss || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
                         _isLastShoot = true;
@@ -114,6 +101,7 @@ public abstract class Weapon : MonoBehaviour
                     }
                 }
             }
+
             AmmoChanger(bullet);
         }
     }
@@ -147,10 +135,8 @@ public abstract class Weapon : MonoBehaviour
         bullet.Init(_shootPosition);
     }
 
-
     private void AmmoChanger(Bullet bullet)
     {
-        //bullet.Init(_shootPosition);
         _currentAmmo--;
         BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
 
@@ -160,9 +146,9 @@ public abstract class Weapon : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds;
         SetReload(true);
-        yield return new WaitForSeconds(3f);
+        yield return _waitForReload;
         _currentAmmo = _maxAmmo;
         BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
         SetReload(false);
@@ -171,7 +157,6 @@ public abstract class Weapon : MonoBehaviour
     private void SetReload(bool flag)
     {
         _reload.gameObject.SetActive(flag);
-        //_image.gameObject.SetActive(flag);
         IsReload = flag;
     }
 
@@ -179,23 +164,15 @@ public abstract class Weapon : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            //Transform transformmm = _shootPosition;
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
-                //_audioSource.PlayOneShot(_audioClip);
-                //_sourceAudio.PlayOneShot("Shoot1Lvl");
                 _audioPlugin.PlayOneShootKey();
-                //_audioSource.Play();
                 bullet.Init(_shootPosition);
-                //Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.65f;
-                //transformmm.position = vector;
             }
 
             yield return new WaitForSeconds(delay);
-            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * 1.5f;
+            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * _factor;
             _shootPosition.position = vector;
-            //yield return new WaitForSeconds(0.165f);
-            //_audioSource.Stop();
         }
 
         _shootPosition = _defPos;

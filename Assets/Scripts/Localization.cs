@@ -15,13 +15,12 @@ public class Localization : MonoBehaviour
 {
     [SerializeField] private LeanLocalization _leanLanguage;
 
-    //private const string EnglishCode = "en";
-    //private const string RussianCode = "ru";
-    //private const string TurkishCode = "tr";
-
     private const string EnglishCode = "English";
     private const string RussianCode = "Russian";
     private const string TurkishCode = "Turkish";
+    private const string Turkish = "tr";
+    private const string Russian = "ru";
+    private const string English = "en";
 
     private void Awake()
     {
@@ -36,37 +35,15 @@ public class Localization : MonoBehaviour
 
         switch (languageCode)
         {
-            case "en":
-                _leanLanguage.SetCurrentLanguage("English");
+            case English:
+                _leanLanguage.SetCurrentLanguage(EnglishCode);
                 break;
-            case "tr":
-                _leanLanguage.SetCurrentLanguage("Turkish");
+            case Turkish:
+                _leanLanguage.SetCurrentLanguage(TurkishCode);
                 break;
-            case "ru":
-                _leanLanguage.SetCurrentLanguage("Russian");
+            case Russian:
+                _leanLanguage.SetCurrentLanguage(RussianCode);
                 break;
         }
-        //switch (languageCode)
-        //{
-        //    case "en":
-        //        _leanLanguage.SetCurrentLanguage("English");
-        //        break;
-        //    case "tr":
-        //        _leanLanguage.SetCurrentLanguage("Turkish");
-        //        break;
-        //    case "ru":
-        //        _leanLanguage.SetCurrentLanguage("Russian");
-        //        break;
-        //}
-
-        //string language = languageCode switch
-        //{
-        //    EnglishCode => Language.english.ToString(),
-        //    RussianCode => Language.russian.ToString(),
-        //    TurkishCode => Language.turkish.ToString(),
-        //    _ => Language.english.ToString()
-        //};
-        //_leanLanguage.SetCurrentLanguage(language);
-        //LeanLocalization.SetCurrentLanguageAll(language);
     }
 }

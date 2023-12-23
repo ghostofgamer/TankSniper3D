@@ -15,18 +15,10 @@ public class Wallet : MonoBehaviour
 
     public int Money => _money;
 
-    //private void Awake()
-    //{
-    //    _money = _load.Get(Save.Money, _startMoney);
-    //    MoneyInfo();
-        
-    //}
-
     private void Start()
     {
         _money = _load.Get(Save.Money, _startMoney);
         MoneyInfo();
-
     }
 
     public void AddMoney(int money)

@@ -17,7 +17,6 @@ public class BulletsInfo : MonoBehaviour
     private void OnEnable()
     {
         _weapon.BulletsChanged += OnBulletsChanged;
-        //OffImage(_extraImages);
         _extraShootActivated.SetActive(false);
     }
 
@@ -33,8 +32,6 @@ public class BulletsInfo : MonoBehaviour
 
     private void OnBulletsChanged(int bulletsCount, int extraCount)
     {
-        //OffImage(_bulletsImages);
-        //OffImage(_extraImages);
         ValueChanged(bulletsCount, _bulletsImages);
         ValueChanged(extraCount, _extraImages);
         _extraShootActivated.SetActive(extraCount == _extraNeedCount);
@@ -42,16 +39,10 @@ public class BulletsInfo : MonoBehaviour
 
     private void ValueChanged(int count, List<Image> images)
     {
-        foreach (var item in images)
-            item.gameObject.SetActive(false);
+        foreach (Image image in images)
+            image.gameObject.SetActive(false);
 
         for (int i = 0; i < count; i++)
             images[i].gameObject.SetActive(true);
     }
-
-    //private void OffImage(List<Image> images)
-    //{
-    //    foreach (var item in images)
-    //        item.gameObject.SetActive(false);
-    //}
 }

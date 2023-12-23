@@ -26,8 +26,4 @@ public class Progress : MonoBehaviour
     {
         CurrentIndex = Load.Get(Save.Map, _startIndex);
     }
-
-    public virtual void ResetMap()
-    {
-    }
 }

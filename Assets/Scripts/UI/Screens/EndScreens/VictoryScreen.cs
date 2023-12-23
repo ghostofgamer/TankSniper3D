@@ -25,8 +25,7 @@ public class VictoryScreen : EndGame
     {
         //Reward = _levelConfig.RewardVictory;
         int levelNumber = _load.Get(Save.LevelComplited, _firstLevel);
-        Reward = _load.Get(Save.Reward, 0) + 500;
-        _save.SetData(Save.Reward, Reward);
+        //Reward = _load.Get(Save.Reward, 0) + 500;
         //_levelNumber.text = _levelConfig.LevelNumber.ToString();
         _killedInfo.AllEnemysDying += OnEndGame;
     }
@@ -39,6 +38,7 @@ public class VictoryScreen : EndGame
     public void Init(Progress progress)
     {
         //Reward = _levelConfig.RewardVictory;
+        Reward = _load.Get(Save.Reward, 0) + 500;
         _rewardCountText.text = Reward.ToString();
         _progress = progress;
     }
@@ -56,6 +56,7 @@ public class VictoryScreen : EndGame
         int index = SceneManager.GetActiveScene().buildIndex;
         _save.SetData(Save.SceneNumber, ++index);
         _save.SetData(Save.Map, _progress.AddIndex());
+        _save.SetData(Save.Reward, Reward);
     }
 
     public void ChangeRewardRoulette(int reward)

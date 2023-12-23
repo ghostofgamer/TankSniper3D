@@ -1,19 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TextOff : MonoBehaviour
 {
     private Coroutine _coroutine;
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
     private void Start()
     {
-        StartCoroutine(OnOffActive());
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(OnOffActive());
     }
 
     private IEnumerator OnOffActive()
     {
-        yield return new WaitForSeconds(1f);
+        yield return _waitForSeconds;
         gameObject.SetActive(false);
     }
 }

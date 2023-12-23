@@ -16,9 +16,9 @@ public class KilledInfo : MonoBehaviour
     private int _lastEnemy = 1;
 
     public bool IsLastEnemy { get; private set; } = false;
+    public bool AllDie { get; private set; } = false;
 
     public event UnityAction AllEnemysDying;
-    public bool AllDie { get; private set; } = false;
 
     private void Start()
     {
@@ -43,7 +43,6 @@ public class KilledInfo : MonoBehaviour
         {
             AllDie = true;
             _buttonMover.Down();
-            //_buttonMover.enabled = false;
             AllEnemysDying?.Invoke();
         }
     }
