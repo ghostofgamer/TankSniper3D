@@ -19296,7 +19296,9 @@ MonoBehaviour:
   _x: 0
   _y: -15
   _offset: {x: 2.3, y: 3, z: -10}
-  _speed: 0.06
+  _maxSpeed: 13
+  _minSpeed: 10
+  _speedTime: 5
   target: {fileID: 3395150472853013441}
   minlimitX: 20
   maxlimitX: 30
@@ -33414,6 +33416,7 @@ MonoBehaviour:
   - {fileID: 1301171806}
   _enemysContainer: {fileID: 1342705773}
   _hitPoint: {fileID: 963194233}
+  _reviewCamera: {fileID: 963194232}
   _alarm: {fileID: 1922342617}
   _progress: {fileID: 120116237}
   _load: {fileID: 2077111402}
@@ -42702,6 +42705,7 @@ MonoBehaviour:
   _technique: 0
   _newMaterial: {fileID: 0}
   effects: []
+  _audioPlugin: {fileID: 0}
 --- !u!114 &65389220420181532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48985,6 +48989,10 @@ PrefabInstance:
       propertyPath: _save
       value: 
       objectReference: {fileID: 2041560248}
+    - target: {fileID: 4475014111677056188, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4475014111677056189, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _load
       value: 
@@ -50376,6 +50384,7 @@ MonoBehaviour:
   _technique: 0
   _newMaterial: {fileID: 0}
   effects: []
+  _audioPlugin: {fileID: 0}
 --- !u!114 &5446083069628562143
 MonoBehaviour:
   m_ObjectHideFlags: 0

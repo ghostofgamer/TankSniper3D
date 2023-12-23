@@ -20,6 +20,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Transform _enemysContainer;
     [Header("Camera")]
     [SerializeField] private HitPoint _hitPoint;
+    [SerializeField] private ReviewCamera _reviewCamera;
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
     [SerializeField] private Progress _progress;
@@ -108,6 +109,7 @@ public class Initializator : MonoBehaviour
             _bulletsInfo[0].Init(_player.GetComponent<Weapon>());
             _gameObjects.Add(_bulletsInfo[0].gameObject);
             _screenFocus.Init(_aimInputButton[0]);
+            _reviewCamera.Init(_aimInputButton[0]);
         }
         else
         {
@@ -117,6 +119,7 @@ public class Initializator : MonoBehaviour
             _bulletsInfo[1].Init(_player.GetComponent<Weapon>());
             _gameObjects.Add(_bulletsInfo[1].gameObject);
             _screenFocus.Init(_aimInputButton[1]);
+            _reviewCamera.Init(_aimInputButton[1]);
         }
 
 

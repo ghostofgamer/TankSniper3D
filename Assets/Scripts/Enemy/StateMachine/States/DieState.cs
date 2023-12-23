@@ -13,6 +13,7 @@ public class DieState : State
     [SerializeField] private bool _technique;
     [SerializeField] private Material _newMaterial;
     [SerializeField] private ParticleSystem[] effects;
+    [SerializeField] private AudioPlugin _audioPlugin;
 
     private Material[] materials;
 
@@ -25,6 +26,9 @@ public class DieState : State
 
     private IEnumerator Die()
     {
+        if (_audioPlugin != null)
+            _audioPlugin.StopSound();
+        
         _animator.enabled = false;
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = false;
