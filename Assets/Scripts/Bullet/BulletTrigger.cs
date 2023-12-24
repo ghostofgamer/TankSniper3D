@@ -41,7 +41,7 @@ public class BulletTrigger : MonoBehaviour
         {
             //if (_bulletMover != null)
             //    _bulletMover.enabled = false;
-
+            Debug.Log("NAME " + hitCollider);
 
             if (hitCollider.TryGetComponent(out Block block))
             {
@@ -58,6 +58,7 @@ public class BulletTrigger : MonoBehaviour
             {
                 //Hit();
                 destroy.Destruction();
+               Debug.Log( "ÿÿÿ " + gameObject.name);
             }
 
             if (hitCollider.TryGetComponent(out Barrel barrel))
@@ -73,6 +74,8 @@ public class BulletTrigger : MonoBehaviour
 
             Hit();
         }
+
+        Debug.Log("ÎÊÎÍ×ÀÍÈÅ");
 
         if (other.TryGetComponent(out Player player))
         {
@@ -107,6 +110,7 @@ public class BulletTrigger : MonoBehaviour
     {
         SetBullet(false);
         yield return _waitForSeconds;
+        transform.position = _bullet._shootPosition.position;
         SetBullet(true);
         gameObject.SetActive(false);
         //_bulletMover.enabled = true;

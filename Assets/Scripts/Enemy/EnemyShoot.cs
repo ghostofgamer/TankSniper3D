@@ -48,10 +48,15 @@ public class EnemyShoot : MonoBehaviour
         {
             //_audioSource.PlayOneShot(_audioClip);
             _audioPlugin.PlayOneShootKey();
-            LookTarget(_enemy.Target.transform);
+            //LookTarget(_enemy.Target.transform);
             bullet.Init(shootingPosition);
             _effectShooting.Play();
         }
+    }
+
+    private void Update()
+    {
+        LookTarget(_enemy.Target.transform);
     }
 
     public void LookTarget(Transform target)

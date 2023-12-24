@@ -14,6 +14,7 @@ public class DieState : State
     [SerializeField] private Material _newMaterial;
     [SerializeField] private ParticleSystem[] effects;
     [SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private RagdollEnemy _ragdoll;
 
     private Material[] materials;
 
@@ -29,7 +30,7 @@ public class DieState : State
     //{
     //    if (_audioPlugin != null)
     //        _audioPlugin.StopSound();
-        
+
     //    _animator.enabled = false;
     //    var rigidbody = GetComponent<Rigidbody>();
     //    rigidbody.isKinematic = false;
@@ -43,7 +44,7 @@ public class DieState : State
     //    //SetPhisics();
     //    //_enemyAnimations.Die(true);
     //    yield return _waitForSeconds;
-    //    //gameObject.SetActive(false);
+    //    rigidbody.isKinematic = true;
     //}
 
     private void Die()
@@ -52,8 +53,9 @@ public class DieState : State
             _audioPlugin.StopSound();
 
         _animator.enabled = false;
-        var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.isKinematic = false;
+        //var rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.isKinematic = false;
+        _ragdoll.OnRigidbody();
         _effect.PlayEffect();
         _killedInfo.ChangeValue();
 
@@ -61,6 +63,7 @@ public class DieState : State
             TechniqueFire();
 
     }
+
     //private void SetPhisics()
     //{
     //    var rigidbody = GetComponent<Rigidbody>();
