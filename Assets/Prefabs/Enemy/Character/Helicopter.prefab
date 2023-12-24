@@ -1015,6 +1015,7 @@ GameObject:
   - component: {fileID: 1997418681415265700}
   - component: {fileID: 4974045333903053063}
   - component: {fileID: 8614475218166841153}
+  - component: {fileID: -2126480674419586168}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -1246,6 +1247,7 @@ MonoBehaviour:
   effects:
   - {fileID: 2170447648243406310}
   _audioPlugin: {fileID: 1997418681415265700}
+  _ragdoll: {fileID: -2126480674419586168}
 --- !u!114 &4538311402113166425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1516,6 +1518,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MeshRenderer:
   - {fileID: 2970906312658390799}
+--- !u!114 &-2126480674419586168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3619271209236541146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1515293237e8f0409cefa2ecfa906d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3714726864665768043
 GameObject:
   m_ObjectHideFlags: 0

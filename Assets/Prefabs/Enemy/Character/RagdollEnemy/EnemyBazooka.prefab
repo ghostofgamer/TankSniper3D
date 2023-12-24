@@ -1849,8 +1849,9 @@ GameObject:
   - component: {fileID: 4949211448181882291}
   - component: {fileID: 730753008186060740}
   - component: {fileID: 750194869307245375}
+  - component: {fileID: 258216455545563674}
   m_Layer: 0
-  m_Name: EnemyBazooka)
+  m_Name: EnemyBazooka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2039,6 +2040,7 @@ MonoBehaviour:
   _newMaterial: {fileID: 2100000, guid: 939e59ca7a41fbe439a54137d7187fa8, type: 2}
   effects: []
   _audioPlugin: {fileID: 0}
+  _ragdoll: {fileID: 258216455545563674}
 --- !u!114 &3054842423797171972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,6 +2272,18 @@ MonoBehaviour:
   _enemyAnimations: {fileID: 3493068839945253091}
   _audioPlugin: {fileID: 0}
   _audioName: 
+--- !u!114 &258216455545563674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4270661360467883256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1515293237e8f0409cefa2ecfa906d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4386939510412089932
 GameObject:
   m_ObjectHideFlags: 0
