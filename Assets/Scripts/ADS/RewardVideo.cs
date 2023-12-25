@@ -5,8 +5,6 @@ using Agava.YandexGames;
 
 public class RewardVideo : Ad
 {
-    //[SerializeField] private BuyButton buyButton;
-
     public override void Show()
     {
         if (YandexGamesSdk.IsInitialized)
@@ -15,6 +13,5 @@ public class RewardVideo : Ad
 
     public virtual void OnReward()
     {
-        //buyButton.OffActive();
     }
 }

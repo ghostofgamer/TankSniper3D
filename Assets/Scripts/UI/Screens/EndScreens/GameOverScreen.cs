@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class GameOverScreen : EndGame
 {
-    public Player Player { get; private set; }
-
-    [SerializeField] private AimInputButton _aimInputButton;
     [SerializeField] private PanelInfo _panelInfo;
 
-    public void Init(Player player)
+    private AimInputButton _aimInputButton;
+
+    public Player Player { get; private set; }
+
+    public void Init(Player player, AimInputButton aimInputButton)
     {
         Player = player;
         Reward = _levelConfig.RewardGameOver;
         _rewardCountText.text = Reward.ToString();
+        _aimInputButton = aimInputButton;
     }
 
     private void OnEnable()

@@ -83,8 +83,8 @@ public class Initializator : MonoBehaviour
 
     private void GameOverScreenInit()
     {
-        _gameOverScreen.Init(_player);
-        _gameObjects.Add(_gameOverScreen.gameObject);
+        //_gameOverScreen.Init(_player);
+        //_gameObjects.Add(_gameOverScreen.gameObject);
     }
 
     private void PlatformInit()
@@ -107,6 +107,8 @@ public class Initializator : MonoBehaviour
         _gameObjects.Add(_bulletsInfo[index].gameObject);
         _screenFocus.Init(_aimInputButton[index]);
         _reviewCamera.Init(_aimInputButton[index]);
+        _gameOverScreen.Init(_player, _aimInputButton[index]);
+        _gameObjects.Add(_gameOverScreen.gameObject);
     }
 
     private void SetActive()
