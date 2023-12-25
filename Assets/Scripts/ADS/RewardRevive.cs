@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RewardRevive : RewardVideo
 {
@@ -12,5 +13,11 @@ public class RewardRevive : RewardVideo
         _gameOverScreen.Close();
         _panelInfo.Open();
         _gameOverScreen.Player.Revive();
+    }
+
+    protected override void OnClose()
+    {
+        base.OnClose();
+        GetComponent<Button>().interactable = true;
     }
 }

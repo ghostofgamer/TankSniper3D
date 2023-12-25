@@ -9,6 +9,7 @@ public class RewardContinueButton : AbstractButton
 
     public override void OnClick()
     {
+        Button.interactable = false;
         _rewardVideo.Show();
     }
 }

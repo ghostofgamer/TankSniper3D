@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _flyDamage.SetText(damage);
-        Debug.Log("ÄÀÌÀÃ " + damage);
+        //Debug.Log("ÄÀÌÀÃ " + damage);
         //if (_coroutine != null)
         //    StopCoroutine(_coroutine);
 

@@ -10,6 +10,7 @@ public class RouletteContinueButton : AbstractButton
 
     public override void OnClick()
     {
+        Button.interactable = false;
         _roulette.GetComponent<Animator>().enabled = false;
         _rewardVideo.Show();
     }

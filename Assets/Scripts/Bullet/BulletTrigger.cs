@@ -41,7 +41,6 @@ public class BulletTrigger : MonoBehaviour
         {
             //if (_bulletMover != null)
             //    _bulletMover.enabled = false;
-            Debug.Log("NAME " + hitCollider);
 
             if (hitCollider.TryGetComponent(out Block block))
             {
@@ -75,7 +74,7 @@ public class BulletTrigger : MonoBehaviour
             Hit();
         }
 
-        Debug.Log("Œ ŒÕ◊¿Õ»≈");
+        //Debug.Log("Œ ŒÕ◊¿Õ»≈");
 
         if (other.TryGetComponent(out Player player))
         {

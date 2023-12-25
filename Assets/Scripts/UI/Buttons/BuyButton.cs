@@ -38,6 +38,8 @@ public class BuyButton : AbstractButton
 
     public override void OnClick()
     {
+        Button.interactable = false;
+
         switch (_coloring)
         {
             case Coloring.Zebra:

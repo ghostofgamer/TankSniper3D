@@ -18,6 +18,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField] private Transform _defPos;
     [SerializeField] private ReloadSlider _reload;
+    [SerializeField] private Image _imageAim;
 
     protected readonly int _maxAmmo = 5;
 
@@ -93,11 +94,13 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    if (!enemy.IsBoss || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
+                    if (!enemy.IsBoss && !enemy.IsDying/* enemy.CurrentHealth > 0*/ || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
+                        Debug.Log("???");
                         _isLastShoot = true;
                         _cameraAim.CinemachineMove(bullet);
                         _cameraAim.OnCinemaMachine();
+                        _imageAim.enabled = false;
                     }
                 }
             }

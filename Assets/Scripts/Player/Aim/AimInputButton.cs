@@ -19,6 +19,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
     [SerializeField] private CancelShoot _cancelShoot;
+    //[SerializeField] private AudioPlugin _audioPlugin;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
@@ -84,6 +85,7 @@ public class AimInputButton : AbstractButton
 
     private void OnDown()
     {
+        //_audioPlugin.PlayOneShootKey();
         IsZoom = true;
         _buttonMover.Down();
         isPressed = true;
@@ -101,6 +103,8 @@ public class AimInputButton : AbstractButton
         {
             _weapon.Shoot();
         }
+
+
         //else
         //{
         //    Debug.Log("хочу стрелять");

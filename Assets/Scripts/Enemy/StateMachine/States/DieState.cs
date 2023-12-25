@@ -15,6 +15,7 @@ public class DieState : State
     [SerializeField] private ParticleSystem[] effects;
     [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private RagdollEnemy _ragdoll;
+    [SerializeField] private Canvas _canvas;
 
     private Material[] materials;
 
@@ -49,6 +50,9 @@ public class DieState : State
 
     private void Die()
     {
+        //_canvas.gameObject.SetActive(false);
+        _canvas.enabled = false;
+
         if (_audioPlugin != null)
             _audioPlugin.StopSound();
 
