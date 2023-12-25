@@ -27,6 +27,9 @@ public class BuyButton : AbstractButton
 
     private int _index = 1;
     private int _startIndex = 0;
+    //private int _soundVolume;
+
+    //public int SoundVolume => _soundVolume;
 
     private void Start()
     {
@@ -38,6 +41,8 @@ public class BuyButton : AbstractButton
 
     public override void OnClick()
     {
+        //_soundVolume = _load.Get(Save.Sound, 1);
+
         Button.interactable = false;
 
         switch (_coloring)

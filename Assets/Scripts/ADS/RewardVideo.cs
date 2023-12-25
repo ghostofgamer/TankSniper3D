@@ -14,4 +14,9 @@ public class RewardVideo : Ad
     public virtual void OnReward()
     {
     }
+
+    protected override void OnClose()
+    {
+        base.OnClose();
+    }
 }

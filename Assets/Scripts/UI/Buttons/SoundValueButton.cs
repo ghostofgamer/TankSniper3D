@@ -41,6 +41,7 @@ public class SoundValueButton : AbstractButton
         _unMute.gameObject.SetActive(!_unMute.gameObject.activeSelf);
         _soundVolumeValue = (int)AudioListener.volume;
         _save.SetData(Save.Volume, _soundVolumeValue);
+        Debug.Log(_soundVolumeValue);
     }
 
     private void SetStartValue(int volume, bool flag)

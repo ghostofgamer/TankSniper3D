@@ -20,6 +20,7 @@ public class Save : MonoBehaviour
     public const string AllTanksOpen = "AllTanksOpen";
     public const string LevelComplited = "LevelComplited";
     public const string Reward = "Reward";
+    public const string Ad = "Ad";
     [Header("Pattern")]
     public const string Zebra = "Zebra";
     public const string Winter = "Winter";
