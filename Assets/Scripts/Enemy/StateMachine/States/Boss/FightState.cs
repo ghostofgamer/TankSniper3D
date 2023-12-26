@@ -27,7 +27,7 @@ public class FightState : AttackState
         {
             _audioSource.PlayOneShot(_audioClip);
             yield return new WaitForSeconds(1.5f);
-            Target.ApplyDamage(_damage);
+            //Target.ApplyDamage(_damage);
         }
     }
 }

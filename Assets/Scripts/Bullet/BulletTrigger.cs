@@ -83,7 +83,7 @@ public class BulletTrigger : MonoBehaviour
 
             if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
             {
-                player.ApplyDamage(_bullet.Damage);
+                player.ApplyDamage(_bullet.Damage,_bullet._shootPosition);
             }
         }
 
