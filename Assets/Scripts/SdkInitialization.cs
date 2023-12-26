@@ -19,6 +19,7 @@ public class SdkInitialization : MonoBehaviour
 
     private void OnInitialized()
     {
+        YandexGamesSdk.GameReady();
         SceneManager.LoadScene(MainScene);
     }
 }

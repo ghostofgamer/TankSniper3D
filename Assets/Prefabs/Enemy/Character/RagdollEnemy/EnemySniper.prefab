@@ -1603,6 +1603,7 @@ Transform:
   - {fileID: 4434981316075416692}
   - {fileID: 1909923590502062611}
   - {fileID: 4292063402509783483}
+  - {fileID: 293136625810607158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -236.039, z: 0}
@@ -1640,6 +1641,7 @@ MonoBehaviour:
   _maxTimeShoot: 3.6
   _effectShooting: {fileID: 3462542314425002393}
   _enemy: {fileID: 2338024135634567909}
+  _audioSource: {fileID: 1799765720938547910}
   _audioPlugin: {fileID: 9120757683634860366}
   _audioClip: {fileID: 8300000, guid: f7ada98b031dd3b4c87d8017d7540d5e, type: 3}
 --- !u!114 &8531274509937627456
@@ -1724,6 +1726,7 @@ MonoBehaviour:
   _enemyAnimations: {fileID: 2593327797509960409}
   _audioPlugin: {fileID: 0}
   _audioName: 
+  _audioSource: {fileID: 1799765720938547910}
 --- !u!114 &2355701073991774294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1781,7 @@ MonoBehaviour:
   _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: 1496539690837398747}
   _canvas: {fileID: 7541973968824020475}
+  _audioSource: {fileID: 0}
 --- !u!114 &5379124526420027807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,6 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 4292063402528146535}
+  _audioSource: {fileID: 0}
 --- !u!54 &7453428188592155199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2623,6 +2628,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.062921874, y: 0.12039508, z: 0.18307936}
   m_Center: {x: -0.006420928, y: 0.021377236, z: 0.008412165}
+--- !u!1 &4785193746032356640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293136625810607158}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293136625810607158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785193746032356640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.934, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 228761556030515941}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4830212931663122385
 GameObject:
   m_ObjectHideFlags: 0

@@ -1038,6 +1038,37 @@ Transform:
   m_Father: {fileID: 4858360660055280078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2620404015150638778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3897645621933635635}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3897645621933635635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620404015150638778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.908, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8210698794987366308}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2620770984927285464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3263,7 @@ Transform:
   - {fileID: 4217646737628163289}
   - {fileID: 3618946223241359113}
   - {fileID: 3561903916121343418}
+  - {fileID: 3897645621933635635}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -203.264, z: 0}
@@ -3269,6 +3301,7 @@ MonoBehaviour:
   _maxTimeShoot: 1.65
   _effectShooting: {fileID: 7205192694430729648}
   _enemy: {fileID: 706047583999598569}
+  _audioSource: {fileID: 7144894923811212669}
   _audioPlugin: {fileID: 6308445877470767816}
   _audioClip: {fileID: 8300000, guid: 6e2ce1f3d0849274ca0d1ca692bf8229, type: 3}
 --- !u!114 &7538408018780498792
@@ -3402,6 +3435,7 @@ MonoBehaviour:
   _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: 9063006297435194770}
   _canvas: {fileID: 4540069685349710150}
+  _audioSource: {fileID: 0}
 --- !u!114 &208902640090726361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3429,6 +3463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 3561903916135583846}
+  _audioSource: {fileID: 0}
 --- !u!54 &5777471567355231758
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3646,6 +3681,7 @@ MonoBehaviour:
   _enemyAnimations: {fileID: 8853076635511933483}
   _audioPlugin: {fileID: 0}
   _audioName: 
+  _audioSource: {fileID: 7144894923811212669}
 --- !u!1 &7577540170624678767
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,7 +42,6 @@ public class Initializator : MonoBehaviour
         _gameObjects = new List<GameObject>();
         _indexPlayer = _load.Get(Save.Tank, _startIndex);
         Init();
-        YandexGamesSdk.GameReady();
     }
 
     private void Init()

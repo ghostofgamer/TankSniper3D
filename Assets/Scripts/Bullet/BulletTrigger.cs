@@ -57,7 +57,7 @@ public class BulletTrigger : MonoBehaviour
             {
                 //Hit();
                 destroy.Destruction();
-               Debug.Log( "ÿÿÿ " + gameObject.name);
+               //Debug.Log( "ÿÿÿ " + gameObject.name);
             }
 
             if (hitCollider.TryGetComponent(out Barrel barrel))

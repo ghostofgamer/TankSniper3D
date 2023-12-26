@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2041597780470269098}
   - component: {fileID: 5762139612719143170}
   - component: {fileID: -8206200799212256829}
+  - component: {fileID: 8574422939446775818}
   m_Layer: 8
   m_Name: CorePlayer
   m_TagString: Untagged
@@ -163,7 +164,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.165
   m_Center: {x: -0.000000029802322, y: 0, z: 0.000000014901161}
@@ -210,6 +211,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ae4d921bd81cb41a2e59dfaa67f699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8574422939446775818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298743723385285225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.33042926, y: 0.33369347, z: 0.66453755}
+  m_Center: {x: -0.01241676, y: 0.0066965623, z: -0.0029288332}
 --- !u!1 &5298916175927484407
 GameObject:
   m_ObjectHideFlags: 0

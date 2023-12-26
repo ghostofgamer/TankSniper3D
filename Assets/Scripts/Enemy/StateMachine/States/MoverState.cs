@@ -9,6 +9,12 @@ public class MoverState : State
     [SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private string _audioName;
+
+
+
+    [SerializeField] private AudioSource _audioSource;
+
+
     private Enemy _enemy;
 
     private List<Transform> _points;
@@ -27,13 +33,14 @@ public class MoverState : State
 
         if (_audioPlugin != null)
         {
-            //if (GetComponent<Enemy>().IsHelicopter)
-            //{
-            //    _audioPlugin.Play("Helicopter");
-            //    return;
-            //}
+            if (GetComponent<Enemy>().IsHelicopter)
+            {
+                _audioPlugin.Play("Helicopter");
+                return;
+            }
 
             _audioPlugin.Play(_audioName);
+            //_audioSource.Play();
         }
     }
 

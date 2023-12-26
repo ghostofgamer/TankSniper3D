@@ -378,6 +378,7 @@ Transform:
   - {fileID: 9010868187105678759}
   - {fileID: 6542767197831913301}
   - {fileID: 8640433974236601613}
+  - {fileID: 7093082452230901625}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -452,6 +453,7 @@ MonoBehaviour:
   _enemyAnimations: {fileID: 2728934378432759343}
   _audioPlugin: {fileID: 6370575599967238394}
   _audioName: Motor
+  _audioSource: {fileID: 1067884542}
 --- !u!65 &2728934378432759339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -507,6 +509,7 @@ MonoBehaviour:
   _maxTimeShoot: 3.65
   _effectShooting: {fileID: 8046812381757615904}
   _enemy: {fileID: 5116606314821491211}
+  _audioSource: {fileID: 1067884542}
   _audioPlugin: {fileID: 6370575599967238394}
   _audioClip: {fileID: 8300000, guid: ffba8c9e430499e4a97c6267007f5b07, type: 3}
 --- !u!114 &2728934378432759343
@@ -614,6 +617,7 @@ MonoBehaviour:
   _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: -8297320588009654483}
   _canvas: {fileID: 2728934378482442543}
+  _audioSource: {fileID: 0}
 --- !u!114 &2728934378432759388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 2728934378794869790}
+  _audioSource: {fileID: 1067884542}
 --- !u!54 &614397002
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1136,6 +1141,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &9215903764632870550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7093082452230901625}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7093082452230901625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215903764632870550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.38, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2728934378432759383}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2728934378775588600
 PrefabInstance:
   m_ObjectHideFlags: 0

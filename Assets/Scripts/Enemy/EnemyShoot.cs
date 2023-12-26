@@ -14,7 +14,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private ParticleSystem _effectShooting;
     [SerializeField] private Enemy _enemy;
     [Header("Звук")]
-    //[SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioClip _audioClip;
 
@@ -32,7 +32,6 @@ public class EnemyShoot : MonoBehaviour
     public IEnumerator Shoot()
     {
         _delay = Random.Range(_minTimeShoot, _maxTimeShoot);
-
         WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
 
         while (true)

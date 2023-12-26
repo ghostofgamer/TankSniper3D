@@ -16,6 +16,7 @@ public class DieState : State
     [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private RagdollEnemy _ragdoll;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private AudioSource _audioSource;
 
     private Material[] materials;
 
@@ -54,7 +55,10 @@ public class DieState : State
         _canvas.enabled = false;
 
         if (_audioPlugin != null)
-            _audioPlugin.StopSound();
+        {
+            //_audioPlugin.StopSound();
+            _audioSource.Stop();
+        }
 
         _animator.enabled = false;
         //var rigidbody = GetComponent<Rigidbody>();

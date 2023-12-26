@@ -21,7 +21,7 @@ namespace Plugins.Audio.Core
             GameObject instance = new GameObject("Audio Management");
             Instance = instance.AddComponent<AudioManagement>();
 
-            DontDestroyOnLoad(instance); 
+            //DontDestroyOnLoad(instance);
         }
 
         private void Awake()
