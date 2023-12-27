@@ -29,7 +29,8 @@ public class Pointer : MonoBehaviour
     {
         if (Application.isMobilePlatform)
         {
-
+            _procentWidth = 21;
+            _procentHeight = 10;
         }  
         else
         {
@@ -63,7 +64,7 @@ public class Pointer : MonoBehaviour
             _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
             _image.transform.LookAt(_lookEnemyPosition);
 
-            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 45)
+            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 36)
             {
                 _arrow.gameObject.SetActive(false);
             }
@@ -82,8 +83,8 @@ public class Pointer : MonoBehaviour
     {
         _width = Screen.width;
         _height = Screen.height;
-        _procentX = _width / 100 * 8;
-        _procentY = _height / 100 * 15;
+        _procentX = _width / 100 * _procentWidth;
+        _procentY = _height / 100 * _procentHeight;
         _minX = _width / 2 - _procentX;
         _maxX = _width / 2 + _procentX;
         _minY = _height / 2 - _procentY;

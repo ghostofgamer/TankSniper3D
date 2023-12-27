@@ -10,17 +10,17 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     //[SerializeField] private Camera _cameraAim;
     [SerializeField] private CinemachineVirtualCamera _cineMachineCamera;
-    [SerializeField] private float _fovStart;
     [SerializeField] private float _fov;
-    [SerializeField] private VisibilityAim _visibilityAim;
+    private VisibilityAim _visibilityAim;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
+    private float _fovStart;
     private Vector3 _startPosition;
     private Quaternion _startRotation;
     private float _speed = 10f;
 
-    [SerializeField] private AimInputButton _aimInputButton;
+    private AimInputButton _aimInputButton;
 
     private void Start()
     {
@@ -29,9 +29,10 @@ public class CameraAim : MonoBehaviour
         _startRotation = _mainCamera.transform.rotation;
     }
 
-    public void Init(AimInputButton aimInputButton) 
+    public void Init(AimInputButton aimInputButton, VisibilityAim visibilityAim) 
     {
         _aimInputButton = aimInputButton;
+        _visibilityAim = visibilityAim;
     }
 
     //public IEnumerator SetCameraPause()
