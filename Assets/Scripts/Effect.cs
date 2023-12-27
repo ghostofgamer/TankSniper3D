@@ -12,6 +12,7 @@ public class Effect : MonoBehaviour
     private void Start()
     {
         //_audioPlugin = _effect.GetComponent<AudioPlugin>();
+        _audioSource = _effect.GetComponent<AudioSource>();
     }
 
     public void PlayEffect()
@@ -19,11 +20,11 @@ public class Effect : MonoBehaviour
         if (_effect != null)
             _effect.Play();
 
-        if (_audioPlugin != null)
-            _audioPlugin.PlayKey();
-        //if (_audioSource != null)
-        //{
-        //    _audioSource.Play();
-        //}
+        //if (_audioPlugin != null)
+        //    _audioPlugin.PlayKey();
+        if (_audioSource != null)
+        {
+            _audioSource.Play();
+        }
     }
 }

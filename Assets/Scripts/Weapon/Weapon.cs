@@ -19,6 +19,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private Transform _defPos;
     [SerializeField] private ReloadSlider _reload;
     [SerializeField] private Image _imageAim;
+    [SerializeField] private AudioSource _audioSource;
 
     protected readonly int _maxAmmo = 5;
 
@@ -74,7 +75,8 @@ public abstract class Weapon : MonoBehaviour
             {
                 GetBullet(bullet);
                 AmmoChanger(bullet);
-                _audioPlugin.PlayKey();
+                //_audioPlugin.PlayKey();
+                _audioSource.Play();
                 EnemyHitChanger();
             }
         }
@@ -86,7 +88,8 @@ public abstract class Weapon : MonoBehaviour
         {
             GetBullet(bullet);
             EnemyHitChanger();
-            _audioPlugin.PlayKey();
+            //_audioPlugin.PlayKey();
+            _audioSource.Play();
             RaycastHit hit;
             Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
 
@@ -96,7 +99,6 @@ public abstract class Weapon : MonoBehaviour
                 {
                     if (!enemy.IsBoss && !enemy.IsDying/* enemy.CurrentHealth > 0*/ || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
-                        Debug.Log("???");
                         _isLastShoot = true;
                         _cameraAim.CinemachineMove(bullet);
                         _cameraAim.OnCinemaMachine();
@@ -169,7 +171,8 @@ public abstract class Weapon : MonoBehaviour
         {
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
-                _audioPlugin.PlayOneShootKey();
+                //_audioPlugin.PlayOneShootKey();
+                _audioSource.Play();
                 bullet.Init(_shootPosition);
             }
 

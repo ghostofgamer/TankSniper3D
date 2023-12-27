@@ -57,6 +57,10 @@ public class DieState : State
         if (_audioPlugin != null)
         {
             //_audioPlugin.StopSound();
+        }
+        if (_audioSource != null)
+        {
+
             _audioSource.Stop();
         }
 

@@ -6,49 +6,43 @@ using UnityEngine.UI;
 public class Pointer : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    public Transform other;
-
     [SerializeField] private Image _image;
-    private Vector2 _pointerPosition;
     [SerializeField] private GameObject _aim;
-
-
     [SerializeField] private Enemy _enemy;
-
     [SerializeField] private Image _imageCurrent;
-    [Range(100, 100000)]
-    [SerializeField] private int _range;
-
     [SerializeField] private Image _newImage;
 
-    private Vector2[] _pointerPositions;
+    private Vector2 _pointerPosition;
+    private int _procentX;
+    private int _procentY;
+    private int _minX;
+    private int _maxX;
+    private int _minY;
+    private int _maxY;
+    private int _width;
+    private int _height;
+
+    private void Start()
+    {
+        GetParametrsScreen();
+    }
 
     private void Update()
     {
         if (!_enemy.IsDying)
         {
+            if (_height != Screen.height || _width != Screen.width)
+            {
+                GetParametrsScreen();
+            }
+
             _pointerPosition = Camera.main.WorldToScreenPoint(_target.position);
             //_imageCurrent.transform.position = Camera.main.WorldToScreenPoint(_target.position);
             _imageCurrent.transform.position = _pointerPosition;
-            int width = Screen.width;
-            int height = Screen.height;
-            Vector2 center = new Vector2(width / 2, height / 2);
-            Debug.Log(center);
-            int procentX = (width / 100) * 8;
-            int procentY = (height / 100) * 15;
-            Debug.Log(procentX);
-            int minX = width / 2 - procentX;
-            int maxX = width/2  + procentX;
-            int minY = height / 2 - procentY;
-            int maxY = height / 2 + procentY;
-            //Debug.Log("X " + X);
-            Debug.Log("PointerPosition " + _pointerPosition.x);
-            Debug.Log("AIM " + _aim.transform.position.x);
 
-            _pointerPosition.x = Mathf.Clamp(_pointerPosition.x,/*_aim.transform.position.x - 145f*/minX, maxX/* _aim.transform.position.x + 145f*/ /*Screen.width - _range*/);
-            _pointerPosition.y = Mathf.Clamp(_pointerPosition.y, minY /*_aim.transform.position.y - 145f*/, maxY/*_aim.transform.position.y + 145f*//*Screen.height - 55f*/);
+            _pointerPosition.x = Mathf.Clamp(_pointerPosition.x,/*_aim.transform.position.x - 145f*/_minX, _maxX/* _aim.transform.position.x + 145f*/ /*Screen.width - _range*/);
+            _pointerPosition.y = Mathf.Clamp(_pointerPosition.y, _minY /*_aim.transform.position.y - 145f*/, _maxY/*_aim.transform.position.y + 145f*//*Screen.height - 55f*/);
 
-            //_image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
             _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
             _image.transform.LookAt(_imageCurrent.transform);
 
@@ -67,20 +61,15 @@ public class Pointer : MonoBehaviour
         }
     }
 
-    private Quaternion GetIconRotation(int planeIndex)
+    private void GetParametrsScreen()
     {
-        if (planeIndex == 0)
-            return Quaternion.Euler(0f, 0f, 90f);
-
-        if (planeIndex == 1)
-            return Quaternion.Euler(0f, 0f, -90f);
-
-        if (planeIndex == 2)
-            return Quaternion.Euler(0f, 0f, 180f);
-
-        if (planeIndex == 3)
-            return Quaternion.Euler(0f, 0f, 0f);
-
-        return Quaternion.identity;
+        _width = Screen.width;
+        _height = Screen.height;
+        _procentX = _width / 100 * 8;
+        _procentY = _height / 100 * 15;
+        _minX = _width / 2 - _procentX;
+        _maxX = _width / 2 + _procentX;
+        _minY = _height / 2 - _procentY;
+        _maxY = _height / 2 + _procentY;
     }
 }
