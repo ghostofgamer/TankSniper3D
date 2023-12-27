@@ -15,7 +15,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Enemy _enemy;
     [Header("Звук")]
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioPlugin _audioPlugin;
+    //[SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioClip _audioClip;
 
     private readonly int _ammoCount = 10;

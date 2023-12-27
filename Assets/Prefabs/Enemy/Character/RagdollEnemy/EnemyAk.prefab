@@ -3237,8 +3237,6 @@ GameObject:
   - component: {fileID: 5777471567355231758}
   - component: {fileID: 7144894923811212669}
   - component: {fileID: 706047583999598569}
-  - component: {fileID: 865053979076684132}
-  - component: {fileID: 6308445877470767816}
   - component: {fileID: 9063006297435194770}
   - component: {fileID: 4735055428628094919}
   m_Layer: 0
@@ -3302,7 +3300,6 @@ MonoBehaviour:
   _effectShooting: {fileID: 7205192694430729648}
   _enemy: {fileID: 706047583999598569}
   _audioSource: {fileID: 7144894923811212669}
-  _audioPlugin: {fileID: 6308445877470767816}
   _audioClip: {fileID: 8300000, guid: 6e2ce1f3d0849274ca0d1ca692bf8229, type: 3}
 --- !u!114 &7538408018780498792
 MonoBehaviour:
@@ -3396,7 +3393,7 @@ MonoBehaviour:
   _targetState: {fileID: 7538408018780498792}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 8853076635511933483}
-  _audioPlugin: {fileID: 6308445877470767816}
+  _audioSource: {fileID: 0}
 --- !u!114 &127673777953554605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3432,10 +3429,9 @@ MonoBehaviour:
   _technique: 0
   _newMaterial: {fileID: 2100000, guid: 939e59ca7a41fbe439a54137d7187fa8, type: 2}
   effects: []
-  _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: 9063006297435194770}
   _canvas: {fileID: 4540069685349710150}
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 7144894923811212669}
 --- !u!114 &208902640090726361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3604,51 +3600,6 @@ MonoBehaviour:
   _canvas: {fileID: 1729687152373637822}
   _isBoss: 0
   _isHelicopter: 0
---- !u!114 &865053979076684132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7539069826125827434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
---- !u!114 &6308445877470767816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7539069826125827434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 865053979076684132}
-  _clip:
-    _id: 403bcaef-1649-4572-a7d8-96d32e7077cd
-    _key: Ak
 --- !u!114 &9063006297435194770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3679,9 +3630,6 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 1.5
   _enemyAnimations: {fileID: 8853076635511933483}
-  _audioPlugin: {fileID: 0}
-  _audioName: 
-  _audioSource: {fileID: 7144894923811212669}
 --- !u!1 &7577540170624678767
 GameObject:
   m_ObjectHideFlags: 0

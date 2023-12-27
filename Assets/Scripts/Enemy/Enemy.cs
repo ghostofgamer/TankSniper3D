@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(!IsDying)
         _flyDamage.SetText(damage);
         //Debug.Log("ƒ¿Ã¿√ " + damage);
         //if (_coroutine != null)

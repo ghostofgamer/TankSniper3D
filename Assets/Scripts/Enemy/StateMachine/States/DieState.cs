@@ -13,7 +13,7 @@ public class DieState : State
     [SerializeField] private bool _technique;
     [SerializeField] private Material _newMaterial;
     [SerializeField] private ParticleSystem[] effects;
-    [SerializeField] private AudioPlugin _audioPlugin;
+    //[SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private RagdollEnemy _ragdoll;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private AudioSource _audioSource;
@@ -54,13 +54,12 @@ public class DieState : State
         //_canvas.gameObject.SetActive(false);
         _canvas.enabled = false;
 
-        if (_audioPlugin != null)
-        {
-            //_audioPlugin.StopSound();
-        }
+        //if (_audioPlugin != null)
+        //{
+        //    //_audioPlugin.StopSound();
+        //}
         if (_audioSource != null)
         {
-
             _audioSource.Stop();
         }
 

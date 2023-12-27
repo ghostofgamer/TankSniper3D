@@ -7,12 +7,9 @@ public class MoverState : State
     [SerializeField] private Transform _path;
     [SerializeField] private float _speedMove = 5;
     [SerializeField] private EnemyAnimations _enemyAnimations;
-    [SerializeField] private AudioPlugin _audioPlugin;
-    [SerializeField] private string _audioName;
-
-
-
-    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioPlugin _audioPlugin;
+    //[SerializeField] private string _audioName;
+    //[SerializeField] private AudioSource _audioSource;
 
 
     private Enemy _enemy;
@@ -31,17 +28,22 @@ public class MoverState : State
 
         _enemyAnimations.Walking(true);
 
-        if (_audioPlugin != null)
-        {
-            if (GetComponent<Enemy>().IsHelicopter)
-            {
-                _audioPlugin.Play("Helicopter");
-                return;
-            }
+        //if (_audioSource != null)
+        //{
+        //    _audioSource.Play();
+        //}
+        //if (_audioPlugin != null)
+        //{
+        //    //if (GetComponent<Enemy>().IsHelicopter)
+        //    //{
+        //    //    _audioPlugin.Play("Helicopter");
+        //    //    return;
+        //    //}
 
-            _audioPlugin.Play(_audioName);
-            //_audioSource.Play();
-        }
+        //    //_audioPlugin.Play(_audioName);
+        //    //_audioSource.Play();
+        //    //_audioSource.Play();
+        //}
     }
 
     private void Update()

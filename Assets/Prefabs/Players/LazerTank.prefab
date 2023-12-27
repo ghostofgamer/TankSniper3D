@@ -749,14 +749,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
   _audioPlugin: {fileID: 0}
-  _audioClip: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 0}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &3665089318860781905
 MonoBehaviour:
@@ -773,14 +773,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
   _audioPlugin: {fileID: 0}
-  _audioClip: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 0}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 0}
 --- !u!1 &3665089319057867064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,8 +1417,6 @@ GameObject:
   - component: {fileID: 1380924104}
   - component: {fileID: 4922745851847986409}
   - component: {fileID: 4770656026866026815}
-  - component: {fileID: 3491880249453582268}
-  - component: {fileID: 1735152434938715120}
   m_Layer: 0
   m_Name: LazerTank
   m_TagString: Untagged
@@ -1539,14 +1537,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 2618957634086837455, guid: 20c84eb70c596d44e9948521d134d918, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioPlugin: {fileID: 1735152434938715120}
-  _audioClip: {fileID: 8300000, guid: 68ab3054477e2d54f950e44d74011b03, type: 3}
+  _audioPlugin: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 3665089319957028433}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 3665089319957028399}
 --- !u!82 &3665089319957028399
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1686,51 +1684,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tower: {fileID: 3665089318672266398}
   _startTransform: {fileID: 3665089318211398761}
---- !u!114 &3491880249453582268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3665089319957028393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
---- !u!114 &1735152434938715120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3665089319957028393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 3491880249453582268}
-  _clip:
-    _id: 0055479d-68bd-4605-a14b-9c94e1ea1fbc
-    _key: Shoot5Lvl
 --- !u!1 &3665089320190549780
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,9 @@ public class ViewShoot : MonoBehaviour
     [SerializeField] protected Bullet _prefabBullet;
     [SerializeField] protected Transform _container;
     [SerializeField] protected Transform _shootPosition;
-    [SerializeField] private AudioPlugin _audioPlugin;
+    //[SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private AudioSource _audioSource;
+    //[SerializeField] private AudioClip _audioClip;
     [SerializeField] private Load _load;
     [SerializeField] private TMP_Text _levelTxt;
     [SerializeField] private Tanks _tanksEnum;
@@ -44,7 +46,8 @@ public class ViewShoot : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
             bullet.Init(_shootPosition);
-            _audioPlugin.PlayOneShootKey();
+            //_audioPlugin.PlayOneShootKey();
+            _audioSource.Play();
             //_audioPlugin.PlayKey();
         }
         //_weapon.Shoot();

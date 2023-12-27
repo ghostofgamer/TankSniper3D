@@ -20,7 +20,7 @@ public class Destroy : MonoBehaviour
             if (hit.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(_destructionDamage);
-                Debug.Log(enemy.name);
+                //Debug.Log(enemy.name);
             }
         }
 

@@ -57,8 +57,8 @@ public class BuyTank : AbstractButton
         tank.GetComponent<DragItem>().SetLevel(needNumber);
         tank.transform.position = position.position;
         _storage.AddTank(tank.GetComponent<Tank>());
-        PriceChecker();
         ChangeValue();
+        PriceChecker();
     }
 
     private Transform TryGetPosition()

@@ -414,8 +414,6 @@ GameObject:
   - component: {fileID: 1207407046}
   - component: {fileID: 5963099935356635506}
   - component: {fileID: 3447788605906093411}
-  - component: {fileID: 5960527221128033613}
-  - component: {fileID: 5017633893069549740}
   m_Layer: 0
   m_Name: FireballTank
   m_TagString: Untagged
@@ -536,14 +534,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioPlugin: {fileID: 5017633893069549740}
-  _audioClip: {fileID: 0}
+  _audioPlugin: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 4704393401054639808}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 4704393401054639802}
   _bigFireball: {fileID: 8512064316746545530, guid: a8caa48970aee034d98d89c9ef1579cd, type: 3}
 --- !u!82 &4704393401054639802
 AudioSource:
@@ -555,7 +553,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 01e761cd92a092a448e85e490d547d2c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e01da3f3919d17142a336966f306fec0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -684,51 +682,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tower: {fileID: 4704393401310911711}
   _startTransform: {fileID: 4704393401811594662}
---- !u!114 &5960527221128033613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4704393401054639800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
---- !u!114 &5017633893069549740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4704393401054639800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 5960527221128033613}
-  _clip:
-    _id: 7893e2d3-f070-49fb-8192-80e78658c324
-    _key: ShootHelicopter
 --- !u!1 &4704393401285804425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,14 +1420,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
   _audioPlugin: {fileID: 0}
-  _audioClip: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 0}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 0}
   _bigFireball: {fileID: 0}
 --- !u!114 &4704393402530014665
 MonoBehaviour:
@@ -1491,14 +1444,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
   _audioPlugin: {fileID: 0}
-  _audioClip: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 0}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 0}
 --- !u!1 &4704393402583896740
 GameObject:
   m_ObjectHideFlags: 0

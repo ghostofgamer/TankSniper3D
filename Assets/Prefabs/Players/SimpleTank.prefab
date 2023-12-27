@@ -674,8 +674,6 @@ GameObject:
   - component: {fileID: 3323233339149155251}
   - component: {fileID: 7197479396609903363}
   - component: {fileID: 157949893343919629}
-  - component: {fileID: 8123586293063403030}
-  - component: {fileID: 7387666392566374486}
   m_Layer: 0
   m_Name: SimpleTank
   m_TagString: Untagged
@@ -804,14 +802,14 @@ MonoBehaviour:
   _prefabBullet: {fileID: 5195485957653858959, guid: 70a768ee8babc774e960fd93e226517a, type: 3}
   _shootPosition: {fileID: 0}
   _container: {fileID: 0}
-  _image: {fileID: 0}
   _cinemachineCamera: {fileID: 0}
-  _audioPlugin: {fileID: 7387666392566374486}
-  _audioClip: {fileID: 8300000, guid: d373c70148cd53a4cabf9b94def2f003, type: 3}
+  _audioPlugin: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 1821326189685271944}
   _defPos: {fileID: 0}
   _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _audioSource: {fileID: 1821326189685271967}
 --- !u!82 &1821326189685271967
 AudioSource:
   m_ObjectHideFlags: 0
@@ -952,51 +950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tower: {fileID: 4744537221027862358}
   _startTransform: {fileID: 3988176717548472912}
---- !u!114 &8123586293063403030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821326189685271947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
---- !u!114 &7387666392566374486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821326189685271947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 8123586293063403030}
-  _clip:
-    _id: c84be793-f2fd-4267-a2bb-15c886768cb6
-    _key: Shoot1Lvl
 --- !u!1 &2332539309128724240
 GameObject:
   m_ObjectHideFlags: 0

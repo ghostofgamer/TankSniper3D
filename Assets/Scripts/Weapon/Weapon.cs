@@ -1,5 +1,4 @@
 using Cinemachine;
-using Plugins.Audio.Core;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +12,6 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform _shootPosition;
     [SerializeField] protected Transform _container;
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
-    [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
     [SerializeField] private Transform _defPos;

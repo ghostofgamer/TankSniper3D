@@ -1877,8 +1877,6 @@ GameObject:
   - component: {fileID: 1833422984596471676}
   - component: {fileID: 5902358720015765347}
   - component: {fileID: 862912384934178034}
-  - component: {fileID: 4949211448181882291}
-  - component: {fileID: 730753008186060740}
   - component: {fileID: 750194869307245375}
   - component: {fileID: 258216455545563674}
   m_Layer: 0
@@ -1942,7 +1940,6 @@ MonoBehaviour:
   _effectShooting: {fileID: 6251588514017016482}
   _enemy: {fileID: 862912384934178034}
   _audioSource: {fileID: 5902358720015765347}
-  _audioPlugin: {fileID: 4949211448181882291}
   _audioClip: {fileID: 8300000, guid: a65283f0d3759484791603806b05416d, type: 3}
 --- !u!114 &2798052253595332516
 MonoBehaviour:
@@ -2036,7 +2033,7 @@ MonoBehaviour:
   _targetState: {fileID: 2798052253595332516}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 3493068839945253091}
-  _audioPlugin: {fileID: 4949211448181882291}
+  _audioSource: {fileID: 0}
 --- !u!114 &7525393525819181269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,10 +2069,9 @@ MonoBehaviour:
   _technique: 0
   _newMaterial: {fileID: 2100000, guid: 939e59ca7a41fbe439a54137d7187fa8, type: 2}
   effects: []
-  _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: 258216455545563674}
   _canvas: {fileID: 4714524685785154395}
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 5902358720015765347}
 --- !u!114 &3054842423797171972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,51 +2240,6 @@ MonoBehaviour:
   _canvas: {fileID: 9024974387552914311}
   _isBoss: 0
   _isHelicopter: 0
---- !u!114 &4949211448181882291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4270661360467883256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 730753008186060740}
-  _clip:
-    _id: b5bae30a-a625-4ac1-9fdd-af62b308b2a5
-    _key: Bazuka
---- !u!114 &730753008186060740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4270661360467883256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
 --- !u!114 &750194869307245375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,9 +2257,6 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 1.5
   _enemyAnimations: {fileID: 3493068839945253091}
-  _audioPlugin: {fileID: 0}
-  _audioName: 
-  _audioSource: {fileID: 5902358720015765347}
 --- !u!114 &258216455545563674
 MonoBehaviour:
   m_ObjectHideFlags: 0

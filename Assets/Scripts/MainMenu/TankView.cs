@@ -10,6 +10,7 @@ public class TankView : MonoBehaviour
     [SerializeField] private Save _save;
     [SerializeField] private ParticleSystem _effect;
     [SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private AudioSource _audioSource;
 
     private int _startIndex = 0;
     private int _currentIndex = 0;
@@ -46,7 +47,8 @@ public class TankView : MonoBehaviour
             //Debug.Log("LEVELS " + level);
 
             _effect.Play();
-            _audioPlugin.PlayKey();
+            //_audioPlugin.PlayKey();
+            _audioSource.Play();
             OffActiveTanks();
             _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
             _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());

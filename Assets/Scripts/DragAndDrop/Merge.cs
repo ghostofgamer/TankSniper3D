@@ -11,6 +11,7 @@ public class Merge : MonoBehaviour
     [SerializeField] private TankView _tankView;
     [SerializeField] private Storage _storage;
     [SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private AudioSource _audioSource;
      private BuyTank _buytank;
 
     private int _currentLevel;
@@ -179,7 +180,8 @@ public class Merge : MonoBehaviour
                             //    //}
                             //}
 
-                            _audioPlugin.PlayKey();
+                            //_audioPlugin.PlayKey();
+                            _audioSource.Play();
                             //Debug.Log("Создание " + newLevel);
                             _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
                             string name = _prefabs[newLevel].GetComponent<DragItem>().TankName;

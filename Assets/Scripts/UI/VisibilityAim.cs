@@ -8,7 +8,8 @@ public class VisibilityAim : MonoBehaviour
     [SerializeField] private CanvasGroup _canvasGroupe;
     [SerializeField] private CanvasGroup _canvasGroupeMobile;
     [SerializeField] private Image _startImage;
-    [SerializeField] private AudioPlugin _audioPlugin;
+    //[SerializeField] private AudioPlugin _audioPlugin;
+    [SerializeField] private AudioSource _audioSource;
 
     private readonly float _speed = 10f;
     private readonly float _timeFade = 0.65f;
@@ -45,7 +46,8 @@ public class VisibilityAim : MonoBehaviour
     IEnumerator Fade(CanvasGroup canvasGroup, int alpha, float speed, float time, bool flag)
     {
         yield return new WaitForSeconds(time);
-        _audioPlugin.PlayOneShootKey();
+        //_audioPlugin.PlayOneShootKey();
+        _audioSource.Play();
         _startImage.gameObject.SetActive(flag);
 
         while (canvasGroup.alpha != alpha)

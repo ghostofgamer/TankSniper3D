@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 7323796393809132422}
+  _audioSource: {fileID: 7323796393822538074}
 --- !u!114 &4251975961764799812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,69 +332,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8888859238687878951}
-    - targetCorrespondingSourceObject: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1352340411657221116}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
 --- !u!198 &7323796393809132422 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19801142, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
   m_PrefabInstance: {fileID: 7323796393828130736}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7323796393828246318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
+--- !u!82 &7323796393822538074 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8247018, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
   m_PrefabInstance: {fileID: 7323796393828130736}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8888859238687878951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7323796393828246318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 1352340411657221116}
-  _clip:
-    _id: 9a581d1d-6fa6-4003-8b57-f48c83cc5c29
-    _key: Bullet
---- !u!114 &1352340411657221116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7323796393828246318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
 --- !u!4 &7323796393828496310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 437254, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}

@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 2036057224564608777}
+  _audioSource: {fileID: 0}
 --- !u!114 &-8206200799212256829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9971,13 +9972,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 883717117388554889, guid: 99f30b4da5282764ba97cafea198aabd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3831105236298098506}
-    - targetCorrespondingSourceObject: {fileID: 883717117388554889, guid: 99f30b4da5282764ba97cafea198aabd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9015755412411499864}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99f30b4da5282764ba97cafea198aabd, type: 3}
 --- !u!198 &2036057224564608777 stripped
 ParticleSystem:
@@ -9989,53 +9984,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 883717117388916447, guid: 99f30b4da5282764ba97cafea198aabd, type: 3}
   m_PrefabInstance: {fileID: 1153518862118228480}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2036057224583155849 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 883717117388554889, guid: 99f30b4da5282764ba97cafea198aabd, type: 3}
-  m_PrefabInstance: {fileID: 1153518862118228480}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3831105236298098506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036057224583155849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 9015755412411499864}
-  _clip:
-    _id: da315eff-d511-4211-99fa-dd055a552bae
-    _key: FireballExplosion
---- !u!114 &9015755412411499864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036057224583155849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500

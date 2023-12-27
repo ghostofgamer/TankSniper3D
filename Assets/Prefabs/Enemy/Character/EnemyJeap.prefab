@@ -1217,8 +1217,6 @@ GameObject:
   - component: {fileID: 4427102641654296584}
   - component: {fileID: 4427102641654296628}
   - component: {fileID: 494857086}
-  - component: {fileID: 1341496557838349098}
-  - component: {fileID: 2380906977282914794}
   m_Layer: 0
   m_Name: EnemyBazooka
   m_TagString: Untagged
@@ -1279,7 +1277,7 @@ MonoBehaviour:
   _maxTimeShoot: 3.65
   _effectShooting: {fileID: 3594933407746727946}
   _enemy: {fileID: 0}
-  _audioPlugin: {fileID: 2380906977282914794}
+  _audioSource: {fileID: 494857086}
   _audioClip: {fileID: 8300000, guid: a65283f0d3759484791603806b05416d, type: 3}
 --- !u!82 &494857086
 AudioSource:
@@ -1291,9 +1289,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c70b8544483c0b419993329daacc892, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a65283f0d3759484791603806b05416d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1377,51 +1375,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1341496557838349098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4427102641654296581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
---- !u!114 &2380906977282914794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4427102641654296581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 1341496557838349098}
-  _clip:
-    _id: b5bae30a-a625-4ac1-9fdd-af62b308b2a5
-    _key: Bazuka
 --- !u!1 &4427102641714199389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,6 +3917,7 @@ GameObject:
   - component: {fileID: 7622884141629759344}
   - component: {fileID: 7622884141629759347}
   - component: {fileID: 6439895756966812872}
+  - component: {fileID: 4152122441292086780}
   m_Layer: 0
   m_Name: EnemyJeap
   m_TagString: Untagged
@@ -4008,8 +3962,6 @@ MonoBehaviour:
   _path: {fileID: 0}
   _speedMove: 5
   _enemyAnimations: {fileID: 7622884141629759353}
-  _audioPlugin: {fileID: 2380906977282914794}
-  _audioName: JeapMotor
 --- !u!114 &7622884141629759353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4110,9 +4062,9 @@ MonoBehaviour:
   _technique: 1
   _newMaterial: {fileID: 0}
   effects: []
-  _audioPlugin: {fileID: 0}
   _ragdoll: {fileID: 0}
   _canvas: {fileID: 7622884142173154821}
+  _audioSource: {fileID: 4152122441292086780}
 --- !u!114 &7622884141629759355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4140,6 +4092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 7622884141551896846}
+  _audioSource: {fileID: 7560053172345636272}
 --- !u!54 &7622884141629759358
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4203,7 +4156,7 @@ MonoBehaviour:
   _targetState: {fileID: 4427102641654296584}
   _alarm: {fileID: 0}
   _enemyAnimations: {fileID: 7622884141629759353}
-  _audioPlugin: {fileID: 2380906977282914794}
+  _audioSource: {fileID: 4152122441292086780}
 --- !u!114 &7622884141629759347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4232,6 +4185,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MeshRenderer:
   - {fileID: 2972221518215786737}
+--- !u!82 &4152122441292086780
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622884141629759301}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5c70b8544483c0b419993329daacc892, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7622884141742236210
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,69 +6750,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4588154721802469259}
-    - targetCorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7358977615175932753}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+--- !u!82 &7560053172345636272 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82007018935423512, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
+  m_PrefabInstance: {fileID: 7622884141532845992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7622884141532461480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 404992, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
   m_PrefabInstance: {fileID: 7622884141532845992}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7622884141532763766 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 180702, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
-  m_PrefabInstance: {fileID: 7622884141532845992}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4588154721802469259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7622884141532763766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d429642e9ea23f343bae3505a856adce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 7358977615175932753}
-  _clip:
-    _id: 29895de8-659d-436f-8c9c-4b64cfc77064
-    _key: ExplosionGrenade
---- !u!114 &7358977615175932753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7622884141532763766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _provider: 0
-  _volume: 1
-  _loop: 0
-  _mute: 0
-  _pitch: 1
-  _output: {fileID: 0}
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZones: 0
-  _stereoPan: 0
-  _spatialBlend: 0
-  _reverbZoneMix: 1
-  _dopplerLevel: 1
-  _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
 --- !u!198 &7622884141551896846 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19848870, guid: a7c694f0877ea874fa57e033221095c3, type: 3}

@@ -9,9 +9,10 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private GameObject _aim;
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private Image _imageCurrent;
-    [SerializeField] private Image _newImage;
-
+    [SerializeField] private Image _lookEnemy;
+    [SerializeField] private Image _arrow;
+    [SerializeField] private Transform _lookEnemyPosition;
+    
     private Vector2 _pointerPosition;
     private int _procentX;
     private int _procentY;
@@ -38,21 +39,22 @@ public class Pointer : MonoBehaviour
 
             _pointerPosition = Camera.main.WorldToScreenPoint(_target.position);
             //_imageCurrent.transform.position = Camera.main.WorldToScreenPoint(_target.position);
-            _imageCurrent.transform.position = _pointerPosition;
+            //_lookEnemy.transform.position = _pointerPosition;
+            _lookEnemyPosition.position = _pointerPosition;
 
             _pointerPosition.x = Mathf.Clamp(_pointerPosition.x,/*_aim.transform.position.x - 145f*/_minX, _maxX/* _aim.transform.position.x + 145f*/ /*Screen.width - _range*/);
             _pointerPosition.y = Mathf.Clamp(_pointerPosition.y, _minY /*_aim.transform.position.y - 145f*/, _maxY/*_aim.transform.position.y + 145f*//*Screen.height - 55f*/);
 
             _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
-            _image.transform.LookAt(_imageCurrent.transform);
+            _image.transform.LookAt(_lookEnemyPosition);
 
-            if (Vector3.Distance(_image.transform.position, _imageCurrent.transform.position) < 36)
+            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 36)
             {
-                _newImage.gameObject.SetActive(false);
+                _arrow.gameObject.SetActive(false);
             }
             else
             {
-                _newImage.gameObject.SetActive(true);
+                _arrow.gameObject.SetActive(true);
             }
         }
         else
