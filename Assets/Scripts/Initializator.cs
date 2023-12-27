@@ -15,6 +15,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private FightScreen _fightScreen;
     [SerializeField] private BulletsInfo[] _bulletsInfo;
     [SerializeField] private AimInputButton[] _aimInputButton;
+    [SerializeField] private HitPlayer[] _hitPlayers;
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
     [Header("Camera")]
@@ -99,6 +100,8 @@ public class Initializator : MonoBehaviour
 
     private void SetObject(int index)
     {
+        _hitPlayers[index].Init(_player);
+        _gameObjects.Add(_hitPlayers[index].gameObject);
         _aimInputButton[index].gameObject.SetActive(true);
         _player.GetComponent<CameraAim>().Init(_aimInputButton[index]);
         _killedInfo.Init(_aimInputButton[index].GetComponent<ButtonMover>());

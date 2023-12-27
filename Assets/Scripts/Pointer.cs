@@ -9,13 +9,13 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private GameObject _aim;
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private Image _lookEnemy;
+    //[SerializeField] private Image _lookEnemy;
     [SerializeField] private Image _arrow;
     [SerializeField] private Transform _lookEnemyPosition;
     
     private Vector2 _pointerPosition;
     private int _procentX;
-    private int _procentY;
+    private int _procentY; 
     private int _minX;
     private int _maxX;
     private int _minY;

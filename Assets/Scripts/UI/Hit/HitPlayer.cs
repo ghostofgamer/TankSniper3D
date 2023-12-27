@@ -9,7 +9,7 @@ public class HitPlayer : MonoBehaviour
     [SerializeField] private Image _aim;
     [SerializeField] private Image[] _hits;
     [SerializeField] private GameObject _positionEnemy;
-    
+
     private Vector2 _pointerPosition;
 
     private void OnEnable()
@@ -20,6 +20,11 @@ public class HitPlayer : MonoBehaviour
     private void OnDisable()
     {
         _player.Hit -= HitView;
+    }
+
+    public void Init(Player player)
+    {
+        _player = player;
     }
 
     private void HitView(Transform transform)
