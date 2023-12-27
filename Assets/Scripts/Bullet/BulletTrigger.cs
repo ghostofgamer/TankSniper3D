@@ -107,10 +107,10 @@ public class BulletTrigger : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        SetBullet(false);
+        //SetBullet(false);
         yield return _waitForSeconds;
         transform.position = _bullet._shootPosition.position;
-        SetBullet(true);
+        //SetBullet(true);
         gameObject.SetActive(false);
         //_bulletMover.enabled = true;
     }
@@ -119,7 +119,7 @@ public class BulletTrigger : MonoBehaviour
     {
         //GetComponent<Collider>().enabled = flag;
         //_bullet.enabled = flag;
-        _meshRenderer.enabled = flag;
+        //_meshRenderer.enabled = flag;
         //_bullet.GetComponent<MeshRenderer>().enabled = flag;
     }
 }

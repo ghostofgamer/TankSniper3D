@@ -22,6 +22,21 @@ public class Pointer : MonoBehaviour
     private int _maxY;
     private int _width;
     private int _height;
+    private int _procentWidth;
+    private int _procentHeight;
+
+    private void Awake()
+    {
+        if (Application.isMobilePlatform)
+        {
+
+        }  
+        else
+        {
+            _procentWidth = 8;
+            _procentHeight = 15;
+        }
+    }
 
     private void Start()
     {
@@ -48,7 +63,7 @@ public class Pointer : MonoBehaviour
             _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
             _image.transform.LookAt(_lookEnemyPosition);
 
-            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 36)
+            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 45)
             {
                 _arrow.gameObject.SetActive(false);
             }
