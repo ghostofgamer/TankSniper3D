@@ -32,6 +32,7 @@ public class Initializator : MonoBehaviour
     private readonly int _startIndex = 0;
 
     private int _indexPlayer;
+    //[SerializeField] private int _indexPlayer;
     private int _mobileIndex = 0;
     private int _pcIndex = 1;
     private Player _player;

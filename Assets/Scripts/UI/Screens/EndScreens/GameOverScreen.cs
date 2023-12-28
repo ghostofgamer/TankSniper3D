@@ -32,7 +32,6 @@ public class GameOverScreen : EndGame
 
     protected override void OnEndGame()
     {
-
         _aimInputButton.ReturnHide();
         _panelInfo.Close();
         base.OnEndGame();

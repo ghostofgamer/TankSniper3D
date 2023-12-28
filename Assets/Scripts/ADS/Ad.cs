@@ -20,8 +20,8 @@ public abstract class Ad : MonoBehaviour
 
     protected virtual void OnOpen()
     {
-        Time.timeScale = 0;
         AudioListener.volume = 0;
+        Time.timeScale = 0;
     }
 
     protected virtual void OnClose(bool isClosed)

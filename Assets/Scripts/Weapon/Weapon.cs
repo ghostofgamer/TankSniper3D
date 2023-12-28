@@ -175,7 +175,7 @@ public abstract class Weapon : MonoBehaviour
             _shootPosition.position = vector;
         }
 
-        _shootPosition = _defPos;
+        _shootPosition.position = _defPos.position;
     }
 
     protected void SetFirstShoot()
