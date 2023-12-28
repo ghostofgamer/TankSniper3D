@@ -30,7 +30,6 @@ public class HomingRocket : MonoBehaviour
 
     private void OnEnable()
     {
-        //_missileState = MissileState.start;
         _speedMove = 35f;
     }
 
@@ -58,8 +57,6 @@ public class HomingRocket : MonoBehaviour
                 Vector3 target = new Vector3(_target.transform.position.x, _target.transform.position.y + _correctVector, _target.transform.position.z);
                 Vector3 _targetVector = target - gameObject.transform.position;
                 gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, _targetVector, _speedRotate * Time.deltaTime);
-
-                //Debug.Log("До цели " + Vector3.Distance(transform.position, _target.position));
 
                 if (Vector3.Distance(transform.position, _target.position) < 1)
                     _speedMove = 0f;

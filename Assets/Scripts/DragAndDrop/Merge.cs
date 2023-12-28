@@ -10,13 +10,14 @@ public class Merge : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private TankView _tankView;
     [SerializeField] private Storage _storage;
-    [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioSource _audioSource;
+
      private BuyTank _buytank;
 
     private int _currentLevel;
     private int _maxLevel = 4;
     private bool _firstMaxWaveMerge = true;
+
     public static int CurrentNumber { get; private set; } = 0;
 
     public event UnityAction<int> LevelChanged;

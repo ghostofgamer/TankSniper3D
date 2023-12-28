@@ -26,8 +26,6 @@ public class AttackState : State
 
     protected void Rotate()
     {
-        //transform.LookAt(Target.transform);
-
         Vector3 direction = transform.position - Target.transform.position;
         Quaternion rotation = Quaternion.LookRotation(-direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);

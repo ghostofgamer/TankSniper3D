@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class AimInputButton : AbstractButton
@@ -14,15 +15,15 @@ public class AimInputButton : AbstractButton
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private VisibilityAim _visibilityAim;
-    [SerializeField] private CameraMover _cameraMover;
     [SerializeField] private ButtonMover _buttonMover;
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
     [SerializeField] private CancelShoot _cancelShoot;
-    //[SerializeField] private AudioPlugin _audioPlugin;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
+
+    public event UnityAction ButtonMove;
 
     private void Update()
     {
@@ -31,7 +32,6 @@ public class AimInputButton : AbstractButton
             _eventTrigger.enabled = false;
         }
 
-        //_eventTrigger.enabled = !_imageReload.activeSelf;
         _eventTrigger.enabled = !_reloadSlider.gameObject.activeSelf;
 
         if (!_weapon.IsReload)
@@ -70,7 +70,6 @@ public class AimInputButton : AbstractButton
 
     private void DoZoom()
     {
-        //IsZoom = true;
         _hitPoint.MoveRotate();
         _cameraAim.CameraFovForward();
     }
@@ -78,19 +77,14 @@ public class AimInputButton : AbstractButton
     private void DoShoot()
     {
         StartCoroutine(PauseZoomOff());
-        //_weapon.Shoot();
-        //_buttonMover.Up();
-        //IsZoom = false;
     }
 
     private void OnDown()
     {
-        //_audioPlugin.PlayOneShootKey();
         IsZoom = true;
         _buttonMover.Down();
         isPressed = true;
         _playerMover.Go();
-        //_cameraMover.Forward();
         _visibilityAim.OnFadeIn();
         _cancelShoot.gameObject.SetActive(true);
     }
@@ -104,18 +98,8 @@ public class AimInputButton : AbstractButton
             _weapon.Shoot();
         }
 
-
-        //else
-        //{
-        //    Debug.Log("хочу стрелять");
-        //    //IsZoom = false;
-        //    isPressed = false;
-        //    _playerMover.Hide();
-        //    //_cameraMover.Back();
-        //    _visibilityAim.OnFadeOut();
-
-        //}
         _cancelShoot.gameObject.SetActive(false);
+        StartCoroutine(ReturnButton());
     }
 
     public void LastShootActivated()
@@ -127,8 +111,21 @@ public class AimInputButton : AbstractButton
     private IEnumerator PauseZoomOff()
     {
         yield return new WaitForSeconds(0.65f);
-        _buttonMover.Up();
         IsZoom = false;
+    }
+
+    private IEnumerator ReturnButton()
+    {
+        float delay = 1f;
+        yield return new WaitForSeconds(delay);
+
+        if (_reloadSlider.gameObject.activeSelf)
+        {
+            delay = 3f;
+            yield return new WaitForSeconds(delay);
+        }
+
+        _buttonMover.Up();
     }
 
     public void ReturnHide()

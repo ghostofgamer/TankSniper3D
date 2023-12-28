@@ -15,13 +15,13 @@ public enum Tanks
 
 public class DragItem : MonoBehaviour
 {
-
     [SerializeField] private int _level;
     [SerializeField] private TMP_Text _levelTxt;
     [SerializeField] private int _levelMerge;
     [SerializeField] private Tanks _tankNameEnum;
 
     private int _id;
+
     public int Id => _id;
     public int Level => _level;
     public int LevelMerge => _levelMerge;
@@ -30,11 +30,7 @@ public class DragItem : MonoBehaviour
 
     private void Start()
     {
-        //_levelMerge = Level + 1;
-        //_levelMerge = 
-        //Debug.Log(_tankNameEnum);
         _id = GetInstanceID();
-        //Debug.Log("Провер " + _levelMerge);
         _levelTxt.text = _levelMerge.ToString();
     }
 
@@ -45,7 +41,6 @@ public class DragItem : MonoBehaviour
 
     public void SetLevel(int level)
     {
-        //Debug.Log("Цифра " + level);
         _levelMerge = level + 1;
         _levelTxt.text = _levelMerge.ToString();
     }

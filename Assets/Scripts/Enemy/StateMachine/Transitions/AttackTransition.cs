@@ -6,7 +6,6 @@ public class AttackTransition : Transition
 {
     [SerializeField] private Alarm _alarm;
     [SerializeField] private EnemyAnimations _enemyAnimations;
-    //[SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioSource _audioSource;
 
     private void OnEnable()
@@ -24,8 +23,6 @@ public class AttackTransition : Transition
         if (_audioSource != null)
         {
             StartCoroutine(SlowStopSound());
-            //    if (!GetComponent<Enemy>().IsHelicopter&& !GetComponent<Enemy>().IsBoss)
-            //        _audioPlugin.StopSound();
         }
 
         _enemyAnimations.Shooting(true);
@@ -38,15 +35,5 @@ public class AttackTransition : Transition
 
         if (!GetComponent<Enemy>().IsHelicopter && !GetComponent<Enemy>().IsBoss)
             _audioSource.Stop();
-            //_audioPlugin.StopSound();
     }
-
-    //private void Update()
-    //{
-    //    if (_alarm.Warning)
-    //    {
-    //        _enemyAnimations.Shooting(true);
-    //        NeedTransit = true;
-    //    }
-    //}
 }

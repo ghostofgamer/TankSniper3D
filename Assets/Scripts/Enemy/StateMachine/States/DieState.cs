@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DieState : State
 {
-    //[SerializeField] private EnemyAnimations _enemyAnimations;
     [SerializeField] private Effect _effect;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private float _delay = 1.65f;
@@ -13,59 +12,23 @@ public class DieState : State
     [SerializeField] private bool _technique;
     [SerializeField] private Material _newMaterial;
     [SerializeField] private ParticleSystem[] effects;
-    //[SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private RagdollEnemy _ragdoll;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private AudioSource _audioSource;
 
-    private Material[] materials;
-
-    //private int _force = 300;
-
     private void OnEnable()
     {
-        //StartCoroutine(Die());
         Die();
     }
 
-    //private IEnumerator Die()
-    //{
-    //    if (_audioPlugin != null)
-    //        _audioPlugin.StopSound();
-
-    //    _animator.enabled = false;
-    //    var rigidbody = GetComponent<Rigidbody>();
-    //    rigidbody.isKinematic = false;
-    //    _effect.PlayEffect();
-    //    _killedInfo.ChangeValue();
-
-    //    if (_technique)
-    //        TechniqueFire();
-
-    //    WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
-    //    //SetPhisics();
-    //    //_enemyAnimations.Die(true);
-    //    yield return _waitForSeconds;
-    //    rigidbody.isKinematic = true;
-    //}
-
     private void Die()
     {
-        //_canvas.gameObject.SetActive(false);
         _canvas.enabled = false;
 
-        //if (_audioPlugin != null)
-        //{
-        //    //_audioPlugin.StopSound();
-        //}
         if (_audioSource != null)
-        {
             _audioSource.Stop();
-        }
 
         _animator.enabled = false;
-        //var rigidbody = GetComponent<Rigidbody>();
-        //rigidbody.isKinematic = false;
         _ragdoll.OnRigidbody();
         _effect.PlayEffect();
         _killedInfo.ChangeValue();
@@ -75,18 +38,8 @@ public class DieState : State
 
     }
 
-    //private void SetPhisics()
-    //{
-    //    var rigidbody = GetComponent<Rigidbody>();
-    //    rigidbody.isKinematic = false;
-    //    rigidbody.AddForce(transform.up * _force, ForceMode.Force);
-    //}
-
     private void TechniqueFire()
     {
-        //var rigidbody = GetComponent<Rigidbody>();
-        //rigidbody.isKinematic = false;
-
         foreach (ParticleSystem effect in effects)
             effect.gameObject.SetActive(true);
 

@@ -9,7 +9,7 @@ public class BulletDestroy : MonoBehaviour
 
     private void OnEnable()
     {
-        _coroutine = StartCoroutine(DestroyBullet());
+        _coroutine = StartCoroutine(SetActive());
     }
 
     private void OnDisable()
@@ -18,7 +18,7 @@ public class BulletDestroy : MonoBehaviour
             StopCoroutine(_coroutine);
     }
 
-    private IEnumerator DestroyBullet()
+    private IEnumerator SetActive()
     {
         yield return _waitForSeconds;
         gameObject.SetActive(false);

@@ -55,15 +55,6 @@ public class ReviewCamera : MonoBehaviour
 
         if (Input.GetMouseButton(0))
             RoatteNew();
-
-            //{
-            //    if (!_isZoomStart)
-
-        //}
-        //else
-        //{
-        //    Stay();
-        //}
     }
 
     public void Init(AimInputButton aimInputButton)
@@ -73,14 +64,11 @@ public class ReviewCamera : MonoBehaviour
 
     public void RoatteNew()
     {
-
         _x += Input.GetAxis(MouseX);
         _x = Mathf.Clamp(_x, -minlimitY, maxlimitY);
         _y += Input.GetAxis(MouseY);
         _y = Mathf.Clamp(_y, -minlimitX, maxlimitX);
-
         float fracComplete = (Time.time - startTime) / journeyTime;
-        //Debug.Log("Camera " + fracComplete);
         targetRot = Quaternion.Euler(-_y, _x, 0f);
         //NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
         //NewtargetRot = Quaternion.Lerp(transform.rotation, targetRot, _speed);
@@ -111,30 +99,6 @@ public class ReviewCamera : MonoBehaviour
         //NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, fracComplete);
         //transform.position = NewTargetPos;
     }
-
-    //public void Zoom()
-    //{
-    //    if (coroutine != null)
-    //        StopCoroutine(coroutine);
-
-    //    coroutine = StartCoroutine(ZoomChanger());
-    //}
-
-    //private IEnumerator ZoomChanger()
-    //{
-    //    _isZoomStart = true;
-    //    yield return new WaitForSeconds(0.165f);
-    //    _isZoomStart = false;
-    //}
-
-    //public void Stay()
-    //{
-    //    NewtargetRot = Quaternion.Slerp(transform.rotation, targetRot, _cameraSpeed * Time.deltaTime);
-    //    transform.rotation = NewtargetRot;
-    //    targetPos = targetRot * _offset + target.position;
-    //    NewTargetPos = Vector3.Slerp(transform.position, /*transform.localRotation*/targetPos, _cameraSpeed * Time.deltaTime);
-    //    transform.position = NewTargetPos;
-    //}
 
     private void WHAT()
     {

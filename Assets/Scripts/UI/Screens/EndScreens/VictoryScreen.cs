@@ -14,6 +14,7 @@ public class VictoryScreen : EndGame
     [SerializeField] private TMP_Text _enoughtAmountText;
     [SerializeField] private Load _load;
 
+    private Player _player;
     private Progress _progress;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
     private int _firstLevel = 1;
@@ -34,26 +35,30 @@ public class VictoryScreen : EndGame
         _killedInfo.AllEnemysDying -= OnEndGame;
     }
 
-    public void Init(Progress progress)
+    public void Init(Progress progress,Player player)
     {
         Reward = _load.Get(Save.Reward, _zero) + _factor;
         _rewardCountText.text = Reward.ToString();
         _progress = progress;
+        _player = player;
     }
 
     protected override void OnEndGame()
     {
-        _currentLevel = _load.Get(Save.LevelComplited, _firstLevel);
-        _levelNumber.text = _currentLevel.ToString();
-        _currentLevel++;
-        _save.SetData(Save.LevelComplited, _currentLevel);
-        StartCoroutine(OnActiveButton());
-        _enoughtAmountText.text = Reward.ToString();
-        _panelInfo.SetActive(false);
-        int index = SceneManager.GetActiveScene().buildIndex;
-        _save.SetData(Save.SceneNumber, ++index);
-        _save.SetData(Save.Map, _progress.AddIndex());
-        _save.SetData(Save.Reward, Reward);
+        if (!_player.IsDead)
+        {
+            _currentLevel = _load.Get(Save.LevelComplited, _firstLevel);
+            _levelNumber.text = _currentLevel.ToString();
+            _currentLevel++;
+            _save.SetData(Save.LevelComplited, _currentLevel);
+            StartCoroutine(OnActiveButton());
+            _enoughtAmountText.text = Reward.ToString();
+            _panelInfo.SetActive(false);
+            int index = SceneManager.GetActiveScene().buildIndex;
+            _save.SetData(Save.SceneNumber, ++index);
+            _save.SetData(Save.Map, _progress.AddIndex());
+            _save.SetData(Save.Reward, Reward);
+        }
     }
 
     private IEnumerator OnActiveButton()

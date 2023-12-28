@@ -16,13 +16,6 @@ public class DieTransition : Transition
         _enemy.HealthChanged -= DieState;
     }
 
-
-    //private void Update()
-    //{
-    //    if (_enemy.IsDying)
-    //        NeedTransit = true;
-    //}
-
     private void DieState(int currentHealth,int maxHealth)
     {
         if (currentHealth <= 0)

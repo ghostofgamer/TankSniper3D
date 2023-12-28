@@ -15,21 +15,4 @@ public class SettingsScreen : AbstractScreen
     public int SoundOn => _soundOn;
     public int SoundOff => _soundOff;
 
-    //private void Awake()
-    //{
-    //    _soundValue = _load.Get(Save.Sound, _startSound);
-    //    AudioListener.pause = _soundValue == _soundOn ? false : true;
-    //}
-
-    //public void Mute()
-    //{
-    //    AudioListener.pause = true;
-    //    _save.SetData(Save.Sound, _soundOff);
-    //}
-
-    //public void PlaySound()
-    //{
-    //    AudioListener.pause = false;
-    //    _save.SetData(Save.Sound, _soundOn);
-    //}
 }

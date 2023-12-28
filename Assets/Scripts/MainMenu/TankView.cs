@@ -9,7 +9,6 @@ public class TankView : MonoBehaviour
     [SerializeField] private MaterialContainer _materialContainer;
     [SerializeField] private Save _save;
     [SerializeField] private ParticleSystem _effect;
-    [SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioSource _audioSource;
 
     private int _startIndex = 0;

@@ -7,11 +7,8 @@ public class Effect : MonoBehaviour
     [SerializeField] private ParticleSystem _effect;
     [SerializeField] private AudioSource _audioSource;
 
-    private AudioPlugin _audioPlugin;
-
     private void Start()
     {
-        //_audioPlugin = _effect.GetComponent<AudioPlugin>();
         _audioSource = _effect.GetComponent<AudioSource>();
     }
 
@@ -20,11 +17,7 @@ public class Effect : MonoBehaviour
         if (_effect != null)
             _effect.Play();
 
-        //if (_audioPlugin != null)
-        //    _audioPlugin.PlayKey();
         if (_audioSource != null)
-        {
             _audioSource.Play();
-        }
     }
 }

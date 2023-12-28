@@ -6,9 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private int _damage;
 
-    private float _radius = 0.001f;
     public Transform _shootPosition { get; private set; }
-
     public int Damage => _damage;
 
     public void Init(Transform transform)

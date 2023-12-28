@@ -56,7 +56,7 @@ public class Initializator : MonoBehaviour
         _alarm.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
         GameOverScreenInit();
-        _victoryScreen.Init(_progress);
+        _victoryScreen.Init(_progress,_player);
         SetActive();
     }
 

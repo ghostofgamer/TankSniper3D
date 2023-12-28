@@ -22,7 +22,6 @@ public class ReloadSlider : MonoBehaviour
         SetValue();
     }
 
-
     private void Update()
     {
         _slider.value += Time.deltaTime;   

@@ -20,7 +20,6 @@ public class Destroy : MonoBehaviour
             if (hit.TryGetComponent(out Enemy enemy))
             {
                 enemy.TakeDamage(_destructionDamage);
-                //Debug.Log(enemy.name);
             }
         }
 
@@ -32,7 +31,6 @@ public class Destroy : MonoBehaviour
         {
             _destroyObjects.Add(_newGameObject.GetChild(i));
             Rigidbody rigidbody = _destroyObjects[i].gameObject.GetComponent<Rigidbody>();
-            //rigidbody.AddExplosionForce(100f, transform.position, 15f, 3f);
             rigidbody.AddForce(Vector3.forward * 1000, ForceMode.Force);
         }
     }

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public abstract class Ad : MonoBehaviour
 {
+    private const string MainScene = "MainScene";
+
     private int _volumeValue;
 
     public abstract void Show();
@@ -26,7 +28,7 @@ public abstract class Ad : MonoBehaviour
     {
         Time.timeScale = 1;
         AudioListener.volume = _volumeValue;
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(MainScene);
     }
 
     protected virtual void OnClose()

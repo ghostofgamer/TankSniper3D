@@ -34,60 +34,36 @@ public class BulletTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Õ‡ œÛÚË ÃÓÂÏ " + other.name);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius, _layerMask);
+        Hit();
 
         foreach (var hitCollider in hitColliders)
         {
-            //if (_bulletMover != null)
-            //    _bulletMover.enabled = false;
-
-            if (hitCollider.TryGetComponent(out Block block))
-            {
-                //Hit();
-            }
-
             if (hitCollider.TryGetComponent(out Enemy enemy))
-            {
-                //Hit();
                 enemy.TakeDamage(_bullet.Damage);
-            }
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
-            {
-                //Hit();
                 destroy.Destruction();
-               //Debug.Log( "ˇˇˇ " + gameObject.name);
-            }
 
             if (hitCollider.TryGetComponent(out Barrel barrel))
-            {
-                //Hit();
                 barrel.Explosion();
-            }
 
-            if (hitCollider.TryGetComponent(out Enviropment enviropmentTest))
+            if (hitCollider.TryGetComponent(out Player player))
             {
-                //Hit();
-            }
-
-            Hit();
-        }
-
-        //Debug.Log("Œ ŒÕ◊¿Õ»≈");
-
-        if (other.TryGetComponent(out Player player))
-        {
-            Hit();
-            //Debug.Log("ÔÓÔ‡Î");
-
-            if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
-            {
-                player.ApplyDamage(_bullet.Damage,_bullet._shootPosition);
+                if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
+                    player.ApplyDamage(_bullet.Damage, _bullet._shootPosition);
             }
         }
 
-        //hit?.Invoke();
+        //if (other.TryGetComponent(out Player player))
+        //{
+        //    //Hit();
+
+        //    if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
+        //    {
+        //        player.ApplyDamage(_bullet.Damage,_bullet._shootPosition);
+        //    }
+        //}
     }
 
     public void Hit()
@@ -107,19 +83,8 @@ public class BulletTrigger : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        //SetBullet(false);
         yield return _waitForSeconds;
         transform.position = _bullet._shootPosition.position;
-        //SetBullet(true);
         gameObject.SetActive(false);
-        //_bulletMover.enabled = true;
-    }
-
-    private void SetBullet(bool flag)
-    {
-        //GetComponent<Collider>().enabled = flag;
-        //_bullet.enabled = flag;
-        //_meshRenderer.enabled = flag;
-        //_bullet.GetComponent<MeshRenderer>().enabled = flag;
     }
 }
