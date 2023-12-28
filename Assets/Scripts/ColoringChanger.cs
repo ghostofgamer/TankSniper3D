@@ -6,16 +6,16 @@ public class ColoringChanger : MonoBehaviour
 {
     [SerializeField] private MeshRenderer[] _MeshRenderer;
 
-    private Material[] materials;
+    private Material[] _materials;
 
     public void SetMaterial(Material material)
     {
-        materials = _MeshRenderer[0].materials;
+        _materials = _MeshRenderer[0].materials;
 
-        for (int i = 0; i < materials.Length; i++)
-            materials[i] = material;
+        for (int i = 0; i < _materials.Length; i++)
+            _materials[i] = material;
 
         for (int i = 0; i < _MeshRenderer.Length; i++)
-            _MeshRenderer[i].materials = materials;
+            _MeshRenderer[i].materials = _materials;
     }
 }

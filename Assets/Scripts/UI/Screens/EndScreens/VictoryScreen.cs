@@ -13,6 +13,7 @@ public class VictoryScreen : EndGame
     [SerializeField] private TMP_Text _levelNumber;
     [SerializeField] private TMP_Text _enoughtAmountText;
     [SerializeField] private Load _load;
+    [SerializeField] private ReviewCamera _reviewCamera; 
 
     private Player _player;
     private Progress _progress;
@@ -45,6 +46,8 @@ public class VictoryScreen : EndGame
 
     protected override void OnEndGame()
     {
+        _reviewCamera.enabled = false;
+
         if (!_player.IsDead)
         {
             _currentLevel = _load.Get(Save.LevelComplited, _firstLevel);

@@ -36,10 +36,10 @@ public class BuyTank : AbstractButton
 
     private void Start()
     {
+        GetData();
         PriceChecker();
         SetPositions();
-        GetData();
-        AddPrice();
+        //AddPrice();
     }
 
     public override void OnClick()
@@ -190,10 +190,13 @@ public class BuyTank : AbstractButton
         _levelBuy = _load.Get(Save.LevelBuy, _startLevel);
         _slider.value = _load.Get(Save.ProgressSlider, 0f);
         _currentLevelText.text = _levelBuy.ToString();
+        AddPrice();
     }
 
     private void PriceChecker()
     {
+        Price = _levelBuy * _factor;
+
         if (_wallet.Money < Price)
         {
             _button.SetActive(true);

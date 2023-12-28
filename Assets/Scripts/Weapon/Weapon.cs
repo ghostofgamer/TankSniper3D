@@ -43,7 +43,6 @@ public abstract class Weapon : MonoBehaviour
     {
         Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
-
         _pool.GetAutoExpand(_autoExpand);
         _currentAmmo = _maxAmmo;
         _layerMask = 1 << _maskIndex;
@@ -93,7 +92,7 @@ public abstract class Weapon : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
-                    if (!enemy.IsBoss && !enemy.IsDying/* enemy.CurrentHealth > 0*/ || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
+                    if (!enemy.IsBoss && !enemy.IsDying || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
                     {
                         _isLastShoot = true;
                         _cameraAim.CinemachineMove(bullet);

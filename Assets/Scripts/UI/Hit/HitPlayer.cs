@@ -9,6 +9,7 @@ public class HitPlayer : MonoBehaviour
     [SerializeField] private GameObject _positionEnemy;
 
     private Player _player;
+    private int _half = 2;
 
     private void OnEnable()
     {
@@ -28,8 +29,8 @@ public class HitPlayer : MonoBehaviour
     private void HitView(Transform transform)
     {
         _positionEnemy.transform.position = Camera.main.WorldToScreenPoint(transform.position);
-        int widht = Screen.width / 2;
-        int height = Screen.height / 2;
+        int widht = Screen.width / _half;
+        int height = Screen.height / _half;
         Vector2 center = new Vector2(widht, height);
 
         if (_positionEnemy.transform.position.x > center.x)

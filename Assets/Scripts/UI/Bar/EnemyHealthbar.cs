@@ -9,7 +9,7 @@ public class EnemyHealthbar : Bar
     private void OnEnable()
     {
         _enemy.HealthChanged += OnValueChanged;
-        Slider.value = 1; 
+        Slider.value = Full;
     }
 
     private void OnDisable()

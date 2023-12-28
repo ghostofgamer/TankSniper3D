@@ -16,14 +16,14 @@ public class VisibilityAim : MonoBehaviour
     private readonly int _alphaZero = 0;
 
     private Coroutine _coroutine;
-    private CanvasGroup NeedCanvasGroup;
+    private CanvasGroup _needCanvasGroup;
 
     private void Awake()
     {
         if (Application.isMobilePlatform)
-            NeedCanvasGroup = _canvasGroupeMobile;
+            _needCanvasGroup = _canvasGroupeMobile;
         else
-            NeedCanvasGroup = _canvasGroupe;
+            _needCanvasGroup = _canvasGroupe;
     }
 
     public void OnFadeIn()
@@ -31,7 +31,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _alphaFull, _speed, 0, false));
+        _coroutine = StartCoroutine(Fade(_needCanvasGroup, _alphaFull, _speed, 0, false));
     }
 
     public void OnFadeOut()
@@ -39,7 +39,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(NeedCanvasGroup, _alphaZero, -_speed, _timeFade, true));
+        _coroutine = StartCoroutine(Fade(_needCanvasGroup, _alphaZero, -_speed, _timeFade, true));
     }
 
     IEnumerator Fade(CanvasGroup canvasGroup, int alpha, float speed, float time, bool flag)
@@ -57,6 +57,6 @@ public class VisibilityAim : MonoBehaviour
 
     public void OffCanvasActive()
     {
-        NeedCanvasGroup.alpha = 0;
+        _needCanvasGroup.alpha = 0;
     }
 }

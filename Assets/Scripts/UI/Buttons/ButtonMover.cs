@@ -12,6 +12,7 @@ public class ButtonMover : MonoBehaviour
     private Coroutine _coroutineScale;
     private float _maxDelay = 0.6f;
     private float _minDelay = 0f;
+    private float _time = 1f;
 
     private void Start()
     {
@@ -34,13 +35,13 @@ public class ButtonMover : MonoBehaviour
         _coroutineScale = StartCoroutine(ScaleChanged(transform.localScale, minScale, duration, _minDelay));
     }
 
-    private IEnumerator ScaleChanged(Vector3 start, Vector3 target, float time,float delay)
+    private IEnumerator ScaleChanged(Vector3 start, Vector3 target, float duration,float delay)
     {
         yield return new WaitForSeconds(delay);
         float i = 0f;
-        float rate = (1f / time) * _speed;
+        float rate = (_time / duration) * _speed;
 
-        while (i < 1f)
+        while (i < _time)
         {
             i += Time.deltaTime * rate;
             transform.localScale = Vector3.Lerp(start, target, i);

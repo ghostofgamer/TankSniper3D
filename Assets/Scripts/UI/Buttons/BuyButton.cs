@@ -27,9 +27,6 @@ public class BuyButton : AbstractButton
 
     private int _index = 1;
     private int _startIndex = 0;
-    //private int _soundVolume;
-
-    //public int SoundVolume => _soundVolume;
 
     private void Start()
     {

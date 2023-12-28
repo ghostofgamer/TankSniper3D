@@ -13,8 +13,6 @@ public class StoreScreen : AbstractScreen
 
     private int _startIndex = 0;
 
-    public GameObject[] Items => _items;
-
     public void OpenTab(int index)
     {
         OffItem(_tabs);

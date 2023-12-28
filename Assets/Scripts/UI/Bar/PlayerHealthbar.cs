@@ -9,7 +9,7 @@ public class PlayerHealthbar : Bar
     private void OnEnable()
     {
         _player.HealthChanged += OnValueChanged;
-        Slider.value = 1;
+        Slider.value = Full;
     }
 
     private void OnDisable()
