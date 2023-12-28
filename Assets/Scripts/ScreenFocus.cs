@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ScreenFocus : MonoBehaviour
 {
-    [SerializeField] private Load _load;
-
     private AimInputButton _aimInputButton;
 
     private void OnEnable()
@@ -27,11 +25,6 @@ public class ScreenFocus : MonoBehaviour
 
     private void OnInBackgroundChangeApp(bool inApp)
     {
-        if (_load.Get(Save.Ad, 0) == 1)
-        {
-            return;
-        }
-
         MuteAudio(!inApp);
         PauseGame(!inApp);
     }
@@ -40,11 +33,6 @@ public class ScreenFocus : MonoBehaviour
     {
         if (isBackground)
             _aimInputButton.ReturnHide();
-
-        if (_load.Get(Save.Ad, 0) == 1)
-        {
-            return;
-        }
 
         MuteAudio(isBackground);
         PauseGame(isBackground);

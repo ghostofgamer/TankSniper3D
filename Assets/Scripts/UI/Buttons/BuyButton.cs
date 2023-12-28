@@ -49,43 +49,58 @@ public class BuyButton : AbstractButton
         {
             case Coloring.Zebra:
                 _save.SetData(Save.Zebra, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Winter:
                 _save.SetData(Save.Winter, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Leopard:
                 _save.SetData(Save.Leopard, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Giraffe:
                 _save.SetData(Save.Giraffe, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Jaguar:
                 _save.SetData(Save.Jaguar, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Orange:
                 _save.SetData(Save.Orange, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Pink:
                 _save.SetData(Save.Pink, _index);
+                ShowAd();
                 _rewardVideo.Show();
                 break;
             case Coloring.Tigr:
                 _save.SetData(Save.Tigr, _index);
-                _rewardVideo.Show();
+                //_rewardVideo.Show();
                 break;
             case Coloring.Yellow:
                 _save.SetData(Save.Yellow, _index);
-                _rewardVideo.Show();
+                ShowAd();
+                //_rewardVideo.Show();
                 break;
             default:
                 break;
         }
+    }
+
+    private void ShowAd()
+    {
+        int volume = _load.Get(Save.Volume, _index);
+        _rewardVideo.SetVolume(volume);
+        _rewardVideo.Show();
     }
 
     public void OffActive()

@@ -7,44 +7,31 @@ using UnityEngine.SceneManagement;
 
 public abstract class Ad : MonoBehaviour
 {
-    [SerializeField] private Load _load;
-    [SerializeField] private Save _save;
-
-    int _volume  = 0;
-    int _startSound = 1;
+    private int _volumeValue;
 
     public abstract void Show();
 
+    public void SetVolume(int volume)
+    {
+        _volumeValue = volume;
+    }
+
     protected virtual void OnOpen()
     {
-        _save.SetData(Save.Ad, 1);
-        //_volume = _load.Get(Save.Sound, _startSound);
         Time.timeScale = 0;
-        //AudioListener.volume = 0;
-        AudioListener.pause = true;
+        AudioListener.volume = 0;
     }
 
     protected virtual void OnClose(bool isClosed)
     {
         Time.timeScale = 1;
-        AudioListener.pause = false;
-        //_volume = _load.Get(Save.Sound, _startSound);
-
-        //if (_volume == 1)
-        //AudioListener.volume = _volume;
-        _save.SetData(Save.Ad, 0);
+        AudioListener.volume = _volumeValue;
         SceneManager.LoadScene("MainScene");
     }
 
     protected virtual void OnClose()
     {
-        //_volume = _load.Get(Save.Sound, _startSound);
         Time.timeScale = 1;
-        AudioListener.pause = false;
-        _save.SetData(Save.Ad, 0);
-        //_volume = _load.Get(Save.Sound, 0);
-
-        //if (_volume == 1)
-        //AudioListener.volume = _volume;
+        AudioListener.volume = _volumeValue;
     }
 }

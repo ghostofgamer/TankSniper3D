@@ -21,15 +21,15 @@ public class SettingsScreen : AbstractScreen
     //    AudioListener.pause = _soundValue == _soundOn ? false : true;
     //}
 
-    public void Mute()
-    {
-        AudioListener.pause = true;
-        _save.SetData(Save.Sound, _soundOff);
-    }
+    //public void Mute()
+    //{
+    //    AudioListener.pause = true;
+    //    _save.SetData(Save.Sound, _soundOff);
+    //}
 
-    public void PlaySound()
-    {
-        AudioListener.pause = false;
-        _save.SetData(Save.Sound, _soundOn);
-    }
+    //public void PlaySound()
+    //{
+    //    AudioListener.pause = false;
+    //    _save.SetData(Save.Sound, _soundOn);
+    //}
 }

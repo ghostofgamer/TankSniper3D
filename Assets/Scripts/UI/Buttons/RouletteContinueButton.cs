@@ -7,11 +7,16 @@ public class RouletteContinueButton : AbstractButton
 {
     [SerializeField] private Roulette _roulette;
     [SerializeField] private RewardVideo _rewardVideo;
+    [SerializeField] private Load _load;
+
+    private int _startVolume = 1;
 
     public override void OnClick()
     {
+        int volume = _load.Get(Save.Volume, _startVolume);
         Button.interactable = false;
         _roulette.GetComponent<Animator>().enabled = false;
+        _rewardVideo.SetVolume(volume);
         _rewardVideo.Show();
     }
 }
