@@ -11,6 +11,7 @@ public class PlayerMover : MonoBehaviour
 
     private Vector3 _target;
     private float _stepSize = 5f;
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.6f);
 
     public bool _isHidden { get; private set; } = true;
 
@@ -22,9 +23,7 @@ public class PlayerMover : MonoBehaviour
     private void Update()
     {
         if (transform.position != _target)
-        {
             transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
-        }
     }
 
     public void Go()
@@ -40,14 +39,13 @@ public class PlayerMover : MonoBehaviour
 
     private IEnumerator GoHide()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return _waitForSeconds;
         _target = new Vector3(GetTarget(-_stepSize), transform.position.y, transform.position.z);
         _isHidden = true;
     }
 
     private float GetTarget(float step)
     {
-        //Debug.Log(transform.position.x + step);
         return Mathf.Clamp(transform.position.x + step, _minPositionX, _maxPositionX);
     }
 }

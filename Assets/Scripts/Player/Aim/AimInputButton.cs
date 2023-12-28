@@ -28,20 +28,14 @@ public class AimInputButton : AbstractButton
     private void Update()
     {
         if (_killedInfo.AllDie)
-        {
             _eventTrigger.enabled = false;
-        }
 
         _eventTrigger.enabled = !_reloadSlider.gameObject.activeSelf;
 
         if (!_weapon.IsReload)
         {
-            //_buttonMover.Move();
-            //if (!_killedInfo.AllDie)
             if (isPressed)
-            {
                 DoZoom();
-            }
         }
 
         if (!isPressed && IsZoom)
@@ -68,15 +62,17 @@ public class AimInputButton : AbstractButton
         _playerMover = playerMover;
     }
 
-    private void DoZoom()
+    public void LastShootActivated()
     {
-        _hitPoint.MoveRotate();
-        _cameraAim.CameraFovForward();
+        _cameraAim.OnCinemaMachine();
+        _weapon.LastShoot();
     }
 
-    private void DoShoot()
+    public void ReturnHide()
     {
-        StartCoroutine(PauseZoomOff());
+        isPressed = false;
+        _playerMover.Hide();
+        _visibilityAim.OnFadeOut();
     }
 
     private void OnDown()
@@ -102,10 +98,15 @@ public class AimInputButton : AbstractButton
         StartCoroutine(ReturnButton());
     }
 
-    public void LastShootActivated()
+    private void DoZoom()
     {
-        _cameraAim.OnCinemaMachine();
-        _weapon.LastShoot();
+        _hitPoint.MoveRotate();
+        _cameraAim.CameraFovForward();
+    }
+
+    private void DoShoot()
+    {
+        StartCoroutine(PauseZoomOff());
     }
 
     private IEnumerator PauseZoomOff()
@@ -126,12 +127,5 @@ public class AimInputButton : AbstractButton
         }
 
         _buttonMover.Up();
-    }
-
-    public void ReturnHide()
-    {
-        isPressed = false;
-        _playerMover.Hide();
-        _visibilityAim.OnFadeOut();
     }
 }

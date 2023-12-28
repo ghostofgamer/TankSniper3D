@@ -9,11 +9,6 @@ public class FadeHit : MonoBehaviour
         StartCoroutine(Fade());
     }
 
-    private void OnDisable()
-    {
-        
-    }
-
     private IEnumerator Fade()
     {
         yield return new WaitForSeconds(0.5f);

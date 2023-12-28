@@ -7,6 +7,9 @@ public class ReloadSlider : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
 
+    private float _maxValue = 3f;
+    private float _zero = 0f;
+
     private void OnEnable()
     {
         SetValue();
@@ -14,7 +17,7 @@ public class ReloadSlider : MonoBehaviour
 
     private void OnDisable()
     {
-        _slider.value = 0;
+        _slider.value = _zero;
     }
 
     private void Start()
@@ -24,12 +27,12 @@ public class ReloadSlider : MonoBehaviour
 
     private void Update()
     {
-        _slider.value += Time.deltaTime;   
+        _slider.value += Time.deltaTime;
     }
 
     private void SetValue()
     {
-        _slider.value = 0;
-        _slider.maxValue = 3f;
+        _slider.value = _zero;
+        _slider.maxValue = _maxValue;
     }
 }

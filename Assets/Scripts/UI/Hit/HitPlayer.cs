@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class HitPlayer : MonoBehaviour
 {
-    //[SerializeField] private Image _aim;
     [SerializeField] private Image[] _hits;
     [SerializeField] private GameObject _positionEnemy;
 
     private Player _player;
-    //private Vector2 _pointerPosition;
 
     private void OnEnable()
     {
@@ -29,8 +27,6 @@ public class HitPlayer : MonoBehaviour
 
     private void HitView(Transform transform)
     {
-        //_pointerPosition = Camera.main.WorldToScreenPoint(transform.position);
-        //_positionEnemy.transform.position = _pointerPosition;
         _positionEnemy.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         int widht = Screen.width / 2;
         int height = Screen.height / 2;

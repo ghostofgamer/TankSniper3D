@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScreenFocus : MonoBehaviour
 {
     private AimInputButton _aimInputButton;
+    private int _stop = 0;
+    private int _play = 1;
 
     private void OnEnable()
     {
@@ -45,6 +47,6 @@ public class ScreenFocus : MonoBehaviour
 
     private void PauseGame(bool value)
     {
-        Time.timeScale = value ? 0 : 1;
+        Time.timeScale = value ? _stop : _play;
     }
 }

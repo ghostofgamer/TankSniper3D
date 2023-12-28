@@ -10,12 +10,10 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private float _delay;
     [SerializeField] private float _minTimeShoot;
     [SerializeField] private float _maxTimeShoot;
-
     [SerializeField] private ParticleSystem _effectShooting;
     [SerializeField] private Enemy _enemy;
     [Header("Звук")]
     [SerializeField] private AudioSource _audioSource;
-    //[SerializeField] private AudioPlugin _audioPlugin;
     [SerializeField] private AudioClip _audioClip;
 
     private readonly int _ammoCount = 10;
@@ -27,6 +25,11 @@ public class EnemyShoot : MonoBehaviour
     {
         _pool = new ObjectPool<Bullet>(_prefab, _ammoCount, _container);
         _pool.GetAutoExpand(_autoExpand);
+    }
+
+    private void Update()
+    {
+        LookTarget(_enemy.Target.transform);
     }
 
     public IEnumerator Shoot()
@@ -46,18 +49,10 @@ public class EnemyShoot : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, _prefab))
         {
             _audioSource.PlayOneShot(_audioClip);
-            //_audioPlugin.PlayOneShootKey();
-            //LookTarget(_enemy.Target.transform);
             bullet.Init(shootingPosition);
             _effectShooting.Play();
         }
     }
-
-    private void Update()
-    {
-        LookTarget(_enemy.Target.transform);
-    }
-
     public void LookTarget(Transform target)
     {
         _shootPosition.LookAt(target.transform);

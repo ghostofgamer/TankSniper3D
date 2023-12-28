@@ -73,7 +73,6 @@ public abstract class Weapon : MonoBehaviour
             {
                 GetBullet(bullet);
                 AmmoChanger(bullet);
-                //_audioPlugin.PlayKey();
                 _audioSource.Play();
                 EnemyHitChanger();
             }
@@ -86,7 +85,6 @@ public abstract class Weapon : MonoBehaviour
         {
             GetBullet(bullet);
             EnemyHitChanger();
-            //_audioPlugin.PlayKey();
             _audioSource.Play();
             RaycastHit hit;
             Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
@@ -169,7 +167,6 @@ public abstract class Weapon : MonoBehaviour
         {
             if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
             {
-                //_audioPlugin.PlayOneShootKey();
                 _audioSource.Play();
                 bullet.Init(_shootPosition);
             }

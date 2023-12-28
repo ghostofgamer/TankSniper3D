@@ -6,12 +6,9 @@ using UnityEngine.UI;
 
 public class CameraAim : MonoBehaviour
 {
-    [Header("Прицел")]
     [SerializeField] private Camera _mainCamera;
-    //[SerializeField] private Camera _cameraAim;
     [SerializeField] private CinemachineVirtualCamera _cineMachineCamera;
     [SerializeField] private float _fov;
-    private VisibilityAim _visibilityAim;
 
     private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
@@ -19,7 +16,7 @@ public class CameraAim : MonoBehaviour
     private Vector3 _startPosition;
     private Quaternion _startRotation;
     private float _speed = 10f;
-
+    private VisibilityAim _visibilityAim;
     private AimInputButton _aimInputButton;
 
     private void Start()
@@ -35,58 +32,14 @@ public class CameraAim : MonoBehaviour
         _visibilityAim = visibilityAim;
     }
 
-    //public IEnumerator SetCameraPause()
-    //{
-    //    yield return _waitForSeconds;
-    //    STOPRes();
-    //}
-
-    //public void SetCamera()
-    //{
-    //    _mainCamera.enabled = !_mainCamera.enabled;
-    //    _cameraAim.enabled = !_mainCamera.enabled;
-    //}
-
-    //public void SetCinemachineCamera()
-    //{
-    //    _cineMachineCamera.GetComponent<Camera>().enabled = true;
-    //    _cineMachineCamera.enabled = true;
-    //    _mainCamera.enabled = false;
-    //    _cameraAim.enabled = false;
-    //    Time.timeScale = 0.3f;
-    //    Time.fixedDeltaTime = Time.timeScale * 0.01f;
-    //}
-    //public void OffCinemachineCamera()
-    //{
-    //    _cineMachineCamera.GetComponent<Camera>().enabled = false;
-    //    _cineMachineCamera.enabled = false;
-    //    ResetMainCamera();
-    //    _mainCamera.enabled = true;
-    //    _cameraAim.enabled = false;
-    //    Time.timeScale = 1f;
-    //}
     public void OnCinemaMachine()
     {
         StartCoroutine(ChangerCinemaMachine());
     }
 
-    private IEnumerator ChangerCinemaMachine()
-    {
-        SetCinCamera();
-        _visibilityAim.OffCanvasActive();
-        yield return _waitForSeconds;
-        STOPRes();
-    }
-
-    private void ResetMainCamera()
-    {
-        _mainCamera.transform.rotation = _startRotation;
-        _mainCamera.transform.position = _startPosition;
-    }
 
     public void SetCinCamera()
     {
-        //_aimInputButton.gameObject.SetActive(false);
         _aimInputButton.enabled=false;
         _cineMachineCamera.gameObject.SetActive(true);
         Time.timeScale = 0.3f;
@@ -102,7 +55,6 @@ public class CameraAim : MonoBehaviour
 
     public void STOPRes()
     {
-        //_aimInputButton.gameObject.SetActive(true);
         _aimInputButton.enabled=true;
         _cineMachineCamera.gameObject.SetActive(false);
         ResetMainCamera();
@@ -111,7 +63,6 @@ public class CameraAim : MonoBehaviour
 
     private void CameraFovChanged(float target)
     {
-        //_cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(_cinemachineVirtualCamera.m_Lens.FieldOfView, target, _speed * Time.deltaTime);
         _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, target, _speed * Time.deltaTime);
     }
 
@@ -123,5 +74,19 @@ public class CameraAim : MonoBehaviour
     public void CameraFovBack()
     {
         CameraFovChanged(_fovStart);
+    }
+
+    private IEnumerator ChangerCinemaMachine()
+    {
+        SetCinCamera();
+        _visibilityAim.OffCanvasActive();
+        yield return _waitForSeconds;
+        STOPRes();
+    }
+
+    private void ResetMainCamera()
+    {
+        _mainCamera.transform.rotation = _startRotation;
+        _mainCamera.transform.position = _startPosition;
     }
 }

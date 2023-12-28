@@ -10,10 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _canvas;
     [SerializeField] private bool _isBoss;
     [SerializeField] private bool _isHelicopter;
-    //[SerializeField] private Billboard _billboard;
 
     private Player _target;
-    private Coroutine _coroutine;
     private int _currentHealth;
 
     public Player Target => _target;
@@ -33,16 +31,9 @@ public class Enemy : MonoBehaviour
     {
         if(!IsDying)
         _flyDamage.SetText(damage);
-        //Debug.Log("ƒ¿Ã¿√ " + damage);
-        //if (_coroutine != null)
-        //    StopCoroutine(_coroutine);
-
-
-        //_coroutine = StartCoroutine(_flyDamage.DamageTextFly(damage));
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);
         _canvas.SetActive(true);
-        //_billboard.enabled = true;
     }
 
     public void Init(Player player)

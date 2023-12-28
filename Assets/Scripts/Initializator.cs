@@ -31,7 +31,6 @@ public class Initializator : MonoBehaviour
 
     private readonly int _startIndex = 0;
 
-    //[SerializeField] private int _indexPlayer;
     private int _indexPlayer;
     private int _mobileIndex = 0;
     private int _pcIndex = 1;
@@ -55,7 +54,6 @@ public class Initializator : MonoBehaviour
         PlatformInit();
         _alarm.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
-        GameOverScreenInit();
         _victoryScreen.Init(_progress,_player);
         SetActive();
     }
@@ -80,12 +78,6 @@ public class Initializator : MonoBehaviour
     {
         _fightScreen.Init(_player.GetComponent<Weapon>());
         _gameObjects.Add(_fightScreen.gameObject);
-    }
-
-    private void GameOverScreenInit()
-    {
-        //_gameOverScreen.Init(_player);
-        //_gameObjects.Add(_gameOverScreen.gameObject);
     }
 
     private void PlatformInit()

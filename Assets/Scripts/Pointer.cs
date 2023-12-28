@@ -9,13 +9,15 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private GameObject _aim;
     [SerializeField] private Enemy _enemy;
-    //[SerializeField] private Image _lookEnemy;
     [SerializeField] private Image _arrow;
     [SerializeField] private Transform _lookEnemyPosition;
-    
+
     private Vector2 _pointerPosition;
+    private int _distance = 36;
+    private float _speed = 6f;
+    private int _half = 2;
     private int _procentX;
-    private int _procentY; 
+    private int _procentY;
     private int _minX;
     private int _maxX;
     private int _minY;
@@ -31,7 +33,7 @@ public class Pointer : MonoBehaviour
         {
             _procentWidth = 21;
             _procentHeight = 10;
-        }  
+        }
         else
         {
             _procentWidth = 8;
@@ -49,29 +51,19 @@ public class Pointer : MonoBehaviour
         if (!_enemy.IsDying)
         {
             if (_height != Screen.height || _width != Screen.width)
-            {
                 GetParametrsScreen();
-            }
 
             _pointerPosition = Camera.main.WorldToScreenPoint(_target.position);
-            //_imageCurrent.transform.position = Camera.main.WorldToScreenPoint(_target.position);
-            //_lookEnemy.transform.position = _pointerPosition;
             _lookEnemyPosition.position = _pointerPosition;
-
-            _pointerPosition.x = Mathf.Clamp(_pointerPosition.x,/*_aim.transform.position.x - 145f*/_minX, _maxX/* _aim.transform.position.x + 145f*/ /*Screen.width - _range*/);
-            _pointerPosition.y = Mathf.Clamp(_pointerPosition.y, _minY /*_aim.transform.position.y - 145f*/, _maxY/*_aim.transform.position.y + 145f*//*Screen.height - 55f*/);
-
-            _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, 6 * Time.deltaTime);
+            _pointerPosition.x = Mathf.Clamp(_pointerPosition.x, _minX, _maxX);
+            _pointerPosition.y = Mathf.Clamp(_pointerPosition.y, _minY, _maxY);
+            _image.transform.position = Vector3.Lerp(_image.transform.position, _pointerPosition, _speed * Time.deltaTime);
             _image.transform.LookAt(_lookEnemyPosition);
 
-            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < 36)
-            {
+            if (Vector3.Distance(_image.transform.position, _lookEnemyPosition.position) < _distance)
                 _arrow.gameObject.SetActive(false);
-            }
             else
-            {
                 _arrow.gameObject.SetActive(true);
-            }
         }
         else
         {
@@ -85,9 +77,9 @@ public class Pointer : MonoBehaviour
         _height = Screen.height;
         _procentX = _width / 100 * _procentWidth;
         _procentY = _height / 100 * _procentHeight;
-        _minX = _width / 2 - _procentX;
-        _maxX = _width / 2 + _procentX;
-        _minY = _height / 2 - _procentY;
-        _maxY = _height / 2 + _procentY;
+        _minX = _width / _half - _procentX;
+        _maxX = _width / _half + _procentX;
+        _minY = _height / _half - _procentY;
+        _maxY = _height / _half + _procentY;
     }
 }
