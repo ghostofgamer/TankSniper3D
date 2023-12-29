@@ -19,6 +19,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
     [SerializeField] private CancelShoot _cancelShoot;
+    [SerializeField] private FightScreen _fightScreen;
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
@@ -78,6 +79,7 @@ public class AimInputButton : AbstractButton
     private void OnDown()
     {
         IsZoom = true;
+        _fightScreen.OnFirstShootAlarm();
         _buttonMover.Down();
         isPressed = true;
         _playerMover.Go();

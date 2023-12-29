@@ -12,7 +12,7 @@ public class RouletteContinueButton : AbstractButton
     [SerializeField] private GameObject _moneyFlyMobile;
 
     private int _startVolume = 1;
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
     public override void OnClick()
     {
