@@ -32,7 +32,7 @@ public class TankChanger : AbstractButton
         OffTanks();
         _currentIndex = _index;
         _tanks[_currentIndex].SetActive(true);
-        _tanks[_currentIndex].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        _tanks[_currentIndex].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         _save.SetData(Save.Tank, _currentIndex);
     }
 

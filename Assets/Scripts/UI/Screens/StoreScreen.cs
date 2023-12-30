@@ -21,7 +21,7 @@ public class StoreScreen : AbstractScreen
         if (index == 0)
         {
             _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            _items[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         }
 
         OpenTanks();
