@@ -14,6 +14,9 @@ public class ColoringButton : AbstractButton
     {
         var tank = _storeScreen.GetTank();
         _save.SetData(Save.Color, _index);
-        tank.GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        //tank.GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        tank.GetComponent<Tank>().SetMaterial(_index);
+        Material material = tank.GetComponent<Tank>().GetMaterial();
+        tank.GetComponentInChildren<ColoringChanger>().SetMaterial(material);
     }
 }

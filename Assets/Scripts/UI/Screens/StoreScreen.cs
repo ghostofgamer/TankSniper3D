@@ -24,7 +24,10 @@ public class StoreScreen : AbstractScreen
         if (index == 0)
         {
             _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            //_items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            Material material = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().GetMaterial();
+            _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(material);
+
             _nameTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Name.ToString();
             _levelTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Level.ToString();
         }

@@ -71,7 +71,10 @@ public class Initializator : MonoBehaviour
             player.gameObject.SetActive(false);
 
         _players[index].gameObject.SetActive(true);
-        _players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        //_players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        Material material = _players[index].GetComponent<Tank>().GetMaterial();
+        Debug.Log(material.name);
+        _players[index].GetComponent<ColoringChanger>().SetMaterial(material);
         return _players[index];
     }
 

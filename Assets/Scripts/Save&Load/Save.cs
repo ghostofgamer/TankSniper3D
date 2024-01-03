@@ -37,13 +37,20 @@ public class Save : MonoBehaviour
     public const string FireballTank = "FireballTank";
     public const string MissileTank = "MissileTank";
     public const string LazerTank = "LazerTank";
+    [Header("Color")]
+    public const string SimpleColor = "SimpleColor";
+    public const string CannonColor = "CannonColor";
+    public const string RocketColor = "RocketColor";
+    public const string FireballColor = "FireballColor";
+    public const string MissileColor = "MissileColor";
+    public const string LazerColor = "LazerColor";
 
     private void Start()
     {
         Time.timeScale = 1;
     }
 
-    public void SetData(string name,int number)
+    public void SetData(string name, int number)
     {
         PlayerPrefs.SetInt(name, number);
         PlayerPrefs.Save();

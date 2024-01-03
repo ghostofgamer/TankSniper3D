@@ -30,7 +30,10 @@ public class TankView : MonoBehaviour
         }
 
         _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-        _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        //_tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+        int index = _load.Get(Save.Tank, _startIndex);
+        Material material = _tanks[index].GetComponent<Tank>().GetMaterial();
+        _tanks[index].GetComponent<ColoringChanger>().SetMaterial(material);
     }
 
     public void NewLevelTankView(int level)
@@ -41,7 +44,9 @@ public class TankView : MonoBehaviour
             _audioSource.Play();
             OffActiveTanks();
             _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            _tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            //_tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            Material material = _tanks[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().GetMaterial();
+            _tanks[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(material);
 
             if (_currentLevel < level)
             {
