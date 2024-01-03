@@ -19,6 +19,8 @@ public class DragItem : MonoBehaviour
     [SerializeField] private TMP_Text _levelTxt;
     [SerializeField] private int _levelMerge;
     [SerializeField] private Tanks _tankNameEnum;
+    [SerializeField] private string _name;
+    [SerializeField] private int _defaultLevel;
 
     private int _id;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class StoreScreen : AbstractScreen
@@ -10,6 +11,8 @@ public class StoreScreen : AbstractScreen
     [SerializeField] private GameObject[] _blocks;
     [SerializeField] private Load _load;
     [SerializeField] private MaterialContainer _materialContainer;
+    [SerializeField] private TMP_Text _nameTxt;
+    [SerializeField] private TMP_Text _levelTxt;
 
     private int _startIndex = 0;
 
@@ -22,6 +25,8 @@ public class StoreScreen : AbstractScreen
         {
             _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
             _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
+            _nameTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Name.ToString();
+            _levelTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Level.ToString();
         }
 
         OpenTanks();
@@ -62,5 +67,11 @@ public class StoreScreen : AbstractScreen
     {
         foreach (GameObject item in items)
             item.SetActive(false);
+    }
+
+    public void GetInfo(string name,int level)
+    {
+        _nameTxt.text = name.ToString();
+        _levelTxt.text = level.ToString();
     }
 }

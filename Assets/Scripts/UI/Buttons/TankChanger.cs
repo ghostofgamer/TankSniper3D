@@ -13,6 +13,7 @@ public class TankChanger : AbstractButton
     [SerializeField] private Save _save;
     [SerializeField] private MaterialContainer _materialContainer;
     [SerializeField] private TankConfig _tankConfig;
+    [SerializeField] private StoreScreen _storeScreen;
 
     private int _currentIndex;
     private int _startIndex = 0;
@@ -34,6 +35,7 @@ public class TankChanger : AbstractButton
         _tanks[_currentIndex].SetActive(true);
         _tanks[_currentIndex].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         _save.SetData(Save.Tank, _currentIndex);
+        _storeScreen.GetInfo(_tanks[_currentIndex].GetComponentInChildren<Tank>().Name, _tanks[_currentIndex].GetComponentInChildren<Tank>().Level);
     }
 
     private void OffTanks()
