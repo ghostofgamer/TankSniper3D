@@ -9,9 +9,10 @@ public class Roulette : MonoBehaviour
     [SerializeField] private TMP_Text _winText;
     [SerializeField] private VictoryScreen _victoryScreen;
 
-    private int _factor = 1;
-    private int _angle;
     private float _startReward;
+    private int _angle;
+    private int _zero = 0;
+    private int _factor = 1;
     private int _double = 2;
     private int _triple = 3;
     private int _quadruple = 4;
@@ -31,7 +32,7 @@ public class Roulette : MonoBehaviour
         if (_angle <= 90 && _angle >= 65)
             _factor = _double;
 
-        if (_angle < 65 && _angle >= 0)
+        if (_angle < 65 && _angle >= _zero)
             _factor = _triple;
 
         if (_angle <= 360 && _angle >= 300)

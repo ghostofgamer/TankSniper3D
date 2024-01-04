@@ -10,18 +10,18 @@ public class PositionTank : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out DragItem dragItem))
-        {
-            IsStay = true;
-            Target = dragItem.gameObject;
-        }
+            SetTarget(true, dragItem.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out DragItem dragItem))
-        {
-            IsStay = false;
-            Target = null;
-        }
+            SetTarget(false, null);
+    }
+
+    private void SetTarget(bool isStay,GameObject target)
+    {
+        IsStay = isStay;
+        Target = target;
     }
 }

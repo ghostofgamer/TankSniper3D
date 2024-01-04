@@ -10,11 +10,6 @@ public class ReloadSlider : MonoBehaviour
     private float _maxValue = 3f;
     private float _zero = 0f;
 
-    private void OnEnable()
-    {
-        SetValue();
-    }
-
     private void OnDisable()
     {
         _slider.value = _zero;

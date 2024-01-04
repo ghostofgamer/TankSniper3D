@@ -11,10 +11,10 @@ public class TextOff : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(OnOffActive());
+        _coroutine = StartCoroutine(OffActive());
     }
 
-    private IEnumerator OnOffActive()
+    private IEnumerator OffActive()
     {
         yield return _waitForSeconds;
         gameObject.SetActive(false);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScreenFocus : MonoBehaviour
 {
     private AimInputButton _aimInputButton;
+
     private int _stop = 0;
     private int _play = 1;
 

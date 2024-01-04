@@ -7,8 +7,6 @@ public class Alarm : MonoBehaviour
 {
     private Weapon _weapon;
 
-    public bool Warning { get; private set; } = false;
-
     public event UnityAction AlarmChanged;
 
     public void Init(Weapon weapon)
@@ -29,6 +27,5 @@ public class Alarm : MonoBehaviour
     private void SetAlarm()
     {
         AlarmChanged?.Invoke();
-        Warning = true;
     }
 }

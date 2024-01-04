@@ -16,7 +16,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private BulletsInfo[] _bulletsInfo;
     [SerializeField] private AimInputButton[] _aimInputButton;
     [SerializeField] private HitPlayer[] _hitPlayers;
-    [SerializeField] private VisibilityAim[] _visibilityAim; 
+    [SerializeField] private VisibilityAim[] _visibilityAim;
     [Header("Enemys")]
     [SerializeField] private Transform _enemysContainer;
     [Header("Camera")]
@@ -55,7 +55,7 @@ public class Initializator : MonoBehaviour
         PlatformInit();
         _alarm.Init(_player.GetComponent<Weapon>());
         FightScreenInit();
-        _victoryScreen.Init(_progress,_player);
+        _victoryScreen.Init(_progress, _player);
         SetActive();
     }
 
@@ -71,9 +71,7 @@ public class Initializator : MonoBehaviour
             player.gameObject.SetActive(false);
 
         _players[index].gameObject.SetActive(true);
-        //_players[index].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
         Material material = _players[index].GetComponent<Tank>().GetMaterial();
-        Debug.Log(material.name);
         _players[index].GetComponent<ColoringChanger>().SetMaterial(material);
         return _players[index];
     }
