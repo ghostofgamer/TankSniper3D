@@ -796,16 +796,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770f336ae7e978541b7d0851cf36cdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: 70a768ee8babc774e960fd93e226517a, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
+  PrefabBullet: {fileID: 5195485957653858959, guid: 70a768ee8babc774e960fd93e226517a, type: 3}
+  ShootPosition: {fileID: 0}
+  Container: {fileID: 0}
+  AudioSource: {fileID: 1821326189685271967}
   _cinemachineCamera: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 1821326189685271944}
-  _defPos: {fileID: 0}
   _reload: {fileID: 0}
   _imageAim: {fileID: 0}
-  _audioSource: {fileID: 1821326189685271967}
+  _count: 2
+  _delay: 0.16
+  _defaultPosition: {fileID: 0}
 --- !u!82 &1821326189685271967
 AudioSource:
   m_ObjectHideFlags: 0
@@ -988,7 +990,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _name: 
-  _defaultMaterial: {fileID: 2100000, guid: 4e302d497a800f641ae28d771a95c3a3, type: 2}
   _materials:
   - {fileID: 2100000, guid: aa9bbb3fda72ce240ab33c7d236ccf3e, type: 2}
   - {fileID: 2100000, guid: 23f927b0b844f8740bd32e8ee5b5ab21, type: 2}

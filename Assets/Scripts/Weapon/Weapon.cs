@@ -14,11 +14,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform ShootPosition;
     [SerializeField] protected Transform Container;
     [SerializeField] protected AudioSource AudioSource;
-
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
-    //[SerializeField] private Transform _defaultPosition;
     [SerializeField] private ReloadSlider _reload;
     [SerializeField] private Image _imageAim;
 
@@ -31,7 +29,6 @@ public abstract class Weapon : MonoBehaviour
     private int _maxHitEnemy = 3;
     private int _layerMask;
     private int _maskIndex = 7;
-    //private float _factor = 1.5f;
     private bool _isLastShoot = false;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
     private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
@@ -95,12 +92,7 @@ public abstract class Weapon : MonoBehaviour
                 if (hit.collider.TryGetComponent<Enemy>(out Enemy enemy))
                 {
                     if (!enemy.IsBoss && !enemy.IsDying || enemy.IsBoss && enemy.CurrentHealth <= bullet.Damage)
-                    {
-                        _isLastShoot = true;
-                        _cameraAim.CinemachineMove(bullet);
-                        _cameraAim.OnCinemaMachine();
-                        _imageAim.enabled = false;
-                    }
+                        LastFlyBullet(bullet);
                 }
             }
 
@@ -108,15 +100,18 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    protected void MultiShoot(int count, float delay)
-    {
-        //StartCoroutine(SomeShoot(count, delay));
-    }
-
     protected void SetFirstShoot()
     {
         FirstShoot?.Invoke();
         IsFirstShoot = true;
+    }
+
+    private void LastFlyBullet(Bullet bullet)
+    {
+        _isLastShoot = true;
+        _cameraAim.CinemachineMove(bullet);
+        _cameraAim.OnCinemaMachine();
+        _imageAim.enabled = false;
     }
 
     private void EnemyHitChanger()
@@ -167,24 +162,4 @@ public abstract class Weapon : MonoBehaviour
         _reload.gameObject.SetActive(flag);
         IsReload = flag;
     }
-
-    //private IEnumerator SomeShoot(int count, float delay)
-    //{
-    //    WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
-
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
-    //        {
-    //            _audioSource.Play();
-    //            bullet.Init(ShootPosition);
-    //        }
-
-    //        yield return waitForSeconds;
-    //        Vector3 vector = ShootPosition.position + Random.insideUnitSphere * _factor;
-    //        ShootPosition.position = vector;
-    //    }
-
-    //    ShootPosition.position = _defaultPosition.position;
-    //}
 }

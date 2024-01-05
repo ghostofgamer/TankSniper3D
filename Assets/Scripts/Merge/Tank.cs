@@ -16,7 +16,6 @@ public class Tank : MonoBehaviour
 {
     [SerializeField] private int _level;
     [SerializeField] private string _name;
-    //[SerializeField] private Material _defaultMaterial;
     [SerializeField] private Material[] _materials;
     [SerializeField] private TanksColor _colorTank;
     [SerializeField] private Save _save;
@@ -26,12 +25,6 @@ public class Tank : MonoBehaviour
     public string Name => _name;
 
     private int _defaultIndexColor = 9;
-    private string _colorTankName;
-
-    private void Start()
-    {
-        _colorTankName = _colorTank.ToString();
-    }
 
     public void SetMaterial(int index)
     {

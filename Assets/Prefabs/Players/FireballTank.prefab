@@ -530,16 +530,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c743ea6cd195940803c6284530009f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
+  PrefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
+  ShootPosition: {fileID: 0}
+  Container: {fileID: 0}
+  AudioSource: {fileID: 4704393401054639802}
   _cinemachineCamera: {fileID: 0}
   _killedInfo: {fileID: 0}
   _cameraAim: {fileID: 4704393401054639808}
-  _defPos: {fileID: 0}
   _reload: {fileID: 0}
   _imageAim: {fileID: 0}
-  _audioSource: {fileID: 4704393401054639802}
   _bigFireball: {fileID: 8512064316746545530, guid: a8caa48970aee034d98d89c9ef1579cd, type: 3}
 --- !u!82 &4704393401054639802
 AudioSource:
@@ -693,7 +692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 7611902728638698838}
-  _audioSource: {fileID: 0}
 --- !u!114 &7491772035109447395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,7 +720,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _name: 
-  _defaultMaterial: {fileID: 2100000, guid: f772bd091b520cf4fa400d77a2eaec21, type: 2}
   _materials:
   - {fileID: 2100000, guid: aa9bbb3fda72ce240ab33c7d236ccf3e, type: 2}
   - {fileID: 2100000, guid: 23f927b0b844f8740bd32e8ee5b5ab21, type: 2}
@@ -1373,8 +1370,6 @@ GameObject:
   - component: {fileID: 4704393402530014662}
   - component: {fileID: 4704393402530014666}
   - component: {fileID: 4704393402530014667}
-  - component: {fileID: 4704393402530014664}
-  - component: {fileID: 4704393402530014665}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1448,51 +1443,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4704393402530014664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4704393402530014663}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c743ea6cd195940803c6284530009f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _bigFireball: {fileID: 0}
---- !u!114 &4704393402530014665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4704393402530014663}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
 --- !u!1 &4704393402583896740
 GameObject:
   m_ObjectHideFlags: 0

@@ -2057,13 +2057,13 @@ GameObject:
   - component: {fileID: 8256347666278764856}
   - component: {fileID: 8256347666278764839}
   - component: {fileID: 8256347666278764838}
-  - component: {fileID: 8256347666278764837}
   - component: {fileID: 848932663}
   - component: {fileID: 8770582803391137042}
   - component: {fileID: 596374710778112539}
   - component: {fileID: 4408661691351995126}
   - component: {fileID: 5742010896995213266}
   - component: {fileID: 2918739099610839406}
+  - component: {fileID: 2989820882138514387}
   m_Layer: 0
   m_Name: MissileTank
   m_TagString: Untagged
@@ -2264,28 +2264,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8256347666278764837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8256347666278764835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b37107d28580924f9d4daf61cdb1183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 6661292686757236980, guid: 49f8b6acd002c09428cb867f158da88d, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 8256347666278764858}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 8256347666278764838}
 --- !u!114 &848932663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,7 +2320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 8581938326931539377}
-  _audioSource: {fileID: 0}
 --- !u!114 &5742010896995213266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,7 +2348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _name: 
-  _defaultMaterial: {fileID: 2100000, guid: ffe0bc5b1a9836046ab1b7b88bc9d30c, type: 2}
   _materials:
   - {fileID: 2100000, guid: aa9bbb3fda72ce240ab33c7d236ccf3e, type: 2}
   - {fileID: 2100000, guid: 23f927b0b844f8740bd32e8ee5b5ab21, type: 2}
@@ -2386,6 +2362,30 @@ MonoBehaviour:
   _colorTank: 4
   _save: {fileID: 0}
   _load: {fileID: 0}
+--- !u!114 &2989820882138514387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256347666278764835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770f336ae7e978541b7d0851cf36cdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBullet: {fileID: 6661292686757236980, guid: 49f8b6acd002c09428cb867f158da88d, type: 3}
+  ShootPosition: {fileID: 0}
+  Container: {fileID: 0}
+  AudioSource: {fileID: 8256347666278764838}
+  _cinemachineCamera: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 8256347666278764858}
+  _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _count: 3
+  _delay: 0.13
+  _defaultPosition: {fileID: 0}
 --- !u!1 &8441455199993484038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,10 +2731,6 @@ PrefabInstance:
       value: -351
       objectReference: {fileID: 0}
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
-      propertyPath: _weapon
-      value: 
-      objectReference: {fileID: 8256347666278764837}
-    - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _cameraAim
       value: 
       objectReference: {fileID: 8256347666278764858}
@@ -2860,7 +2856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196247684762289530, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4196247684762289531, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: m_Camera

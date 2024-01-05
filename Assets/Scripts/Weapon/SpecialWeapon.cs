@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpecialWeapon : Weapon
 {
-    [SerializeField] private int _count = 2;
-    [SerializeField] private float _delay = 0.16f;
+    [SerializeField] private int _count;
+    [SerializeField] private float _delay;
     [SerializeField] private Transform _defaultPosition;
 
     private float _factor = 1.5f;
@@ -17,7 +17,6 @@ public class SpecialWeapon : Weapon
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(MultiShoot(_count, _delay));
-        //MultiShoot(_count, _delay);
     }
 
     private IEnumerator MultiShoot(int count, float delay)

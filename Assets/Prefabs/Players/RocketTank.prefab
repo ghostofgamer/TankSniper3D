@@ -390,8 +390,6 @@ GameObject:
   - component: {fileID: 4716523819232444262}
   - component: {fileID: 4716523819232444258}
   - component: {fileID: 4716523819232444261}
-  - component: {fileID: 4716523819232444260}
-  - component: {fileID: 4716523819232444263}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -465,51 +463,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4716523819232444260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716523819232444185}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c743ea6cd195940803c6284530009f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _bigFireball: {fileID: 0}
---- !u!114 &4716523819232444263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716523819232444185}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
 --- !u!1 &4716523819431561589
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +793,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4716523820155310795}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000037252899, y: -0.70710665, z: -0.0000000037252899, w: 0.707107}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1050,7 +1003,6 @@ GameObject:
   - component: {fileID: 4716523820379267448}
   - component: {fileID: 4716523820379267451}
   - component: {fileID: 4716523820379267450}
-  - component: {fileID: 4716523820379267398}
   - component: {fileID: 4716523820379267455}
   - component: {fileID: 1754996580}
   - component: {fileID: 6111952614585682446}
@@ -1058,6 +1010,7 @@ GameObject:
   - component: {fileID: 8820164440302012959}
   - component: {fileID: 9209291644322257287}
   - component: {fileID: 3867774776156142157}
+  - component: {fileID: 1204254683222012181}
   m_Layer: 0
   m_Name: RocketTank
   m_TagString: Untagged
@@ -1162,28 +1115,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4716523820379267398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716523820379267441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda704ebe0433f4cb2381eacff35ff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 3239838918112217666, guid: a1789fa435bac5d4791092d0ae1f4916, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 4716523820379267449}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 4716523820379267455}
 --- !u!82 &4716523820379267455
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1336,7 +1267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 3539245607746363861}
-  _audioSource: {fileID: 0}
 --- !u!114 &9209291644322257287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 0
   _name: 
-  _defaultMaterial: {fileID: 2100000, guid: 25bb5ed912fb0e2458be8d77cfa1ea92, type: 2}
   _materials:
   - {fileID: 2100000, guid: aa9bbb3fda72ce240ab33c7d236ccf3e, type: 2}
   - {fileID: 2100000, guid: 23f927b0b844f8740bd32e8ee5b5ab21, type: 2}
@@ -1380,6 +1309,30 @@ MonoBehaviour:
   _colorTank: 2
   _save: {fileID: 0}
   _load: {fileID: 0}
+--- !u!114 &1204254683222012181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716523820379267441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770f336ae7e978541b7d0851cf36cdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBullet: {fileID: 3239838918112217666, guid: a1789fa435bac5d4791092d0ae1f4916, type: 3}
+  ShootPosition: {fileID: 0}
+  Container: {fileID: 0}
+  AudioSource: {fileID: 4716523820379267455}
+  _cinemachineCamera: {fileID: 0}
+  _killedInfo: {fileID: 0}
+  _cameraAim: {fileID: 4716523820379267449}
+  _reload: {fileID: 0}
+  _imageAim: {fileID: 0}
+  _count: 3
+  _delay: 0.3
+  _defaultPosition: {fileID: 0}
 --- !u!1 &4716523820381765248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,10 +2598,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4716523820379267454}
     m_Modifications:
-    - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
-      propertyPath: _weapon
-      value: 
-      objectReference: {fileID: 4716523820379267398}
     - target: {fileID: 4196247684685023874, guid: c8ceee1cbcfaa544286731eb1e1647b1, type: 3}
       propertyPath: _cameraAim
       value: 
