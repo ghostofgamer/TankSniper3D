@@ -6089,17 +6089,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4757266655548042592, guid: 50c7a139714f21046b794de202dc26d4, type: 3}
   m_PrefabInstance: {fileID: 232120968}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &325445559 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5463720397877356840, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
-  m_PrefabInstance: {fileID: 4475014111474850075}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217d09e6883855348a04051452b9432e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &331169616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4841910340344791445, guid: 2cc82a648c145cf40a3b439aef90fcf6, type: 3}
@@ -17467,7 +17456,7 @@ MonoBehaviour:
   _buttonMover: {fileID: 1032726902}
   _hitPoint: {fileID: 8876691743006963547}
   _towerRotate: {fileID: 0}
-  _cancelShoot: {fileID: 325445559}
+  _cancelShoot: {fileID: 1299428733}
   _fightScreen: {fileID: 1737034110}
   isPressed: 0
 --- !u!114 &1032726902
@@ -22930,6 +22919,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1244208298}
   m_SourcePrefab: {fileID: 100100000, guid: c176a30d8643f3143829f9f118f19407, type: 3}
+--- !u!114 &1299428733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2704140977114935434, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 4475014111474850075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eca3b9b337f8e044bca77e86dd02015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1308269226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39005,7 +39005,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4736930152545636065, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4475014109690174721, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
     - {fileID: 4475014110446131556, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}

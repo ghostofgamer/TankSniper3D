@@ -11,13 +11,13 @@ public class FireballGun : Weapon
     protected override void Start()
     {
         base.Start();
-        _poolBigFireball = new ObjectPool<Bullet>(_bigFireball, _maxAmmo, _container);
-        _poolBigFireball.GetAutoExpand(_autoExpand);
+        _poolBigFireball = new ObjectPool<Bullet>(_bigFireball, _maxAmmo, Container);
+        _poolBigFireball.GetAutoExpand(AutoExpand);
     }
 
     public override void SuperShoot()
     {
         if(_poolBigFireball.TryGetObject(out Bullet bullet, _bigFireball))
-            bullet.Init(_shootPosition);
+            bullet.Init(ShootPosition);
     }
 }

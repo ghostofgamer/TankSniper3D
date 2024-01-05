@@ -9,12 +9,12 @@ public class BossCreator : MonoBehaviour
 
     private void OnEnable()
     {
-        _alarm.AlarmChanged += AwakenMonster;
+        _alarm.AlertChanged += AwakenMonster;
     }
 
     private void OnDisable()
     {
-        _alarm.AlarmChanged += AwakenMonster;
+        _alarm.AlertChanged += AwakenMonster;
     }
 
     private void AwakenMonster()

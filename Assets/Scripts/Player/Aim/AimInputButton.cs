@@ -18,7 +18,7 @@ public class AimInputButton : AbstractButton
     [SerializeField] private ButtonMover _buttonMover;
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
-    [SerializeField] private CancelShoot _cancelShoot;
+    [SerializeField] private CancelShootButton _cancelShoot;
     [SerializeField] private FightScreen _fightScreen;
 
     public bool IsZoom { get; private set; } = false;
@@ -91,7 +91,7 @@ public class AimInputButton : AbstractButton
     {
         ReturnHide();
 
-        if (!_cancelShoot.IsCancelShoot && !_playerMover.GetComponent<Player>().IsDead)
+        if (!_cancelShoot.IsCancel && !_playerMover.GetComponent<Player>().IsDead)
         {
             _weapon.Shoot();
         }

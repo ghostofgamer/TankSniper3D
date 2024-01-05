@@ -7,7 +7,7 @@ public class Alarm : MonoBehaviour
 {
     private Weapon _weapon;
 
-    public event UnityAction AlarmChanged;
+    public event UnityAction AlertChanged;
 
     public void Init(Weapon weapon)
     {
@@ -16,16 +16,16 @@ public class Alarm : MonoBehaviour
 
     private void OnEnable()
     {
-        _weapon.FirstShoot += SetAlarm;
+        _weapon.FirstShoot += OnSetAlarm;
     }
 
     private void OnDisable()
     {
-        _weapon.FirstShoot -= SetAlarm;
+        _weapon.FirstShoot -= OnSetAlarm;
     }
 
-    private void SetAlarm()
+    private void OnSetAlarm()
     {
-        AlarmChanged?.Invoke();
+        AlertChanged?.Invoke();
     }
 }

@@ -10,12 +10,12 @@ public class AttackTransition : Transition
 
     private void OnEnable()
     {
-        _alarm.AlarmChanged += OnAlarm;
+        _alarm.AlertChanged += OnAlarm;
     }
 
     private void OnDisable()
     {
-        _alarm.AlarmChanged -= OnAlarm;
+        _alarm.AlertChanged -= OnAlarm;
     }
 
     private void OnAlarm()

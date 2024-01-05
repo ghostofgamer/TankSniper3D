@@ -6,8 +6,8 @@ using UnityEngine;
 public class TankChanger : AbstractButton
 {
     [SerializeField] private List<GameObject> _tanks;
-    [SerializeField] private List<TMP_Text> _tanksName;
-    [SerializeField] private TMP_Text _tankLevel;
+    //[SerializeField] private List<TMP_Text> _tanksName;
+    //[SerializeField] private TMP_Text _tankLevel;
     [SerializeField] private int _index;
     [SerializeField] private Load _load;
     [SerializeField] private Save _save;
@@ -37,7 +37,7 @@ public class TankChanger : AbstractButton
         Material material = _tanks[_currentIndex].GetComponentInChildren<Tank>().GetMaterial();
         _tanks[_currentIndex].GetComponentInChildren<ColoringChanger>().SetMaterial(material);
         _save.SetData(Save.Tank, _currentIndex);
-        _storeScreen.GetInfo(_tanks[_currentIndex].GetComponentInChildren<Tank>().Name, _tanks[_currentIndex].GetComponentInChildren<Tank>().Level);
+        //_storeScreen.GetInfo(_tanks[_currentIndex].GetComponentInChildren<Tank>().Name, _tanks[_currentIndex].GetComponentInChildren<Tank>().Level);
     }
 
     private void OffTanks()

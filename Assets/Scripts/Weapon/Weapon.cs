@@ -8,42 +8,44 @@ using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] protected Bullet _prefabBullet;
-    [SerializeField] protected Transform _shootPosition;
-    [SerializeField] protected Transform _container;
+    protected readonly int _maxAmmo = 5;
+
+    [SerializeField] protected Bullet PrefabBullet;
+    [SerializeField] protected Transform ShootPosition;
+    [SerializeField] protected Transform Container;
+    [SerializeField] protected AudioSource AudioSource;
+
     [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private CameraAim _cameraAim;
-    [SerializeField] private Transform _defPos;
+    //[SerializeField] private Transform _defaultPosition;
     [SerializeField] private ReloadSlider _reload;
     [SerializeField] private Image _imageAim;
-    [SerializeField] private AudioSource _audioSource;
-
-    protected readonly int _maxAmmo = 5;
 
     protected ObjectPool<Bullet> _pool;
-    protected bool _isFirstShoot = false;
+    protected bool IsFirstShoot = false;
+    protected bool AutoExpand = true;
+
     private int _currentAmmo;
-    protected bool _autoExpand = true;
     private int _hitEnemy = 0;
     private int _maxHitEnemy = 3;
     private int _layerMask;
     private int _maskIndex = 7;
-    private float _factor = 1.5f;
+    //private float _factor = 1.5f;
     private bool _isLastShoot = false;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
     private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
 
-    public bool IsReload { get; private set; } = false;
-
     public event UnityAction FirstShoot;
     public event UnityAction<int, int> BulletsChanged;
 
+    public bool IsReload { get; private set; } = false;
+
     protected virtual void Start()
     {
-        Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
-        _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
-        _pool.GetAutoExpand(_autoExpand);
+        Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);
+        _pool = new ObjectPool<Bullet>(PrefabBullet, _maxAmmo, Container);
+        _pool.GetAutoExpand(AutoExpand);
         _currentAmmo = _maxAmmo;
         _layerMask = 1 << _maskIndex;
         _layerMask = ~_layerMask;
@@ -55,7 +57,7 @@ public abstract class Weapon : MonoBehaviour
     {
         if (!IsReload)
         {
-            if (!_isFirstShoot)
+            if (!IsFirstShoot)
                 SetFirstShoot();
 
             if (_hitEnemy == _maxHitEnemy)
@@ -68,11 +70,11 @@ public abstract class Weapon : MonoBehaviour
             {
                 LastShoot();
             }
-            else if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+            else if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
             {
                 GetBullet(bullet);
                 AmmoChanger(bullet);
-                _audioSource.Play();
+                AudioSource.Play();
                 EnemyHitChanger();
             }
         }
@@ -80,13 +82,13 @@ public abstract class Weapon : MonoBehaviour
 
     public void LastShoot()
     {
-        if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
+        if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
         {
             GetBullet(bullet);
             EnemyHitChanger();
-            _audioSource.Play();
+            AudioSource.Play();
             RaycastHit hit;
-            Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
+            Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);
 
             if (Physics.Raycast(ray, out hit))
             {
@@ -106,10 +108,21 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
+    protected void MultiShoot(int count, float delay)
+    {
+        //StartCoroutine(SomeShoot(count, delay));
+    }
+
+    protected void SetFirstShoot()
+    {
+        FirstShoot?.Invoke();
+        IsFirstShoot = true;
+    }
+
     private void EnemyHitChanger()
     {
         RaycastHit hit;
-        Ray ray = new Ray(_shootPosition.position, _shootPosition.forward);
+        Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
         {
@@ -125,14 +138,9 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    protected void MultiShoot(int count, float delay)
-    {
-        StartCoroutine(SomeShoot(count, delay));
-    }
-
     private void GetBullet(Bullet bullet)
     {
-        bullet.Init(_shootPosition);
+        bullet.Init(ShootPosition);
     }
 
     private void AmmoChanger(Bullet bullet)
@@ -160,27 +168,23 @@ public abstract class Weapon : MonoBehaviour
         IsReload = flag;
     }
 
-    private IEnumerator SomeShoot(int count, float delay)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
-            {
-                _audioSource.Play();
-                bullet.Init(_shootPosition);
-            }
+    //private IEnumerator SomeShoot(int count, float delay)
+    //{
+    //    WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
 
-            yield return new WaitForSeconds(delay);
-            Vector3 vector = _shootPosition.position + Random.insideUnitSphere * _factor;
-            _shootPosition.position = vector;
-        }
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
+    //        {
+    //            _audioSource.Play();
+    //            bullet.Init(ShootPosition);
+    //        }
 
-        _shootPosition.position = _defPos.position;
-    }
+    //        yield return waitForSeconds;
+    //        Vector3 vector = ShootPosition.position + Random.insideUnitSphere * _factor;
+    //        ShootPosition.position = vector;
+    //    }
 
-    protected void SetFirstShoot()
-    {
-        FirstShoot?.Invoke();
-        _isFirstShoot = true;
-    }
+    //    ShootPosition.position = _defaultPosition.position;
+    //}
 }

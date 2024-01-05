@@ -15,6 +15,7 @@ public class Pointer : MonoBehaviour
     private Vector2 _pointerPosition;
     private int _distance = 36;
     private float _speed = 6f;
+    private int _maxPrecent = 100;
     private int _half = 2;
     private int _procentX;
     private int _procentY;
@@ -75,8 +76,8 @@ public class Pointer : MonoBehaviour
     {
         _width = Screen.width;
         _height = Screen.height;
-        _procentX = _width / 100 * _procentWidth;
-        _procentY = _height / 100 * _procentHeight;
+        _procentX = _width / _maxPrecent * _procentWidth;
+        _procentY = _height / _maxPrecent * _procentHeight;
         _minX = _width / _half - _procentX;
         _maxX = _width / _half + _procentX;
         _minY = _height / _half - _procentY;
