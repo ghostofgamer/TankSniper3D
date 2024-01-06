@@ -15,8 +15,6 @@ public class GameOverScreen : EndGame
     public void Init(Player player, AimInputButton aimInputButton)
     {
         Player = player;
-        Reward = _levelConfig.RewardGameOver;
-        _rewardCountText.text = Reward.ToString();
         _aimInputButton = aimInputButton;
     }
 

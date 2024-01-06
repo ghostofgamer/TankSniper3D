@@ -5794,6 +5794,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e2481171d2ab74ca4780e1c45224a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &296026239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3433316736112788750, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+  m_PrefabInstance: {fileID: 4475014111474850075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04fc625399268e54baab14f2bf6b0123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &297265417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8585494652355832030, guid: 2a3ca2e2814020240bd41184fd5dfe36, type: 3}
@@ -17431,7 +17442,7 @@ MonoBehaviour:
   _eventTrigger: {fileID: 1032726903}
   _killedInfo: {fileID: 1750142750}
   _visibilityAim: {fileID: 4475014111474850076}
-  _buttonMover: {fileID: 1032726902}
+  _buttonScaler: {fileID: 1032726902}
   _hitPoint: {fileID: 8876691743006963547}
   _towerRotate: {fileID: 0}
   _cancelShoot: {fileID: 1299428733}
@@ -37361,7 +37372,6 @@ GameObject:
   - component: {fileID: 2398412305507216097}
   - component: {fileID: 3628064399111468693}
   - component: {fileID: 6248150310991313578}
-  - component: {fileID: 7201138449629185531}
   - component: {fileID: 8876691743006963547}
   - component: {fileID: 4335770439009280407}
   - component: {fileID: 8876691743006963548}
@@ -38509,7 +38519,11 @@ PrefabInstance:
     - target: {fileID: 2879687442443831032, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 7201138449629185531}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879687442443831032, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _buttonScaler
+      value: 
+      objectReference: {fileID: 296026239}
     - target: {fileID: 2986474323943766738, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -66
@@ -39021,7 +39035,11 @@ PrefabInstance:
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 7201138449629185531}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: _buttonScaler
+      value: 
+      objectReference: {fileID: 1991198342}
     - target: {fileID: 9040864061917325336, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 515
@@ -39974,18 +39992,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 667490db7bf14c34a89ddb746dee8455, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7201138449629185531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972119580788175586}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb8b0ff1763baad44b49ad5ddb6ed5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7201222220298945455

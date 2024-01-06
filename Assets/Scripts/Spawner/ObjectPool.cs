@@ -7,7 +7,6 @@ public class ObjectPool<T> where T : MonoBehaviour
 {
     private Transform _container;
     private T _prefab;
-
     private List<T> _poolGeneric;
 
     public ObjectPool(T prefab, int count, Transform container)
@@ -35,7 +34,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         return spawned != null;
     }
 
-    public void GetAutoExpand(bool flag)
+    public void SetAutoExpand(bool flag)
     {
         AutoExpand = flag;
     }

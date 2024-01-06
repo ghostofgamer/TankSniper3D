@@ -446,8 +446,6 @@ GameObject:
   - component: {fileID: 5868644589859887528}
   - component: {fileID: 5868644589859887532}
   - component: {fileID: 5868644589859887531}
-  - component: {fileID: 5868644589859887530}
-  - component: {fileID: 5868644589859887529}
   m_Layer: 3
   m_Name: Tower
   m_TagString: Untagged
@@ -521,51 +519,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5868644589859887530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5868644589859887575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c743ea6cd195940803c6284530009f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 2945437427640767291, guid: 387582b50eb34914b80ffad9e6ddebd1, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
-  _bigFireball: {fileID: 0}
---- !u!114 &5868644589859887529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5868644589859887575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0f41c51cbbe77498c71685311ad46a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabBullet: {fileID: 5195485957653858959, guid: fb325fd130dcf044caa1d4d5f5034c98, type: 3}
-  _shootPosition: {fileID: 0}
-  _container: {fileID: 0}
-  _cinemachineCamera: {fileID: 0}
-  _killedInfo: {fileID: 0}
-  _cameraAim: {fileID: 0}
-  _defPos: {fileID: 0}
-  _reload: {fileID: 0}
-  _imageAim: {fileID: 0}
-  _audioSource: {fileID: 0}
 --- !u!1 &5868644590011020293
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +770,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 2
   _name: 
-  _defaultMaterial: {fileID: 0}
   _materials: []
   _colorTank: 2
   _save: {fileID: 0}

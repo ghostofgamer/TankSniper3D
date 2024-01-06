@@ -26,7 +26,7 @@ public class ViewShoot : MonoBehaviour
     private void Start()
     {
         _pool = new ObjectPool<Bullet>(_prefabBullet, _maxAmmo, _container);
-        _pool.GetAutoExpand(_autoExpand);
+        _pool.SetAutoExpand(_autoExpand);
     }
 
     private void OnMouseDown()

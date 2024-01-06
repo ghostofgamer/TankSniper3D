@@ -15,11 +15,15 @@ public class AimInputButton : AbstractButton
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private KilledInfo _killedInfo;
     [SerializeField] private VisibilityAim _visibilityAim;
-    [SerializeField] private ButtonMover _buttonMover;
+    [SerializeField] private ButtonScaler _buttonScaler;
     [SerializeField] private HitPoint _hitPoint;
     [SerializeField] private TowerRotate _towerRotate;
     [SerializeField] private CancelShootButton _cancelShoot;
     [SerializeField] private FightScreen _fightScreen;
+
+    private WaitForSeconds _waitForPauzeZoom = new WaitForSeconds(0.65f);
+    private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
+    private WaitForSeconds _waitForReturnButton = new WaitForSeconds(1f);
 
     public bool IsZoom { get; private set; } = false;
     public bool isPressed = false;
@@ -79,8 +83,8 @@ public class AimInputButton : AbstractButton
     private void OnDown()
     {
         IsZoom = true;
-        _fightScreen.OnFirstShootAlarm();
-        _buttonMover.Down();
+        _fightScreen.OnSetScreen();
+        _buttonScaler.Down();
         isPressed = true;
         _playerMover.Go();
         _visibilityAim.OnFadeIn();
@@ -113,21 +117,17 @@ public class AimInputButton : AbstractButton
 
     private IEnumerator PauseZoomOff()
     {
-        yield return new WaitForSeconds(0.65f);
+        yield return _waitForPauzeZoom;
         IsZoom = false;
     }
 
     private IEnumerator ReturnButton()
     {
-        float delay = 1f;
-        yield return new WaitForSeconds(delay);
+        yield return _waitForReturnButton;
 
         if (_reloadSlider.gameObject.activeSelf)
-        {
-            delay = 3f;
-            yield return new WaitForSeconds(delay);
-        }
+            yield return _waitForReload;
 
-        _buttonMover.Up();
+        _buttonScaler.Up();
     }
 }

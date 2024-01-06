@@ -12,22 +12,12 @@ public class FightScreen : MonoBehaviour
 
     private Weapon _weapon;
 
-    //private void OnEnable()
-    //{
-    //    _weapon.FirstShoot += OnFirstShootAlarm;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _weapon.FirstShoot -= OnFirstShootAlarm;
-    //}
-
     public void Init(Weapon weapon)
     {
         _weapon = weapon;
     }
 
-    public void OnFirstShootAlarm()
+    public void OnSetScreen()
     {
         _wallet.gameObject.SetActive(false);
         _killedInfo.gameObject.SetActive(true);

@@ -31,6 +31,8 @@ public class BuyTank : AbstractButton
     private int _levelBuy;
     private int _factor = 3000;
     private float _progressValue = 0.25f;
+    private int _maxIndex;
+    private int _minLevelMerge;
 
     public int Price { get; private set; }
 
@@ -39,7 +41,6 @@ public class BuyTank : AbstractButton
         GetData();
         PriceChecker();
         SetPositions();
-        //AddPrice();
     }
 
     public override void OnClick()
@@ -53,7 +54,7 @@ public class BuyTank : AbstractButton
             Sell();
 
         int needNumber = _load.Get(_tanks[_currentLevel - 1].GetComponent<DragItem>().TankName, _tanks[_currentLevel - 1].GetComponent<DragItem>().Level);
-        var tank = Instantiate(_tanks[_currentLevel - 1], _container);
+        Transform tank = Instantiate(_tanks[_currentLevel - 1], _container);
         tank.GetComponent<DragItem>().SetLevel(needNumber);
         tank.transform.position = position.position;
         _storage.AddTank(tank.GetComponent<Tank>());
@@ -71,45 +72,24 @@ public class BuyTank : AbstractButton
         return filter.transform;
     }
 
-    private int GetMinLevel()
+    private void SetTanksInfo()
     {
         List<int> indexes = new List<int>();
+        List<int> levels = new List<int>();
 
         foreach (Transform position in _positions)
         {
             if (position.GetComponent<PositionTank>().Target)
             {
-                int index = position.GetComponent<PositionTank>().Target.GetComponent<DragItem>().LevelMerge;
+                int index = position.GetComponent<PositionTank>().Target.GetComponent<DragItem>().Level;
                 indexes.Add(index);
+                int level = position.GetComponent<PositionTank>().Target.GetComponent<DragItem>().LevelMerge;
+                levels.Add(level);
             }
         }
 
-        if (indexes.Count > 0)
-            return indexes.Min();
-
-        else
-            return 0;
-    }
-
-    private int GetMaxIndex()
-    {
-        List<int> indexes = new List<int>();
-
-        foreach (Transform position in _positions)
-        {
-            if (position.GetComponent<PositionTank>().Target)
-            {
-                int index = position.GetComponent<PositionTank>().Target.GetComponent<Tank>().Level;
-
-                indexes.Add(index);
-            }
-        }
-
-        if (indexes.Count > 0)
-            return indexes.Max();
-
-        else
-            return 0;
+        _maxIndex = indexes.Max();
+        _minLevelMerge = levels.Min();
     }
 
     private void ChangeValue()
@@ -125,8 +105,9 @@ public class BuyTank : AbstractButton
 
     public void SetValue()
     {
-        int minLevelMerge = GetMinLevel() + 1;
-        int maxIndex = GetMaxIndex() + 1;
+        SetTanksInfo();
+        int minLevelMerge = ++_minLevelMerge;
+        int maxIndex = ++_maxIndex;
 
         if (maxIndex >= _maxLevel)
         {
@@ -137,16 +118,7 @@ public class BuyTank : AbstractButton
         if (_slider.value == 1)
         {
             if (minLevelMerge - 1 > _levelBuy)
-            {
-                _slider.value = 0;
-                _levelBuy++;
-                _currentLevel++;
-
-                if (_currentLevel > _maxLevel)
-                    _currentLevel = _startLevel;
-
-                AddPrice();
-            }
+                MoveNextLevel();
         }
 
         _currentLevelText.text = _levelBuy.ToString();
@@ -154,6 +126,18 @@ public class BuyTank : AbstractButton
         _save.SetData(Save.ProgressLevel, _currentLevel);
         _save.SetData(Save.ProgressSlider, _slider.value);
         _save.SetData(Save.LevelBuy, _levelBuy);
+    }
+
+    private void MoveNextLevel()
+    {
+        _slider.value = 0;
+        _levelBuy++;
+        _currentLevel++;
+
+        if (_currentLevel > _maxLevel)
+            _currentLevel = _startLevel;
+
+        AddPrice();
     }
 
     private void Sell()

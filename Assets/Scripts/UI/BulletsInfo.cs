@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class BulletsInfo : MonoBehaviour
 {
+    private readonly int ExtraNeedCount = 3;
+
     [SerializeField] private List<Image> _bulletsImages;
     [SerializeField] private List<Image> _extraImages;
     [SerializeField] private Image _reload;
     [SerializeField] private GameObject _extraShootActivated;
-
-    private readonly int _extraNeedCount = 3;
 
     private Weapon _weapon;
 
@@ -34,7 +34,7 @@ public class BulletsInfo : MonoBehaviour
     {
         ValueChanged(bulletsCount, _bulletsImages);
         ValueChanged(extraCount, _extraImages);
-        _extraShootActivated.SetActive(extraCount == _extraNeedCount);
+        _extraShootActivated.SetActive(extraCount == ExtraNeedCount);
     }
 
     private void ValueChanged(int count, List<Image> images)

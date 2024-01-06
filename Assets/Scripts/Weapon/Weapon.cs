@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    protected readonly int _maxAmmo = 5;
+    protected readonly int MaxAmmo = 5;
 
     [SerializeField] protected Bullet PrefabBullet;
     [SerializeField] protected Transform ShootPosition;
@@ -41,9 +41,9 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Start()
     {
         Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);
-        _pool = new ObjectPool<Bullet>(PrefabBullet, _maxAmmo, Container);
-        _pool.GetAutoExpand(AutoExpand);
-        _currentAmmo = _maxAmmo;
+        _pool = new ObjectPool<Bullet>(PrefabBullet, MaxAmmo, Container);
+        _pool.SetAutoExpand(AutoExpand);
+        _currentAmmo = MaxAmmo;
         _layerMask = 1 << _maskIndex;
         _layerMask = ~_layerMask;
     }
@@ -69,7 +69,7 @@ public abstract class Weapon : MonoBehaviour
             }
             else if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
             {
-                GetBullet(bullet);
+                BulletInitialization(bullet);
                 AmmoChanger(bullet);
                 AudioSource.Play();
                 EnemyHitChanger();
@@ -81,7 +81,7 @@ public abstract class Weapon : MonoBehaviour
     {
         if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
         {
-            GetBullet(bullet);
+            BulletInitialization(bullet);
             EnemyHitChanger();
             AudioSource.Play();
             RaycastHit hit;
@@ -133,7 +133,7 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    private void GetBullet(Bullet bullet)
+    private void BulletInitialization(Bullet bullet)
     {
         bullet.Init(ShootPosition);
     }
@@ -152,7 +152,7 @@ public abstract class Weapon : MonoBehaviour
         yield return _waitForSeconds;
         SetReload(true);
         yield return _waitForReload;
-        _currentAmmo = _maxAmmo;
+        _currentAmmo = MaxAmmo;
         BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
         SetReload(false);
     }

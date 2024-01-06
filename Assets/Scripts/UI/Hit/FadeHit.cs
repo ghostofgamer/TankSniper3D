@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class FadeHit : MonoBehaviour
 {
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+    private Coroutine _coroutine;
+
     private void OnEnable()
     {
-        StartCoroutine(Fade());
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(Fade());
     }
 
     private IEnumerator Fade()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return _waitForSeconds;
         gameObject.SetActive(false);
     }
 }

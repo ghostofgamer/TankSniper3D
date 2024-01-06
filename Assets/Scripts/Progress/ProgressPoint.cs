@@ -10,13 +10,17 @@ public class ProgressPoint : MonoBehaviour
 
     public void Complite()
     {
-        _imageNotComplite.gameObject.SetActive(false);
-        _imageComplite.gameObject.SetActive(true);
+        SetBool(false);
     }
 
     public void NoComplite()
     {
-        _imageNotComplite.gameObject.SetActive(true);
-        _imageComplite.gameObject.SetActive(false);
+        SetBool(true);
+    }
+
+    private void SetBool(bool flag)
+    {
+        _imageNotComplite.gameObject.SetActive(flag);
+        _imageComplite.gameObject.SetActive(!flag);
     }
 }

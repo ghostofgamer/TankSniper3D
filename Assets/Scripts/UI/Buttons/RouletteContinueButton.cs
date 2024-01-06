@@ -13,9 +13,13 @@ public class RouletteContinueButton : AbstractButton
 
     private int _startVolume = 1;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
+    private Coroutine _coroutine;
 
     public override void OnClick()
     {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
         StartCoroutine(OnVictory());
     }
 

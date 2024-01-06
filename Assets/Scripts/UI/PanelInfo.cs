@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PanelInfo : AbstractScreen
 {
+    private readonly int FullAlpha = 1;
+    private readonly int EmptyAlpha = 0;
+
     public void Open()
     {
-        Change(1,true,true);
+        Change(FullAlpha, true,true);
     }
 
     public void Close()
     {
-        Change(0,false,false);
+        Change(EmptyAlpha, false,false);
     }
 
     private void Change(int alpha, bool raycast, bool interactable)

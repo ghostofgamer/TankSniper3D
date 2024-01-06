@@ -80,8 +80,8 @@ public class Storage : MonoBehaviour
 
         foreach (var enemy in save.EnemiesData)
         {
-            var tanksss = Instantiate(_tanks[enemy._id], new Vector3(enemy.Position.x, enemy.Position.y, enemy.Position.z), Quaternion.Euler(new Vector3(0, -_angle, 0)));
-            int level = _load.Get(_tanks[enemy._id].GetComponent<DragItem>().TankName, _tanks[enemy._id].GetComponent<DragItem>().Level);
+            var tanksss = Instantiate(_tanks[enemy.Id], new Vector3(enemy.Position.X, enemy.Position.Y, enemy.Position.Z), Quaternion.Euler(new Vector3(0, -_angle, 0)));
+            int level = _load.Get(_tanks[enemy.Id].GetComponent<DragItem>().TankName, _tanks[enemy.Id].GetComponent<DragItem>().Level);
             tanksss.GetComponent<DragItem>().SetLevel(level);
             _enemySaves.Add(tanksss);
         }
@@ -94,13 +94,13 @@ public class Saves
     [System.Serializable]
     public struct Vec3
     {
-        public float x, y, z;
+        public float X, Y, Z;
 
         public Vec3(float x, float y, float z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
         }
     }
 
@@ -108,12 +108,12 @@ public class Saves
     public struct EnemySaveData
     {
         public Vec3 Position;
-        public int _id;
+        public int Id;
 
         public EnemySaveData(Vec3 position, int id)
         {
             Position = position;
-            _id = id;
+            Id = id;
         }
     }
 

@@ -10,9 +10,6 @@ public class StoreScreen : AbstractScreen
     [SerializeField] private GameObject[] _items;
     [SerializeField] private GameObject[] _blocks;
     [SerializeField] private Load _load;
-    [SerializeField] private MaterialContainer _materialContainer;
-    [SerializeField] private TMP_Text _nameTxt;
-    [SerializeField] private TMP_Text _levelTxt;
 
     private int _startIndex = 0;
 
@@ -24,12 +21,8 @@ public class StoreScreen : AbstractScreen
         if (index == 0)
         {
             _items[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            //_items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
             Material material = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().GetMaterial();
             _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(material);
-
-            _nameTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Name.ToString();
-            _levelTxt.text = _items[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().Level.ToString();
         }
 
         OpenTanks();
@@ -45,14 +38,12 @@ public class StoreScreen : AbstractScreen
 
             for (int i = 0; i < level; i++)
                 _blocks[i].SetActive(false);
-
         }
         else
         {
             foreach (GameObject block in _blocks)
                 block.SetActive(false);
         }
-
     }
 
     public void SetItem()
@@ -70,11 +61,5 @@ public class StoreScreen : AbstractScreen
     {
         foreach (GameObject item in items)
             item.SetActive(false);
-    }
-
-    public void GetInfo(string name,int level)
-    {
-        _nameTxt.text = name.ToString();
-        _levelTxt.text = level.ToString();
     }
 }

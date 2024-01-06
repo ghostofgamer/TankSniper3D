@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class EndGame : AbstractScreen
 {
-    [SerializeField] protected Wallet _wallet;
-    [SerializeField] protected LevelConfig _levelConfig;
-    [SerializeField] protected TMP_Text _rewardCountText;
-    [SerializeField] protected ContinueButton _continueButton;
-
     protected int Reward;
     protected Coroutine _coroutine;
 

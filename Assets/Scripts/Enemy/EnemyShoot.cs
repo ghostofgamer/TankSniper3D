@@ -24,7 +24,7 @@ public class EnemyShoot : MonoBehaviour
     private void Start()
     {
         _pool = new ObjectPool<Bullet>(_prefab, _ammoCount, _container);
-        _pool.GetAutoExpand(_autoExpand);
+        _pool.SetAutoExpand(_autoExpand);
     }
 
     private void Update()

@@ -10,7 +10,7 @@ public class Wallet : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private Save _save;
 
-    [SerializeField] private int _startMoney ;
+    [SerializeField] private int _startMoney;
     private int _money;
 
     public int Money => _money;
@@ -25,18 +25,17 @@ public class Wallet : MonoBehaviour
     {
         _money += money;
         MoneyInfo();
-        _save.SetData(Save.Money, _money);
     }
 
     public void DecreaseMoney(int money)
     {
         _money -= money;
         MoneyInfo();
-        _save.SetData(Save.Money, _money);
     }
 
     private void MoneyInfo()
     {
         _moneyText.text = _money.ToString();
+        _save.SetData(Save.Money, _money);
     }
 }

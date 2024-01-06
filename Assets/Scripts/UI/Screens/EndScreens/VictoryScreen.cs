@@ -12,8 +12,10 @@ public class VictoryScreen : EndGame
     [SerializeField] private GameObject _panelInfo;
     [SerializeField] private TMP_Text _levelNumber;
     [SerializeField] private TMP_Text _enoughtAmountText;
+    [SerializeField] private TMP_Text _rewardCountText;
     [SerializeField] private Load _load;
-    [SerializeField] private ReviewCamera _reviewCamera; 
+    [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private ContinueButton _continueButton;
 
     private Player _player;
     private Progress _progress;

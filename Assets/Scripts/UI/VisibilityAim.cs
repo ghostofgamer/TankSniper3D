@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class VisibilityAim : MonoBehaviour
 {
+    private readonly float Speed = 10f;
+    private readonly float TimeFade = 0.65f;
+    private readonly int AlphaFull = 1;
+    private readonly int AlphaZero = 0;
+
     [SerializeField] private CanvasGroup _canvasGroupe;
     [SerializeField] private CanvasGroup _canvasGroupeMobile;
     [SerializeField] private Image _startImage;
     [SerializeField] private AudioSource _audioSource;
-
-    private readonly float _speed = 10f;
-    private readonly float _timeFade = 0.65f;
-    private readonly int _alphaFull = 1;
-    private readonly int _alphaZero = 0;
 
     private Coroutine _coroutine;
     private CanvasGroup _needCanvasGroup;
@@ -31,7 +31,7 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_needCanvasGroup, _alphaFull, _speed, 0, false));
+        _coroutine = StartCoroutine(Fade(_needCanvasGroup, AlphaFull, Speed, 0, false));
     }
 
     public void OnFadeOut()
@@ -39,10 +39,10 @@ public class VisibilityAim : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Fade(_needCanvasGroup, _alphaZero, -_speed, _timeFade, true));
+        _coroutine = StartCoroutine(Fade(_needCanvasGroup, AlphaZero, -Speed, TimeFade, true));
     }
 
-    IEnumerator Fade(CanvasGroup canvasGroup, int alpha, float speed, float time, bool flag)
+    private IEnumerator Fade(CanvasGroup canvasGroup, int alpha, float speed, float time, bool flag)
     {
         yield return new WaitForSeconds(time);
         _audioSource.Play();

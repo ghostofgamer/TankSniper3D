@@ -5,6 +5,8 @@ using Agava.YandexGames;
 
 public class Initializator : MonoBehaviour
 {
+    private readonly int StartIndex = 0;
+
     [Header("Player")]
     [SerializeField] private Player[] _players;
     [Header("UI")]
@@ -28,8 +30,6 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private MaterialContainer _materialContainer;
     [SerializeField] private ScreenFocus _screenFocus;
-
-    private readonly int _startIndex = 0;
 
     //private int _indexPlayer;
     [SerializeField] private int _indexPlayer;
@@ -99,7 +99,7 @@ public class Initializator : MonoBehaviour
         _gameObjects.Add(_hitPlayers[index].gameObject);
         _aimInputButton[index].gameObject.SetActive(true);
         _player.GetComponent<CameraAim>().Init(_aimInputButton[index], _visibilityAim[index]);
-        _killedInfo.Init(_aimInputButton[index].GetComponent<ButtonMover>());
+        //_killedInfo.Init(_aimInputButton[index].GetComponent<ButtonMover>());
         _bulletsInfo[index].Init(_player.GetComponent<Weapon>());
         _gameObjects.Add(_bulletsInfo[index].gameObject);
         _screenFocus.Init(_aimInputButton[index]);

@@ -10,6 +10,10 @@ public class HitPlayer : MonoBehaviour
 
     private Player _player;
     private int _half = 2;
+    private int _right = 0;
+    private int _left = 1;
+    private int _up = 2;
+    private int _down = 3;
 
     private void OnEnable()
     {
@@ -34,15 +38,15 @@ public class HitPlayer : MonoBehaviour
         Vector2 center = new Vector2(widht, height);
 
         if (_positionEnemy.transform.position.x > center.x)
-            _hits[0].gameObject.SetActive(true);
+            _hits[_right].gameObject.SetActive(true);
 
         if (_positionEnemy.transform.position.x < center.x)
-            _hits[1].gameObject.SetActive(true);
+            _hits[_left].gameObject.SetActive(true);
 
         if (_positionEnemy.transform.position.y > center.y)
-            _hits[2].gameObject.SetActive(true);
+            _hits[_up].gameObject.SetActive(true);
 
         if (_positionEnemy.transform.position.y < center.y)
-            _hits[3].gameObject.SetActive(true);
+            _hits[_down].gameObject.SetActive(true);
     }
 }

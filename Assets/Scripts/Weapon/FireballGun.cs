@@ -6,18 +6,18 @@ public class FireballGun : Weapon
 {
     [SerializeField] private Bullet _bigFireball;
 
-    protected ObjectPool<Bullet> _poolBigFireball;
+    protected ObjectPool<Bullet> PoolBigFireballs;
 
     protected override void Start()
     {
         base.Start();
-        _poolBigFireball = new ObjectPool<Bullet>(_bigFireball, _maxAmmo, Container);
-        _poolBigFireball.GetAutoExpand(AutoExpand);
+        PoolBigFireballs = new ObjectPool<Bullet>(_bigFireball, MaxAmmo, Container);
+        PoolBigFireballs.SetAutoExpand(AutoExpand);
     }
 
     public override void SuperShoot()
     {
-        if(_poolBigFireball.TryGetObject(out Bullet bullet, _bigFireball))
+        if(PoolBigFireballs.TryGetObject(out Bullet bullet, _bigFireball))
             bullet.Init(ShootPosition);
     }
 }
