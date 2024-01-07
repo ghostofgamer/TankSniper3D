@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     {
         if(!IsDying)
         _flyDamage.SetText(damage);
+
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);
         _canvas.SetActive(true);

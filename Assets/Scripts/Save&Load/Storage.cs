@@ -11,7 +11,7 @@ public class Storage : MonoBehaviour
     [SerializeField] private List<Transform> _positions;
     [SerializeField] private Load _load;
 
-    private List<Tank> _enemySaves = new List<Tank>();
+    private List<Tank> _tanksSaves = new List<Tank>();
     private string _filePath;
     private float _angle = 135;
 
@@ -28,12 +28,12 @@ public class Storage : MonoBehaviour
 
     public void ListChanged()
     {
-        _enemySaves = new List<Tank>();
+        _tanksSaves = new List<Tank>();
 
         for (int i = 0; i < _positions.Count; i++)
         {
             if (_positions[i].GetComponent<PositionTank>().Target != null)
-                _enemySaves.Add(_positions[i].GetComponent<PositionTank>().Target.GetComponent<Tank>());
+                _tanksSaves.Add(_positions[i].GetComponent<PositionTank>().Target.GetComponent<Tank>());
         }
         
         SaveGame();
@@ -41,7 +41,7 @@ public class Storage : MonoBehaviour
 
     public void AddTank(Tank tank)
     {
-        _enemySaves.Add(tank);
+        _tanksSaves.Add(tank);
         SaveGame();
     }
 
@@ -61,7 +61,7 @@ public class Storage : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fs = new FileStream(_filePath, FileMode.Create);
         Saves save = new Saves();
-        save.SaveEnemies(_enemySaves);
+        save.SaveEnemies(_tanksSaves);
         bf.Serialize(fs, save);
         fs.Close();
     }
@@ -78,12 +78,12 @@ public class Storage : MonoBehaviour
         Saves save = (Saves)bf.Deserialize(fs);
         fs.Close();
 
-        foreach (var enemy in save.EnemiesData)
+        foreach (var tank in save.TanksData)
         {
-            var tanksss = Instantiate(_tanks[enemy.Id], new Vector3(enemy.Position.X, enemy.Position.Y, enemy.Position.Z), Quaternion.Euler(new Vector3(0, -_angle, 0)));
-            int level = _load.Get(_tanks[enemy.Id].GetComponent<DragItem>().TankName, _tanks[enemy.Id].GetComponent<DragItem>().Level);
-            tanksss.GetComponent<DragItem>().SetLevel(level);
-            _enemySaves.Add(tanksss);
+            var newTank = Instantiate(_tanks[tank.Id], new Vector3(tank.Position.X, tank.Position.Y, tank.Position.Z), Quaternion.Euler(new Vector3(0, -_angle, 0)));
+            int level = _load.Get(_tanks[tank.Id].GetComponent<DragItem>().TankName, _tanks[tank.Id].GetComponent<DragItem>().Level);
+            newTank.GetComponent<DragItem>().SetLevel(level);
+            _tanksSaves.Add(newTank);
         }
     }
 }
@@ -105,26 +105,26 @@ public class Saves
     }
 
     [System.Serializable]
-    public struct EnemySaveData
+    public struct TankSaveData
     {
         public Vec3 Position;
         public int Id;
 
-        public EnemySaveData(Vec3 position, int id)
+        public TankSaveData(Vec3 position, int id)
         {
             Position = position;
             Id = id;
         }
     }
 
-    public List<EnemySaveData> EnemiesData = new List<EnemySaveData>();
+    public List<TankSaveData> TanksData = new List<TankSaveData>();
 
-    public void SaveEnemies(List<Tank> enemies)
+    public void SaveEnemies(List<Tank> tanks)
     {
-        foreach (var enemy in enemies)
+        foreach (Tank tank in tanks)
         {
-            Vec3 pos = new Vec3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
-            EnemiesData.Add(new EnemySaveData(pos, enemy.GetComponent<Tank>().Level));
+            Vec3 pos = new Vec3(tank.transform.position.x, tank.transform.position.y, tank.transform.position.z);
+            TanksData.Add(new TankSaveData(pos, tank.GetComponent<Tank>().Level));
         }
     }
 }

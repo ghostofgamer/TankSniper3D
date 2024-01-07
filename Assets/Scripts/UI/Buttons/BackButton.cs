@@ -12,7 +12,7 @@ public class BackButton : AbstractButton
     {
         _storeScreen.Close();
         _storeScreen.SetItem();
-        _tankView.ViewTank();
+        _tankView.Show();
         _merge.enabled = true;
     }
 }

@@ -24,11 +24,9 @@ public class AimInputButton : AbstractButton
     private WaitForSeconds _waitForPauzeZoom = new WaitForSeconds(0.65f);
     private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
     private WaitForSeconds _waitForReturnButton = new WaitForSeconds(1f);
+    private bool _isPressed = false;
 
     public bool IsZoom { get; private set; } = false;
-    public bool isPressed = false;
-
-    public event UnityAction ButtonMove;
 
     private void Update()
     {
@@ -39,13 +37,13 @@ public class AimInputButton : AbstractButton
 
         if (!_weapon.IsReload)
         {
-            if (isPressed)
+            if (_isPressed)
                 DoZoom();
         }
 
-        if (!isPressed && IsZoom)
+        if (!_isPressed && IsZoom)
         {
-            DoShoot();
+            DoZoomOff();
         }
 
         if (!IsZoom || _weapon.IsReload)
@@ -55,9 +53,7 @@ public class AimInputButton : AbstractButton
         }
     }
 
-    public override void OnClick()
-    {
-    }
+    public override void OnClick() { }
 
     public void Init(Weapon weapon, TowerRotate towerRotate, CameraAim cameraAim, PlayerMover playerMover)
     {
@@ -67,15 +63,9 @@ public class AimInputButton : AbstractButton
         _playerMover = playerMover;
     }
 
-    public void LastShootActivated()
-    {
-        _cameraAim.OnCinemachine();
-        _weapon.LastShoot();
-    }
-
     public void ReturnHide()
     {
-        isPressed = false;
+        _isPressed = false;
         _playerMover.Hide();
         _visibilityAim.OnFadeOut();
     }
@@ -85,7 +75,7 @@ public class AimInputButton : AbstractButton
         IsZoom = true;
         _fightScreen.OnSetScreen();
         _buttonScaler.Down();
-        isPressed = true;
+        _isPressed = true;
         _playerMover.Go();
         _visibilityAim.OnFadeIn();
         _cancelShoot.gameObject.SetActive(true);
@@ -96,9 +86,7 @@ public class AimInputButton : AbstractButton
         ReturnHide();
 
         if (!_cancelShoot.IsCancel && !_playerMover.GetComponent<Player>().IsDead)
-        {
             _weapon.Shoot();
-        }
 
         _cancelShoot.gameObject.SetActive(false);
         StartCoroutine(ReturnButton());
@@ -110,12 +98,12 @@ public class AimInputButton : AbstractButton
         _cameraAim.CameraFovForward();
     }
 
-    private void DoShoot()
+    private void DoZoomOff()
     {
-        StartCoroutine(PauseZoomOff());
+        StartCoroutine(ZoomOff());
     }
 
-    private IEnumerator PauseZoomOff()
+    private IEnumerator ZoomOff()
     {
         yield return _waitForPauzeZoom;
         IsZoom = false;

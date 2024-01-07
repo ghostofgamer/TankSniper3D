@@ -15,9 +15,9 @@ public class PartCollapse : MonoBehaviour
 
     private void Collapse()
     {
-        var filter = _houseParts.Where(p=>p.activeSelf==true);
+        var filter = _houseParts.Where(p => p.activeSelf == true);
 
-        if (filter.Count()<= _minCountPart)
+        if (filter.Count() <= _minCountPart)
             GetComponent<Destroy>().Destruction();
     }
 }

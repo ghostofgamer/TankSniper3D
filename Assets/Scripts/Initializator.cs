@@ -31,8 +31,8 @@ public class Initializator : MonoBehaviour
     [SerializeField] private MaterialContainer _materialContainer;
     [SerializeField] private ScreenFocus _screenFocus;
 
-    //private int _indexPlayer;
-    [SerializeField] private int _indexPlayer;
+    private int _indexPlayer;
+    //[SerializeField] private int _indexPlayer;
     private int _mobileIndex = 0;
     private int _pcIndex = 1;
     private Player _player;
@@ -42,7 +42,7 @@ public class Initializator : MonoBehaviour
     {
         Time.timeScale = 1;
         _gameObjects = new List<GameObject>();
-        //_indexPlayer = _load.Get(Save.Tank, _startIndex);
+        _indexPlayer = _load.Get(Save.Tank, StartIndex);
         Init();
     }
 

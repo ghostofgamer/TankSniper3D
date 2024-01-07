@@ -8,9 +8,9 @@ public class ProgressMap : Progress
     [SerializeField] private GameObject[] _points;
     [SerializeField] private GameObject[] _advancement;
     [SerializeField] private ProgressPoint[] _progressPoint;
-    [SerializeField] private bool _isMainScene;
     [SerializeField] private BuyTank _buyTank;
     [SerializeField] private Transform[] _positions;
+    [SerializeField] private bool _isMainScene;
 
     private int _indexEnviropments;
     private int _maxIndexEnviropment = 2;

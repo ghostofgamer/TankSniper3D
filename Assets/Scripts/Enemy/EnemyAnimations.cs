@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyAnimations : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private bool _isTank = false;
-
     private const string Dying = "Dying";
     private const string Rotate = "Rotate";
     private const string Shoot = "Shoot";
     private const string Walk = "Walk";
+
+    [SerializeField] private Animator _animator;
+    [SerializeField] private bool _isTank = false;
 
     public void Die(bool flag)
     {

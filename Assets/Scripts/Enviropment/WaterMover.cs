@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaterMover : MonoBehaviour
 {
-    private readonly float _speed = 0.1f;
+    private readonly float Speed = 0.1f;
 
     private Renderer _renderer;
     private float _offset;
@@ -21,7 +21,7 @@ public class WaterMover : MonoBehaviour
 
     private void ScrollTexture()
     {
-        _offset += _speed * Time.deltaTime;
+        _offset += Speed * Time.deltaTime;
         _renderer.material.mainTextureOffset = new Vector2(_offset, 0);
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ViewShoot : MonoBehaviour
 {
-    [SerializeField] protected Bullet _prefabBullet;
-    [SerializeField] protected Transform _container;
-    [SerializeField] protected Transform _shootPosition;
+    [SerializeField] private Bullet _prefabBullet;
+    [SerializeField] private Transform _container;
+    [SerializeField] private Transform _shootPosition;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private Load _load;
     [SerializeField] private TMP_Text _levelTxt;
@@ -31,6 +31,11 @@ public class ViewShoot : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Shoot();
+    }
+
+    private void Shoot()
+    {
         if (_pool.TryGetObject(out Bullet bullet, _prefabBullet))
         {
             bullet.Init(_shootPosition);
@@ -42,8 +47,8 @@ public class ViewShoot : MonoBehaviour
     {
         _levelTxt.text = " ";
         yield return new WaitForSeconds(0.05f);
-        string nameR = _tanksEnum.ToString();
-
-        _levelTxt.text = (_load.Get(nameR, _startLevel) + 1).ToString();
+        string name = _tanksEnum.ToString();
+        int level = _load.Get(name, _startLevel);
+        _levelTxt.text = (++level).ToString();
     }
 }

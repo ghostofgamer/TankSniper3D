@@ -16,8 +16,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
 
-    private readonly int _ammoCount = 10;
-
+    private int _ammoCount = 10;
     private ObjectPool<Bullet> _pool;
     private bool _autoExpand = true;
 

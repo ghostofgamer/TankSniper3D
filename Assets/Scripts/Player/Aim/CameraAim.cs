@@ -32,19 +32,9 @@ public class CameraAim : MonoBehaviour
         _visibilityAim = visibilityAim;
     }
 
-    public void OnCinemachine()
+    public void PlayCinemachine()
     {
         StartCoroutine(ChangerCinemaMachine());
-    }
-
-
-    public void SetCinemachineCamera()
-    {
-        //_aimInputButton.enabled = false;
-        //_cineMachineCamera.gameObject.SetActive(true);
-        SetCinemachine(false);
-        Time.timeScale = 0.3f;
-        Time.fixedDeltaTime = Time.timeScale * 0.01f;
     }
 
     public void CinemachineMove(Bullet bullet)
@@ -52,26 +42,6 @@ public class CameraAim : MonoBehaviour
         _cineMachineCamera.transform.parent = null;
         _cineMachineCamera.Follow = bullet.transform;
         _cineMachineCamera.LookAt = bullet.transform;
-    }
-
-    private void SetCinemachine(bool flag)
-    {
-        _aimInputButton.enabled = flag;
-        _cineMachineCamera.gameObject.SetActive(!flag);
-    }
-
-    public void ResetCamera()
-    {
-        SetCinemachine(true);
-        //_aimInputButton.enabled = true;
-        //_cineMachineCamera.gameObject.SetActive(false);
-        ResetMainCamera();
-        Time.timeScale = 1f;
-    }
-
-    private void CameraFovChanged(float target)
-    {
-        _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, target, _speed * Time.deltaTime);
     }
 
     public void CameraFovForward()
@@ -84,12 +54,37 @@ public class CameraAim : MonoBehaviour
         CameraFovChanged(_fovStart);
     }
 
+    private void OnCinemachine()
+    {
+        SetCinemachine(true);
+        Time.timeScale = 0.3f;
+        Time.fixedDeltaTime = Time.timeScale * 0.01f;
+    }
+
+    private void SetCinemachine(bool flag)
+    {
+        _aimInputButton.enabled = !flag;
+        _cineMachineCamera.gameObject.SetActive(flag);
+    }
+
+    private void OffCinemachine()
+    {
+        SetCinemachine(false);
+        ResetMainCamera();
+        Time.timeScale = 1f;
+    }
+
+    private void CameraFovChanged(float target)
+    {
+        _mainCamera.fieldOfView = Mathf.Lerp(_mainCamera.fieldOfView, target, _speed * Time.deltaTime);
+    }
+
     private IEnumerator ChangerCinemaMachine()
     {
-        SetCinemachineCamera();
+        OnCinemachine();
         _visibilityAim.OffCanvasActive();
         yield return _waitForSeconds;
-        ResetCamera();
+        OffCinemachine();
     }
 
     private void ResetMainCamera()

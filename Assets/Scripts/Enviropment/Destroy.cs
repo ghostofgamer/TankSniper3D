@@ -10,6 +10,7 @@ public class Destroy : MonoBehaviour
 
     private List<Transform> _destroyObjects;
     private int _destructionDamage = 10;
+    private int _force = 1000;
 
     public void Destruction()
     {
@@ -18,9 +19,7 @@ public class Destroy : MonoBehaviour
         foreach (var hit in hitColliders)
         {
             if (hit.TryGetComponent(out Enemy enemy))
-            {
                 enemy.TakeDamage(_destructionDamage);
-            }
         }
 
         _oldGameObject.SetActive(false);
@@ -31,7 +30,7 @@ public class Destroy : MonoBehaviour
         {
             _destroyObjects.Add(_newGameObject.GetChild(i));
             Rigidbody rigidbody = _destroyObjects[i].gameObject.GetComponent<Rigidbody>();
-            rigidbody.AddForce(Vector3.forward * 1000, ForceMode.Force);
+            rigidbody.AddForce(Vector3.forward * _force, ForceMode.Force);
         }
     }
 }

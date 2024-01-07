@@ -110,7 +110,7 @@ public abstract class Weapon : MonoBehaviour
     {
         _isLastShoot = true;
         _cameraAim.CinemachineMove(bullet);
-        _cameraAim.OnCinemachine();
+        _cameraAim.PlayCinemachine();
         _imageAim.enabled = false;
     }
 

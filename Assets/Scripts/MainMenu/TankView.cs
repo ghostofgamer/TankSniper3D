@@ -6,47 +6,32 @@ public class TankView : MonoBehaviour
 {
     [SerializeField] private Load _load;
     [SerializeField] private GameObject[] _tanks;
-    [SerializeField] private MaterialContainer _materialContainer;
     [SerializeField] private Save _save;
     [SerializeField] private ParticleSystem _effect;
     [SerializeField] private AudioSource _audioSource;
 
     private int _startIndex = 0;
-    private int _currentIndex = 0;
     private int _currentLevel = 0;
 
     private void Start()
     {
-        ViewTank();
-        _currentIndex = _load.Get(Save.Level, _startIndex);
+        Show();
         _currentLevel = _load.Get(Save.CurrentLevel, 0);
     }
 
-    public void ViewTank()
+    public void Show()
     {
-        for (int i = 0; i < _tanks.Length; i++)
-        {
-            _tanks[i].SetActive(false);
-        }
-
-        _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-        //_tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
-        int index = _load.Get(Save.Tank, _startIndex);
-        Material material = _tanks[index].GetComponent<Tank>().GetMaterial();
-        _tanks[index].GetComponent<ColoringChanger>().SetMaterial(material);
+        OffActiveTanks();
+        SetTank();
     }
 
-    public void NewLevelTankView(int level)
+    public void NewLevel(int level)
     {
         if (_currentLevel < level)
         {
             _effect.Play();
             _audioSource.Play();
-            OffActiveTanks();
-            _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
-            //_tanks[_load.Get(Save.Tank, _startIndex)].GetComponent<ColoringChanger>().SetMaterial(_materialContainer.GetColor());
-            Material material = _tanks[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<Tank>().GetMaterial();
-            _tanks[_load.Get(Save.Tank, _startIndex)].GetComponentInChildren<ColoringChanger>().SetMaterial(material);
+            Show();
 
             if (_currentLevel < level)
             {
@@ -56,17 +41,17 @@ public class TankView : MonoBehaviour
         }
     }
 
-    public void SetLevelTank(int level)
-    {
-        if (_currentIndex < level)
-            _currentIndex = level;
-
-        _save.SetData(Save.Level, _currentIndex);
-    }
-
     public void OffActiveTanks()
     {
         foreach (var tank in _tanks)
             tank.SetActive(false);
+    }
+
+    private void SetTank()
+    {
+        _tanks[_load.Get(Save.Tank, _startIndex)].SetActive(true);
+        int index = _load.Get(Save.Tank, _startIndex);
+        Material material = _tanks[index].GetComponent<Tank>().GetMaterial();
+        _tanks[index].GetComponent<ColoringChanger>().SetMaterial(material);
     }
 }

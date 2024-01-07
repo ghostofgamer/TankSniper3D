@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class RotateTankStore : MonoBehaviour
 {
+    private const string MouseX = "Mouse X";
+
     [SerializeField] private Transform _startTransform;
     [SerializeField] private Transform _target;
-    private readonly float _speedStartRotate = 5f;
 
-    private const string MouseX = "Mouse X";
+    private float _speedStartRotate = 5f;
     private float _speed = 150f;
     private bool _isPressed = false;
 

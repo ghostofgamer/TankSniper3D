@@ -7,8 +7,7 @@ public class Barrel : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private ParticleSystem _ExplosionParticle;
 
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
-
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
     private int _damage = 30;
 
     public void Explosion()

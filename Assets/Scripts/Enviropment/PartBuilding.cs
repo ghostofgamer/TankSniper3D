@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PartBuilding : MonoBehaviour
 {
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
     private Coroutine _coroutine;
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
     private void OnEnable()
     {

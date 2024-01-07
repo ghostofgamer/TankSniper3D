@@ -12,14 +12,14 @@ public class RagdollEnemy : MonoBehaviour
         OffRigidbody();
     }
 
-    public void OffRigidbody()
-    {
-        SetValue(true);
-    }
-
     public void OnRigidbody()
     {
         SetValue(false);
+    }
+
+    private void OffRigidbody()
+    {
+        SetValue(true);
     }
 
     private void SetValue(bool flag)

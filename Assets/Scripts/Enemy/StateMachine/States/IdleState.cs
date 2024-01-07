@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class IdleState : State
 {
-    private void Start()
-    {       
-    }
+    private void Start(){}
 }
