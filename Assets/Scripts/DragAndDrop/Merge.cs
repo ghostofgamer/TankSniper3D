@@ -27,11 +27,12 @@ public class Merge : MonoBehaviour
 
     public Vector3 StartPosition;
     private int _layerMask;
+    private int _layer = 3;
     private RaycastHit hit;
 
     private void Start()
     {
-        _layerMask = 1 << 3;
+        _layerMask = 1 << _layer;
         _layerMask = ~_layerMask;
         StartCoroutine(ChangeStorage());
     }

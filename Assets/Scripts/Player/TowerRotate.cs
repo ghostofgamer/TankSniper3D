@@ -12,7 +12,6 @@ public class TowerRotate : MonoBehaviour
     public void Rotate(Vector3 target)
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;
-        Debug.DrawRay(transform.position, forward, Color.red);
         _tower.transform.LookAt(target);
     }
 

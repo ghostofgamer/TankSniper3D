@@ -6,6 +6,8 @@ public class HitPoint : MonoBehaviour
 {
     [SerializeField] private TowerRotate _towerRotate;
 
+    private int _factor = 100;
+
     public void Init(TowerRotate towerRotate)
     {
         _towerRotate = towerRotate;
@@ -13,15 +15,14 @@ public class HitPoint : MonoBehaviour
 
     void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * _factor;
         Ray ray = new Ray(transform.position, forward);
-        Debug.DrawRay(transform.position, forward, Color.green);
     }
 
     public void MoveRotate()
     {
         RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * _factor;
         Ray ray = new Ray(transform.position, forward);
 
         if (Physics.Raycast(ray, out hit))

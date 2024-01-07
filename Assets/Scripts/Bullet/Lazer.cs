@@ -6,8 +6,8 @@ public class Lazer : Bullet
 {
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private LineRenderer _lineRenderer;
-    [SerializeField] private float _maxLength;
     [SerializeField] private BulletTrigger _bulletTrigger;
+    [SerializeField] private float _maxLength;
 
     private void FixedUpdate()
     {

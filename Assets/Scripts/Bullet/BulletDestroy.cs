@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletDestroy : MonoBehaviour
 {
+    private readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(3f);
+
     private Coroutine _coroutine;
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
     private void OnEnable()
     {
@@ -20,7 +21,7 @@ public class BulletDestroy : MonoBehaviour
 
     private IEnumerator SetActive()
     {
-        yield return _waitForSeconds;
+        yield return WaitForSeconds;
         gameObject.SetActive(false);
     }
 }

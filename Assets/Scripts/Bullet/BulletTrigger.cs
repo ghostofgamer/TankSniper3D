@@ -12,10 +12,10 @@ public class BulletTrigger : MonoBehaviour
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private HomingRocket _homingRocket;
 
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);
-
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);
     private Coroutine _coroutine;
     private int _layerMask;
+    private int _layer = 8;
 
     private void OnEnable()
     {
@@ -28,7 +28,7 @@ public class BulletTrigger : MonoBehaviour
 
     private void Start()
     {
-        _layerMask = 1 << 8;
+        _layerMask = 1 << _layer;
         _layerMask = ~_layerMask;
     }
 
@@ -58,16 +58,6 @@ public class BulletTrigger : MonoBehaviour
                     player.ApplyDamage(_bullet.Damage, _bullet._shootPosition);
             }
         }
-
-        //if (other.TryGetComponent(out Player player))
-        //{
-        //    //Hit();
-
-        //    if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
-        //    {
-        //        player.ApplyDamage(_bullet.Damage,_bullet._shootPosition);
-        //    }
-        //}
     }
 
     public void Hit()

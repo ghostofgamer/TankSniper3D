@@ -26,22 +26,23 @@ public class CameraAim : MonoBehaviour
         _startRotation = _mainCamera.transform.rotation;
     }
 
-    public void Init(AimInputButton aimInputButton, VisibilityAim visibilityAim) 
+    public void Init(AimInputButton aimInputButton, VisibilityAim visibilityAim)
     {
         _aimInputButton = aimInputButton;
         _visibilityAim = visibilityAim;
     }
 
-    public void OnCinemaMachine()
+    public void OnCinemachine()
     {
         StartCoroutine(ChangerCinemaMachine());
     }
 
 
-    public void SetCinCamera()
+    public void SetCinemachineCamera()
     {
-        _aimInputButton.enabled=false;
-        _cineMachineCamera.gameObject.SetActive(true);
+        //_aimInputButton.enabled = false;
+        //_cineMachineCamera.gameObject.SetActive(true);
+        SetCinemachine(false);
         Time.timeScale = 0.3f;
         Time.fixedDeltaTime = Time.timeScale * 0.01f;
     }
@@ -53,10 +54,17 @@ public class CameraAim : MonoBehaviour
         _cineMachineCamera.LookAt = bullet.transform;
     }
 
-    public void STOPRes()
+    private void SetCinemachine(bool flag)
     {
-        _aimInputButton.enabled=true;
-        _cineMachineCamera.gameObject.SetActive(false);
+        _aimInputButton.enabled = flag;
+        _cineMachineCamera.gameObject.SetActive(!flag);
+    }
+
+    public void ResetCamera()
+    {
+        SetCinemachine(true);
+        //_aimInputButton.enabled = true;
+        //_cineMachineCamera.gameObject.SetActive(false);
         ResetMainCamera();
         Time.timeScale = 1f;
     }
@@ -78,10 +86,10 @@ public class CameraAim : MonoBehaviour
 
     private IEnumerator ChangerCinemaMachine()
     {
-        SetCinCamera();
+        SetCinemachineCamera();
         _visibilityAim.OffCanvasActive();
         yield return _waitForSeconds;
-        STOPRes();
+        ResetCamera();
     }
 
     private void ResetMainCamera()

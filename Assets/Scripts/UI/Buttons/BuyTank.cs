@@ -33,6 +33,7 @@ public class BuyTank : AbstractButton
     private float _progressValue = 0.25f;
     private int _maxIndex;
     private int _minLevelMerge;
+    private int _fullSlider = 1;
 
     public int Price { get; private set; }
 
@@ -94,7 +95,7 @@ public class BuyTank : AbstractButton
 
     private void ChangeValue()
     {
-        if (_slider.value < 1)
+        if (_slider.value < _fullSlider)
             _slider.value += _progressValue;
 
         if (_coroutine != null)
@@ -115,7 +116,7 @@ public class BuyTank : AbstractButton
             _save.SetData(Save.AllTanksOpen, _allOpen);
         }
 
-        if (_slider.value == 1)
+        if (_slider.value == _fullSlider)
         {
             if (minLevelMerge - 1 > _levelBuy)
                 MoveNextLevel();
@@ -123,6 +124,11 @@ public class BuyTank : AbstractButton
 
         _currentLevelText.text = _levelBuy.ToString();
         _currentTankIndex = _currentLevel;
+        SaveProgress();
+    }
+
+    private void SaveProgress()
+    {
         _save.SetData(Save.ProgressLevel, _currentLevel);
         _save.SetData(Save.ProgressSlider, _slider.value);
         _save.SetData(Save.LevelBuy, _levelBuy);

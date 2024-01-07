@@ -13,14 +13,16 @@ public class HomingRocket : MonoBehaviour
     [SerializeField] private float _speedStart;
     [SerializeField] private float _speedMove;
     [SerializeField] private float _speedRotate;
+    [SerializeField] private int _distance;
     [SerializeField] private BulletTrigger _bulletTrigger;
     [SerializeField] private Bullet _bullet;
-    [SerializeField] private int _distance;
 
     private Transform _target;
     private Vector3 _startPosition;
     private float _correctVector = 1f;
+    private int _minDistance = 1;
     private MissileState _missileState;
+    private float _maxSpeed = 35;
 
     private void Start()
     {
@@ -30,7 +32,7 @@ public class HomingRocket : MonoBehaviour
 
     private void OnEnable()
     {
-        _speedMove = 35f;
+        _speedMove = _maxSpeed;
     }
 
     private void OnDisable()
@@ -58,7 +60,7 @@ public class HomingRocket : MonoBehaviour
                 Vector3 _targetVector = target - gameObject.transform.position;
                 gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, _targetVector, _speedRotate * Time.deltaTime);
 
-                if (Vector3.Distance(transform.position, _target.position) < 1)
+                if (Vector3.Distance(transform.position, _target.position) < _minDistance)
                     _speedMove = 0f;
                 break;
         }

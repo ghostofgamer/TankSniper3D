@@ -69,7 +69,7 @@ public class AimInputButton : AbstractButton
 
     public void LastShootActivated()
     {
-        _cameraAim.OnCinemaMachine();
+        _cameraAim.OnCinemachine();
         _weapon.LastShoot();
     }
 

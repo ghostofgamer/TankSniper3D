@@ -6539,7 +6539,6 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194233}
-  - component: {fileID: 963194232}
   - component: {fileID: 963194235}
   - component: {fileID: 963194236}
   m_Layer: 0
@@ -6685,31 +6684,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraSpeed: 5
   _x: 0
   _y: -15
   _offset: {x: 2.5, y: 3, z: -11}
   _maxSpeed: 13
   _minSpeed: 10
-  _speedTime: 3
-  target: {fileID: 457833174}
-  minlimitX: 23
-  maxlimitX: 30
-  minlimitY: 10
-  maxlimitY: 36
-  journeyTime: 1
---- !u!114 &963194232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb8b0ff1763baad44b49ad5ddb6ed5d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _target: {fileID: 457833174}
+  _minlimitX: 23
+  _maxlimitX: 30
+  _minlimitY: 10
+  _maxlimitY: 36
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13006,7 +12990,19 @@ PrefabInstance:
     - target: {fileID: 2879687442443831032, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 963194232}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078769906285955178, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.724976
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214129439963296943, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.724976
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326807828528706422, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.724976
+      objectReference: {fileID: 0}
     - target: {fileID: 3396604910238523348, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _load
       value: 
@@ -13359,6 +13355,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7652650186309008558, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917508360359210859, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.724976
+      objectReference: {fileID: 0}
     - target: {fileID: 8777381646050931338, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -13382,7 +13386,11 @@ PrefabInstance:
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 963194232}
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118530331585552574, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.724976
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

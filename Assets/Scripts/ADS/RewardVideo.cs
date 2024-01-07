@@ -11,9 +11,7 @@ public class RewardVideo : Ad
             VideoAd.Show(OnOpen, OnReward, OnClose);
     }
 
-    public virtual void OnReward()
-    {
-    }
+    public virtual void OnReward(){ }
 
     protected override void OnClose()
     {

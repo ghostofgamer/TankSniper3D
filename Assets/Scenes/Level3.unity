@@ -12834,7 +12834,6 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194231}
   - component: {fileID: 963194234}
-  - component: {fileID: 963194233}
   - component: {fileID: 963194232}
   - component: {fileID: 963194235}
   m_Layer: 0
@@ -12980,19 +12979,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraSpeed: 3.5
   _x: 0
   _y: -15
   _offset: {x: 2.3, y: 3, z: -10}
   _maxSpeed: 13
   _minSpeed: 10
-  _speedTime: 1
-  target: {fileID: 1618688419}
-  minlimitX: 23
-  maxlimitX: 30
-  minlimitY: 23
-  maxlimitY: 50
-  journeyTime: 1
+  _target: {fileID: 1618688419}
+  _minlimitX: 23
+  _maxlimitX: 30
+  _minlimitY: 23
+  _maxlimitY: 50
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13006,18 +13002,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerRotate: {fileID: 0}
---- !u!114 &963194233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb8b0ff1763baad44b49ad5ddb6ed5d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25278,19 +25262,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2cfa65311ccff47904dcebb9199f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraSpeed: 0
   _x: 0
   _y: 0
   _offset: {x: 0, y: 0, z: 0}
   _maxSpeed: 0
   _minSpeed: 0
-  _speedTime: 3
-  target: {fileID: 1748846660843112886}
-  minlimitX: 80
-  maxlimitX: 80
-  minlimitY: 80
-  maxlimitY: 80
-  journeyTime: 1
+  _target: {fileID: 0}
+  _minlimitX: 0
+  _maxlimitX: 0
+  _minlimitY: 0
+  _maxlimitY: 0
 --- !u!81 &1798167634
 AudioListener:
   m_ObjectHideFlags: 0
@@ -31452,7 +31433,7 @@ PrefabInstance:
     - target: {fileID: 2879687442443831032, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 963194233}
+      objectReference: {fileID: 0}
     - target: {fileID: 3078769906285955178, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14.725037
@@ -31996,7 +31977,7 @@ PrefabInstance:
     - target: {fileID: 8934446541050525013, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: _cameraMover
       value: 
-      objectReference: {fileID: 963194233}
+      objectReference: {fileID: 0}
     - target: {fileID: 9040864061917325336, guid: 81ec3eec2d7d03142ac1e4bfc4bd4a2b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 261

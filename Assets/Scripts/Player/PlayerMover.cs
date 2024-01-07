@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
+    private readonly float Speed = 10f;
+
     [SerializeField] private float _maxPositionX;
     [SerializeField] private float _minPositionX;
-
-    private readonly float _speed = 10f;
 
     private Vector3 _target;
     private float _stepSize = 5f;
@@ -23,7 +23,7 @@ public class PlayerMover : MonoBehaviour
     private void Update()
     {
         if (transform.position != _target)
-            transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _target, Speed * Time.deltaTime);
     }
 
     public void Go()
