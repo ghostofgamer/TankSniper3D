@@ -20,7 +20,7 @@ public class Merge : MonoBehaviour
     private int _layer = 3;
     private RaycastHit hit;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
-    //public event UnityAction<int> LevelChanged;
+    private Coroutine _coroutine;
 
     private void Start()
     {
@@ -43,85 +43,18 @@ public class Merge : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-            var rayDirection = worldPosition - Camera.main.transform.position;
+            Join();
 
-            RaycastHit hitInfo;
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-            if (Physics.Raycast(worldPosition, rayDirection, out hitInfo, Mathf.Infinity, _layerMask))
-            {
-                if (hitInfo.transform.tag == "Cub")
-                {
-                    if (!hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
-                    {
-                        _selectObject.transform.position = hitInfo.transform.position;
-                        _startPosition = hitInfo.collider.gameObject.transform.position;
-                    }
-
-                    if (hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
-                    {
-                        var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
-                        var level = tank.GetComponent<DragItem>().Level;
-                        var levelMerge = tank.GetComponent<DragItem>().LevelMerge;
-
-                        if (_selectObject.GetComponent<DragItem>().Level == level && _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
-                        {
-                            int newLevel = ++level;
-
-                            if (newLevel > _maxIndex)
-                            {
-                                newLevel = StartNewCycle(newLevel, levelMerge);
-
-                                //newLevel = 0;
-                                //_prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
-
-                                //if (_prefabs[newLevel].GetComponent<DragItem>().LevelMerge > _load.Get(Save.CurrentLevel, 0))
-                                //{
-                                //    _save.SetData(Save.Level, newLevel);
-                                //    _save.SetData(Save.Tank, newLevel);
-                                //    _tankView.NewLevel(levelMerge);
-                                //}
-                            }
-
-                            _audioSource.Play();
-                            _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
-                            string name = _prefabs[newLevel].GetComponent<DragItem>().TankName;
-                            int number = _selectObject.GetComponent<DragItem>().LevelMerge;
-                            _save.SetData(name, number);
-                            var newTank = Instantiate(_prefabs[newLevel]);
-                            newTank.transform.position = tank.transform.transform.position;
-                            _selectObject.SetActive(false);
-                            tank.SetActive(false);
-
-                            if (_load.Get(Save.Level, 0) < newLevel)
-                            {
-                                _save.SetData(Save.Level, newLevel);
-                                _save.SetData(Save.Tank, newLevel);
-                                _tankView.NewLevel(levelMerge);
-                            }
-
-                            StartCoroutine(LevelCheck());
-                        }
-                        else
-                        {
-                            ResetPosition();
-                        }
-                    }
-                }
-                else
-                {
-                    ResetPosition();
-                }
-            }
-
-            StartCoroutine(ChangeStorage());
+            _coroutine =  StartCoroutine(ChangeStorage());
             _selectObject = null;
         }
 
         if (_selectObject != null)
         {
-            TankMove();
+            Moving();
         }
     }
 
@@ -135,22 +68,91 @@ public class Merge : MonoBehaviour
         _selectObject.transform.position = _startPosition;
     }
 
-    private int StartNewCycle(int newLevel,int levelMerge)
+    private void Join()
+    {
+        Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
+        var rayDirection = worldPosition - Camera.main.transform.position;
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(worldPosition, rayDirection, out hitInfo, Mathf.Infinity, _layerMask))
+        {
+            if (hitInfo.transform.TryGetComponent(out PositionTank positionTank))
+            {
+                if (!hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
+                {
+                    _selectObject.transform.position = hitInfo.transform.position;
+                    _startPosition = hitInfo.collider.gameObject.transform.position;
+                }
+
+                if (hitInfo.collider.gameObject.GetComponent<PositionTank>().IsStay)
+                {
+                    SetNewTank(hitInfo);
+                }
+            }
+            else
+            {
+                ResetPosition();
+            }
+        }
+    }
+
+    private void SetNewTank (RaycastHit hitInfo)
+    {
+        var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
+        var level = tank.GetComponent<DragItem>().Level;
+        var levelMerge = tank.GetComponent<DragItem>().LevelMerge;
+
+        if (_selectObject.GetComponent<DragItem>().Level == level && _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
+        {
+            int newLevel = ++level;
+
+            if (newLevel > _maxIndex)
+                StartNewCycle(ref newLevel, levelMerge);
+
+            CreateTank(newLevel, tank);
+
+            if (_load.Get(Save.Level, 0) < newLevel)
+                Show(newLevel, levelMerge);
+
+            StartCoroutine(LevelCheck());
+        }
+        else
+        {
+            ResetPosition();
+        }
+    }
+
+    private void CreateTank(int newLevel, GameObject tank)
+    {
+        _audioSource.Play();
+        _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
+        string name = _prefabs[newLevel].GetComponent<DragItem>().TankName;
+        int number = _selectObject.GetComponent<DragItem>().LevelMerge;
+        _save.SetData(name, number);
+        var newTank = Instantiate(_prefabs[newLevel]);
+        newTank.transform.position = tank.transform.transform.position;
+        _selectObject.SetActive(false);
+        tank.SetActive(false);
+    }
+
+    private void StartNewCycle(ref int newLevel, int levelMerge)
     {
         newLevel = 0;
         _prefabs[newLevel].GetComponent<DragItem>().SetLevel(_selectObject.GetComponent<DragItem>().LevelMerge);
 
         if (_prefabs[newLevel].GetComponent<DragItem>().LevelMerge > _load.Get(Save.CurrentLevel, 0))
-        {
-            _save.SetData(Save.Level, newLevel);
-            _save.SetData(Save.Tank, newLevel);
-            _tankView.NewLevel(levelMerge);
-        }
-
-        return newLevel;
+            Show(newLevel, levelMerge);
     }
 
-    private void TankMove()
+    private void Show(int newLevel, int levelMerge)
+    {
+        _save.SetData(Save.Level, newLevel);
+        _save.SetData(Save.Tank, newLevel);
+        _tankView.NewLevel(levelMerge);
+    }
+
+    private void Moving()
     {
         Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
@@ -166,7 +168,7 @@ public class Merge : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if (!hit.collider.CompareTag("drag"))
+                if (!hit.collider.TryGetComponent(out DragItem dragItem))
                     return;
 
                 _selectObject = hit.collider.gameObject;
