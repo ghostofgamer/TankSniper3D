@@ -9,8 +9,8 @@ public class Wallet : MonoBehaviour
     [SerializeField] private TMP_Text _moneyText;
     [SerializeField] private Load _load;
     [SerializeField] private Save _save;
-
     [SerializeField] private int _startMoney;
+
     private int _money;
 
     public int Money => _money;

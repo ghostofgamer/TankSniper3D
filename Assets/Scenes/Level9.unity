@@ -20574,7 +20574,6 @@ MonoBehaviour:
   _load: {fileID: 2077111402}
   _materialContainer: {fileID: 1064403367}
   _screenFocus: {fileID: 963194230}
-  _indexPlayer: 3
 --- !u!4 &1746644475
 Transform:
   m_ObjectHideFlags: 0
@@ -21473,17 +21472,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 313d63cc62ac06c499700478884b5d01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1842175226 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2569487862431919956, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
-  m_PrefabInstance: {fileID: 6105146996763540067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842175200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994bd5a6b4cdde04cbc5b175f7662486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1848596259
@@ -27749,7 +27737,7 @@ PrefabInstance:
     - target: {fileID: 1157576301358396345, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
       propertyPath: _source
       value: 
-      objectReference: {fileID: 1842175226}
+      objectReference: {fileID: 0}
     - target: {fileID: 1298349470791473145, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000604749
@@ -28886,12 +28874,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.00730504
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1157576301358396345, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
+    - {fileID: 2569487862431919956, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6105146996523825077, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
-      insertIndex: 16
+      insertIndex: -1
       addedObject: {fileID: 1842175201}
   m_SourcePrefab: {fileID: 100100000, guid: bf949244c2e063d46b2dcc209f7bbdf1, type: 3}
 --- !u!4 &6105146996763540068 stripped

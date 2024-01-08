@@ -69,7 +69,6 @@ public class BuyButton : AbstractButton
             case Coloring.Pink:
                 _save.SetData(Save.Pink, _index);
                 ShowAd();
-                _rewardVideo.Show();
                 break;
             case Coloring.Tigr:
                 _save.SetData(Save.Tigr, _index);

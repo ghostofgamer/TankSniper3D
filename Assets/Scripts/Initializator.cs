@@ -32,7 +32,6 @@ public class Initializator : MonoBehaviour
     [SerializeField] private ScreenFocus _screenFocus;
 
     private int _indexPlayer;
-    //[SerializeField] private int _indexPlayer;
     private int _mobileIndex = 0;
     private int _pcIndex = 1;
     private Player _player;
@@ -99,7 +98,6 @@ public class Initializator : MonoBehaviour
         _gameObjects.Add(_hitPlayers[index].gameObject);
         _aimInputButton[index].gameObject.SetActive(true);
         _player.GetComponent<CameraAim>().Init(_aimInputButton[index], _visibilityAim[index]);
-        //_killedInfo.Init(_aimInputButton[index].GetComponent<ButtonMover>());
         _bulletsInfo[index].Init(_player.GetComponent<Weapon>());
         _gameObjects.Add(_bulletsInfo[index].gameObject);
         _screenFocus.Init(_aimInputButton[index]);

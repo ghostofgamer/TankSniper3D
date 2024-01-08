@@ -11,12 +11,17 @@ public class Roulette : MonoBehaviour
 
     private float _startReward;
     private int _angle;
-    private int _zero = 0;
     private int _factor = 1;
     private int _double = 2;
     private int _triple = 3;
     private int _quadruple = 4;
     private int _quintuple = 5;
+    private int _minAngleDouble = 65;
+    private int _maxAngleDouble = 90;
+    private int _minAngleTriple = 0;
+    private int _minAngleQuadruple = 300;
+    private int _maxAngleQuadruple = 360;
+    private int _minAngleQuintuple = 271;
 
     public int Win { get; private set; }
 
@@ -29,16 +34,16 @@ public class Roulette : MonoBehaviour
     {
         _angle = Mathf.RoundToInt(transform.eulerAngles.z);
 
-        if (_angle <= 90 && _angle >= 65)
+        if (_angle <= _maxAngleDouble && _angle >= _minAngleDouble)
             _factor = _double;
 
-        if (_angle < 65 && _angle >= _zero)
+        if (_angle < _minAngleDouble && _angle >= _minAngleTriple)
             _factor = _triple;
 
-        if (_angle <= 360 && _angle >= 300)
+        if (_angle <= _maxAngleQuadruple && _angle >= _minAngleQuadruple)
             _factor = _quadruple;
 
-        if (_angle < 300 && _angle >= 271)
+        if (_angle < _minAngleQuadruple && _angle >= _minAngleQuintuple)
             _factor = _quintuple;
 
         Win = (int)_startReward * _factor;

@@ -25,20 +25,17 @@ public class Pointer : MonoBehaviour
     private int _maxY;
     private int _width;
     private int _height;
-    private int _procentWidth;
-    private int _procentHeight;
+    private int _procentWidth = 8;
+    private int _procentHeight = 15;
+    private int _mobileWidth = 21;
+    private int _mobileHeight = 10;
 
     private void Awake()
     {
         if (Application.isMobilePlatform)
         {
-            _procentWidth = 21;
-            _procentHeight = 10;
-        }
-        else
-        {
-            _procentWidth = 8;
-            _procentHeight = 15;
+            _procentWidth = _mobileWidth;
+            _procentHeight = _mobileHeight;
         }
     }
 

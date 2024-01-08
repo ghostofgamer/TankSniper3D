@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class ContinueButton : AbstractButton
 {
+    private const string MainMenu = "MainScene";
+
     [SerializeField] private FullAds _fullVideo;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private EndGame _endGameScreen;
     [SerializeField] private GameObject _moneyFly;
     [SerializeField] private GameObject _moneyFlyMobile;
-
-    private const string MainMenu = "MainScene";
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
