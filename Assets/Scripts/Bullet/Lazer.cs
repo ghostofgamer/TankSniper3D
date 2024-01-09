@@ -23,7 +23,6 @@ namespace Tank3D
 
         private void HitEffect()
         {
-            _ray = new Ray(transform.position, transform.forward);
             bool cast = Physics.Raycast(_ray, out RaycastHit hit, _maxLength);
             Vector3 hitPosition = cast ? hit.point : transform.position + transform.forward * _maxLength;
             _lineRenderer.SetPosition(0, transform.position);
