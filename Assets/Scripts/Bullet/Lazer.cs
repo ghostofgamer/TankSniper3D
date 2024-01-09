@@ -11,6 +11,11 @@ namespace Tank3D
 
         private Ray _ray = new Ray();
 
+        private void Awake()
+        {
+            _ray = new Ray(transform.position, transform.forward);
+        }
+
         private void FixedUpdate()
         {
             HitEffect();
@@ -18,8 +23,8 @@ namespace Tank3D
 
         private void HitEffect()
         {
-            Ray ray = new Ray(transform.position, transform.forward);
-            bool cast = Physics.Raycast(ray, out RaycastHit hit, _maxLength);
+            _ray = new Ray(transform.position, transform.forward);
+            bool cast = Physics.Raycast(_ray, out RaycastHit hit, _maxLength);
             Vector3 hitPosition = cast ? hit.point : transform.position + transform.forward * _maxLength;
             _lineRenderer.SetPosition(0, transform.position);
             _lineRenderer.SetPosition(1, hitPosition);
