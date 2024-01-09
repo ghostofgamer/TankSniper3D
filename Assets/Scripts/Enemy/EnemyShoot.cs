@@ -49,7 +49,7 @@ namespace Tank3D
             if (_pool.TryGetObject(out Bullet bullet, _prefab))
             {
                 _audioSource.PlayOneShot(_audioClip);
-                bullet.Init(shootingPosition);
+                bullet.Init(shootingPosition, _enemy.Target.transform);
                 _effectShooting.Play();
             }
         }

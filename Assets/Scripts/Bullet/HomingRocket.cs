@@ -29,12 +29,13 @@ namespace Tank3D
 
         private void Start()
         {
-            _target = FindObjectOfType<Player>().transform;
+            _target = _bullet.Target;
             _startPosition = gameObject.transform.position;
         }
 
         private void OnEnable()
         {
+            _target = _bullet.Target;
             _speedMove = _maxSpeed;
         }
 

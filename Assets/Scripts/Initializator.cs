@@ -31,7 +31,7 @@ namespace Tank3D
         [SerializeField] private MaterialContainer _materialContainer;
         [SerializeField] private ScreenFocus _screenFocus;
 
-        private int _indexPlayer;
+        [SerializeField] private int _indexPlayer;
         private int _mobileIndex = 0;
         private int _pcIndex = 1;
         private Player _player;
@@ -41,7 +41,7 @@ namespace Tank3D
         {
             Time.timeScale = 1;
             _gameObjects = new List<GameObject>();
-            _indexPlayer = _load.Get(Save.Tank, StartIndex);
+            //_indexPlayer = _load.Get(Save.Tank, StartIndex);
             Init();
         }
 
