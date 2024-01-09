@@ -52,7 +52,7 @@ public class Merge : MonoBehaviour
 
         if (_selectObject != null)
         {
-            Moving();
+            Move();
         }
     }
 
@@ -113,7 +113,7 @@ public class Merge : MonoBehaviour
             if (_load.Get(Save.Level, 0) < newLevel)
                 Show(newLevel, levelMerge);
 
-            StartCoroutine(LevelCheck());
+            StartCoroutine(ChangeValue());
         }
         else
         {
@@ -147,10 +147,10 @@ public class Merge : MonoBehaviour
     {
         _save.SetData(Save.Level, newLevel);
         _save.SetData(Save.Tank, newLevel);
-        _tankView.NewLevel(levelMerge);
+        _tankView.ShowNewLevel(levelMerge);
     }
 
-    private void Moving()
+    private void Move()
     {
         Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
@@ -200,7 +200,7 @@ public class Merge : MonoBehaviour
         _storage.ListChanged();
     }
 
-    private IEnumerator LevelCheck()
+    private IEnumerator ChangeValue()
     {
         yield return _waitForSeconds;
         _buytank.SetValue();

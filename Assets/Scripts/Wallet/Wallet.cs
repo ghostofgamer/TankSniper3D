@@ -18,27 +18,27 @@ public class Wallet : MonoBehaviour
     private void Start()
     {
         _money = _load.Get(Save.Money, _startMoney);
-        MoneyInfo();
+        ShowMoneyInfo();
     }
 
     public void AddMoney(int money)
     {
-       StartCoroutine(MoneyAdd(money));
+       StartCoroutine(ChangeMoney(money));
     }
 
     public void DecreaseMoney(int money)
     {
         _money -= money;
-        MoneyInfo();
+        ShowMoneyInfo();
     }
 
-    private void MoneyInfo()
+    private void ShowMoneyInfo()
     {
         _moneyText.text = _money.ToString("0");
         _save.SetData(Save.Money, _money);
     }
 
-    private IEnumerator MoneyAdd(int money)
+    private IEnumerator ChangeMoney(int money)
     {
         yield return _waitForSeconds;
         float elapsedTime = 0;

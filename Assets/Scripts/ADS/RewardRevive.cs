@@ -5,7 +5,7 @@ public class RewardRevive : RewardVideo
 {
     [SerializeField] private GameOverScreen _gameOverScreen;
     [SerializeField] private PanelInfo _panelInfo;
-    [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private CameraMovement _reviewCamera;
 
     public override void OnReward()
     {

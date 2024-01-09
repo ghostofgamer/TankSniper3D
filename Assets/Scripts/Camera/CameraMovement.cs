@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ReviewCamera : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     private const string MouseX = "Mouse X";
     private const string MouseY = "Mouse Y";

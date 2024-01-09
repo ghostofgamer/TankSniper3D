@@ -13,7 +13,7 @@ public class VictoryScreen : EndGame
     [SerializeField] private TMP_Text _enoughtAmountText;
     [SerializeField] private TMP_Text _rewardCountText;
     [SerializeField] private Load _load;
-    [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private CameraMovement _reviewCamera;
     [SerializeField] private ContinueButton _continueButton;
 
     private Player _player;

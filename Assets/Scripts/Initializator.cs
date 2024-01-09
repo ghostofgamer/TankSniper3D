@@ -21,7 +21,7 @@ public class Initializator : MonoBehaviour
     [SerializeField] private Transform _enemysContainer;
     [Header("Camera")]
     [SerializeField] private HitPoint _hitPoint;
-    [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private CameraMovement _reviewCamera;
     [Header("Other")]
     [SerializeField] private Alarm _alarm;
     [SerializeField] private Progress _progress;
@@ -47,16 +47,16 @@ public class Initializator : MonoBehaviour
     {
         _player = GetPlayer(_indexPlayer);
         _playerHealthbar.Init(_player);
-        EnemyInit(_player);
+        InitEnemy(_player);
         _hitPoint.Init(_player.GetComponent<TowerRotate>());
-        PlatformInit();
+        InitPlatform();
         _alarm.Init(_player.GetComponent<Weapon>());
-        FightScreenInit();
+        InitFightScreen();
         _victoryScreen.Init(_progress, _player);
         SetActive();
     }
 
-    private void EnemyInit(Player player)
+    private void InitEnemy(Player player)
     {
         for (int i = 0; i < _enemysContainer.childCount; i++)
             _enemysContainer.GetChild(i).GetComponent<Enemy>().Init(player);
@@ -73,13 +73,13 @@ public class Initializator : MonoBehaviour
         return _players[index];
     }
 
-    private void FightScreenInit()
+    private void InitFightScreen()
     {
         _fightScreen.Init(_player.GetComponent<Weapon>());
         _gameObjects.Add(_fightScreen.gameObject);
     }
 
-    private void PlatformInit()
+    private void InitPlatform()
     {
         foreach (AimInputButton aimInputButton in _aimInputButton)
             aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());

@@ -45,7 +45,7 @@ public class BulletTrigger : MonoBehaviour
                 enemy.TakeDamage(_bullet.Damage);
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
-                destroy.Destruction();
+                destroy.Collapse();
 
             if (hitCollider.TryGetComponent(out Barrel barrel))
                 barrel.Explosion();

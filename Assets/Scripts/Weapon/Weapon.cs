@@ -71,7 +71,7 @@ public abstract class Weapon : MonoBehaviour
                 BulletInitialization(bullet);
                 AmmoChanger(bullet);
                 AudioSource.Play();
-                EnemyHitChanger();
+                ChangeEnemyHit();
             }
         }
     }
@@ -81,7 +81,7 @@ public abstract class Weapon : MonoBehaviour
         if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
         {
             BulletInitialization(bullet);
-            EnemyHitChanger();
+            ChangeEnemyHit();
             AudioSource.Play();
             RaycastHit hit;
             Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);
@@ -113,7 +113,7 @@ public abstract class Weapon : MonoBehaviour
         _imageAim.enabled = false;
     }
 
-    private void EnemyHitChanger()
+    private void ChangeEnemyHit()
     {
         RaycastHit hit;
         Ray ray = new Ray(ShootPosition.position, ShootPosition.forward);

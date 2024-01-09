@@ -51,7 +51,7 @@ public class LaserShoot : MonoBehaviour
             _effect.transform.position = hitPosition;
 
             if (cast && hit.collider.TryGetComponent(out Destroy destroy))
-                destroy.Destruction();
+                destroy.Collapse();
 
             if (cast && hit.collider.TryGetComponent(out Player player))
                 player.ApplyDamage(_damage, _muzzlePoint.transform);

@@ -7,6 +7,8 @@ public class Lazer : Bullet
     [SerializeField] private BulletTrigger _bulletTrigger;
     [SerializeField] private float _maxLength;
 
+    private Ray _ray = new Ray();
+
     private void FixedUpdate()
     {
         HitEffect();
@@ -14,6 +16,7 @@ public class Lazer : Bullet
 
     private void HitEffect()
     {
+        _ray = (transform.position, transform.forward);
         Ray ray = new Ray(transform.position, transform.forward);
         bool cast = Physics.Raycast(ray, out RaycastHit hit, _maxLength);
         Vector3 hitPosition = cast ? hit.point : transform.position + transform.forward * _maxLength;

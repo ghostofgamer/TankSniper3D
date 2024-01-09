@@ -32,10 +32,10 @@ public class PlayerFire : MonoBehaviour
 
     private void OnDiyng()
     {
-        StartCoroutine(OnDie());
+        StartCoroutine(EnableDie());
     }
 
-    private IEnumerator OnDie()
+    private IEnumerator EnableDie()
     {
         yield return _waitForSeconds;
         _effect.PlayEffect();

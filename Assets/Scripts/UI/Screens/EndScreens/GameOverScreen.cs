@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameOverScreen : EndGame
 {
     [SerializeField] private PanelInfo _panelInfo;
-    [SerializeField] private ReviewCamera _reviewCamera;
+    [SerializeField] private CameraMovement _reviewCamera;
 
     private AimInputButton _aimInputButton;
 

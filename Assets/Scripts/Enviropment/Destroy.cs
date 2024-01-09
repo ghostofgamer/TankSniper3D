@@ -11,7 +11,7 @@ public class Destroy : MonoBehaviour
     private int _destructionDamage = 10;
     private int _force = 1000;
 
-    public void Destruction()
+    public void Collapse()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
 

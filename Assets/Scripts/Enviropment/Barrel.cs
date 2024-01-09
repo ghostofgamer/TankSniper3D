@@ -11,10 +11,10 @@ public class Barrel : MonoBehaviour
 
     public void Explosion()
     {
-        StartCoroutine(OnDestroysss());
+        StartCoroutine(Explode());
     }
 
-    private IEnumerator OnDestroysss()
+    private IEnumerator Explode()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
         Instantiate(_ExplosionParticle, transform);
@@ -25,7 +25,7 @@ public class Barrel : MonoBehaviour
                 enemy.TakeDamage(_damage);
 
             if (hitCollider.TryGetComponent(out Destroy destroy))
-                destroy.Destruction();
+                destroy.Collapse();
         }
 
         yield return _waitForSeconds;

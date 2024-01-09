@@ -13,7 +13,7 @@ public class TowerRotate : MonoBehaviour
         _tower.transform.LookAt(target);
     }
 
-    public void ResetRotate()
+    public void Return()
     {
         if (_tower.transform.rotation != _startTransform.rotation)
             _tower.transform.rotation = Quaternion.Lerp(_tower.transform.rotation, _startTransform.rotation, Speed * Time.deltaTime);

@@ -23,7 +23,7 @@ public class TankView : MonoBehaviour
         SetTank();
     }
 
-    public void NewLevel(int level)
+    public void ShowNewLevel(int level)
     {
         if (_currentLevel < level)
         {

@@ -8,7 +8,7 @@ public class PartBuilding : MonoBehaviour
 
     private void OnEnable()
     {
-        _coroutine = StartCoroutine(OnSetActive());
+        _coroutine = StartCoroutine(DisableActive());
     }
 
     private void OnDisable()
@@ -16,7 +16,7 @@ public class PartBuilding : MonoBehaviour
         StopCoroutine(_coroutine);
     }
 
-    private IEnumerator OnSetActive()
+    private IEnumerator DisableActive()
     {
         yield return _waitForSeconds;
         gameObject.SetActive(false);
