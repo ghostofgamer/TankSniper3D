@@ -1,15 +1,18 @@
 using UnityEngine;
 
-public class MaterialContainer : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Material[] _materials;
-    [SerializeField] private Load _load;
-
-    private int _startIndex = 0;
-
-    public Material GetColor()
+    public class MaterialContainer : MonoBehaviour
     {
-        int index = _load.Get(Save.Color, _startIndex);
-        return _materials[index];
+        [SerializeField] private Material[] _materials;
+        [SerializeField] private Load _load;
+
+        private int _startIndex = 0;
+
+        public Material GetColor()
+        {
+            int index = _load.Get(Save.Color, _startIndex);
+            return _materials[index];
+        }
     }
 }

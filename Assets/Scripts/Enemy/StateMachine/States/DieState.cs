@@ -1,45 +1,48 @@
 using UnityEngine;
 
-public class DieState : State
+namespace Tank3D
 {
-    [SerializeField] private Effect _effect;
-    [SerializeField] private KilledInfo _killedInfo;
-    [SerializeField] private float _delay = 1.65f;
-    [SerializeField] private ColoringChanger _coloringChanger;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private bool _technique;
-    [SerializeField] private Material _newMaterial;
-    [SerializeField] private ParticleSystem[] effects;
-    [SerializeField] private RagdollEnemy _ragdoll;
-    [SerializeField] private Canvas _canvas;
-    [SerializeField] private AudioSource _audioSource;
-
-    private void OnEnable()
+    public class DieState : State
     {
-        Die();
-    }
+        [SerializeField] private Effect _effect;
+        [SerializeField] private KilledInfo _killedInfo;
+        [SerializeField] private float _delay = 1.65f;
+        [SerializeField] private ColoringChanger _coloringChanger;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private bool _technique;
+        [SerializeField] private Material _newMaterial;
+        [SerializeField] private ParticleSystem[] effects;
+        [SerializeField] private RagdollEnemy _ragdoll;
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private AudioSource _audioSource;
 
-    private void Die()
-    {
-        _canvas.enabled = false;
+        private void OnEnable()
+        {
+            Die();
+        }
 
-        if (_audioSource != null)
-            _audioSource.Stop();
+        private void Die()
+        {
+            _canvas.enabled = false;
 
-        _animator.enabled = false;
-        _ragdoll.OnRigidbody();
-        _effect.PlayEffect();
-        _killedInfo.ChangeValue();
+            if (_audioSource != null)
+                _audioSource.Stop();
 
-        if (_technique)
-            TechniqueFire();
-    }
+            _animator.enabled = false;
+            _ragdoll.OnRigidbody();
+            _effect.PlayEffect();
+            _killedInfo.ChangeValue();
 
-    private void TechniqueFire()
-    {
-        foreach (ParticleSystem effect in effects)
-            effect.gameObject.SetActive(true);
+            if (_technique)
+                TechniqueFire();
+        }
 
-        _coloringChanger.SetMaterial(_newMaterial);
+        private void TechniqueFire()
+        {
+            foreach (ParticleSystem effect in effects)
+                effect.gameObject.SetActive(true);
+
+            _coloringChanger.SetMaterial(_newMaterial);
+        }
     }
 }

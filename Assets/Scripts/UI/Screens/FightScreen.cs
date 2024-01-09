@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public class FightScreen : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Wallet _wallet;
-    [SerializeField] private KilledInfo _killedInfo;
-    [SerializeField] private ResetButton _resetButton;
-    [SerializeField] private PlayerHealthbar _playerHealthbar;
-    [SerializeField]private ProgressMap _progressMap;
-
-    private Weapon _weapon;
-
-    public void Init(Weapon weapon)
+    public class FightScreen : MonoBehaviour
     {
-        _weapon = weapon;
-    }
+        [SerializeField] private Wallet _wallet;
+        [SerializeField] private KilledInfo _killedInfo;
+        [SerializeField] private ResetButton _resetButton;
+        [SerializeField] private PlayerHealthbar _playerHealthbar;
+        [SerializeField] private ProgressMap _progressMap;
 
-    public void OnSetScreen()
-    {
-        _wallet.gameObject.SetActive(false);
-        _killedInfo.gameObject.SetActive(true);
-        _progressMap.gameObject.SetActive(false);
-        _resetButton.gameObject.SetActive(true);
-        _playerHealthbar.gameObject.SetActive(true);
+        private Weapon _weapon;
+
+        public void Init(Weapon weapon)
+        {
+            _weapon = weapon;
+        }
+
+        public void OnSetScreen()
+        {
+            _wallet.gameObject.SetActive(false);
+            _killedInfo.gameObject.SetActive(true);
+            _progressMap.gameObject.SetActive(false);
+            _resetButton.gameObject.SetActive(true);
+            _playerHealthbar.gameObject.SetActive(true);
+        }
     }
 }

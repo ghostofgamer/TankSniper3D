@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemView : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Item _item;
-    [SerializeField] private Image _image;
-
-    private void Start()
+    public class ItemView : MonoBehaviour
     {
-        _image.sprite = _item.Icon;
+        [SerializeField] private Item _item;
+        [SerializeField] private Image _image;
+
+        private void Start()
+        {
+            _image.sprite = _item.Icon;
+        }
     }
 }

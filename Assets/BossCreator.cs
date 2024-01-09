@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossCreator : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Alarm _alarm;
-    [SerializeField] private Enemy _monster;
-
-    private void OnEnable()
+    public class BossCreator : MonoBehaviour
     {
-        _alarm.AlertChanged += AwakenMonster;
-    }
+        [SerializeField] private Alarm _alarm;
+        [SerializeField] private Enemy _monster;
 
-    private void OnDisable()
-    {
-        _alarm.AlertChanged += AwakenMonster;
-    }
+        private void OnEnable()
+        {
+            _alarm.AlertChanged += AwakenMonster;
+        }
 
-    private void AwakenMonster()
-    {
-        _monster.gameObject.SetActive(true);
+        private void OnDisable()
+        {
+            _alarm.AlertChanged += AwakenMonster;
+        }
+
+        private void AwakenMonster()
+        {
+            _monster.gameObject.SetActive(true);
+        }
     }
 }

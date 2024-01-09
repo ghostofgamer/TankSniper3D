@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class SettingsButton : AbstractButton
+namespace Tank3D
 {
-    [SerializeField] private SettingsScreen _settingsScreen;
-
-    public override void OnClick()
+    public class SettingsButton : AbstractButton
     {
-        _settingsScreen.Open();
-        AudioListener.pause = true;
+        [SerializeField] private SettingsScreen _settingsScreen;
+
+        public override void OnClick()
+        {
+            _settingsScreen.Open();
+            AudioListener.pause = true;
+        }
     }
 }

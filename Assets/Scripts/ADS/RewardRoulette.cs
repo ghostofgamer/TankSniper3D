@@ -2,35 +2,38 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RewardRoulette : RewardVideo
+namespace Tank3D
 {
-    private const string MainMenu = "MainScene";
-
-    [SerializeField] private Wallet _wallet;
-    [SerializeField] private Roulette _roulette;
-    [SerializeField] private GameObject _moneyMove;
-    [SerializeField] private GameObject _moneyFlyMobile;
-
-    private Coroutine _coroutine;
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
-
-    public override void OnReward()
+    public class RewardRoulette : RewardVideo
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        private const string MainMenu = "MainScene";
 
-        _coroutine = StartCoroutine(Victory());
-    }
+        [SerializeField] private Wallet _wallet;
+        [SerializeField] private Roulette _roulette;
+        [SerializeField] private GameObject _moneyMove;
+        [SerializeField] private GameObject _moneyFlyMobile;
 
-    private IEnumerator Victory()
-    {
-        if (Application.isMobilePlatform)
-            _moneyFlyMobile.SetActive(true);
-        else
-            _moneyMove.SetActive(true);
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
-        _wallet.AddMoney(_roulette.Win);
-        yield return _waitForSeconds;
-        SceneManager.LoadScene(MainMenu);
+        public override void OnReward()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(Victory());
+        }
+
+        private IEnumerator Victory()
+        {
+            if (Application.isMobilePlatform)
+                _moneyFlyMobile.SetActive(true);
+            else
+                _moneyMove.SetActive(true);
+
+            _wallet.AddMoney(_roulette.Win);
+            yield return _waitForSeconds;
+            SceneManager.LoadScene(MainMenu);
+        }
     }
 }

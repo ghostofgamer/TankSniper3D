@@ -1,56 +1,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoverState : State
+namespace Tank3D
 {
-    [SerializeField] private Transform _path;
-    [SerializeField] private float _speedMove = 5;
-    [SerializeField] private EnemyAnimations _enemyAnimations;
-
-    private Enemy _enemy;
-    private List<Transform> _points;
-    private int _currentPoint = 0;
-    private float _speedRotation = 3;
-
-    private void Start()
+    public class MoverState : State
     {
-        _enemy = GetComponent<Enemy>();
-        _points = new List<Transform>();
+        [SerializeField] private Transform _path;
+        [SerializeField] private float _speedMove = 5;
+        [SerializeField] private EnemyAnimations _enemyAnimations;
 
-        for (int i = 0; i < _path.childCount; i++)
-            _points.Add(_path.GetChild(i));
+        private Enemy _enemy;
+        private List<Transform> _points;
+        private int _currentPoint = 0;
+        private float _speedRotation = 3;
 
-        _enemyAnimations.Walking(true);
-    }
+        private void Start()
+        {
+            _enemy = GetComponent<Enemy>();
+            _points = new List<Transform>();
 
-    private void Update()
-    {
-        if (!_enemy.IsDying)
-            Move();
-    }
+            for (int i = 0; i < _path.childCount; i++)
+                _points.Add(_path.GetChild(i));
 
-    private void Move()
-    {
-        Transform target = _points[_currentPoint];
-        transform.position = Vector3.MoveTowards(transform.position, target.position, _speedMove * Time.deltaTime);
-        Rotate(target);
+            _enemyAnimations.Walking(true);
+        }
 
-        if (transform.position == target.position)
-            NextPoint();
-    }
+        private void Update()
+        {
+            if (!_enemy.IsDying)
+                Move();
+        }
 
-    private void Rotate(Transform target)
-    {
-        Vector3 relativePosition = transform.position - target.position;
-        Quaternion rotation = Quaternion.LookRotation(-relativePosition);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
-    }
+        private void Move()
+        {
+            Transform target = _points[_currentPoint];
+            transform.position = Vector3.MoveTowards(transform.position, target.position, _speedMove * Time.deltaTime);
+            Rotate(target);
 
-    private void NextPoint()
-    {
-        _currentPoint++;
+            if (transform.position == target.position)
+                NextPoint();
+        }
 
-        if (_currentPoint >= _points.Count)
-            _currentPoint = 0;
+        private void Rotate(Transform target)
+        {
+            Vector3 relativePosition = transform.position - target.position;
+            Quaternion rotation = Quaternion.LookRotation(-relativePosition);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
+        }
+
+        private void NextPoint()
+        {
+            _currentPoint++;
+
+            if (_currentPoint >= _points.Count)
+                _currentPoint = 0;
+        }
     }
 }

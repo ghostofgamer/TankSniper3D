@@ -1,35 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroy : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Transform _newGameObject;
-    [SerializeField] private GameObject _oldGameObject;
-    [SerializeField] private float _radius;
-
-    private List<Transform> _destroyObjects;
-    private int _destructionDamage = 10;
-    private int _force = 1000;
-
-    public void Collapse()
+    public class Destroy : MonoBehaviour
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
+        [SerializeField] private Transform _newGameObject;
+        [SerializeField] private GameObject _oldGameObject;
+        [SerializeField] private float _radius;
 
-        foreach (var hit in hitColliders)
+        private List<Transform> _destroyObjects;
+        private int _destructionDamage = 10;
+        private int _force = 1000;
+
+        public void Collapse()
         {
-            if (hit.TryGetComponent(out Enemy enemy))
-                enemy.TakeDamage(_destructionDamage);
-        }
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
 
-        _oldGameObject.SetActive(false);
-        _newGameObject.gameObject.SetActive(true);
-        _destroyObjects = new List<Transform>();
+            foreach (var hit in hitColliders)
+            {
+                if (hit.TryGetComponent(out Enemy enemy))
+                    enemy.TakeDamage(_destructionDamage);
+            }
 
-        for (int i = 0; i < _newGameObject.childCount; i++)
-        {
-            _destroyObjects.Add(_newGameObject.GetChild(i));
-            Rigidbody rigidbody = _destroyObjects[i].gameObject.GetComponent<Rigidbody>();
-            rigidbody.AddForce(Vector3.forward * _force, ForceMode.Force);
+            _oldGameObject.SetActive(false);
+            _newGameObject.gameObject.SetActive(true);
+            _destroyObjects = new List<Transform>();
+
+            for (int i = 0; i < _newGameObject.childCount; i++)
+            {
+                _destroyObjects.Add(_newGameObject.GetChild(i));
+                Rigidbody rigidbody = _destroyObjects[i].gameObject.GetComponent<Rigidbody>();
+                rigidbody.AddForce(Vector3.forward * _force, ForceMode.Force);
+            }
         }
     }
 }

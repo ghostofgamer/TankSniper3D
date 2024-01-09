@@ -1,23 +1,26 @@
 using UnityEngine;
 
-public class MoveTransition : Transition
+namespace Tank3D
 {
-    [SerializeField] private Alarm _alarm;
-    [SerializeField] private EnemyAnimations _enemyAnimations;
-
-    private void OnEnable()
+    public class MoveTransition : Transition
     {
-        _alarm.AlertChanged += OnAlarm;
-    }
+        [SerializeField] private Alarm _alarm;
+        [SerializeField] private EnemyAnimations _enemyAnimations;
 
-    private void OnDisable()
-    {
-        _alarm.AlertChanged -= OnAlarm;
-    }
+        private void OnEnable()
+        {
+            _alarm.AlertChanged += OnAlarm;
+        }
 
-    private void OnAlarm()
-    {
-        _enemyAnimations.Walking(true);
-        NeedTransit = true;
+        private void OnDisable()
+        {
+            _alarm.AlertChanged -= OnAlarm;
+        }
+
+        private void OnAlarm()
+        {
+            _enemyAnimations.Walking(true);
+            NeedTransit = true;
+        }
     }
 }

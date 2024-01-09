@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public abstract class Transition : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private State _targetState;
-
-    public State TargetState => _targetState;
-
-    public bool NeedTransit { get; protected set; }
-
-    protected Player Target { get; private set; }
-
-    private void OnEnable()
+    public abstract class Transition : MonoBehaviour
     {
-        NeedTransit = false;
-    }
+        [SerializeField] private State _targetState;
 
-    public void Init(Player target)
-    {
-        Target = target;
+        public State TargetState => _targetState;
+
+        public bool NeedTransit { get; protected set; }
+
+        protected Player Target { get; private set; }
+
+        private void OnEnable()
+        {
+            NeedTransit = false;
+        }
+
+        public void Init(Player target)
+        {
+            Target = target;
+        }
     }
 }

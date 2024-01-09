@@ -1,26 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class EndGame : AbstractScreen
+namespace Tank3D
 {
-    protected int Reward;
-    protected Coroutine _coroutine;
-
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
-
-    public int ViewReward => Reward;
-
-    protected virtual void OnEndGame()
+    public class EndGame : AbstractScreen
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        protected int Reward;
+        protected Coroutine _coroutine;
 
-        StartCoroutine(OpenScreen());
-    }
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(3f);
 
-    private IEnumerator OpenScreen()
-    {
-        yield return _waitForSeconds;
-        Open();
+        public int ViewReward => Reward;
+
+        protected virtual void OnEndGame()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            StartCoroutine(OpenScreen());
+        }
+
+        private IEnumerator OpenScreen()
+        {
+            yield return _waitForSeconds;
+            Open();
+        }
     }
 }

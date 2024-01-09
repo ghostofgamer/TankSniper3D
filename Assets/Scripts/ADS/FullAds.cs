@@ -1,10 +1,13 @@
 using Agava.YandexGames;
 
-public class FullAds : Ad
+namespace Tank3D
 {
-    public override void Show()
+    public class FullAds : Ad
     {
-        if (YandexGamesSdk.IsInitialized)
-            InterstitialAd.Show(OnOpen, OnClose);
+        public override void Show()
+        {
+            if (YandexGamesSdk.IsInitialized)
+                InterstitialAd.Show(OnOpen, OnClose);
+        }
     }
 }

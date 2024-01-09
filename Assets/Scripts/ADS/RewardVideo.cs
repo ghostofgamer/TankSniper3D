@@ -1,17 +1,20 @@
 using Agava.YandexGames;
 
-public class RewardVideo : Ad
+namespace Tank3D
 {
-    public override void Show()
+    public class RewardVideo : Ad
     {
-        if (YandexGamesSdk.IsInitialized)
-            VideoAd.Show(OnOpen, OnReward, OnClose);
-    }
+        public override void Show()
+        {
+            if (YandexGamesSdk.IsInitialized)
+                VideoAd.Show(OnOpen, OnReward, OnClose);
+        }
 
-    public virtual void OnReward() { }
+        public virtual void OnReward() { }
 
-    protected override void OnClose()
-    {
-        base.OnClose();
+        protected override void OnClose()
+        {
+            base.OnClose();
+        }
     }
 }

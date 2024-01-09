@@ -1,23 +1,26 @@
 using UnityEngine;
 
-public class HitPoint : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private TowerRotate _towerRotate;
-
-    private int _factor = 100;
-
-    public void Init(TowerRotate towerRotate)
+    public class HitPoint : MonoBehaviour
     {
-        _towerRotate = towerRotate;
-    }
+        [SerializeField] private TowerRotate _towerRotate;
 
-    public void MoveRotate()
-    {
-        RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * _factor;
-        Ray ray = new Ray(transform.position, forward);
+        private int _factor = 100;
 
-        if (Physics.Raycast(ray, out hit))
-            _towerRotate.Rotate(hit.point);
+        public void Init(TowerRotate towerRotate)
+        {
+            _towerRotate = towerRotate;
+        }
+
+        public void MoveRotate()
+        {
+            RaycastHit hit;
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * _factor;
+            Ray ray = new Ray(transform.position, forward);
+
+            if (Physics.Raycast(ray, out hit))
+                _towerRotate.Rotate(hit.point);
+        }
     }
 }

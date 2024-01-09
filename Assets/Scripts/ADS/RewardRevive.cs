@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardRevive : RewardVideo
+namespace Tank3D
 {
-    [SerializeField] private GameOverScreen _gameOverScreen;
-    [SerializeField] private PanelInfo _panelInfo;
-    [SerializeField] private CameraMovement _reviewCamera;
-
-    public override void OnReward()
+    public class RewardRevive : RewardVideo
     {
-        _gameOverScreen.Close();
-        _panelInfo.Open();
-        _reviewCamera.enabled = true;
-        _gameOverScreen.Player.GetComponent<PlayerFire>().StewFire();
-        _gameOverScreen.Player.Revive();
-    }
+        [SerializeField] private GameOverScreen _gameOverScreen;
+        [SerializeField] private PanelInfo _panelInfo;
+        [SerializeField] private CameraMovement _reviewCamera;
 
-    protected override void OnClose()
-    {
-        base.OnClose();
-        GetComponent<Button>().interactable = true;
+        public override void OnReward()
+        {
+            _gameOverScreen.Close();
+            _panelInfo.Open();
+            _reviewCamera.enabled = true;
+            _gameOverScreen.Player.GetComponent<PlayerFire>().StewFire();
+            _gameOverScreen.Player.Revive();
+        }
+
+        protected override void OnClose()
+        {
+            base.OnClose();
+            GetComponent<Button>().interactable = true;
+        }
     }
 }

@@ -1,31 +1,34 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReloadSlider : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Slider _slider;
-
-    private float _maxValue = 3f;
-    private float _zero = 0f;
-
-    private void OnDisable()
+    public class ReloadSlider : MonoBehaviour
     {
-        _slider.value = _zero;
-    }
+        [SerializeField] private Slider _slider;
 
-    private void Start()
-    {
-        SetValue();
-    }
+        private float _maxValue = 3f;
+        private float _zero = 0f;
 
-    private void Update()
-    {
-        _slider.value += Time.deltaTime;
-    }
+        private void OnDisable()
+        {
+            _slider.value = _zero;
+        }
 
-    private void SetValue()
-    {
-        _slider.value = _zero;
-        _slider.maxValue = _maxValue;
+        private void Start()
+        {
+            SetValue();
+        }
+
+        private void Update()
+        {
+            _slider.value += Time.deltaTime;
+        }
+
+        private void SetValue()
+        {
+            _slider.value = _zero;
+            _slider.maxValue = _maxValue;
+        }
     }
 }

@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class SpriteScaler : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private RectTransform _rectTransform;
-    [SerializeField] private float _size;
-
-    private void Awake()
+    public class SpriteScaler : MonoBehaviour
     {
-        if (Application.isMobilePlatform)
+        [SerializeField] private RectTransform _rectTransform;
+        [SerializeField] private float _size;
+
+        private void Awake()
         {
-            _rectTransform.GetComponent<RectTransform>();
-            _rectTransform.sizeDelta = new Vector3(_size, _size, 0);
-        }
-        else
-        {
-            return;
+            if (Application.isMobilePlatform)
+            {
+                _rectTransform.GetComponent<RectTransform>();
+                _rectTransform.sizeDelta = new Vector3(_size, _size, 0);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

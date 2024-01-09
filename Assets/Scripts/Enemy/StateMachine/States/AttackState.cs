@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class AttackState : State
+namespace Tank3D
 {
-    [SerializeField] private EnemyShoot _enemyShoot;
-
-    private float _speedRotation = 15f;
-    private Coroutine _coroutine;
-
-    private void OnEnable()
+    public class AttackState : State
     {
-        _coroutine = StartCoroutine(_enemyShoot.Shoot());
-    }
+        [SerializeField] private EnemyShoot _enemyShoot;
 
-    private void OnDisable()
-    {
-        StopCoroutine(_coroutine);
-    }
+        private float _speedRotation = 15f;
+        private Coroutine _coroutine;
 
-    private void Update()
-    {
-        Rotate();
-    }
+        private void OnEnable()
+        {
+            _coroutine = StartCoroutine(_enemyShoot.Shoot());
+        }
 
-    protected void Rotate()
-    {
-        Vector3 direction = transform.position - Target.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(-direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
+        private void OnDisable()
+        {
+            StopCoroutine(_coroutine);
+        }
+
+        private void Update()
+        {
+            Rotate();
+        }
+
+        protected void Rotate()
+        {
+            Vector3 direction = transform.position - Target.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(-direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
+        }
     }
 }

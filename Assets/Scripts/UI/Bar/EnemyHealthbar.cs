@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class EnemyHealthbar : Bar
+namespace Tank3D
 {
-    [SerializeField] private Enemy _enemy;
-
-    private void OnEnable()
+    public class EnemyHealthbar : Bar
     {
-        _enemy.HealthChanged += OnValueChanged;
-        Slider.value = Full;
-    }
+        [SerializeField] private Enemy _enemy;
 
-    private void OnDisable()
-    {
-        _enemy.HealthChanged -= OnValueChanged;
+        private void OnEnable()
+        {
+            _enemy.HealthChanged += OnValueChanged;
+            Slider.value = Full;
+        }
+
+        private void OnDisable()
+        {
+            _enemy.HealthChanged -= OnValueChanged;
+        }
     }
 }

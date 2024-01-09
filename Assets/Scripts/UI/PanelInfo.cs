@@ -1,22 +1,25 @@
-public class PanelInfo : AbstractScreen
+namespace Tank3D
 {
-    private readonly int FullAlpha = 1;
-    private readonly int EmptyAlpha = 0;
-
-    public new void Open()
+    public class PanelInfo : AbstractScreen
     {
-        Change(FullAlpha, true, true);
-    }
+        private readonly int FullAlpha = 1;
+        private readonly int EmptyAlpha = 0;
 
-    public new void Close()
-    {
-        Change(EmptyAlpha, false, false);
-    }
+        public new void Open()
+        {
+            Change(FullAlpha, true, true);
+        }
 
-    private void Change(int alpha, bool raycast, bool interactable)
-    {
-        _canvasGroup.alpha = alpha;
-        _canvasGroup.blocksRaycasts = raycast;
-        _canvasGroup.interactable = interactable;
+        public new void Close()
+        {
+            Change(EmptyAlpha, false, false);
+        }
+
+        private void Change(int alpha, bool raycast, bool interactable)
+        {
+            _canvasGroup.alpha = alpha;
+            _canvasGroup.blocksRaycasts = raycast;
+            _canvasGroup.interactable = interactable;
+        }
     }
 }

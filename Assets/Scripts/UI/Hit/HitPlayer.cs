@@ -1,50 +1,53 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HitPlayer : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Image[] _hits;
-    [SerializeField] private GameObject _positionEnemy;
-
-    private Player _player;
-    private int _half = 2;
-    private int _right = 0;
-    private int _left = 1;
-    private int _up = 2;
-    private int _down = 3;
-
-    private void OnEnable()
+    public class HitPlayer : MonoBehaviour
     {
-        _player.Hit += HitView;
-    }
+        [SerializeField] private Image[] _hits;
+        [SerializeField] private GameObject _positionEnemy;
 
-    private void OnDisable()
-    {
-        _player.Hit -= HitView;
-    }
+        private Player _player;
+        private int _half = 2;
+        private int _right = 0;
+        private int _left = 1;
+        private int _up = 2;
+        private int _down = 3;
 
-    public void Init(Player player)
-    {
-        _player = player;
-    }
+        private void OnEnable()
+        {
+            _player.Hit += HitView;
+        }
 
-    private void HitView(Transform transform)
-    {
-        _positionEnemy.transform.position = Camera.main.WorldToScreenPoint(transform.position);
-        int widht = Screen.width / _half;
-        int height = Screen.height / _half;
-        Vector2 center = new Vector2(widht, height);
+        private void OnDisable()
+        {
+            _player.Hit -= HitView;
+        }
 
-        if (_positionEnemy.transform.position.x > center.x)
-            _hits[_right].gameObject.SetActive(true);
+        public void Init(Player player)
+        {
+            _player = player;
+        }
 
-        if (_positionEnemy.transform.position.x < center.x)
-            _hits[_left].gameObject.SetActive(true);
+        private void HitView(Transform transform)
+        {
+            _positionEnemy.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            int widht = Screen.width / _half;
+            int height = Screen.height / _half;
+            Vector2 center = new Vector2(widht, height);
 
-        if (_positionEnemy.transform.position.y > center.y)
-            _hits[_up].gameObject.SetActive(true);
+            if (_positionEnemy.transform.position.x > center.x)
+                _hits[_right].gameObject.SetActive(true);
 
-        if (_positionEnemy.transform.position.y < center.y)
-            _hits[_down].gameObject.SetActive(true);
+            if (_positionEnemy.transform.position.x < center.x)
+                _hits[_left].gameObject.SetActive(true);
+
+            if (_positionEnemy.transform.position.y > center.y)
+                _hits[_up].gameObject.SetActive(true);
+
+            if (_positionEnemy.transform.position.y < center.y)
+                _hits[_down].gameObject.SetActive(true);
+        }
     }
 }

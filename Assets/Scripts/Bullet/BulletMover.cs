@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class BulletMover : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private int _speed = 50;
-
-    private void Update()
+    public class BulletMover : MonoBehaviour
     {
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        [SerializeField] private int _speed = 50;
+
+        private void Update()
+        {
+            transform.position += transform.forward * _speed * Time.deltaTime;
+        }
     }
 }

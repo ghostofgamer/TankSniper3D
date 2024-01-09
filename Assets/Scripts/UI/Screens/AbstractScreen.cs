@@ -1,30 +1,33 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
-public class AbstractScreen : MonoBehaviour
+namespace Tank3D
 {
-    protected CanvasGroup _canvasGroup;
-
-    private void Start()
+    [RequireComponent(typeof(CanvasGroup))]
+    public class AbstractScreen : MonoBehaviour
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
-    }
+        protected CanvasGroup _canvasGroup;
 
-    public virtual void Open()
-    {
-        SetValue(0, 1, true, true);
-    }
+        private void Start()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+        }
 
-    public virtual void Close()
-    {
-        SetValue(1, 0, false, false);
-    }
+        public virtual void Open()
+        {
+            SetValue(0, 1, true, true);
+        }
 
-    private void SetValue(int timeScale, int alpha, bool raycast, bool interactable)
-    {
-        Time.timeScale = timeScale;
-        _canvasGroup.alpha = alpha;
-        _canvasGroup.blocksRaycasts = raycast;
-        _canvasGroup.interactable = interactable;
+        public virtual void Close()
+        {
+            SetValue(1, 0, false, false);
+        }
+
+        private void SetValue(int timeScale, int alpha, bool raycast, bool interactable)
+        {
+            Time.timeScale = timeScale;
+            _canvasGroup.alpha = alpha;
+            _canvasGroup.blocksRaycasts = raycast;
+            _canvasGroup.interactable = interactable;
+        }
     }
 }

@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class Progress : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] protected Save Save;
-    [SerializeField] protected Load Load;
-
-    protected int CurrentIndex;
-    protected int MaxIndex = 4;
-
-    public int StartIndex { get; private set; } = 0;
-
-    private void Start()
+    public class Progress : MonoBehaviour
     {
-        SetIndex();
-    }
+        [SerializeField] protected Save Save;
+        [SerializeField] protected Load Load;
 
-    public int AddIndex()
-    {
-        return ++CurrentIndex;
-    }
+        protected int CurrentIndex;
+        protected int MaxIndex = 4;
 
-    protected void SetIndex()
-    {
-        CurrentIndex = Load.Get(Save.Map, StartIndex);
+        public int StartIndex { get; private set; } = 0;
+
+        private void Start()
+        {
+            SetIndex();
+        }
+
+        public int AddIndex()
+        {
+            return ++CurrentIndex;
+        }
+
+        protected void SetIndex()
+        {
+            CurrentIndex = Load.Get(Save.Map, StartIndex);
+        }
     }
 }

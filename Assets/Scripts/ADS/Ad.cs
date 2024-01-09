@@ -1,35 +1,38 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class Ad : MonoBehaviour
+namespace Tank3D
 {
-    private const string MainScene = "MainScene";
-
-    private int _volumeValue;
-
-    public abstract void Show();
-
-    public void SetVolume(int volume)
+    public abstract class Ad : MonoBehaviour
     {
-        _volumeValue = volume;
-    }
+        private const string MainScene = "MainScene";
 
-    protected virtual void OnOpen()
-    {
-        AudioListener.volume = 0;
-        Time.timeScale = 0;
-    }
+        private int _volumeValue;
 
-    protected virtual void OnClose(bool isClosed)
-    {
-        Time.timeScale = 1;
-        AudioListener.volume = _volumeValue;
-        SceneManager.LoadScene(MainScene);
-    }
+        public abstract void Show();
 
-    protected virtual void OnClose()
-    {
-        Time.timeScale = 1;
-        AudioListener.volume = _volumeValue;
+        public void SetVolume(int volume)
+        {
+            _volumeValue = volume;
+        }
+
+        protected virtual void OnOpen()
+        {
+            AudioListener.volume = 0;
+            Time.timeScale = 0;
+        }
+
+        protected virtual void OnClose(bool isClosed)
+        {
+            Time.timeScale = 1;
+            AudioListener.volume = _volumeValue;
+            SceneManager.LoadScene(MainScene);
+        }
+
+        protected virtual void OnClose()
+        {
+            Time.timeScale = 1;
+            AudioListener.volume = _volumeValue;
+        }
     }
 }

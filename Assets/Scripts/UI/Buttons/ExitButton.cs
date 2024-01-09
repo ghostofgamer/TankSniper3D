@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class ExitButton : AbstractButton
+namespace Tank3D
 {
-    [SerializeField] private FullAds _fullVideo;
-
-    public override void OnClick()
+    public class ExitButton : AbstractButton
     {
-        _fullVideo.Show();
+        [SerializeField] private FullAds _fullVideo;
+
+        public override void OnClick()
+        {
+            _fullVideo.Show();
+        }
     }
 }

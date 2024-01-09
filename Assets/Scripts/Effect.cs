@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public class Effect : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private ParticleSystem _effect;
-
-    private AudioSource _audioSource;
-
-    private void Start()
+    public class Effect : MonoBehaviour
     {
-        _audioSource = _effect.GetComponent<AudioSource>();
-    }
+        [SerializeField] private ParticleSystem _effect;
 
-    public void PlayEffect()
-    {
-        if (_effect != null)
-            _effect.Play();
+        private AudioSource _audioSource;
 
-        if (_audioSource != null)
-            _audioSource.Play();
+        private void Start()
+        {
+            _audioSource = _effect.GetComponent<AudioSource>();
+        }
+
+        public void PlayEffect()
+        {
+            if (_effect != null)
+                _effect.Play();
+
+            if (_audioSource != null)
+                _audioSource.Play();
+        }
     }
 }

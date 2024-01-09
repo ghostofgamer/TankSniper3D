@@ -1,59 +1,62 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyShoot : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Bullet _prefab;
-    [SerializeField] private Transform _shootPosition;
-    [SerializeField] private Transform _container;
-    [SerializeField] private float _delay;
-    [SerializeField] private float _minTimeShoot;
-    [SerializeField] private float _maxTimeShoot;
-    [SerializeField] private ParticleSystem _effectShooting;
-    [SerializeField] private Enemy _enemy;
-    [Header("Звук")]
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _audioClip;
-
-    private int _ammoCount = 10;
-    private ObjectPool<Bullet> _pool;
-    private bool _autoExpand = true;
-
-    private void Start()
+    public class EnemyShoot : MonoBehaviour
     {
-        _pool = new ObjectPool<Bullet>(_prefab, _ammoCount, _container);
-        _pool.SetAutoExpand(_autoExpand);
-    }
+        [SerializeField] private Bullet _prefab;
+        [SerializeField] private Transform _shootPosition;
+        [SerializeField] private Transform _container;
+        [SerializeField] private float _delay;
+        [SerializeField] private float _minTimeShoot;
+        [SerializeField] private float _maxTimeShoot;
+        [SerializeField] private ParticleSystem _effectShooting;
+        [SerializeField] private Enemy _enemy;
+        [Header("Звук")]
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _audioClip;
 
-    private void Update()
-    {
-        LookTarget(_enemy.Target.transform);
-    }
+        private int _ammoCount = 10;
+        private ObjectPool<Bullet> _pool;
+        private bool _autoExpand = true;
 
-    public IEnumerator Shoot()
-    {
-        _delay = Random.Range(_minTimeShoot, _maxTimeShoot);
-        WaitForSeconds waitForSeconds = new WaitForSeconds(_delay);
-
-        while (true)
+        private void Start()
         {
-            yield return waitForSeconds;
-            Shooting(_shootPosition);
+            _pool = new ObjectPool<Bullet>(_prefab, _ammoCount, _container);
+            _pool.SetAutoExpand(_autoExpand);
         }
-    }
 
-    public void Shooting(Transform shootingPosition)
-    {
-        if (_pool.TryGetObject(out Bullet bullet, _prefab))
+        private void Update()
         {
-            _audioSource.PlayOneShot(_audioClip);
-            bullet.Init(shootingPosition);
-            _effectShooting.Play();
+            LookTarget(_enemy.Target.transform);
         }
-    }
 
-    public void LookTarget(Transform target)
-    {
-        _shootPosition.LookAt(target.transform);
+        public IEnumerator Shoot()
+        {
+            _delay = Random.Range(_minTimeShoot, _maxTimeShoot);
+            WaitForSeconds waitForSeconds = new WaitForSeconds(_delay);
+
+            while (true)
+            {
+                yield return waitForSeconds;
+                Shooting(_shootPosition);
+            }
+        }
+
+        public void Shooting(Transform shootingPosition)
+        {
+            if (_pool.TryGetObject(out Bullet bullet, _prefab))
+            {
+                _audioSource.PlayOneShot(_audioClip);
+                bullet.Init(shootingPosition);
+                _effectShooting.Play();
+            }
+        }
+
+        public void LookTarget(Transform target)
+        {
+            _shootPosition.LookAt(target.transform);
+        }
     }
 }

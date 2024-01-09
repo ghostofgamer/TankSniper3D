@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProgressPoint : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Image _imageNotComplite;
-    [SerializeField] private Image _imageComplite;
-
-    public void Complite()
+    public class ProgressPoint : MonoBehaviour
     {
-        SetBool(false);
-    }
+        [SerializeField] private Image _imageNotComplite;
+        [SerializeField] private Image _imageComplite;
 
-    public void NoComplite()
-    {
-        SetBool(true);
-    }
+        public void Complite()
+        {
+            SetBool(false);
+        }
 
-    private void SetBool(bool flag)
-    {
-        _imageNotComplite.gameObject.SetActive(flag);
-        _imageComplite.gameObject.SetActive(!flag);
+        public void NoComplite()
+        {
+            SetBool(true);
+        }
+
+        private void SetBool(bool flag)
+        {
+            _imageNotComplite.gameObject.SetActive(flag);
+            _imageComplite.gameObject.SetActive(!flag);
+        }
     }
 }

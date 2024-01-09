@@ -1,9 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "Item/CreateNewItem", order = 51)]
-public class Item : ScriptableObject
+namespace Tank3D
 {
-    [SerializeField] private Sprite _icon;
+    [CreateAssetMenu(fileName = "NewItem", menuName = "Item/CreateNewItem", order = 51)]
+    public class Item : ScriptableObject
+    {
+        [SerializeField] private Sprite _icon;
 
-    public Sprite Icon => _icon;
+        public Sprite Icon => _icon;
+    }
 }

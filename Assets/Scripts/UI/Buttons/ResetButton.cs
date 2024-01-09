@@ -1,9 +1,12 @@
 using UnityEngine.SceneManagement;
 
-public class ResetButton : AbstractButton
+namespace Tank3D
 {
-    public override void OnClick()
+    public class ResetButton : AbstractButton
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public override void OnClick()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

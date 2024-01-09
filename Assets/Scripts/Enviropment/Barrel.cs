@@ -1,34 +1,37 @@
 using System.Collections;
 using UnityEngine;
 
-public class Barrel : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private float _radius;
-    [SerializeField] private ParticleSystem _ExplosionParticle;
-
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
-    private int _damage = 30;
-
-    public void Explosion()
+    public class Barrel : MonoBehaviour
     {
-        StartCoroutine(Explode());
-    }
+        [SerializeField] private float _radius;
+        [SerializeField] private ParticleSystem _ExplosionParticle;
 
-    private IEnumerator Explode()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
-        Instantiate(_ExplosionParticle, transform);
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        private int _damage = 30;
 
-        foreach (var hitCollider in hitColliders)
+        public void Explosion()
         {
-            if (hitCollider.TryGetComponent(out Enemy enemy))
-                enemy.TakeDamage(_damage);
-
-            if (hitCollider.TryGetComponent(out Destroy destroy))
-                destroy.Collapse();
+            StartCoroutine(Explode());
         }
 
-        yield return _waitForSeconds;
-        gameObject.SetActive(false);
+        private IEnumerator Explode()
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, _radius);
+            Instantiate(_ExplosionParticle, transform);
+
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.TryGetComponent(out Enemy enemy))
+                    enemy.TakeDamage(_damage);
+
+                if (hitCollider.TryGetComponent(out Destroy destroy))
+                    destroy.Collapse();
+            }
+
+            yield return _waitForSeconds;
+            gameObject.SetActive(false);
+        }
     }
 }

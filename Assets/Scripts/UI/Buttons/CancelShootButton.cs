@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CancelShootButton : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private EventTrigger _eventTrigger;
-
-    public bool IsCancel { get; private set; }
-
-    private void OnEnable()
+    public class CancelShootButton : MonoBehaviour
     {
-        DontCancel();
-    }
+        [SerializeField] private EventTrigger _eventTrigger;
 
-    public void Cancel()
-    {
-        IsCancel = true;
-    }
+        public bool IsCancel { get; private set; }
 
-    public void DontCancel()
-    {
-        IsCancel = false;
+        private void OnEnable()
+        {
+            DontCancel();
+        }
+
+        public void Cancel()
+        {
+            IsCancel = true;
+        }
+
+        public void DontCancel()
+        {
+            IsCancel = false;
+        }
     }
 }

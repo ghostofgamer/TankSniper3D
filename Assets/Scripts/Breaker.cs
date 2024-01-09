@@ -1,22 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public class Breaker : MonoBehaviour
+namespace Tank3D
 {
-    private Coroutine _coroutine;
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
-
-    private void Start()
+    public class Breaker : MonoBehaviour
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
-        _coroutine = StartCoroutine(OffActive());
-    }
+        private void Start()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-    private IEnumerator OffActive()
-    {
-        yield return _waitForSeconds;
-        gameObject.SetActive(false);
+            _coroutine = StartCoroutine(OffActive());
+        }
+
+        private IEnumerator OffActive()
+        {
+            yield return _waitForSeconds;
+            gameObject.SetActive(false);
+        }
     }
 }

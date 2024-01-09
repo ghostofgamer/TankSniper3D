@@ -1,20 +1,23 @@
 using UnityEngine;
 
-public class Load : MonoBehaviour
+namespace Tank3D
 {
-    public int Get(string name, int number)
+    public class Load : MonoBehaviour
     {
-        if (PlayerPrefs.HasKey(name))
-            return PlayerPrefs.GetInt(name);
+        public int Get(string name, int number)
+        {
+            if (PlayerPrefs.HasKey(name))
+                return PlayerPrefs.GetInt(name);
 
-        return number;
-    }
+            return number;
+        }
 
-    public float Get(string name, float number)
-    {
-        if (PlayerPrefs.HasKey(name))
-            return PlayerPrefs.GetFloat(name);
+        public float Get(string name, float number)
+        {
+            if (PlayerPrefs.HasKey(name))
+                return PlayerPrefs.GetFloat(name);
 
-        return number;
+            return number;
+        }
     }
 }

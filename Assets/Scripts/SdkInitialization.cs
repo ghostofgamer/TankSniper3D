@@ -3,23 +3,26 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SdkInitialization : MonoBehaviour
+namespace Tank3D
 {
-    private const string MainScene = "MainScene";
-
-    private void Awake()
+    public class SdkInitialization : MonoBehaviour
     {
-        YandexGamesSdk.CallbackLogging = true;
-    }
+        private const string MainScene = "MainScene";
 
-    private IEnumerator Start()
-    {
-        yield return YandexGamesSdk.Initialize(OnInitialized);
-    }
+        private void Awake()
+        {
+            YandexGamesSdk.CallbackLogging = true;
+        }
 
-    private void OnInitialized()
-    {
-        YandexGamesSdk.GameReady();
-        SceneManager.LoadScene(MainScene);
+        private IEnumerator Start()
+        {
+            yield return YandexGamesSdk.Initialize(OnInitialized);
+        }
+
+        private void OnInitialized()
+        {
+            YandexGamesSdk.GameReady();
+            SceneManager.LoadScene(MainScene);
+        }
     }
 }

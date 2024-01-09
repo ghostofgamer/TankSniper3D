@@ -1,35 +1,38 @@
 using UnityEngine;
 
-public class GameOverScreen : EndGame
+namespace Tank3D
 {
-    [SerializeField] private PanelInfo _panelInfo;
-    [SerializeField] private CameraMovement _reviewCamera;
-
-    private AimInputButton _aimInputButton;
-
-    public Player Player { get; private set; }
-
-    public void Init(Player player, AimInputButton aimInputButton)
+    public class GameOverScreen : EndGame
     {
-        Player = player;
-        _aimInputButton = aimInputButton;
-    }
+        [SerializeField] private PanelInfo _panelInfo;
+        [SerializeField] private CameraMovement _reviewCamera;
 
-    private void OnEnable()
-    {
-        Player.Dying += OnEndGame;
-    }
+        private AimInputButton _aimInputButton;
 
-    private void OnDisable()
-    {
-        Player.Dying -= OnEndGame;
-    }
+        public Player Player { get; private set; }
 
-    protected override void OnEndGame()
-    {
-        _aimInputButton.ReturnHide();
-        _panelInfo.Close();
-        base.OnEndGame();
-        _reviewCamera.enabled = false;
+        public void Init(Player player, AimInputButton aimInputButton)
+        {
+            Player = player;
+            _aimInputButton = aimInputButton;
+        }
+
+        private void OnEnable()
+        {
+            Player.Dying += OnEndGame;
+        }
+
+        private void OnDisable()
+        {
+            Player.Dying -= OnEndGame;
+        }
+
+        protected override void OnEndGame()
+        {
+            _aimInputButton.ReturnHide();
+            _panelInfo.Close();
+            base.OnEndGame();
+            _reviewCamera.enabled = false;
+        }
     }
 }

@@ -1,21 +1,24 @@
 using System.Linq;
 using UnityEngine;
 
-public class PartCollapse : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private GameObject[] _houseParts;
-    [SerializeField] private int _minCountPart;
-
-    private void Update()
+    public class PartCollapse : MonoBehaviour
     {
-        Collapse();
-    }
+        [SerializeField] private GameObject[] _houseParts;
+        [SerializeField] private int _minCountPart;
 
-    private void Collapse()
-    {
-        var filter = _houseParts.Where(p => p.activeSelf == true);
+        private void Update()
+        {
+            Collapse();
+        }
 
-        if (filter.Count() <= _minCountPart)
-            GetComponent<Destroy>().Collapse();
+        private void Collapse()
+        {
+            var filter = _houseParts.Where(p => p.activeSelf == true);
+
+            if (filter.Count() <= _minCountPart)
+                GetComponent<Destroy>().Collapse();
+        }
     }
 }

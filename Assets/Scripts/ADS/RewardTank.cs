@@ -1,19 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardTank : RewardVideo
+namespace Tank3D
 {
-    [SerializeField] private BuyTank _button;
-    [SerializeField] private RewardTankButton _rewardTankButton;
-
-    public override void OnReward()
+    public class RewardTank : RewardVideo
     {
-        _button.OnClick();
-    }
+        [SerializeField] private BuyTank _button;
+        [SerializeField] private RewardTankButton _rewardTankButton;
 
-    protected override void OnClose()
-    {
-        base.OnClose();
-        _rewardTankButton.GetComponent<Button>().interactable = true;
+        public override void OnReward()
+        {
+            _button.OnClick();
+        }
+
+        protected override void OnClose()
+        {
+            base.OnClose();
+            _rewardTankButton.GetComponent<Button>().interactable = true;
+        }
     }
 }

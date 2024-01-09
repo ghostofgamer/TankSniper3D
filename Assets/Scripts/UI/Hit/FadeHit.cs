@@ -1,22 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
-public class FadeHit : MonoBehaviour
+namespace Tank3D
 {
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
-    private Coroutine _coroutine;
-
-    private void OnEnable()
+    public class FadeHit : MonoBehaviour
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        private Coroutine _coroutine;
 
-        _coroutine = StartCoroutine(Fade());
-    }
+        private void OnEnable()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-    private IEnumerator Fade()
-    {
-        yield return _waitForSeconds;
-        gameObject.SetActive(false);
+            _coroutine = StartCoroutine(Fade());
+        }
+
+        private IEnumerator Fade()
+        {
+            yield return _waitForSeconds;
+            gameObject.SetActive(false);
+        }
     }
 }

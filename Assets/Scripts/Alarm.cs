@@ -1,29 +1,32 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Alarm : MonoBehaviour
+namespace Tank3D
 {
-    private Weapon _weapon;
-
-    public event UnityAction AlertChanged;
-
-    public void Init(Weapon weapon)
+    public class Alarm : MonoBehaviour
     {
-        _weapon = weapon;
-    }
+        private Weapon _weapon;
 
-    private void OnEnable()
-    {
-        _weapon.FirstShoot += OnSetAlarm;
-    }
+        public event UnityAction AlertChanged;
 
-    private void OnDisable()
-    {
-        _weapon.FirstShoot -= OnSetAlarm;
-    }
+        public void Init(Weapon weapon)
+        {
+            _weapon = weapon;
+        }
 
-    private void OnSetAlarm()
-    {
-        AlertChanged?.Invoke();
+        private void OnEnable()
+        {
+            _weapon.FirstShoot += OnSetAlarm;
+        }
+
+        private void OnDisable()
+        {
+            _weapon.FirstShoot -= OnSetAlarm;
+        }
+
+        private void OnSetAlarm()
+        {
+            AlertChanged?.Invoke();
+        }
     }
 }

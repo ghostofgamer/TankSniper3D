@@ -1,46 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private List<Transition> _transitions;
-
-    protected Player Target { get; private set; }
-
-    public void Enter(Player target)
+    public abstract class State : MonoBehaviour
     {
-        if (enabled == false)
-        {
-            Target = target;
-            enabled = true;
+        [SerializeField] private List<Transition> _transitions;
 
-            foreach (Transition transition in _transitions)
+        protected Player Target { get; private set; }
+
+        public void Enter(Player target)
+        {
+            if (enabled == false)
             {
-                transition.enabled = true;
-                transition.Init(Target);
+                Target = target;
+                enabled = true;
+
+                foreach (Transition transition in _transitions)
+                {
+                    transition.enabled = true;
+                    transition.Init(Target);
+                }
             }
         }
-    }
 
-    public State GetNextState()
-    {
-        foreach (Transition transition in _transitions)
-        {
-            if (transition.NeedTransit)
-                return transition.TargetState;
-        }
-
-        return null;
-    }
-
-    public void Exit()
-    {
-        if (enabled == true)
+        public State GetNextState()
         {
             foreach (Transition transition in _transitions)
-                transition.enabled = false;
+            {
+                if (transition.NeedTransit)
+                    return transition.TargetState;
+            }
 
-            enabled = false;
+            return null;
+        }
+
+        public void Exit()
+        {
+            if (enabled == true)
+            {
+                foreach (Transition transition in _transitions)
+                    transition.enabled = false;
+
+                enabled = false;
+            }
         }
     }
 }

@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private int _damage;
-
-    public Transform ShootPosition { get; private set; }
-
-    public int Damage => _damage;
-
-    public void Init(Transform transform)
+    public class Bullet : MonoBehaviour
     {
-        ShootPosition = transform;
-        this.transform.position = transform.position;
-        this.transform.rotation = transform.rotation;
+        [SerializeField] private int _damage;
+
+        public Transform ShootPosition { get; private set; }
+
+        public int Damage => _damage;
+
+        public void Init(Transform transform)
+        {
+            ShootPosition = transform;
+            this.transform.position = transform.position;
+            this.transform.rotation = transform.rotation;
+        }
     }
 }

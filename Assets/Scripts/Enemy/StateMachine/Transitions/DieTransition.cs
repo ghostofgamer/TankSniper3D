@@ -1,24 +1,27 @@
 using UnityEngine;
 
-public class DieTransition : Transition
+namespace Tank3D
 {
-    [SerializeField] private Enemy _enemy;
-
-    private void OnEnable()
+    public class DieTransition : Transition
     {
-        _enemy.HealthChanged += DieState;
-    }
+        [SerializeField] private Enemy _enemy;
 
-    private void OnDisable()
-    {
-        _enemy.HealthChanged -= DieState;
-    }
-
-    private void DieState(int currentHealth, int maxHealth)
-    {
-        if (currentHealth <= 0)
+        private void OnEnable()
         {
-            NeedTransit = true;
+            _enemy.HealthChanged += DieState;
+        }
+
+        private void OnDisable()
+        {
+            _enemy.HealthChanged -= DieState;
+        }
+
+        private void DieState(int currentHealth, int maxHealth)
+        {
+            if (currentHealth <= 0)
+            {
+                NeedTransit = true;
+            }
         }
     }
 }

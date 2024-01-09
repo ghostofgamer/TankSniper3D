@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class TabButton : AbstractButton
+namespace Tank3D
 {
-    [SerializeField] private StoreScreen _storeScreen;
-    [SerializeField] private int _index;
-
-    public override void OnClick()
+    public class TabButton : AbstractButton
     {
-        _storeScreen.OpenTab(_index);
+        [SerializeField] private StoreScreen _storeScreen;
+        [SerializeField] private int _index;
+
+        public override void OnClick()
+        {
+            _storeScreen.OpenTab(_index);
+        }
     }
 }

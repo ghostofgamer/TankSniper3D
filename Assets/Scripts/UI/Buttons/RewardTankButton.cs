@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class RewardTankButton : AbstractButton
+namespace Tank3D
 {
-    [SerializeField] private RewardTank _rewardTank;
-    [SerializeField] private Load _load;
-
-    private int _startVolume = 1;
-
-    public override void OnClick()
+    public class RewardTankButton : AbstractButton
     {
-        int volume = _load.Get(Save.Volume, _startVolume);
-        Button.interactable = false;
-        _rewardTank.SetVolume(volume);
-        _rewardTank.Show();
+        [SerializeField] private RewardTank _rewardTank;
+        [SerializeField] private Load _load;
+
+        private int _startVolume = 1;
+
+        public override void OnClick()
+        {
+            int volume = _load.Get(Save.Volume, _startVolume);
+            Button.interactable = false;
+            _rewardTank.SetVolume(volume);
+            _rewardTank.Show();
+        }
     }
 }

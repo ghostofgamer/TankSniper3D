@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Bar : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] protected Slider Slider;
-
-    protected float Full = 1;
-
-    public void OnValueChanged(int value, int maxValue)
+    public abstract class Bar : MonoBehaviour
     {
-        Slider.value = (float)value / maxValue;
+        [SerializeField] protected Slider Slider;
+
+        protected float Full = 1;
+
+        public void OnValueChanged(int value, int maxValue)
+        {
+            Slider.value = (float)value / maxValue;
+        }
     }
 }

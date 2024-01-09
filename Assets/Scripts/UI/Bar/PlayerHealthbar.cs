@@ -1,20 +1,23 @@
-public class PlayerHealthbar : Bar
+namespace Tank3D
 {
-    private Player _player;
-
-    private void OnEnable()
+    public class PlayerHealthbar : Bar
     {
-        _player.HealthChanged += OnValueChanged;
-        Slider.value = Full;
-    }
+        private Player _player;
 
-    private void OnDisable()
-    {
-        _player.HealthChanged -= OnValueChanged;
-    }
+        private void OnEnable()
+        {
+            _player.HealthChanged += OnValueChanged;
+            Slider.value = Full;
+        }
 
-    public void Init(Player player)
-    {
-        _player = player;
+        private void OnDisable()
+        {
+            _player.HealthChanged -= OnValueChanged;
+        }
+
+        public void Init(Player player)
+        {
+            _player = player;
+        }
     }
 }

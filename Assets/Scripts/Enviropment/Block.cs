@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class Block : MonoBehaviour
+namespace Tank3D
 {
+    public class Block : MonoBehaviour
+    {
+    }
 }

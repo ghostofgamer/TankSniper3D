@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class RagdollEnemy : MonoBehaviour
+namespace Tank3D
 {
-    private Rigidbody[] rigidbodies;
-
-    private void Start()
+    public class RagdollEnemy : MonoBehaviour
     {
-        rigidbodies = GetComponentsInChildren<Rigidbody>();
-        OffRigidbody();
-    }
+        private Rigidbody[] rigidbodies;
 
-    public void OnRigidbody()
-    {
-        SetValue(false);
-    }
+        private void Start()
+        {
+            rigidbodies = GetComponentsInChildren<Rigidbody>();
+            OffRigidbody();
+        }
 
-    private void OffRigidbody()
-    {
-        SetValue(true);
-    }
+        public void OnRigidbody()
+        {
+            SetValue(false);
+        }
 
-    private void SetValue(bool flag)
-    {
-        foreach (Rigidbody rigidbody in rigidbodies)
-            rigidbody.isKinematic = flag;
+        private void OffRigidbody()
+        {
+            SetValue(true);
+        }
+
+        private void SetValue(bool flag)
+        {
+            foreach (Rigidbody rigidbody in rigidbodies)
+                rigidbody.isKinematic = flag;
+        }
     }
 }

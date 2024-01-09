@@ -1,38 +1,41 @@
 using System.Collections;
 using UnityEngine;
 
-public class AttackTransition : Transition
+namespace Tank3D
 {
-    [SerializeField] private Alarm _alarm;
-    [SerializeField] private EnemyAnimations _enemyAnimations;
-    [SerializeField] private AudioSource _audioSource;
-
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
-
-    private void OnEnable()
+    public class AttackTransition : Transition
     {
-        _alarm.AlertChanged += OnAlarm;
-    }
+        [SerializeField] private Alarm _alarm;
+        [SerializeField] private EnemyAnimations _enemyAnimations;
+        [SerializeField] private AudioSource _audioSource;
 
-    private void OnDisable()
-    {
-        _alarm.AlertChanged -= OnAlarm;
-    }
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
-    private void OnAlarm()
-    {
-        if (_audioSource != null)
-            StartCoroutine(SlowStopSound());
+        private void OnEnable()
+        {
+            _alarm.AlertChanged += OnAlarm;
+        }
 
-        _enemyAnimations.Shooting(true);
-        NeedTransit = true;
-    }
+        private void OnDisable()
+        {
+            _alarm.AlertChanged -= OnAlarm;
+        }
 
-    private IEnumerator SlowStopSound()
-    {
-        yield return _waitForSeconds;
+        private void OnAlarm()
+        {
+            if (_audioSource != null)
+                StartCoroutine(SlowStopSound());
 
-        if (!GetComponent<Enemy>().IsHelicopter && !GetComponent<Enemy>().IsBoss)
-            _audioSource.Stop();
+            _enemyAnimations.Shooting(true);
+            NeedTransit = true;
+        }
+
+        private IEnumerator SlowStopSound()
+        {
+            yield return _waitForSeconds;
+
+            if (!GetComponent<Enemy>().IsHelicopter && !GetComponent<Enemy>().IsBoss)
+                _audioSource.Stop();
+        }
     }
 }

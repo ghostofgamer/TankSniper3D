@@ -1,4 +1,7 @@
-public class IdleState : State
+namespace Tank3D
 {
-    private void Start() { }
+    public class IdleState : State
+    {
+        private void Start() { }
+    }
 }

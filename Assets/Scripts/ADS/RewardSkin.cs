@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class RewardSkin : RewardVideo
+namespace Tank3D
 {
-    [SerializeField] private BuyButton buyButton;
-
-    public override void OnReward()
+    public class RewardSkin : RewardVideo
     {
-        buyButton.OffActive();
+        [SerializeField] private BuyButton buyButton;
+
+        public override void OnReward()
+        {
+            buyButton.OffActive();
+        }
     }
 }

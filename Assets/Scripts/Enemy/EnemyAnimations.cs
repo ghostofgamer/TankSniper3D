@@ -1,33 +1,36 @@
 using UnityEngine;
 
-public class EnemyAnimations : MonoBehaviour
+namespace Tank3D
 {
-    private const string Dying = "Dying";
-    private const string Rotate = "Rotate";
-    private const string Shoot = "Shoot";
-    private const string Walk = "Walk";
-
-    [SerializeField] private Animator _animator;
-    [SerializeField] private bool _isTank = false;
-
-    public void Die(bool flag)
+    public class EnemyAnimations : MonoBehaviour
     {
-        _animator.SetBool(Dying, flag);
-    }
+        private const string Dying = "Dying";
+        private const string Rotate = "Rotate";
+        private const string Shoot = "Shoot";
+        private const string Walk = "Walk";
 
-    public void TowerRotate(bool flag)
-    {
-        _animator.SetBool(Rotate, flag);
-    }
+        [SerializeField] private Animator _animator;
+        [SerializeField] private bool _isTank = false;
 
-    public void Shooting(bool flag)
-    {
-        _animator.SetBool(Shoot, flag);
-    }
+        public void Die(bool flag)
+        {
+            _animator.SetBool(Dying, flag);
+        }
 
-    public void Walking(bool flag)
-    {
-        if (!_isTank)
-            _animator.SetBool(Walk, flag);
+        public void TowerRotate(bool flag)
+        {
+            _animator.SetBool(Rotate, flag);
+        }
+
+        public void Shooting(bool flag)
+        {
+            _animator.SetBool(Shoot, flag);
+        }
+
+        public void Walking(bool flag)
+        {
+            if (!_isTank)
+                _animator.SetBool(Walk, flag);
+        }
     }
 }

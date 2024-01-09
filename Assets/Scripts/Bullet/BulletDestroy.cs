@@ -1,26 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class BulletDestroy : MonoBehaviour
+namespace Tank3D
 {
-    private readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(3f);
-
-    private Coroutine _coroutine;
-
-    private void OnEnable()
+    public class BulletDestroy : MonoBehaviour
     {
-        _coroutine = StartCoroutine(SetActive());
-    }
+        private readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(3f);
 
-    private void OnDisable()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-    }
+        private Coroutine _coroutine;
 
-    private IEnumerator SetActive()
-    {
-        yield return WaitForSeconds;
-        gameObject.SetActive(false);
+        private void OnEnable()
+        {
+            _coroutine = StartCoroutine(SetActive());
+        }
+
+        private void OnDisable()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+        }
+
+        private IEnumerator SetActive()
+        {
+            yield return WaitForSeconds;
+            gameObject.SetActive(false);
+        }
     }
 }

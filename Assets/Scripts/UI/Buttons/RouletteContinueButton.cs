@@ -1,32 +1,35 @@
 using UnityEngine;
 
-public class RouletteContinueButton : AbstractButton
+namespace Tank3D
 {
-    [SerializeField] private Roulette _roulette;
-    [SerializeField] private RewardVideo _rewardVideo;
-    [SerializeField] private Load _load;
-    [SerializeField] private GameObject _moneyMove;
-    [SerializeField] private GameObject _moneyFlyMobile;
-    [SerializeField] private Wallet _wallet;
-
-    private int _startVolume = 1;
-
-    public override void OnClick()
+    public class RouletteContinueButton : AbstractButton
     {
-        OnVictory();
-    }
+        [SerializeField] private Roulette _roulette;
+        [SerializeField] private RewardVideo _rewardVideo;
+        [SerializeField] private Load _load;
+        [SerializeField] private GameObject _moneyMove;
+        [SerializeField] private GameObject _moneyFlyMobile;
+        [SerializeField] private Wallet _wallet;
 
-    public void SetActive()
-    {
-        _roulette.GetComponent<Animator>().enabled = false;
-        Button.interactable = false;
-    }
+        private int _startVolume = 1;
 
-    private void OnVictory()
-    {
-        int volume = _load.Get(Save.Volume, _startVolume);
-        SetActive();
-        _rewardVideo.SetVolume(volume);
-        _rewardVideo.Show();
+        public override void OnClick()
+        {
+            OnVictory();
+        }
+
+        public void SetActive()
+        {
+            _roulette.GetComponent<Animator>().enabled = false;
+            Button.interactable = false;
+        }
+
+        private void OnVictory()
+        {
+            int volume = _load.Get(Save.Volume, _startVolume);
+            SetActive();
+            _rewardVideo.SetVolume(volume);
+            _rewardVideo.Show();
+        }
     }
 }

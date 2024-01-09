@@ -2,46 +2,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletsInfo : MonoBehaviour
+namespace Tank3D
 {
-    private readonly int ExtraNeedCount = 3;
-
-    [SerializeField] private List<Image> _bulletsImages;
-    [SerializeField] private List<Image> _extraImages;
-    [SerializeField] private Image _reload;
-    [SerializeField] private GameObject _extraShootActivated;
-
-    private Weapon _weapon;
-
-    private void OnEnable()
+    public class BulletsInfo : MonoBehaviour
     {
-        _weapon.BulletsChanged += OnBulletsChanged;
-        _extraShootActivated.SetActive(false);
-    }
+        private readonly int ExtraNeedCount = 3;
 
-    private void OnDisable()
-    {
-        _weapon.BulletsChanged -= OnBulletsChanged;
-    }
+        [SerializeField] private List<Image> _bulletsImages;
+        [SerializeField] private List<Image> _extraImages;
+        [SerializeField] private Image _reload;
+        [SerializeField] private GameObject _extraShootActivated;
 
-    public void Init(Weapon weapon)
-    {
-        _weapon = weapon;
-    }
+        private Weapon _weapon;
 
-    private void OnBulletsChanged(int bulletsCount, int extraCount)
-    {
-        ValueChanged(bulletsCount, _bulletsImages);
-        ValueChanged(extraCount, _extraImages);
-        _extraShootActivated.SetActive(extraCount == ExtraNeedCount);
-    }
+        private void OnEnable()
+        {
+            _weapon.BulletsChanged += OnBulletsChanged;
+            _extraShootActivated.SetActive(false);
+        }
 
-    private void ValueChanged(int count, List<Image> images)
-    {
-        foreach (Image image in images)
-            image.gameObject.SetActive(false);
+        private void OnDisable()
+        {
+            _weapon.BulletsChanged -= OnBulletsChanged;
+        }
 
-        for (int i = 0; i < count; i++)
-            images[i].gameObject.SetActive(true);
+        public void Init(Weapon weapon)
+        {
+            _weapon = weapon;
+        }
+
+        private void OnBulletsChanged(int bulletsCount, int extraCount)
+        {
+            ValueChanged(bulletsCount, _bulletsImages);
+            ValueChanged(extraCount, _extraImages);
+            _extraShootActivated.SetActive(extraCount == ExtraNeedCount);
+        }
+
+        private void ValueChanged(int count, List<Image> images)
+        {
+            foreach (Image image in images)
+                image.gameObject.SetActive(false);
+
+            for (int i = 0; i < count; i++)
+                images[i].gameObject.SetActive(true);
+        }
     }
 }

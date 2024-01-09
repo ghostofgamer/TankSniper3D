@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public class PositionTank : MonoBehaviour
+namespace Tank3D
 {
-    public bool IsStay { get; private set; } = false;
-
-    public GameObject Target { get; private set; }
-
-    private void OnTriggerStay(Collider other)
+    public class PositionTank : MonoBehaviour
     {
-        if (other.TryGetComponent(out DragItem dragItem))
-            SetTarget(true, dragItem.gameObject);
-    }
+        public bool IsStay { get; private set; } = false;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out DragItem dragItem))
-            SetTarget(false, null);
-    }
+        public GameObject Target { get; private set; }
 
-    private void SetTarget(bool isStay, GameObject target)
-    {
-        IsStay = isStay;
-        Target = target;
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.TryGetComponent(out DragItem dragItem))
+                SetTarget(true, dragItem.gameObject);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent(out DragItem dragItem))
+                SetTarget(false, null);
+        }
+
+        private void SetTarget(bool isStay, GameObject target)
+        {
+            IsStay = isStay;
+            Target = target;
+        }
     }
 }

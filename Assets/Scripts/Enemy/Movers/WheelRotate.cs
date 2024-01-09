@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class WheelRotate : MonoBehaviour
+namespace Tank3D
 {
-    private readonly int Speed = 63;
-
-    private void Update()
+    public class WheelRotate : MonoBehaviour
     {
-        transform.Rotate(0, Speed * Time.deltaTime, 0);
+        private readonly int Speed = 63;
+
+        private void Update()
+        {
+            transform.Rotate(0, Speed * Time.deltaTime, 0);
+        }
     }
 }

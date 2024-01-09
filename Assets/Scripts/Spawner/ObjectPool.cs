@@ -2,66 +2,69 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ObjectPool<T>
-    where T : MonoBehaviour
+namespace Tank3D
 {
-    private Transform _container;
-    private T _prefab;
-    private List<T> _poolGeneric;
-
-    public ObjectPool(T prefab, int count, Transform container)
+    public class ObjectPool<T>
+        where T : MonoBehaviour
     {
-        _prefab = prefab;
-        _container = container;
-        GetInitialization(count, prefab);
-    }
+        private Transform _container;
+        private T _prefab;
+        private List<T> _poolGeneric;
 
-    public bool AutoExpand { get; private set; }
-
-    public bool TryGetObject(out T spawned, T prefabs)
-    {
-        var filter = _poolGeneric.Where(p => p.gameObject.activeSelf == false);
-        var index = Random.Range(0, filter.Count());
-
-        if (filter.Count() == 0 && AutoExpand)
+        public ObjectPool(T prefab, int count, Transform container)
         {
-            spawned = CreateObject(prefabs);
+            _prefab = prefab;
+            _container = container;
+            GetInitialization(count, prefab);
+        }
+
+        public bool AutoExpand { get; private set; }
+
+        public bool TryGetObject(out T spawned, T prefabs)
+        {
+            var filter = _poolGeneric.Where(p => p.gameObject.activeSelf == false);
+            var index = Random.Range(0, filter.Count());
+
+            if (filter.Count() == 0 && AutoExpand)
+            {
+                spawned = CreateObject(prefabs);
+                return spawned != null;
+            }
+
+            spawned = filter.ElementAt(index);
+            spawned.gameObject.SetActive(true);
             return spawned != null;
         }
 
-        spawned = filter.ElementAt(index);
-        spawned.gameObject.SetActive(true);
-        return spawned != null;
-    }
+        public void SetAutoExpand(bool flag)
+        {
+            AutoExpand = flag;
+        }
 
-    public void SetAutoExpand(bool flag)
-    {
-        AutoExpand = flag;
-    }
+        public void Reset()
+        {
+            foreach (var item in _poolGeneric)
+                item.gameObject.SetActive(false);
+        }
 
-    public void Reset()
-    {
-        foreach (var item in _poolGeneric)
-            item.gameObject.SetActive(false);
-    }
+        private void GetInitialization(int count, T prefabs)
+        {
+            _poolGeneric = new List<T>();
 
-    private void GetInitialization(int count, T prefabs)
-    {
-        _poolGeneric = new List<T>();
+            for (int i = 0; i < count; i++)
+            {
+                var spawned = Object.Instantiate(prefabs, _container.transform);
+                spawned.gameObject.SetActive(false);
+                _poolGeneric.Add(spawned);
+            }
+        }
 
-        for (int i = 0; i < count; i++)
+        private T CreateObject(T prefabs)
         {
             var spawned = Object.Instantiate(prefabs, _container.transform);
-            spawned.gameObject.SetActive(false);
+            spawned.gameObject.SetActive(true);
             _poolGeneric.Add(spawned);
+            return spawned;
         }
-    }
-
-    private T CreateObject(T prefabs)
-    {
-        var spawned = Object.Instantiate<T>(prefabs, _container.transform);
-        spawned.gameObject.SetActive(true);
-        _poolGeneric.Add(spawned);
-        return spawned;
     }
 }

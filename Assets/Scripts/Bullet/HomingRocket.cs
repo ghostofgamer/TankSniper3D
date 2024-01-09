@@ -1,66 +1,72 @@
 using UnityEngine;
 
-public enum MissileState
+namespace Tank3D
 {
-    Start,
-    Fly
+    public enum MissileState
+    {
+        Start,
+        Fly
+    }
 }
 
-public class HomingRocket : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private float _speedStart;
-    [SerializeField] private float _speedMove;
-    [SerializeField] private float _speedRotate;
-    [SerializeField] private int _distance;
-    [SerializeField] private BulletTrigger _bulletTrigger;
-    [SerializeField] private Bullet _bullet;
-
-    private Transform _target;
-    private Vector3 _startPosition;
-    private float _correctVector = 1f;
-    private int _minDistance = 1;
-    private MissileState _missileState;
-    private float _maxSpeed = 35;
-
-    private void Start()
+    public class HomingRocket : MonoBehaviour
     {
-        _target = FindObjectOfType<Player>().transform;
-        _startPosition = gameObject.transform.position;
-    }
+        [SerializeField] private float _speedStart;
+        [SerializeField] private float _speedMove;
+        [SerializeField] private float _speedRotate;
+        [SerializeField] private int _distance;
+        [SerializeField] private BulletTrigger _bulletTrigger;
+        [SerializeField] private Bullet _bullet;
 
-    private void OnEnable()
-    {
-        _speedMove = _maxSpeed;
-    }
+        private Transform _target;
+        private Vector3 _startPosition;
+        private float _correctVector = 1f;
+        private int _minDistance = 1;
+        private MissileState _missileState;
+        private float _maxSpeed = 35;
 
-    private void OnDisable()
-    {
-        _missileState = MissileState.Start;
-    }
-
-    private void Update()
-    {
-        switch (_missileState)
+        private void Start()
         {
-            case MissileState.Start:
-                float startDistance = Vector3.Distance(gameObject.transform.position, _startPosition);
-                gameObject.transform.Translate(Vector3.up * _speedStart * Time.deltaTime);
+            _target = FindObjectOfType<Player>().transform;
+            _startPosition = gameObject.transform.position;
+        }
 
-                if (startDistance >= _distance)
-                    _missileState = MissileState.Fly;
+        private void OnEnable()
+        {
+            _speedMove = _maxSpeed;
+        }
 
-                break;
+        private void OnDisable()
+        {
+            _missileState = MissileState.Start;
+        }
 
-            case MissileState.Fly:
-                gameObject.transform.Translate(Vector3.up * _speedMove * Time.deltaTime);
-                Vector3 target = new Vector3(_target.transform.position.x, _target.transform.position.y + _correctVector, _target.transform.position.z);
-                Vector3 targetVector = target - gameObject.transform.position;
-                gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, targetVector, _speedRotate * Time.deltaTime);
+        private void Update()
+        {
+            switch (_missileState)
+            {
+                case MissileState.Start:
+                    float startDistance = Vector3.Distance(gameObject.transform.position, _startPosition);
+                    gameObject.transform.Translate(Vector3.up * _speedStart * Time.deltaTime);
 
-                if (Vector3.Distance(transform.position, _target.position) < _minDistance)
-                    _speedMove = 0f;
+                    if (startDistance >= _distance)
+                        _missileState = MissileState.Fly;
 
-                break;
+                    break;
+
+                case MissileState.Fly:
+                    gameObject.transform.Translate(Vector3.up * _speedMove * Time.deltaTime);
+                    Vector3 target = new Vector3(_target.transform.position.x, _target.transform.position.y + _correctVector, _target.transform.position.z);
+                    Vector3 targetVector = target - gameObject.transform.position;
+                    gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, targetVector, _speedRotate * Time.deltaTime);
+
+                    if (Vector3.Distance(transform.position, _target.position) < _minDistance)
+                        _speedMove = 0f;
+
+                    break;
+            }
         }
     }
 }

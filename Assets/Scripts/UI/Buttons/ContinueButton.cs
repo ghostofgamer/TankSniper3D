@@ -2,34 +2,37 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ContinueButton : AbstractButton
+namespace Tank3D
 {
-    private const string MainMenu = "MainScene";
-
-    [SerializeField] private FullAds _fullVideo;
-    [SerializeField] private Wallet _wallet;
-    [SerializeField] private EndGame _endGameScreen;
-    [SerializeField] private GameObject _moneyFly;
-    [SerializeField] private GameObject _moneyFlyMobile;
-    [SerializeField] private RouletteContinueButton _rouletteContinueButton;
-
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
-
-    public override void OnClick()
+    public class ContinueButton : AbstractButton
     {
-        _rouletteContinueButton.SetActive();
-        StartCoroutine(GetMoney());
-    }
+        private const string MainMenu = "MainScene";
 
-    private IEnumerator GetMoney()
-    {
-        if (Application.isMobilePlatform)
-            _moneyFlyMobile.SetActive(true);
-        else
-            _moneyFly.SetActive(true);
+        [SerializeField] private FullAds _fullVideo;
+        [SerializeField] private Wallet _wallet;
+        [SerializeField] private EndGame _endGameScreen;
+        [SerializeField] private GameObject _moneyFly;
+        [SerializeField] private GameObject _moneyFlyMobile;
+        [SerializeField] private RouletteContinueButton _rouletteContinueButton;
 
-        _wallet.AddMoney(_endGameScreen.ViewReward);
-        yield return _waitForSeconds;
-        SceneManager.LoadScene(MainMenu);
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
+
+        public override void OnClick()
+        {
+            _rouletteContinueButton.SetActive();
+            StartCoroutine(GetMoney());
+        }
+
+        private IEnumerator GetMoney()
+        {
+            if (Application.isMobilePlatform)
+                _moneyFlyMobile.SetActive(true);
+            else
+                _moneyFly.SetActive(true);
+
+            _wallet.AddMoney(_endGameScreen.ViewReward);
+            yield return _waitForSeconds;
+            SceneManager.LoadScene(MainMenu);
+        }
     }
 }

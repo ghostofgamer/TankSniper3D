@@ -1,42 +1,45 @@
 using UnityEngine;
 
-public class BossRotate : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private GameObject _tower;
-    [SerializeField] private Player _player;
-    [SerializeField] private Alarm _alarm;
-    [SerializeField] private Transform _muzzlePoint;
-
-    private bool _isAlarm = false;
-
-    private void OnEnable()
+    public class BossRotate : MonoBehaviour
     {
-        _alarm.AlertChanged += OnAlarm;
-    }
+        [SerializeField] private GameObject _tower;
+        [SerializeField] private Player _player;
+        [SerializeField] private Alarm _alarm;
+        [SerializeField] private Transform _muzzlePoint;
 
-    private void OnDisable()
-    {
-        _alarm.AlertChanged -= OnAlarm;
-    }
+        private bool _isAlarm = false;
 
-    private void Update()
-    {
-        Rotate();
-    }
-
-    private void Rotate()
-    {
-        if (_isAlarm == true)
+        private void OnEnable()
         {
-            _tower.transform.LookAt(_player.transform.position);
-            _muzzlePoint.transform.LookAt(_player.transform.position);
+            _alarm.AlertChanged += OnAlarm;
         }
 
-        _tower.transform.Rotate(0, 1, 0);
-    }
+        private void OnDisable()
+        {
+            _alarm.AlertChanged -= OnAlarm;
+        }
 
-    private void OnAlarm()
-    {
-        _isAlarm = true;
+        private void Update()
+        {
+            Rotate();
+        }
+
+        private void Rotate()
+        {
+            if (_isAlarm == true)
+            {
+                _tower.transform.LookAt(_player.transform.position);
+                _muzzlePoint.transform.LookAt(_player.transform.position);
+            }
+
+            _tower.transform.Rotate(0, 1, 0);
+        }
+
+        private void OnAlarm()
+        {
+            _isAlarm = true;
+        }
     }
 }

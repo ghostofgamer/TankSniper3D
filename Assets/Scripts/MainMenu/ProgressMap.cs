@@ -1,73 +1,76 @@
 using UnityEngine;
 
-public class ProgressMap : Progress
+namespace Tank3D
 {
-    [SerializeField] private GameObject[] _enviropments;
-    [SerializeField] private GameObject[] _points;
-    [SerializeField] private GameObject[] _advancement;
-    [SerializeField] private ProgressPoint[] _progressPoint;
-    [SerializeField] private BuyTank _buyTank;
-    [SerializeField] private Transform[] _positions;
-    [SerializeField] private bool _isMainScene;
-
-    private int _indexEnviropments;
-    private int _maxIndexEnviropment = 2;
-
-    private void Awake()
+    public class ProgressMap : Progress
     {
-        _indexEnviropments = Load.Get(Save.Enviropment, StartIndex);
+        [SerializeField] private GameObject[] _enviropments;
+        [SerializeField] private GameObject[] _points;
+        [SerializeField] private GameObject[] _advancement;
+        [SerializeField] private ProgressPoint[] _progressPoint;
+        [SerializeField] private BuyTank _buyTank;
+        [SerializeField] private Transform[] _positions;
+        [SerializeField] private bool _isMainScene;
 
-        if (_isMainScene)
-            SetElement(_enviropments, _indexEnviropments);
+        private int _indexEnviropments;
+        private int _maxIndexEnviropment = 2;
 
-        ProgressPointImage();
-        SetIndex();
-        SetProgress();
-    }
-
-    private void SetProgress()
-    {
-        if (CurrentIndex > MaxIndex)
+        private void Awake()
         {
-            SetEnviropment();
-            SetElement(_enviropments, _indexEnviropments);
+            _indexEnviropments = Load.Get(Save.Enviropment, StartIndex);
+
+            if (_isMainScene)
+                SetElement(_enviropments, _indexEnviropments);
+
+            ProgressPointImage();
+            SetIndex();
+            SetProgress();
         }
 
-        SetElement(_points, CurrentIndex);
-        SetElement(_advancement, _indexEnviropments);
-    }
-
-    private void SetEnviropment()
-    {
-        if (_isMainScene)
+        private void SetProgress()
         {
-            CurrentIndex = 0;
-            _indexEnviropments++;
+            if (CurrentIndex > MaxIndex)
+            {
+                SetEnviropment();
+                SetElement(_enviropments, _indexEnviropments);
+            }
 
-            if (_indexEnviropments > _maxIndexEnviropment)
-                _indexEnviropments = 0;
-
-            Save.SetData(Save.Enviropment, _indexEnviropments);
-            Save.SetData(Save.Map, CurrentIndex);
+            SetElement(_points, CurrentIndex);
+            SetElement(_advancement, _indexEnviropments);
         }
-    }
 
-    private void SetElement(GameObject[] gameObjects, int index)
-    {
-        foreach (var gameObject in gameObjects)
-            gameObject.SetActive(false);
+        private void SetEnviropment()
+        {
+            if (_isMainScene)
+            {
+                CurrentIndex = 0;
+                _indexEnviropments++;
 
-        gameObjects[index].SetActive(true);
-    }
+                if (_indexEnviropments > _maxIndexEnviropment)
+                    _indexEnviropments = 0;
 
-    private void ProgressPointImage()
-    {
-        foreach (var progressPoint in _progressPoint)
-            progressPoint.NoComplite();
+                Save.SetData(Save.Enviropment, _indexEnviropments);
+                Save.SetData(Save.Map, CurrentIndex);
+            }
+        }
 
-        CurrentIndex = Load.Get(Save.Map, StartIndex);
+        private void SetElement(GameObject[] gameObjects, int index)
+        {
+            foreach (var gameObject in gameObjects)
+                gameObject.SetActive(false);
 
-        for (int i = 0; i < CurrentIndex; i++)
-            _progressPoint[i].Complite();
+            gameObjects[index].SetActive(true);
+        }
+
+        private void ProgressPointImage()
+        {
+            foreach (var progressPoint in _progressPoint)
+                progressPoint.NoComplite();
+
+            CurrentIndex = Load.Get(Save.Map, StartIndex);
+
+            for (int i = 0; i < CurrentIndex; i++)
+                _progressPoint[i].Complite();
+        }
     }
 }

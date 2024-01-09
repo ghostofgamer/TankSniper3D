@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class Billboard : MonoBehaviour
+namespace Tank3D
 {
-    [SerializeField] private Transform _camera;
-
-    private void LateUpdate()
+    public class Billboard : MonoBehaviour
     {
-        transform.LookAt(transform.position + _camera.forward);
+        [SerializeField] private Transform _camera;
+
+        private void LateUpdate()
+        {
+            transform.LookAt(transform.position + _camera.forward);
+        }
     }
 }

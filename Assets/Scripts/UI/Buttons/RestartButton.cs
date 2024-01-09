@@ -1,9 +1,12 @@
 using UnityEngine.SceneManagement;
 
-public class RestartButton : AbstractButton
+namespace Tank3D
 {
-    public override void OnClick()
+    public class RestartButton : AbstractButton
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        public override void OnClick()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

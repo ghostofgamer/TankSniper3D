@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class BladesRotate : MonoBehaviour
+namespace Tank3D
 {
-    private void Update()
+    public class BladesRotate : MonoBehaviour
     {
-        transform.Rotate(0, 5, 0);
+        private void Update()
+        {
+            transform.Rotate(0, 5, 0);
+        }
     }
 }
