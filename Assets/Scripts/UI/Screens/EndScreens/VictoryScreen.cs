@@ -1,10 +1,14 @@
 using System.Collections;
+using Assets.Scripts.GameCamera;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI.Buttons;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Screens.EndScreens
 {
     public class VictoryScreen : EndGame
     {

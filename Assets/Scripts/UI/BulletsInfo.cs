@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI
 {
     public class BulletsInfo : MonoBehaviour
     {

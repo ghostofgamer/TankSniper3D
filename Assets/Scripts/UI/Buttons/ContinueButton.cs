@@ -1,8 +1,11 @@
 using System.Collections;
+using Assets.Scripts.ADS;
+using Assets.Scripts.PlayerWallet;
+using Assets.Scripts.UI.Screens.EndScreens;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class ContinueButton : AbstractButton
     {

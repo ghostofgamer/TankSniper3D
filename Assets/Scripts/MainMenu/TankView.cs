@@ -1,6 +1,8 @@
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.MainMenu
 {
     public class TankView : MonoBehaviour
     {

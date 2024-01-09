@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Tank3D;
+using Assets.Scripts.Enviropment;
+using Assets.Scripts.GameEnemy.StateMachine;
 using UnityEngine;
 
 public class LookHouseTransition : Transition

@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class RestartButton : AbstractButton
     {

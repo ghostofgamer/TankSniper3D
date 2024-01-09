@@ -1,6 +1,9 @@
+using Assets.Scripts.GameCamera;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.GamePlayer.Aim;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Screens.EndScreens
 {
     public class GameOverScreen : EndGame
     {

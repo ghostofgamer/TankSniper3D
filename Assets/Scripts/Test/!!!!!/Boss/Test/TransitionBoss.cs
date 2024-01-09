@@ -1,6 +1,5 @@
-using System.Collections;
+using Assets.Scripts.GameEnemy.StateMachine;
 using System.Collections.Generic;
-using Tank3D;
 using UnityEngine;
 
 public class TransitionBoss : Transition

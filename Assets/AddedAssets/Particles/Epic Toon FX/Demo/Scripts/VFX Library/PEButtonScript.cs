@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Tank3D;
+using Assets.Scripts.UI.Buttons;
 
 public enum ButtonTypes {
 	NotDefined,

@@ -1,4 +1,6 @@
-namespace Tank3D
+using Assets.Scripts.UI.Screens;
+
+namespace Assets.Scripts.UI
 {
     public class PanelInfo : AbstractScreen
     {

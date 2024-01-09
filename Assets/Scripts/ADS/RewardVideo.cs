@@ -1,6 +1,6 @@
 using Agava.YandexGames;
 
-namespace Tank3D
+namespace Assets.Scripts.ADS
 {
     public class RewardVideo : Ad
     {

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Tank3D;
-using UnityEngine;
+using Assets.Scripts.UI.Bar;
 
 public class Progresbar : Bar
 {

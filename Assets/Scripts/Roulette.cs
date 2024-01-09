@@ -1,7 +1,8 @@
+using Assets.Scripts.UI.Screens.EndScreens;
 using TMPro;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Roulette : MonoBehaviour
     {

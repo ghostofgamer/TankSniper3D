@@ -1,6 +1,8 @@
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI.Buttons;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.MainMenu
 {
     public class ProgressMap : Progress
     {

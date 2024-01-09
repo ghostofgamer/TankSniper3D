@@ -1,6 +1,7 @@
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Progress : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class CancelShootButton : MonoBehaviour
     {

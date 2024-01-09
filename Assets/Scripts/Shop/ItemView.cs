@@ -1,7 +1,8 @@
+using Assets.Scripts.ScriptableObjects.Item;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.Shop
 {
     public class ItemView : MonoBehaviour
     {

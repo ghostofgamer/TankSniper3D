@@ -1,7 +1,8 @@
+using Assets.Scripts.GamePlayer;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Hit
 {
     public class HitPlayer : MonoBehaviour
     {

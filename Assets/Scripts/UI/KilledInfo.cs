@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Tank3D
+namespace Assets.Scripts.UI
 {
     public class KilledInfo : MonoBehaviour
     {

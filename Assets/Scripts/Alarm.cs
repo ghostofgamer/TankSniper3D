@@ -1,7 +1,8 @@
+using Assets.Scripts.Weapons;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Alarm : MonoBehaviour
     {

@@ -1,7 +1,9 @@
 using System.Linq;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Screens
 {
     public class StoreScreen : AbstractScreen
     {

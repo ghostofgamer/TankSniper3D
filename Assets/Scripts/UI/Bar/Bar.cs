@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Bar
 {
     public abstract class Bar : MonoBehaviour
     {

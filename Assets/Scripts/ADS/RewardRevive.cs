@@ -1,7 +1,11 @@
+using Assets.Scripts.GameCamera;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.UI;
+using Assets.Scripts.UI.Screens.EndScreens;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.ADS
 {
     public class RewardRevive : RewardVideo
     {

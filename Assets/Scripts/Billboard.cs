@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Billboard : MonoBehaviour
     {

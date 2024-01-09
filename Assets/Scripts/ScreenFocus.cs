@@ -1,7 +1,8 @@
 using Agava.WebUtility;
+using Assets.Scripts.GamePlayer.Aim;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class ScreenFocus : MonoBehaviour
     {

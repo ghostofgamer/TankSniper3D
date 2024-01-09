@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public abstract class AbstractButton : MonoBehaviour
     {

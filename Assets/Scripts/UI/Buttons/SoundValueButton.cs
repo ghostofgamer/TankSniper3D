@@ -1,7 +1,8 @@
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class SoundValueButton : AbstractButton
     {

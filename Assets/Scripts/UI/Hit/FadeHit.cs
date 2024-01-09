@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Hit
 {
     public class FadeHit : MonoBehaviour
     {

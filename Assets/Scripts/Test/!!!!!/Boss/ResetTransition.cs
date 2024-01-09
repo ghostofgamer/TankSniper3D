@@ -1,6 +1,7 @@
+using Assets.Scripts.Enviropment;
+using Assets.Scripts.GameEnemy.StateMachine;
+using Assets.Scripts.GamePlayer;
 using System.Collections;
-using System.Collections.Generic;
-using Tank3D;
 using UnityEngine;
 
 public class ResetTransition : Transition

@@ -1,7 +1,8 @@
 using System.Collections;
+using Assets.Scripts.GameEnemy;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.Enviropment
 {
     public class Barrel : MonoBehaviour
     {

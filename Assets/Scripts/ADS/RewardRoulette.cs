@@ -1,8 +1,9 @@
 using System.Collections;
+using Assets.Scripts.PlayerWallet;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts.ADS
 {
     public class RewardRoulette : RewardVideo
     {

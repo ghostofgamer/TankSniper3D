@@ -1,6 +1,9 @@
+using Assets.Scripts.MainMenu;
+using Assets.Scripts.MergeTanks;
+using Assets.Scripts.UI.Screens;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class StoreButton : AbstractButton
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts.ADS
 {
     public abstract class Ad : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace Tank3D
             AudioListener.volume = _volumeValue;
             SceneManager.LoadScene(MainScene);
         }
-
+        
         protected virtual void OnClose()
         {
             Time.timeScale = 1;

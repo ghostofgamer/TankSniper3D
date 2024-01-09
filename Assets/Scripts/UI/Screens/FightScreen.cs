@@ -1,6 +1,11 @@
+using Assets.Scripts.MainMenu;
+using Assets.Scripts.PlayerWallet;
+using Assets.Scripts.UI.Bar;
+using Assets.Scripts.UI.Buttons;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Screens
 {
     public class FightScreen : MonoBehaviour
     {

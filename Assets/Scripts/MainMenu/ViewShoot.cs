@@ -1,8 +1,12 @@
 using System.Collections;
+using Assets.Scripts.Bullets;
+using Assets.Scripts.MergeTanks;
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.Spawner;
 using TMPro;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.MainMenu
 {
     public class ViewShoot : MonoBehaviour
     {

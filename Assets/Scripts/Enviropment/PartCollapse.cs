@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.Enviropment
 {
     public class PartCollapse : MonoBehaviour
     {

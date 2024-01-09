@@ -2,7 +2,7 @@ using Agava.YandexGames;
 using Lean.Localization;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public enum Language
     {
@@ -12,7 +12,7 @@ namespace Tank3D
     }
 }
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Localization : MonoBehaviour
     {

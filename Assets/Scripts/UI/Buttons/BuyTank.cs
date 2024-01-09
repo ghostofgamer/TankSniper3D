@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.MergeTanks;
+using Assets.Scripts.PlayerWallet;
+using Assets.Scripts.SaveLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class BuyTank : AbstractButton
     {

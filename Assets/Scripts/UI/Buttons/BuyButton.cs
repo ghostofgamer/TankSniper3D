@@ -1,97 +1,104 @@
-using Tank3D;
+using Assets.Scripts.ADS;
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Coloring
+namespace Assets.Scripts.UI.Buttons
 {
-    Zebra,
-    Winter,
-    Leopard,
-    Giraffe,
-    Jaguar,
-    Orange,
-    Pink,
-    Tigr,
-    Yellow
+    public enum Coloring
+    {
+        Zebra,
+        Winter,
+        Leopard,
+        Giraffe,
+        Jaguar,
+        Orange,
+        Pink,
+        Tigr,
+        Yellow
+    }
 }
 
-public class BuyButton : AbstractButton
+namespace Assets.Scripts.UI.Buttons
 {
-    [SerializeField] private GameObject _AdButton;
-    [SerializeField] private Image _imageBlock;
-    [SerializeField] private Coloring _coloring;
-    [SerializeField] private Save _save;
-    [SerializeField] private Load _load;
-    [SerializeField] private Ad _rewardVideo;
-
-    private int _index = 1;
-    private int _startIndex = 0;
-
-    private void Start()
+    public class BuyButton : AbstractButton
     {
-        int index = _load.Get(_coloring.ToString(), _startIndex);
+        [SerializeField] private GameObject _AdButton;
+        [SerializeField] private Image _imageBlock;
+        [SerializeField] private Coloring _coloring;
+        [SerializeField] private Save _save;
+        [SerializeField] private Load _load;
+        [SerializeField] private Ad _rewardVideo;
 
-        if (index > 0)
-            OffActive();
-    }
+        private int _index = 1;
+        private int _startIndex = 0;
 
-    public override void OnClick()
-    {
-        Button.interactable = false;
-
-        switch (_coloring)
+        private void Start()
         {
-            case Coloring.Zebra:
-                _save.SetData(Save.Zebra, _index);
-                ShowAd();
-                break;
-            case Coloring.Winter:
-                _save.SetData(Save.Winter, _index);
-                ShowAd();
-                break;
-            case Coloring.Leopard:
-                _save.SetData(Save.Leopard, _index);
-                ShowAd();
-                break;
-            case Coloring.Giraffe:
-                _save.SetData(Save.Giraffe, _index);
-                ShowAd();
-                break;
-            case Coloring.Jaguar:
-                _save.SetData(Save.Jaguar, _index);
-                ShowAd();
-                break;
-            case Coloring.Orange:
-                _save.SetData(Save.Orange, _index);
-                ShowAd();
-                break;
-            case Coloring.Pink:
-                _save.SetData(Save.Pink, _index);
-                ShowAd();
-                break;
-            case Coloring.Tigr:
-                _save.SetData(Save.Tigr, _index);
-                ShowAd();
-                break;
-            case Coloring.Yellow:
-                _save.SetData(Save.Yellow, _index);
-                ShowAd();
-                break;
-            default:
-                break;
+            int index = _load.Get(_coloring.ToString(), _startIndex);
+
+            if (index > 0)
+                OffActive();
         }
-    }
 
-    public void OffActive()
-    {
-        _imageBlock.gameObject.SetActive(false);
-        _AdButton.SetActive(false);
-    }
+        public override void OnClick()
+        {
+            Button.interactable = false;
 
-    private void ShowAd()
-    {
-        int volume = _load.Get(Save.Volume, _index);
-        _rewardVideo.SetVolume(volume);
-        _rewardVideo.Show();
+            switch (_coloring)
+            {
+                case Coloring.Zebra:
+                    _save.SetData(Save.Zebra, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Winter:
+                    _save.SetData(Save.Winter, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Leopard:
+                    _save.SetData(Save.Leopard, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Giraffe:
+                    _save.SetData(Save.Giraffe, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Jaguar:
+                    _save.SetData(Save.Jaguar, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Orange:
+                    _save.SetData(Save.Orange, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Pink:
+                    _save.SetData(Save.Pink, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Tigr:
+                    _save.SetData(Save.Tigr, _index);
+                    ShowAd();
+                    break;
+                case Coloring.Yellow:
+                    _save.SetData(Save.Yellow, _index);
+                    ShowAd();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void OffActive()
+        {
+            _imageBlock.gameObject.SetActive(false);
+            _AdButton.SetActive(false);
+        }
+
+        private void ShowAd()
+        {
+            int volume = _load.Get(Save.Volume, _index);
+            _rewardVideo.SetVolume(volume);
+            _rewardVideo.Show();
+        }
     }
 }

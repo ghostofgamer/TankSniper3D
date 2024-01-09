@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.Spawner
 {
     public class ObjectPool<T>
         where T : MonoBehaviour

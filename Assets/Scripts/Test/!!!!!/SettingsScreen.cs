@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Tank3D;
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI.Screens;
 using UnityEngine;
 
 public class SettingsScreen : AbstractScreen
@@ -15,5 +14,4 @@ public class SettingsScreen : AbstractScreen
 
     public int SoundOn => _soundOn;
     public int SoundOff => _soundOff;
-
 }

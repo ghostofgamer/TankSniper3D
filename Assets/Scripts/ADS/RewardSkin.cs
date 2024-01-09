@@ -1,6 +1,7 @@
+using Assets.Scripts.UI.Buttons;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.ADS
 {
     public class RewardSkin : RewardVideo
     {

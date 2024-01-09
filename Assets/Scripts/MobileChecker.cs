@@ -1,6 +1,8 @@
+using Assets.Scripts.MergeTanks;
+using Assets.Scripts.UI.Buttons;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class MobileChecker : MonoBehaviour
     {

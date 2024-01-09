@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.GameEnemy;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class BossCreator : MonoBehaviour
     {

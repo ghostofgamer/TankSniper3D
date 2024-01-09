@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.MainMenu
 {
     public class RotateTankStore : MonoBehaviour
     {

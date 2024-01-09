@@ -3,7 +3,7 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class SdkInitialization : MonoBehaviour
     {

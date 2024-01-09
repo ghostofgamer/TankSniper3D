@@ -1,7 +1,19 @@
 using System.Collections.Generic;
+using Assets.Scripts.GameCamera;
+using Assets.Scripts.GameEnemy;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.GamePlayer.Aim;
+using Assets.Scripts.Materials;
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI;
+using Assets.Scripts.UI.Bar;
+using Assets.Scripts.UI.Hit;
+using Assets.Scripts.UI.Screens;
+using Assets.Scripts.UI.Screens.EndScreens;
+using Assets.Scripts.Weapons;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Initializator : MonoBehaviour
     {
@@ -31,7 +43,7 @@ namespace Tank3D
         [SerializeField] private MaterialContainer _materialContainer;
         [SerializeField] private ScreenFocus _screenFocus;
 
-        [SerializeField] private int _indexPlayer;
+        private int _indexPlayer;
         private int _mobileIndex = 0;
         private int _pcIndex = 1;
         private Player _player;
@@ -41,7 +53,7 @@ namespace Tank3D
         {
             Time.timeScale = 1;
             _gameObjects = new List<GameObject>();
-            //_indexPlayer = _load.Get(Save.Tank, StartIndex);
+            _indexPlayer = _load.Get(Save.Tank, StartIndex);
             Init();
         }
 

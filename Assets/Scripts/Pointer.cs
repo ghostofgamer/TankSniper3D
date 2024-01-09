@@ -1,7 +1,8 @@
+using Assets.Scripts.GameEnemy;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tank3D
+namespace Assets.Scripts
 {
     public class Pointer : MonoBehaviour
     {

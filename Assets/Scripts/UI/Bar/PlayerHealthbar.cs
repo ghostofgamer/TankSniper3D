@@ -1,4 +1,6 @@
-namespace Tank3D
+using Assets.Scripts.GamePlayer;
+
+namespace Assets.Scripts.UI.Bar
 {
     public class PlayerHealthbar : Bar
     {

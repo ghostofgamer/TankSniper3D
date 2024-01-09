@@ -1,6 +1,8 @@
+using Assets.Scripts.SaveLoad;
+using Assets.Scripts.UI.Screens;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class FightButton : AbstractButton
     {

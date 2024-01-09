@@ -1,6 +1,7 @@
+using Assets.Scripts.ADS;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class ExitButton : AbstractButton
     {

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Assets.Scripts.GamePlayer;
+using Assets.Scripts.SaveLoad;
 using UnityEngine;
 
-namespace Tank3D
+namespace Assets.Scripts.UI.Buttons
 {
     public class TankChanger : AbstractButton
     {
