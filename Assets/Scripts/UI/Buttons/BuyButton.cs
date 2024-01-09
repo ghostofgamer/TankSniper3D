@@ -72,6 +72,7 @@ public class BuyButton : AbstractButton
                 break;
             case Coloring.Tigr:
                 _save.SetData(Save.Tigr, _index);
+                ShowAd();
                 break;
             case Coloring.Yellow:
                 _save.SetData(Save.Yellow, _index);

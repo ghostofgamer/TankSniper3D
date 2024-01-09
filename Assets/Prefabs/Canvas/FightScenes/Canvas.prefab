@@ -11491,12 +11491,12 @@ MonoBehaviour:
   - {fileID: 6093370866806190540}
   - {fileID: 6511622968356531325}
   - {fileID: 5552105635605538887}
-  _isMainScene: 0
   _buyTank: {fileID: 0}
   _positions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _isMainScene: 0
 --- !u!1 &3646237791402433791
 GameObject:
   m_ObjectHideFlags: 0
@@ -16850,6 +16850,7 @@ MonoBehaviour:
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _rouletteContinueButton: {fileID: 0}
 --- !u!114 &4475014111651555245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20685,7 +20686,6 @@ MonoBehaviour:
   _towerRotate: {fileID: 0}
   _cancelShoot: {fileID: 2704140977114935434}
   _fightScreen: {fileID: 1737034110}
-  isPressed: 0
 --- !u!95 &7136235868719448681
 Animator:
   serializedVersion: 5
@@ -25512,7 +25512,6 @@ MonoBehaviour:
   _towerRotate: {fileID: 0}
   _cancelShoot: {fileID: 2704140977114935434}
   _fightScreen: {fileID: 1737034110}
-  isPressed: 0
 --- !u!95 &4366539897852404238
 Animator:
   serializedVersion: 5
@@ -27022,9 +27021,9 @@ MonoBehaviour:
   - {fileID: 4980017109134318708}
   - {fileID: 9209949249511126871}
   - {fileID: 7552749348391285379}
-  _isMainScene: 0
   _buyTank: {fileID: 0}
   _positions: []
+  _isMainScene: 0
 --- !u!1 &7884938292687934287
 GameObject:
   m_ObjectHideFlags: 0
@@ -29640,10 +29639,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fullVideo: {fileID: 639357633414956543}
-  _wallet: {fileID: 7092953220679466088}
+  _wallet: {fileID: 8846564762940594530}
   _endGameScreen: {fileID: 4475014111677056189}
   _moneyFly: {fileID: 6064520399618878223}
   _moneyFlyMobile: {fileID: 2772920098501698149}
+  _rouletteContinueButton: {fileID: 6191533084568070349}
 --- !u!114 &639357633414956543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31488,6 +31488,7 @@ MonoBehaviour:
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _rouletteContinueButton: {fileID: 0}
 --- !u!114 &868703534488886732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31517,6 +31518,7 @@ MonoBehaviour:
   _load: {fileID: 0}
   _moneyMove: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _wallet: {fileID: 0}
 --- !u!224 &6920612055137811124 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -32029,6 +32031,7 @@ MonoBehaviour:
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _rouletteContinueButton: {fileID: 0}
 --- !u!114 &6543452338909714273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32285,6 +32288,7 @@ MonoBehaviour:
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _rouletteContinueButton: {fileID: 0}
 --- !u!114 &7009333398907028855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32314,6 +32318,7 @@ MonoBehaviour:
   _load: {fileID: 0}
   _moneyMove: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _wallet: {fileID: 0}
 --- !u!224 &5812310516234039572 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -32835,6 +32840,7 @@ MonoBehaviour:
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
   _moneyFlyMobile: {fileID: 0}
+  _rouletteContinueButton: {fileID: 0}
 --- !u!114 &1824761955420066592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32864,6 +32870,7 @@ MonoBehaviour:
   _load: {fileID: 0}
   _moneyMove: {fileID: 6064520399618878223}
   _moneyFlyMobile: {fileID: 2772920098501698149}
+  _wallet: {fileID: 0}
 --- !u!114 &3396604910238523348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32876,5 +32883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6a35bedff4b6741b5681960dfd5f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallet: {fileID: 7092953220679466088}
+  _wallet: {fileID: 8846564762940594530}
   _roulette: {fileID: 4925953474847345268}
+  _moneyMove: {fileID: 6064520399618878223}
+  _moneyFlyMobile: {fileID: 2772920098501698149}

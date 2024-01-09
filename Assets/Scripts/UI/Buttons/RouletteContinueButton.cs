@@ -10,31 +10,26 @@ public class RouletteContinueButton : AbstractButton
     [SerializeField] private Load _load;
     [SerializeField] private GameObject _moneyMove;
     [SerializeField] private GameObject _moneyFlyMobile;
+    [SerializeField] private Wallet _wallet;
 
     private int _startVolume = 1;
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
-    private Coroutine _coroutine;
 
     public override void OnClick()
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        StartCoroutine(OnVictory());
+        OnVictory();
     }
 
-    private IEnumerator OnVictory()
+    private void OnVictory()
     {
-        if (Application.isMobilePlatform)
-            _moneyFlyMobile.SetActive(true);
-        else
-            _moneyMove.SetActive(true);
-
         int volume = _load.Get(Save.Volume, _startVolume);
-        _roulette.GetComponent<Animator>().enabled = false;
-        Button.interactable = false;
-        yield return _waitForSeconds;
+        SetActive();
         _rewardVideo.SetVolume(volume);
         _rewardVideo.Show();
+    }
+
+    public void SetActive()
+    {
+        _roulette.GetComponent<Animator>().enabled = false;
+        Button.interactable = false;
     }
 }

@@ -125,6 +125,7 @@ public class BuyTank : AbstractButton
         _currentLevelText.text = _levelBuy.ToString();
         _currentTankIndex = _currentLevel;
         SaveProgress();
+        PriceChecker();
     }
 
     private void SaveProgress()

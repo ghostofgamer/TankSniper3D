@@ -13,11 +13,13 @@ public class ContinueButton : AbstractButton
     [SerializeField] private EndGame _endGameScreen;
     [SerializeField] private GameObject _moneyFly;
     [SerializeField] private GameObject _moneyFlyMobile;
+    [SerializeField] private RouletteContinueButton _rouletteContinueButton;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
     public override void OnClick()
     {
+        _rouletteContinueButton.SetActive();
         StartCoroutine(GetMoney());
     }
 
@@ -28,8 +30,9 @@ public class ContinueButton : AbstractButton
         else
             _moneyFly.SetActive(true);
 
-        yield return _waitForSeconds;
         _wallet.AddMoney(_endGameScreen.ViewReward);
+        yield return _waitForSeconds;
+        //yield return _waitForSeconds;
         SceneManager.LoadScene(MainMenu);
     }
 }
