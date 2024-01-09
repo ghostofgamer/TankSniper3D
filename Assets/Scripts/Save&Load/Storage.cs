@@ -21,6 +21,11 @@ public class Storage : MonoBehaviour
         LoadGame();
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
     public void Init(List<Transform> transform)
     {
         _positions = transform;
@@ -35,18 +40,13 @@ public class Storage : MonoBehaviour
             if (_positions[i].GetComponent<PositionTank>().Target != null)
                 _tanksSaves.Add(_positions[i].GetComponent<PositionTank>().Target.GetComponent<Tank>());
         }
-        
+
         SaveGame();
     }
 
     public void AddTank(Tank tank)
     {
         _tanksSaves.Add(tank);
-        SaveGame();
-    }
-
-    private void OnApplicationQuit()
-    {
         SaveGame();
     }
 
@@ -91,32 +91,6 @@ public class Storage : MonoBehaviour
 [System.Serializable]
 public class Saves
 {
-    [System.Serializable]
-    public struct Vec3
-    {
-        public float X, Y, Z;
-
-        public Vec3(float x, float y, float z)
-        {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
-        }
-    }
-
-    [System.Serializable]
-    public struct TankSaveData
-    {
-        public Vec3 Position;
-        public int Id;
-
-        public TankSaveData(Vec3 position, int id)
-        {
-            Position = position;
-            Id = id;
-        }
-    }
-
     public List<TankSaveData> TanksData = new List<TankSaveData>();
 
     public void SaveEnemies(List<Tank> tanks)
@@ -126,5 +100,33 @@ public class Saves
             Vec3 pos = new Vec3(tank.transform.position.x, tank.transform.position.y, tank.transform.position.z);
             TanksData.Add(new TankSaveData(pos, tank.GetComponent<Tank>().Level));
         }
+    }
+}
+
+[System.Serializable]
+public struct Vec3
+{
+    public float X;
+    public float Y;
+    public float Z;
+
+    public Vec3(float x, float y, float z)
+    {
+        this.X = x;
+        this.Y = y;
+        this.Z = z;
+    }
+}
+
+[System.Serializable]
+public struct TankSaveData
+{
+    public Vec3 Position;
+    public int Id;
+
+    public TankSaveData(Vec3 position, int id)
+    {
+        Position = position;
+        Id = id;
     }
 }

@@ -16,7 +16,7 @@ public class DieTransition : Transition
         _enemy.HealthChanged -= DieState;
     }
 
-    private void DieState(int currentHealth,int maxHealth)
+    private void DieState(int currentHealth, int maxHealth)
     {
         if (currentHealth <= 0)
         {

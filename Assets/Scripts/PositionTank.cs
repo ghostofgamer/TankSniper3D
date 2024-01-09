@@ -19,7 +19,7 @@ public class PositionTank : MonoBehaviour
             SetTarget(false, null);
     }
 
-    private void SetTarget(bool isStay,GameObject target)
+    private void SetTarget(bool isStay, GameObject target)
     {
         IsStay = isStay;
         Target = target;

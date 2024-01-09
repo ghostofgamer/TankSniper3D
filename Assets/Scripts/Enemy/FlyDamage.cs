@@ -21,6 +21,5 @@ public class FlyDamage : MonoBehaviour
         text.GetComponent<TMPro.TextMeshPro>().SetText(damageText.ToString(Zero));
         text.name = damageText.ToString(Zero);
         text.GetComponent<TMPro.TextMeshPro>().fontSize = textSize;
-
     }
 }

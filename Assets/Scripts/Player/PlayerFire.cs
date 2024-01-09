@@ -26,6 +26,11 @@ public class PlayerFire : MonoBehaviour
         _player.Dying -= Diyng;
     }
 
+    public void StewFire()
+    {
+        _effectFire.gameObject.SetActive(false);
+    }
+
     private void Diyng()
     {
         StartCoroutine(OnDie());
@@ -36,10 +41,5 @@ public class PlayerFire : MonoBehaviour
         yield return _waitForSeconds;
         _effect.PlayEffect();
         _effectFire.gameObject.SetActive(true);
-    }
-
-    public void StewFire()
-    {
-        _effectFire.gameObject.SetActive(false);
     }
 }

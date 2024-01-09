@@ -48,7 +48,7 @@ public class Merge : MonoBehaviour
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine =  StartCoroutine(ChangeStorage());
+            _coroutine = StartCoroutine(ChangeStorage());
             _selectObject = null;
         }
 
@@ -97,7 +97,7 @@ public class Merge : MonoBehaviour
         }
     }
 
-    private void SetNewTank (RaycastHit hitInfo)
+    private void SetNewTank(RaycastHit hitInfo)
     {
         var tank = hitInfo.collider.gameObject.GetComponent<PositionTank>().Target;
         var level = tank.GetComponent<DragItem>().Level;
@@ -182,14 +182,12 @@ public class Merge : MonoBehaviour
         Vector3 screenMousePosfar = new Vector3(
             Input.mousePosition.x,
             Input.mousePosition.y,
-            Camera.main.farClipPlane
-            );
+            Camera.main.farClipPlane);
 
         Vector3 screenMousePosNear = new Vector3(
             Input.mousePosition.x,
             Input.mousePosition.y,
-             Camera.main.nearClipPlane
-            );
+             Camera.main.nearClipPlane);
 
         Vector3 worldPosMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosfar);
         Vector3 worldPosMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);

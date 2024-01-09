@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private int _maxHealth = 100;
     private int _currentHealth;
 
-    public event UnityAction<int,int> HealthChanged;
+    public event UnityAction<int, int> HealthChanged;
     public event UnityAction Dying;
     public event UnityAction<Transform> Hit;
 
@@ -19,24 +19,24 @@ public class Player : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    public void ApplyDamage(int damage,Transform positionShoot)
+    public void ApplyDamage(int damage, Transform positionShoot)
     {
         _currentHealth -= damage;
-        HealthChanged?.Invoke(_currentHealth,_maxHealth);
+        HealthChanged?.Invoke(_currentHealth, _maxHealth);
         Hit?.Invoke(positionShoot);
 
         if (IsDead)
             Die();
     }
 
-    private void Die()
-    {
-        Dying?.Invoke();
-    }
-
     public void Revive()
     {
         _currentHealth = _maxHealth;
         HealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    private void Die()
+    {
+        Dying?.Invoke();
     }
 }

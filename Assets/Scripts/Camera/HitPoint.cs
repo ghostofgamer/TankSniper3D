@@ -8,15 +8,15 @@ public class HitPoint : MonoBehaviour
 
     private int _factor = 100;
 
-    public void Init(TowerRotate towerRotate)
-    {
-        _towerRotate = towerRotate;
-    }
-
-    void Update()
+    private void Update()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward) * _factor;
         Ray ray = new Ray(transform.position, forward);
+    }
+
+    public void Init(TowerRotate towerRotate)
+    {
+        _towerRotate = towerRotate;
     }
 
     public void MoveRotate()

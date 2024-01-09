@@ -28,6 +28,17 @@ public class StoreScreen : AbstractScreen
         OpenTanks();
     }
 
+    public void SetItem()
+    {
+        OffItem(_items);
+    }
+
+    public GameObject GetTank()
+    {
+        var filter = _items.FirstOrDefault(p => p.activeSelf == true);
+        return filter;
+    }
+
     private void OpenTanks()
     {
         int allOpen = _load.Get(Save.AllTanksOpen, 0);
@@ -44,17 +55,6 @@ public class StoreScreen : AbstractScreen
             foreach (GameObject block in _blocks)
                 block.SetActive(false);
         }
-    }
-
-    public void SetItem()
-    {
-        OffItem(_items);
-    }
-
-    public GameObject GetTank()
-    {
-        var filter = _items.FirstOrDefault(p => p.activeSelf == true);
-        return filter;
     }
 
     private void OffItem(GameObject[] items)

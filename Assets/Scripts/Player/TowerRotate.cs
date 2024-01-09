@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerRotate : MonoBehaviour
-{ 
+{
     [SerializeField] private GameObject _tower;
     [SerializeField] private Transform _startTransform;
 

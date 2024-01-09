@@ -38,7 +38,7 @@ public class VictoryScreen : EndGame
         _killedInfo.AllEnemysDying -= OnEndGame;
     }
 
-    public void Init(Progress progress,Player player)
+    public void Init(Progress progress, Player player)
     {
         Reward = _load.Get(Save.Reward, _zero) + _factor;
         _rewardCountText.text = Reward.ToString();

@@ -35,7 +35,7 @@ public class ButtonScaler : MonoBehaviour
         _coroutineScale = StartCoroutine(ScaleChanged(transform.localScale, _minScale, _duration, _minDelay));
     }
 
-    private IEnumerator ScaleChanged(Vector3 start, Vector3 target, float duration,float delay)
+    private IEnumerator ScaleChanged(Vector3 start, Vector3 target, float duration, float delay)
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
         yield return waitForSeconds;

@@ -19,17 +19,17 @@ public class RouletteContinueButton : AbstractButton
         OnVictory();
     }
 
+    public void SetActive()
+    {
+        _roulette.GetComponent<Animator>().enabled = false;
+        Button.interactable = false;
+    }
+
     private void OnVictory()
     {
         int volume = _load.Get(Save.Volume, _startVolume);
         SetActive();
         _rewardVideo.SetVolume(volume);
         _rewardVideo.Show();
-    }
-
-    public void SetActive()
-    {
-        _roulette.GetComponent<Animator>().enabled = false;
-        Button.interactable = false;
     }
 }

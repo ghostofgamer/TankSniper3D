@@ -52,6 +52,7 @@ public class EnemyShoot : MonoBehaviour
             _effectShooting.Play();
         }
     }
+
     public void LookTarget(Transform target)
     {
         _shootPosition.LookAt(target.transform);

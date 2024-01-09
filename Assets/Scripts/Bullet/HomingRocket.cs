@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MissileState
+{
+    start,
+    fly
+}
+
 public class HomingRocket : MonoBehaviour
 {
-    public enum MissileState
-    {
-        start,
-        fly
-    }
-
     [SerializeField] private float _speedStart;
     [SerializeField] private float _speedMove;
     [SerializeField] private float _speedRotate;
@@ -40,7 +40,6 @@ public class HomingRocket : MonoBehaviour
         _missileState = MissileState.start;
     }
 
-
     private void Update()
     {
         switch (_missileState)
@@ -62,6 +61,7 @@ public class HomingRocket : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, _target.position) < _minDistance)
                     _speedMove = 0f;
+
                 break;
         }
     }

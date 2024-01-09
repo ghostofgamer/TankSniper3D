@@ -7,16 +7,16 @@ public class ReviewCamera : MonoBehaviour
     private const string MouseX = "Mouse X";
     private const string MouseY = "Mouse Y";
 
-    [SerializeField] private float _x, _y;
+    [SerializeField] private float _x;
+    [SerializeField] private float _y;
     [SerializeField] private Vector3 _offset;
-    [SerializeField]private float _maxSpeed;
-    [SerializeField]private float _minSpeed;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _minSpeed;
     [SerializeField] private Transform _target;
     [SerializeField] private float _minlimitX;
     [SerializeField] private float _maxlimitX;
     [SerializeField] private float _minlimitY;
     [SerializeField] private float _maxlimitY;
-
 
     private AimInputButton _aimInputButton;
     private float _speed;

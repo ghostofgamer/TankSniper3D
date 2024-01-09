@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Coloring
+{
+    Zebra,
+    Winter,
+    Leopard,
+    Giraffe,
+    Jaguar,
+    Orange,
+    Pink,
+    Tigr,
+    Yellow
+}
+
 public class BuyButton : AbstractButton
 {
-    public enum Coloring
-    {
-        Zebra,
-        Winter,
-        Leopard,
-        Giraffe,
-        Jaguar,
-        Orange,
-        Pink,
-        Tigr,
-        Yellow
-    }
-
     [SerializeField] private GameObject _AdButton;
     [SerializeField] private Image _imageBlock;
     [SerializeField] private Coloring _coloring;
@@ -83,16 +83,16 @@ public class BuyButton : AbstractButton
         }
     }
 
+    public void OffActive()
+    {
+        _imageBlock.gameObject.SetActive(false);
+        _AdButton.SetActive(false);
+    }
+
     private void ShowAd()
     {
         int volume = _load.Get(Save.Volume, _index);
         _rewardVideo.SetVolume(volume);
         _rewardVideo.Show();
-    }
-
-    public void OffActive()
-    {
-        _imageBlock.gameObject.SetActive(false);
-        _AdButton.SetActive(false);
     }
 }

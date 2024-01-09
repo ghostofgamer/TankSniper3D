@@ -14,13 +14,13 @@ public class Enemy : MonoBehaviour
     private Player _target;
     private int _currentHealth;
 
+    public event UnityAction<int, int> HealthChanged;
+
     public Player Target => _target;
     public bool IsDying => _currentHealth <= 0;
     public bool IsBoss => _isBoss;
     public bool IsHelicopter => _isHelicopter;
     public int CurrentHealth => _currentHealth;
-
-    public event UnityAction<int, int> HealthChanged;
 
     private void Start()
     {

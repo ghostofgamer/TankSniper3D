@@ -42,6 +42,11 @@ public class VisibilityAim : MonoBehaviour
         _coroutine = StartCoroutine(Fade(_needCanvasGroup, AlphaZero, -Speed, TimeFade, true));
     }
 
+    public void OffCanvasActive()
+    {
+        _needCanvasGroup.alpha = 0;
+    }
+
     private IEnumerator Fade(CanvasGroup canvasGroup, int alpha, float speed, float time, bool flag)
     {
         yield return new WaitForSeconds(time);
@@ -53,10 +58,5 @@ public class VisibilityAim : MonoBehaviour
             canvasGroup.alpha += speed * Time.deltaTime;
             yield return null;
         }
-    }
-
-    public void OffCanvasActive()
-    {
-        _needCanvasGroup.alpha = 0;
     }
 }

@@ -35,7 +35,6 @@ public class DieState : State
 
         if (_technique)
             TechniqueFire();
-
     }
 
     private void TechniqueFire()

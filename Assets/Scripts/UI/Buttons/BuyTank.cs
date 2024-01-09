@@ -63,6 +63,30 @@ public class BuyTank : AbstractButton
         PriceChecker();
     }
 
+    public void SetValue()
+    {
+        SetTanksInfo();
+        int minLevelMerge = ++_minLevelMerge;
+        int maxIndex = ++_maxIndex;
+
+        if (maxIndex >= _maxLevel)
+        {
+            int _allOpen = 1;
+            _save.SetData(Save.AllTanksOpen, _allOpen);
+        }
+
+        if (_slider.value == _fullSlider)
+        {
+            if (minLevelMerge - 1 > _levelBuy)
+                MoveNextLevel();
+        }
+
+        _currentLevelText.text = _levelBuy.ToString();
+        _currentTankIndex = _currentLevel;
+        SaveProgress();
+        PriceChecker();
+    }
+
     private Transform TryGetPosition()
     {
         var filter = _positions.FirstOrDefault(p => !p.GetComponent<PositionTank>().IsStay);
@@ -102,30 +126,6 @@ public class BuyTank : AbstractButton
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(OnSetValue());
-    }
-
-    public void SetValue()
-    {
-        SetTanksInfo();
-        int minLevelMerge = ++_minLevelMerge;
-        int maxIndex = ++_maxIndex;
-
-        if (maxIndex >= _maxLevel)
-        {
-            int _allOpen = 1;
-            _save.SetData(Save.AllTanksOpen, _allOpen);
-        }
-
-        if (_slider.value == _fullSlider)
-        {
-            if (minLevelMerge - 1 > _levelBuy)
-                MoveNextLevel();
-        }
-
-        _currentLevelText.text = _levelBuy.ToString();
-        _currentTankIndex = _currentLevel;
-        SaveProgress();
-        PriceChecker();
     }
 
     private void SaveProgress()

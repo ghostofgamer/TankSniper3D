@@ -23,7 +23,7 @@ public class RewardRoulette : RewardVideo
         _coroutine = StartCoroutine(Victory());
     }
 
-    private IEnumerator Victory() 
+    private IEnumerator Victory()
     {
         if (Application.isMobilePlatform)
             _moneyFlyMobile.SetActive(true);
