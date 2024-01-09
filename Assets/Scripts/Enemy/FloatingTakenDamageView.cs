@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FlyDamage : MonoBehaviour
+public class TakenDamageParticle : MonoBehaviour
 {
     private const string DamageText = "DamageText";
     private const string Zero = "0";

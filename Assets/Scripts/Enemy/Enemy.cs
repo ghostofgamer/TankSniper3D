@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
-    [SerializeField] private FlyDamage _flyDamage;
+    [SerializeField] private TakenDamageParticle  _flyDamage;
     [SerializeField] private GameObject _canvas;
     [SerializeField] private bool _isBoss;
     [SerializeField] private bool _isHelicopter;

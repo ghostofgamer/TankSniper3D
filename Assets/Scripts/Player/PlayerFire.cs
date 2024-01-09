@@ -17,12 +17,12 @@ public class PlayerFire : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.Dying += Diyng;
+        _player.Dying += OnDiyng;
     }
 
     private void OnDisable()
     {
-        _player.Dying -= Diyng;
+        _player.Dying -= OnDiyng;
     }
 
     public void StewFire()
@@ -30,7 +30,7 @@ public class PlayerFire : MonoBehaviour
         _effectFire.gameObject.SetActive(false);
     }
 
-    private void Diyng()
+    private void OnDiyng()
     {
         StartCoroutine(OnDie());
     }
