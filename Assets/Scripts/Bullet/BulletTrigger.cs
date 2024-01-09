@@ -54,8 +54,8 @@ public class BulletTrigger : MonoBehaviour
 
             if (hitCollider.TryGetComponent(out Player player))
             {
-                if (!player.GetComponent<PlayerMover>()._isHidden && !player.IsDead)
-                    player.ApplyDamage(_bullet.Damage, _bullet._shootPosition);
+                if (!player.GetComponent<PlayerMover>().IsHidden && !player.IsDead)
+                    player.ApplyDamage(_bullet.Damage, _bullet.ShootPosition);
             }
         }
     }
@@ -78,7 +78,7 @@ public class BulletTrigger : MonoBehaviour
     private IEnumerator SetActive()
     {
         yield return _waitForSeconds;
-        transform.position = _bullet._shootPosition.position;
+        transform.position = _bullet.ShootPosition.position;
         gameObject.SetActive(false);
     }
 }

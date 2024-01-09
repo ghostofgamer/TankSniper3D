@@ -5,6 +5,7 @@ using UnityEngine;
 public class PositionTank : MonoBehaviour
 {
     public bool IsStay { get; private set; } = false;
+
     public GameObject Target { get; private set; }
 
     private void OnTriggerStay(Collider other)

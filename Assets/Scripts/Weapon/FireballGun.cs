@@ -17,7 +17,7 @@ public class FireballGun : Weapon
 
     public override void SuperShoot()
     {
-        if(PoolBigFireballs.TryGetObject(out Bullet bullet, _bigFireball))
+        if (PoolBigFireballs.TryGetObject(out Bullet bullet, _bigFireball))
             bullet.Init(ShootPosition);
     }
 }

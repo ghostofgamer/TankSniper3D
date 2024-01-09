@@ -13,7 +13,7 @@ public class PlayerMover : MonoBehaviour
     private float _stepSize = 5f;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.6f);
 
-    public bool _isHidden { get; private set; } = true;
+    public bool IsHidden { get; private set; } = true;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class PlayerMover : MonoBehaviour
     public void Go()
     {
         _target = new Vector3(GetTarget(_stepSize), transform.position.y, transform.position.z);
-        _isHidden = false;
+        IsHidden = false;
     }
 
     public void Hide()
@@ -41,7 +41,7 @@ public class PlayerMover : MonoBehaviour
     {
         yield return _waitForSeconds;
         _target = new Vector3(GetTarget(-_stepSize), transform.position.y, transform.position.z);
-        _isHidden = true;
+        IsHidden = true;
     }
 
     private float GetTarget(float step)

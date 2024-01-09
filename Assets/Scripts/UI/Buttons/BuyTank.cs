@@ -71,8 +71,8 @@ public class BuyTank : AbstractButton
 
         if (maxIndex >= _maxLevel)
         {
-            int _allOpen = 1;
-            _save.SetData(Save.AllTanksOpen, _allOpen);
+            int allOpen = 1;
+            _save.SetData(Save.AllTanksOpen, allOpen);
         }
 
         if (_slider.value == _fullSlider)

@@ -1,6 +1,6 @@
 using System.Collections;
-using UnityEngine;
 using Agava.YandexGames;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SdkInitialization : MonoBehaviour

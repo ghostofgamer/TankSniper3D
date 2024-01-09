@@ -1,7 +1,7 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -34,6 +34,7 @@ public abstract class Weapon : MonoBehaviour
     private WaitForSeconds _waitForReload = new WaitForSeconds(3f);
 
     public event UnityAction FirstShoot;
+
     public event UnityAction<int, int> BulletsChanged;
 
     public bool IsReload { get; private set; } = false;

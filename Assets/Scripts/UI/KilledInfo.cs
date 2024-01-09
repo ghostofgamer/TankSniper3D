@@ -17,6 +17,7 @@ public class KilledInfo : MonoBehaviour
     public event UnityAction AllEnemysDying;
 
     public bool IsLastEnemy { get; private set; } = false;
+
     public bool AllDie { get; private set; } = false;
 
     private void Start()

@@ -61,14 +61,14 @@ public class LaserShoot : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
-        yield return _waitForSeconds;
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1.65f);
+        yield return waitForSeconds;
 
         while (!_enemy.IsDying)
         {
-            yield return _waitForSeconds;
+            yield return waitForSeconds;
             Activate();
-            yield return _waitForSeconds;
+            yield return waitForSeconds;
             Deactivate();
         }
     }

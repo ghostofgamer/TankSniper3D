@@ -17,7 +17,7 @@ public class ProgressMap : Progress
 
     private void Awake()
     {
-        _indexEnviropments = Load.Get(Save.Enviropment, _startIndex);
+        _indexEnviropments = Load.Get(Save.Enviropment, StartIndex);
 
         if (_isMainScene)
             SetElement(_enviropments, _indexEnviropments);
@@ -67,7 +67,7 @@ public class ProgressMap : Progress
         foreach (var progressPoint in _progressPoint)
             progressPoint.NoComplite();
 
-        CurrentIndex = Load.Get(Save.Map, _startIndex);
+        CurrentIndex = Load.Get(Save.Map, StartIndex);
 
         for (int i = 0; i < CurrentIndex; i++)
             _progressPoint[i].Complite();

@@ -29,7 +29,7 @@ public class EnemyAnimations : MonoBehaviour
 
     public void Walking(bool flag)
     {
-        if(!_isTank)
-        _animator.SetBool(Walk, flag);
+        if (!_isTank)
+            _animator.SetBool(Walk, flag);
     }
 }

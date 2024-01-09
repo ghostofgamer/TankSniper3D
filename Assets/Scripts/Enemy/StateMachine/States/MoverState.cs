@@ -26,8 +26,8 @@ public class MoverState : State
 
     private void Update()
     {
-        if(!_enemy.IsDying)
-        Move();
+        if (!_enemy.IsDying)
+            Move();
     }
 
     private void Move()

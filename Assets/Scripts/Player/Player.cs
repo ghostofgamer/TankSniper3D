@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
     private int _currentHealth;
 
     public event UnityAction<int, int> HealthChanged;
+
     public event UnityAction Dying;
+
     public event UnityAction<Transform> Hit;
 
     public bool IsDead => _currentHealth <= 0;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TowerRotate : MonoBehaviour
 {
+    private readonly float Speed = 1f;
+
     [SerializeField] private GameObject _tower;
     [SerializeField] private Transform _startTransform;
-
-    private readonly float _speed = 1f;
 
     public void Rotate(Vector3 target)
     {
@@ -18,6 +18,6 @@ public class TowerRotate : MonoBehaviour
     public void ResetRotate()
     {
         if (_tower.transform.rotation != _startTransform.rotation)
-            _tower.transform.rotation = Quaternion.Lerp(_tower.transform.rotation, _startTransform.rotation, _speed * Time.deltaTime);
+            _tower.transform.rotation = Quaternion.Lerp(_tower.transform.rotation, _startTransform.rotation, Speed * Time.deltaTime);
     }
 }

@@ -25,8 +25,11 @@ public class DragItem : MonoBehaviour
     private int _id;
 
     public int Id => _id;
+
     public int Level => _level;
+
     public int LevelMerge => _levelMerge;
+
     public string TankName => _tankNameEnum.ToString();
 
     private void Start()

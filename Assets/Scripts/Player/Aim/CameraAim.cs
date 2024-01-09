@@ -1,16 +1,16 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CameraAim : MonoBehaviour
 {
+    private readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(1f);
+
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private CinemachineVirtualCamera _cineMachineCamera;
     [SerializeField] private float _fov;
-
-    private readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
     private float _fovStart;
     private Vector3 _startPosition;
@@ -83,7 +83,7 @@ public class CameraAim : MonoBehaviour
     {
         OnCinemachine();
         _visibilityAim.OffCanvasActive();
-        yield return _waitForSeconds;
+        yield return WaitForSeconds;
         OffCinemachine();
     }
 

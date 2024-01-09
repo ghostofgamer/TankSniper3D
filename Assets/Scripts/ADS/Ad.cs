@@ -1,9 +1,9 @@
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Agava.YandexGames;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public abstract class Ad : MonoBehaviour
 {

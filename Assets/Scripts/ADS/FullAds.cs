@@ -1,7 +1,7 @@
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Agava.YandexGames;
 using UnityEngine.SceneManagement;
 
 public class FullAds : Ad

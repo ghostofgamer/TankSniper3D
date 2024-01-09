@@ -11,7 +11,7 @@ public class MaterialContainer : MonoBehaviour
 
     public Material GetColor()
     {
-       int index = _load.Get(Save.Color, _startIndex);
+        int index = _load.Get(Save.Color, _startIndex);
         return _materials[index];
     }
 }

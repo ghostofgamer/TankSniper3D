@@ -10,7 +10,7 @@ public class Progress : MonoBehaviour
     protected int CurrentIndex;
     protected int MaxIndex = 4;
 
-    public int _startIndex { get; private set; } = 0;
+    public int StartIndex { get; private set; } = 0;
 
     private void Start()
     {
@@ -24,6 +24,6 @@ public class Progress : MonoBehaviour
 
     protected void SetIndex()
     {
-        CurrentIndex = Load.Get(Save.Map, _startIndex);
+        CurrentIndex = Load.Get(Save.Map, StartIndex);
     }
 }

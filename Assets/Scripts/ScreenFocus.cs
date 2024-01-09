@@ -1,5 +1,5 @@
-using Agava.WebUtility;
 using System.Collections;
+using Agava.WebUtility;
 using UnityEngine;
 
 public class ScreenFocus : MonoBehaviour

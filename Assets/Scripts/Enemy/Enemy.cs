@@ -17,9 +17,13 @@ public class Enemy : MonoBehaviour
     public event UnityAction<int, int> HealthChanged;
 
     public Player Target => _target;
+
     public bool IsDying => _currentHealth <= 0;
+
     public bool IsBoss => _isBoss;
+
     public bool IsHelicopter => _isHelicopter;
+
     public int CurrentHealth => _currentHealth;
 
     private void Start()
@@ -29,8 +33,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(!IsDying)
-        _flyDamage.SetText(damage);
+        if (!IsDying)
+            _flyDamage.SetText(damage);
 
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);

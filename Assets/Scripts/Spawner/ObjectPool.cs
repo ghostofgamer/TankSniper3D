@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ObjectPool<T> where T : MonoBehaviour
+public class ObjectPool<T>
+    where T : MonoBehaviour
 {
     private Transform _container;
     private T _prefab;

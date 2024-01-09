@@ -34,11 +34,11 @@ public class EnemyShoot : MonoBehaviour
     public IEnumerator Shoot()
     {
         _delay = Random.Range(_minTimeShoot, _maxTimeShoot);
-        WaitForSeconds _waitForSeconds = new WaitForSeconds(_delay);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_delay);
 
         while (true)
         {
-            yield return _waitForSeconds;
+            yield return waitForSeconds;
             Shooting(_shootPosition);
         }
     }

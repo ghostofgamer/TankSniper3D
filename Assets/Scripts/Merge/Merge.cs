@@ -187,7 +187,7 @@ public class Merge : MonoBehaviour
         Vector3 screenMousePosNear = new Vector3(
             Input.mousePosition.x,
             Input.mousePosition.y,
-             Camera.main.nearClipPlane);
+            Camera.main.nearClipPlane);
 
         Vector3 worldPosMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosfar);
         Vector3 worldPosMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);

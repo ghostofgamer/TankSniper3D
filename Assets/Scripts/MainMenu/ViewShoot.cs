@@ -15,7 +15,7 @@ public class ViewShoot : MonoBehaviour
     [SerializeField] private int _startLevel;
 
     protected ObjectPool<Bullet> _pool;
-    protected readonly int _maxAmmo = 5;
+    protected int _maxAmmo = 5;
     protected bool _autoExpand = true;
 
     private void OnEnable()

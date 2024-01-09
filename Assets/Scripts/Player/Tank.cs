@@ -24,6 +24,7 @@ public class Tank : MonoBehaviour
     private int _defaultIndexColor = 9;
 
     public int Level => _level;
+
     public string Name => _name;
 
     public void SetMaterial(int index)

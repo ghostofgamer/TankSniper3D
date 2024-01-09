@@ -1,14 +1,14 @@
 using Agava.YandexGames;
-using Lean.Localization;
 using System.Collections;
 using System.Collections.Generic;
+using Lean.Localization;
 using UnityEngine;
 
 public enum Language
 {
-    english,
-    russian,
-    turkish
+    English,
+    Russian,
+    Turkish
 }
 
 public class Localization : MonoBehaviour

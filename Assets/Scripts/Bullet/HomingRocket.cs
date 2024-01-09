@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum MissileState
 {
-    start,
-    fly
+    Start,
+    Fly
 }
 
 public class HomingRocket : MonoBehaviour
@@ -37,27 +37,27 @@ public class HomingRocket : MonoBehaviour
 
     private void OnDisable()
     {
-        _missileState = MissileState.start;
+        _missileState = MissileState.Start;
     }
 
     private void Update()
     {
         switch (_missileState)
         {
-            case MissileState.start:
+            case MissileState.Start:
                 float startDistance = Vector3.Distance(gameObject.transform.position, _startPosition);
                 gameObject.transform.Translate(Vector3.up * _speedStart * Time.deltaTime);
 
                 if (startDistance >= _distance)
-                    _missileState = MissileState.fly;
+                    _missileState = MissileState.Fly;
 
                 break;
 
-            case MissileState.fly:
+            case MissileState.Fly:
                 gameObject.transform.Translate(Vector3.up * _speedMove * Time.deltaTime);
                 Vector3 target = new Vector3(_target.transform.position.x, _target.transform.position.y + _correctVector, _target.transform.position.z);
-                Vector3 _targetVector = target - gameObject.transform.position;
-                gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, _targetVector, _speedRotate * Time.deltaTime);
+                Vector3 targetVector = target - gameObject.transform.position;
+                gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, targetVector, _speedRotate * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, _target.position) < _minDistance)
                     _speedMove = 0f;

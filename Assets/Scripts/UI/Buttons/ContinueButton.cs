@@ -32,7 +32,6 @@ public class ContinueButton : AbstractButton
 
         _wallet.AddMoney(_endGameScreen.ViewReward);
         yield return _waitForSeconds;
-        //yield return _waitForSeconds;
         SceneManager.LoadScene(MainMenu);
     }
 }
