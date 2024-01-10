@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Assets.Scripts.GamePlayer;
-using UnityEngine;
 
 namespace Assets.Scripts.SaveLoad
 {
