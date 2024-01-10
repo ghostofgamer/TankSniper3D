@@ -12,7 +12,7 @@ namespace Assets.Scripts.GameEnemy
             DisableRigidbody();
         }
 
-        public void EnbleRigidbody()
+        public void EnableRigidbody()
         {
             SetValue(false);
         }

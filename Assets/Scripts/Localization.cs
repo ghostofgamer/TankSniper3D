@@ -4,16 +4,6 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public enum Language
-    {
-        English,
-        Russian,
-        Turkish
-    }
-}
-
-namespace Assets.Scripts
-{
     public class Localization : MonoBehaviour
     {
         private const string EnglishCode = "English";

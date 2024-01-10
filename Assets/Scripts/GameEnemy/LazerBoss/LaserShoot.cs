@@ -20,20 +20,6 @@ namespace Assets.Scripts.GameEnemy.LazerBoss
             _beam.enabled = false;
         }
 
-        private void Activate()
-        {
-            _beam.enabled = true;
-            _effect.Play();
-        }
-
-        private void Deactivate()
-        {
-            _beam.enabled = false;
-            _beam.SetPosition(0, _muzzlePoint.position);
-            _beam.SetPosition(1, _muzzlePoint.position);
-            _effect.Stop();
-        }
-
         private void Start()
         {
             Shooting();
@@ -60,6 +46,20 @@ namespace Assets.Scripts.GameEnemy.LazerBoss
                 if (cast && hit.collider.TryGetComponent(out Player player))
                     player.ApplyDamage(_damage, _muzzlePoint.transform);
             }
+        }
+
+        private void Activate()
+        {
+            _beam.enabled = true;
+            _effect.Play();
+        }
+
+        private void Deactivate()
+        {
+            _beam.enabled = false;
+            _beam.SetPosition(0, _muzzlePoint.position);
+            _beam.SetPosition(1, _muzzlePoint.position);
+            _effect.Stop();
         }
 
         private IEnumerator Shoot()

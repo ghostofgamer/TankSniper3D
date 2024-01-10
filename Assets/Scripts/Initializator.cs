@@ -22,7 +22,6 @@ namespace Assets.Scripts
         [Header("Player")]
         [SerializeField] private Player[] _players;
         [Header("UI")]
-        [SerializeField] private KilledInfo _killedInfo;
         [SerializeField] private GameOverScreen _gameOverScreen;
         [SerializeField] private VictoryScreen _victoryScreen;
         [SerializeField] private PlayerHealthbar _playerHealthbar;
@@ -40,7 +39,6 @@ namespace Assets.Scripts
         [SerializeField] private Alarm _alarm;
         [SerializeField] private Progress _progress;
         [SerializeField] private Load _load;
-        [SerializeField] private MaterialContainer _materialContainer;
         [SerializeField] private ScreenFocus _screenFocus;
 
         private int _indexPlayer;

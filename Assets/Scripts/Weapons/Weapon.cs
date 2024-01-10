@@ -19,7 +19,6 @@ namespace Assets.Scripts.Weapons
         [SerializeField] protected Transform ShootPosition;
         [SerializeField] protected Transform Container;
         [SerializeField] protected AudioSource AudioSource;
-        [SerializeField] private CinemachineVirtualCamera _cinemachineCamera;
         [SerializeField] private KilledInfo _killedInfo;
         [SerializeField] private CameraAim _cameraAim;
         [SerializeField] private ReloadSlider _reload;

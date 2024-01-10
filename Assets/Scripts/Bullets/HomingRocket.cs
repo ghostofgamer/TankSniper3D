@@ -2,22 +2,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Bullets
 {
-    public enum MissileState
-    {
-        Start,
-        Fly
-    }
-}
-
-namespace Assets.Scripts.Bullets
-{
     public class HomingRocket : MonoBehaviour
     {
         [SerializeField] private float _speedStart;
         [SerializeField] private float _speedMove;
         [SerializeField] private float _speedRotate;
         [SerializeField] private int _distance;
-        [SerializeField] private BulletTrigger _bulletTrigger;
         [SerializeField] private Bullet _bullet;
 
         private Transform _target;

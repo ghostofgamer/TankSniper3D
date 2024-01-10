@@ -10,8 +10,6 @@ namespace Assets.Scripts.MainMenu
         [SerializeField] private GameObject[] _points;
         [SerializeField] private GameObject[] _advancement;
         [SerializeField] private ProgressPoint[] _progressPoint;
-        [SerializeField] private BuyTank _buyTank;
-        [SerializeField] private Transform[] _positions;
         [SerializeField] private bool _isMainScene;
 
         private int _indexEnviropments;

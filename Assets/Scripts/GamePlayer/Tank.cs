@@ -3,19 +3,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.GamePlayer
 {
-    public enum TanksColor
-    {
-        SimpleColor,
-        CannonColor,
-        RocketColor,
-        FireballColor,
-        MissileColor,
-        LazerColor
-    }
-}
-
-namespace Assets.Scripts.GamePlayer
-{
     public class Tank : MonoBehaviour
     {
         [SerializeField] private int _level;

@@ -6,7 +6,6 @@ namespace Assets.Scripts.Bullets
     {
         [SerializeField] private ParticleSystem _hitParticles;
         [SerializeField] private LineRenderer _lineRenderer;
-        [SerializeField] private BulletTrigger _bulletTrigger;
         [SerializeField] private float _maxLength;
 
         private Ray _ray = new Ray();

@@ -14,7 +14,6 @@ namespace Assets.Scripts.GamePlayer.Aim
         [SerializeField] private Weapon _weapon;
         [SerializeField] private CameraAim _cameraAim;
         [SerializeField] private PlayerMover _playerMover;
-        [SerializeField] private GameObject _imageReload;
         [SerializeField] private ReloadSlider _reloadSlider;
         [SerializeField] private EventTrigger _eventTrigger;
         [SerializeField] private KilledInfo _killedInfo;

@@ -8,7 +8,6 @@ namespace Assets.Scripts.GameEnemy
         private const string Zero = "0";
 
         [SerializeField] private Transform _textPosition;
-        [SerializeField] private Enemy _enemy;
 
         private int _number = 100;
 

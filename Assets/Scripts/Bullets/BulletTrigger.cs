@@ -12,7 +12,6 @@ namespace Assets.Scripts.Bullets
         [SerializeField] private float _radius = 0.001f;
         [SerializeField] private Effect _effect;
         [SerializeField] private BulletMover _bulletMover;
-        [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private HomingRocket _homingRocket;
 
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.35f);

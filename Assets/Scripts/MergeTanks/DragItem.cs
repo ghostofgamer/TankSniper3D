@@ -3,27 +3,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.MergeTanks
 {
-    public enum Tanks
-    {
-        SimpleTank,
-        CannonTank,
-        RocketTank,
-        FireballTank,
-        MissileTank,
-        LazerTank
-    }
-}
-
-namespace Assets.Scripts.MergeTanks
-{
     public class DragItem : MonoBehaviour
     {
         [SerializeField] private int _level;
         [SerializeField] private TMP_Text _levelTxt;
         [SerializeField] private int _levelMerge;
         [SerializeField] private Tanks _tankNameEnum;
-        [SerializeField] private string _name;
-        [SerializeField] private int _defaultLevel;
 
         private int _id;
 
