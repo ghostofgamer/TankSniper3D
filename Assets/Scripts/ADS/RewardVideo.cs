@@ -11,10 +11,5 @@ namespace Assets.Scripts.ADS
         }
 
         public virtual void OnReward() { }
-
-        protected override void OnClose()
-        {
-            base.OnClose();
-        }
     }
 }

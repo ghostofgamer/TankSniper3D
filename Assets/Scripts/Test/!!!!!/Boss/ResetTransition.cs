@@ -1,7 +1,7 @@
-using Assets.Scripts.Enviropment;
+using System.Collections;
+using Assets.Scripts.Environment;
 using Assets.Scripts.GameEnemy.StateMachine;
 using Assets.Scripts.GamePlayer;
-using System.Collections;
 using UnityEngine;
 
 public class ResetTransition : Transition

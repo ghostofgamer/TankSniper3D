@@ -1,4 +1,4 @@
-using Assets.Scripts.Enviropment;
+using Assets.Scripts.Environment;
 using Assets.Scripts.GameEnemy.StateMachine;
 using UnityEngine;
 

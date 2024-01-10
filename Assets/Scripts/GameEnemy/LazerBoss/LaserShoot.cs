@@ -1,5 +1,5 @@
 using System.Collections;
-using Assets.Scripts.Enviropment;
+using Assets.Scripts.Environment;
 using Assets.Scripts.GamePlayer;
 using UnityEngine;
 
@@ -14,6 +14,7 @@ namespace Assets.Scripts.GameEnemy.LazerBoss
         [SerializeField] private Enemy _enemy;
 
         private int _damage = 1;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
         private void Awake()
         {
@@ -64,14 +65,13 @@ namespace Assets.Scripts.GameEnemy.LazerBoss
 
         private IEnumerator Shoot()
         {
-            WaitForSeconds waitForSeconds = new WaitForSeconds(1.65f);
-            yield return waitForSeconds;
+            yield return _waitForSeconds;
 
             while (!_enemy.IsDying)
             {
-                yield return waitForSeconds;
+                yield return _waitForSeconds;
                 Activate();
-                yield return waitForSeconds;
+                yield return _waitForSeconds;
                 Deactivate();
             }
         }

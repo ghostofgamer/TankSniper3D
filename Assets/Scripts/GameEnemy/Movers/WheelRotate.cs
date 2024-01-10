@@ -4,7 +4,7 @@ namespace Assets.Scripts.GameEnemy.Movers
 {
     public class WheelRotate : MonoBehaviour
     {
-        private readonly int Speed = 63;
+        private const int Speed = 63;
 
         private void Update()
         {

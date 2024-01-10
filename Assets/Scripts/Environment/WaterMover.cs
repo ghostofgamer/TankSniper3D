@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Enviropment
+namespace Assets.Scripts.Environment
 {
     public class WaterMover : MonoBehaviour
     {
-        private readonly float Speed = 0.1f;
+        private const float Speed = 0.1f;
 
         private Renderer _renderer;
         private float _offset;

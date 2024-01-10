@@ -1,5 +1,5 @@
 using System.Collections;
-using Assets.Scripts.Enviropment;
+using Assets.Scripts.Environment;
 using Assets.Scripts.GameEnemy;
 using Assets.Scripts.GamePlayer;
 using UnityEngine;

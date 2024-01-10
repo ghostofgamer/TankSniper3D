@@ -2,7 +2,7 @@ using System.Collections;
 using Assets.Scripts.GameEnemy;
 using UnityEngine;
 
-namespace Assets.Scripts.Enviropment
+namespace Assets.Scripts.Environment
 {
     public class Barrel : MonoBehaviour
     {

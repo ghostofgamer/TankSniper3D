@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Enviropment
+namespace Assets.Scripts.Environment
 {
     public class Tower : MonoBehaviour
     {
-        private readonly int Force = 1000;
+        private const int Force = 1000;
 
         [SerializeField] private Rigidbody _rigidbody;
 
