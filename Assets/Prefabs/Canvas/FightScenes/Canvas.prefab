@@ -2169,7 +2169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mute: {fileID: 1621281530511351470}
   _unMute: {fileID: 6115584829036318891}
-  _settingsScreen: {fileID: 4475014111541160903}
   _save: {fileID: 0}
   _load: {fileID: 0}
 --- !u!1 &808360454330340487
@@ -3254,7 +3253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 6950925893590762747}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 0}
   _lookEnemyPosition: {fileID: 0}
@@ -3620,7 +3618,6 @@ MonoBehaviour:
   - {fileID: 1621207718367691897}
   - {fileID: 7569284653790404101}
   - {fileID: 1308278985140716900}
-  _reload: {fileID: 4475014110467238050}
   _extraShootActivated: {fileID: 8405975027420229172}
 --- !u!1 &1386208351130941556
 GameObject:
@@ -3790,7 +3787,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 1347520100489379231}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 6506051523966659466}
   _lookEnemyPosition: {fileID: 0}
@@ -6721,7 +6717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 5991141120772035233}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 2756960452618206017}
   _lookEnemyPosition: {fileID: 0}
@@ -11297,7 +11292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 6506051523966659466}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 0}
   _lookEnemyPosition: {fileID: 0}
@@ -11491,11 +11485,6 @@ MonoBehaviour:
   - {fileID: 6093370866806190540}
   - {fileID: 6511622968356531325}
   - {fileID: 5552105635605538887}
-  _buyTank: {fileID: 0}
-  _positions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _isMainScene: 0
 --- !u!1 &3646237791402433791
 GameObject:
@@ -12804,25 +12793,27 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2704140977114935434}
-          m_TargetAssemblyTypeName: CancelShootButton, Assembly-CSharp
-          m_MethodName: Cancel
-          m_Mode: 1
+          m_TargetAssemblyTypeName: Assets.Scripts.UI.Buttons.CancelShootButton,
+            Assembly-CSharp
+          m_MethodName: SetCanceling
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2704140977114935434}
-          m_TargetAssemblyTypeName: CancelShootButton, Assembly-CSharp
-          m_MethodName: DontCancel
-          m_Mode: 1
+          m_TargetAssemblyTypeName: Assets.Scripts.UI.Buttons.CancelShootButton,
+            Assembly-CSharp
+          m_MethodName: SetCanceling
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12843,7 +12834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eca3b9b337f8e044bca77e86dd02015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventTrigger: {fileID: 3965735772110311104}
 --- !u!1 &4162438665216907660
 GameObject:
   m_ObjectHideFlags: 0
@@ -12935,7 +12925,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 5611311308567709097}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 5093985752906841601}
   _lookEnemyPosition: {fileID: 482828138654316623}
@@ -14151,7 +14140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mute: {fileID: 4475014110712490545}
   _unMute: {fileID: 4475014111242019560}
-  _settingsScreen: {fileID: 4475014111541160903}
   _save: {fileID: 0}
   _load: {fileID: 0}
 --- !u!1 &4475014109908226912
@@ -16845,7 +16833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 601275684501321918}
   _wallet: {fileID: 0}
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
@@ -18032,7 +18019,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 5093985752906841601}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 0}
   _lookEnemyPosition: {fileID: 0}
@@ -20676,7 +20662,6 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   _cameraAim: {fileID: 0}
   _playerMover: {fileID: 0}
-  _imageReload: {fileID: 4475014110467238051}
   _reloadSlider: {fileID: 3359278448340362663}
   _eventTrigger: {fileID: 2385510200062649115}
   _killedInfo: {fileID: 4475014109724710405}
@@ -23479,7 +23464,6 @@ MonoBehaviour:
   - {fileID: 1295225165297355674}
   - {fileID: 3313141080802527546}
   - {fileID: 2617527155598237780}
-  _reload: {fileID: 4475014110467238050}
   _extraShootActivated: {fileID: 6918335804879130623}
 --- !u!1 &6802817911296062539
 GameObject:
@@ -24675,7 +24659,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 2470792454978388950}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 0}
   _lookEnemyPosition: {fileID: 0}
@@ -25284,7 +25267,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 2376606204643442666}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 6950925893590762747}
   _lookEnemyPosition: {fileID: 858437544434038206}
@@ -25502,7 +25484,6 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   _cameraAim: {fileID: 0}
   _playerMover: {fileID: 0}
-  _imageReload: {fileID: 4475014110467238051}
   _reloadSlider: {fileID: 3359278448340362663}
   _eventTrigger: {fileID: 4391652075244575922}
   _killedInfo: {fileID: 4475014109724710405}
@@ -27021,8 +27002,6 @@ MonoBehaviour:
   - {fileID: 4980017109134318708}
   - {fileID: 9209949249511126871}
   - {fileID: 7552749348391285379}
-  _buyTank: {fileID: 0}
-  _positions: []
   _isMainScene: 0
 --- !u!1 &7884938292687934287
 GameObject:
@@ -27226,7 +27205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 5067702492623869243}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 2470792454978388950}
   _lookEnemyPosition: {fileID: 5239586324492109465}
@@ -27558,7 +27536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _image: {fileID: 2756960452618206017}
-  _aim: {fileID: 3152583568417911815}
   _enemy: {fileID: 0}
   _arrow: {fileID: 0}
   _lookEnemyPosition: {fileID: 0}
@@ -29638,7 +29615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 639357633414956543}
   _wallet: {fileID: 8846564762940594530}
   _endGameScreen: {fileID: 4475014111677056189}
   _moneyFly: {fileID: 6064520399618878223}
@@ -31483,7 +31459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 868703534488886732}
   _wallet: {fileID: 0}
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
@@ -31516,9 +31491,6 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _rewardVideo: {fileID: 0}
   _load: {fileID: 0}
-  _moneyMove: {fileID: 0}
-  _moneyFlyMobile: {fileID: 0}
-  _wallet: {fileID: 0}
 --- !u!224 &6920612055137811124 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -32026,7 +31998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 6543452338909714273}
   _wallet: {fileID: 0}
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
@@ -32283,7 +32254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 7009333398907028855}
   _wallet: {fileID: 0}
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
@@ -32316,9 +32286,6 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _rewardVideo: {fileID: 0}
   _load: {fileID: 0}
-  _moneyMove: {fileID: 0}
-  _moneyFlyMobile: {fileID: 0}
-  _wallet: {fileID: 0}
 --- !u!224 &5812310516234039572 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8948961942402484082, guid: 789585e40810b8343be1928038b9cdc0, type: 3}
@@ -32835,7 +32802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49352363474664eaae302a5ce1be4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fullVideo: {fileID: 1824761955420066592}
   _wallet: {fileID: 0}
   _endGameScreen: {fileID: 0}
   _moneyFly: {fileID: 0}
@@ -32868,9 +32834,6 @@ MonoBehaviour:
   _roulette: {fileID: 4925953474847345268}
   _rewardVideo: {fileID: 3396604910238523348}
   _load: {fileID: 0}
-  _moneyMove: {fileID: 6064520399618878223}
-  _moneyFlyMobile: {fileID: 2772920098501698149}
-  _wallet: {fileID: 0}
 --- !u!114 &3396604910238523348
 MonoBehaviour:
   m_ObjectHideFlags: 0

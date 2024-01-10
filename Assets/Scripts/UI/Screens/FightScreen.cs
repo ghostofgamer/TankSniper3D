@@ -15,13 +15,6 @@ namespace Assets.Scripts.UI.Screens
         [SerializeField] private PlayerHealthbar _playerHealthbar;
         [SerializeField] private ProgressMap _progressMap;
 
-        private Weapon _weapon;
-
-        public void Init(Weapon weapon)
-        {
-            _weapon = weapon;
-        }
-
         public void SetScreen()
         {
             _wallet.gameObject.SetActive(false);

@@ -44,7 +44,7 @@ namespace Assets.Scripts
 
         private void MuteAudio(bool value)
         {
-            AudioListener.pause = value ? true : false;
+            AudioListener.pause = value;
         }
 
         private void PauseGame(bool value)

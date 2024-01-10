@@ -25,7 +25,6 @@ namespace Assets.Scripts
         [SerializeField] private GameOverScreen _gameOverScreen;
         [SerializeField] private VictoryScreen _victoryScreen;
         [SerializeField] private PlayerHealthbar _playerHealthbar;
-        [SerializeField] private FightScreen _fightScreen;
         [SerializeField] private BulletsInfo[] _bulletsInfo;
         [SerializeField] private AimInputButton[] _aimInputButton;
         [SerializeField] private HitPlayer[] _hitPlayers;
@@ -63,7 +62,6 @@ namespace Assets.Scripts
             _hitPoint.Init(_player.GetComponent<TowerRotate>());
             InitPlatform();
             _alarm.Init(_player.GetComponent<Weapon>());
-            InitFightScreen();
             _victoryScreen.Init(_progress, _player);
             SetActive();
         }
@@ -83,12 +81,6 @@ namespace Assets.Scripts
             Material material = _players[index].GetComponent<Tank>().GetMaterial();
             _players[index].GetComponent<ColoringChanger>().SetMaterial(material);
             return _players[index];
-        }
-
-        private void InitFightScreen()
-        {
-            _fightScreen.Init(_player.GetComponent<Weapon>());
-            _gameObjects.Add(_fightScreen.gameObject);
         }
 
         private void InitPlatform()

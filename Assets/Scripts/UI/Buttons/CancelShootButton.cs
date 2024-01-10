@@ -5,23 +5,16 @@ namespace Assets.Scripts.UI.Buttons
 {
     public class CancelShootButton : MonoBehaviour
     {
-        [SerializeField] private EventTrigger _eventTrigger;
-
         public bool IsCancel { get; private set; }
 
         private void OnEnable()
         {
-            DontCancel();
+            SetCanceling(false);
         }
 
-        public void Cancel()
+        public void SetCanceling(bool flag)
         {
-            IsCancel = true;
-        }
-
-        public void DontCancel()
-        {
-            IsCancel = false;
+            IsCancel = flag;
         }
     }
 }

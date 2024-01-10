@@ -9,7 +9,6 @@ namespace Assets.Scripts.UI.Buttons
     {
         [SerializeField] private StoreScreen _storeScreen;
         [SerializeField] private Save _save;
-        [SerializeField] private Load _load;
         [SerializeField] private int _index;
 
         private int _zero = 0;

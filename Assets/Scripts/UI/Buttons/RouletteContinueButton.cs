@@ -10,9 +10,6 @@ namespace Assets.Scripts.UI.Buttons
         [SerializeField] private Roulette _roulette;
         [SerializeField] private RewardVideo _rewardVideo;
         [SerializeField] private Load _load;
-        [SerializeField] private GameObject _moneyMove;
-        [SerializeField] private GameObject _moneyFlyMobile;
-        [SerializeField] private Wallet _wallet;
 
         private int _startVolume = 1;
 

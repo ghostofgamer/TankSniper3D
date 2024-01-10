@@ -13,8 +13,6 @@ namespace Assets.Scripts.UI.Buttons
 {
     public class BuyTank : AbstractButton
     {
-        [SerializeField] private GameObject _prefab;
-        [SerializeField] private Transform _position;
         [SerializeField] private Transform[] _positionsIndex;
         [SerializeField] private Transform _container;
         [SerializeField] private Slider _slider;
@@ -46,7 +44,7 @@ namespace Assets.Scripts.UI.Buttons
         private void Start()
         {
             GetData();
-            PriceChecker();
+            ValidatePrice();
             SetPositions();
         }
 
@@ -66,7 +64,7 @@ namespace Assets.Scripts.UI.Buttons
             tank.transform.position = position.position;
             _storage.AddTank(tank.GetComponent<Tank>());
             ChangeValue();
-            PriceChecker();
+            ValidatePrice();
         }
 
         public void SetValue()
@@ -90,7 +88,7 @@ namespace Assets.Scripts.UI.Buttons
             _currentLevelText.text = _levelBuy.ToString();
             _currentTankIndex = _currentLevel;
             SaveProgress();
-            PriceChecker();
+            ValidatePrice();
         }
 
         private Transform TryGetPosition()
@@ -190,7 +188,7 @@ namespace Assets.Scripts.UI.Buttons
             AddPrice();
         }
 
-        private void PriceChecker()
+        private void ValidatePrice()
         {
             Price = _levelBuy * _factor;
 

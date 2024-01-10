@@ -11,7 +11,6 @@ namespace Assets.Scripts.UI.Buttons
     {
         private const string MainMenu = "MainScene";
 
-        [SerializeField] private FullAds _fullVideo;
         [SerializeField] private Wallet _wallet;
         [SerializeField] private EndGame _endGameScreen;
         [SerializeField] private GameObject _moneyFly;

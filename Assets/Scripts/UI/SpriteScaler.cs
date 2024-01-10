@@ -14,10 +14,6 @@ namespace Assets.Scripts.UI
                 _rectTransform.GetComponent<RectTransform>();
                 _rectTransform.sizeDelta = new Vector3(_size, _size, 0);
             }
-            else
-            {
-                return;
-            }
         }
     }
 }

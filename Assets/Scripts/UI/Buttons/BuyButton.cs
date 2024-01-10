@@ -5,22 +5,6 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI.Buttons
 {
-    public enum Coloring
-    {
-        Zebra,
-        Winter,
-        Leopard,
-        Giraffe,
-        Jaguar,
-        Orange,
-        Pink,
-        Tigr,
-        Yellow
-    }
-}
-
-namespace Assets.Scripts.UI.Buttons
-{
     public class BuyButton : AbstractButton
     {
         [SerializeField] private GameObject _AdButton;

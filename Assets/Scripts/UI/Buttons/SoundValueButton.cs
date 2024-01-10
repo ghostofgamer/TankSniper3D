@@ -8,7 +8,6 @@ namespace Assets.Scripts.UI.Buttons
     {
         [SerializeField] private Image _mute;
         [SerializeField] private Image _unMute;
-        [SerializeField] private SettingsScreen _settingsScreen;
         [SerializeField] private Save _save;
         [SerializeField] private Load _load;
 

@@ -132,10 +132,6 @@ namespace Assets.Scripts.Weapons
                     BulletsChanged?.Invoke(_currentAmmo, _hitEnemy);
                 }
             }
-            else
-            {
-                return;
-            }
         }
 
         private void BulletInitialization(Bullet bullet)

@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI.Buttons
             _maxScale = transform.localScale;
         }
 
-        public void Up()
+        public void Increase()
         {
             if (_coroutineScale != null)
                 StopCoroutine(_coroutineScale);
@@ -27,7 +27,7 @@ namespace Assets.Scripts.UI.Buttons
             _coroutineScale = StartCoroutine(ScaleChanged(transform.localScale, _maxScale, _duration, _maxDelay));
         }
 
-        public void Down()
+        public void Decrease()
         {
             if (_coroutineScale != null)
                 StopCoroutine(_coroutineScale);

@@ -11,7 +11,6 @@ namespace Assets.Scripts.UI
 
         [SerializeField] private List<Image> _bulletsImages;
         [SerializeField] private List<Image> _extraImages;
-        [SerializeField] private Image _reload;
         [SerializeField] private GameObject _extraShootActivated;
 
         private Weapon _weapon;

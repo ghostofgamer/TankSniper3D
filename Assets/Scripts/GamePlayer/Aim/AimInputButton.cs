@@ -77,7 +77,7 @@ namespace Assets.Scripts.GamePlayer.Aim
         {
             IsZoom = true;
             _fightScreen.SetScreen();
-            _buttonScaler.Down();
+            _buttonScaler.Decrease();
             _isPressed = true;
             _playerMover.Go();
             _visibilityAim.EnableFadeIn();
@@ -119,7 +119,7 @@ namespace Assets.Scripts.GamePlayer.Aim
             if (_reloadSlider.gameObject.activeSelf)
                 yield return _waitForReload;
 
-            _buttonScaler.Up();
+            _buttonScaler.Increase();
         }
     }
 }
