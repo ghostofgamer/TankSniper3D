@@ -16,10 +16,10 @@ namespace Assets.Scripts
 
         private IEnumerator Start()
         {
-            yield return YandexGamesSdk.Initialize(EnableInitialized);
+            yield return YandexGamesSdk.Initialize(OnInitialized);
         }
 
-        private void EnableInitialized()
+        private void OnInitialized()
         {
             YandexGamesSdk.GameReady();
             SceneManager.LoadScene(MainScene);
