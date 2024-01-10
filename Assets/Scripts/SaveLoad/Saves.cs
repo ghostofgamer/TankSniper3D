@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.SaveLoad
 {
     [System.Serializable]
-    public class Saves : MonoBehaviour
+    public class Saves
     {
         public List<TankSaveData> TanksData = new List<TankSaveData>();
 

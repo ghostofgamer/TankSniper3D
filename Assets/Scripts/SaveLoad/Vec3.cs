@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Assets.Scripts.SaveLoad
 {
     [System.Serializable]
-    public class Vec3 : MonoBehaviour
+    public struct Vec3
     {
         public float X;
         public float Y;
