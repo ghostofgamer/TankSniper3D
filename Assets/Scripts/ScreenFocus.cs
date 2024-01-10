@@ -29,7 +29,7 @@ namespace Assets.Scripts
 
         private void OnInBackgroundChangeApp(bool inApp)
         {
-            MuteAudio(!inApp);
+            SetValueAudio(!inApp);
             PauseGame(!inApp);
         }
 
@@ -38,11 +38,11 @@ namespace Assets.Scripts
             if (isBackground)
                 _aimInputButton.ReturnHide();
 
-            MuteAudio(isBackground);
+            SetValueAudio(isBackground);
             PauseGame(isBackground);
         }
 
-        private void MuteAudio(bool value)
+        private void SetValueAudio(bool value)
         {
             AudioListener.pause = value;
         }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Enviropment
+namespace Assets.Scripts.Environment
 {
     public class PartBuilding : MonoBehaviour
     {

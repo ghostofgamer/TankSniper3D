@@ -9,7 +9,7 @@ namespace Assets.Scripts
         [SerializeField] private Camera _camera;
         [SerializeField] private float _fov;
         [SerializeField] private bool _isMenu;
-        [SerializeField] private CanvasGroup _PC;
+        [SerializeField] private CanvasGroup _pc;
         [SerializeField] private CanvasGroup _mobile;
         [SerializeField] private Merge _merge;
         [SerializeField] private BuyTank[] _buyTanks;
@@ -22,9 +22,9 @@ namespace Assets.Scripts
             if (_isMenu)
             {
                 if (Application.isMobilePlatform)
-                    Init(_mobile, _PC, _buyTanks[_mobileIndex]);
+                    Init(_mobile, _pc, _buyTanks[_mobileIndex]);
                 else
-                    Init(_PC, _mobile, _buyTanks[_pcIndex]);
+                    Init(_pc, _mobile, _buyTanks[_pcIndex]);
             }
 
             if (Application.isMobilePlatform)

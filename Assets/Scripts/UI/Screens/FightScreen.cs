@@ -11,7 +11,7 @@ namespace Assets.Scripts.UI.Screens
     {
         [SerializeField] private Wallet _wallet;
         [SerializeField] private KilledInfo _killedInfo;
-        [SerializeField] private ResetButton _resetButton;
+        [SerializeField] private RestartButton _resetButton;
         [SerializeField] private PlayerHealthbar _playerHealthbar;
         [SerializeField] private ProgressMap _progressMap;
 

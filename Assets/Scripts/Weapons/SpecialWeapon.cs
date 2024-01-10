@@ -12,6 +12,12 @@ namespace Assets.Scripts.Weapons
 
         private float _factor = 1.5f;
         private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds;
+
+        private void Awake()
+        {
+            _waitForSeconds = new WaitForSeconds(_delay);
+        }
 
         public override void SuperShoot()
         {
@@ -23,8 +29,6 @@ namespace Assets.Scripts.Weapons
 
         private IEnumerator MultiShoot(int count, float delay)
         {
-            WaitForSeconds waitForSeconds = new WaitForSeconds(delay);
-
             for (int i = 0; i < count; i++)
             {
                 if (_pool.TryGetObject(out Bullet bullet, PrefabBullet))
@@ -33,7 +37,7 @@ namespace Assets.Scripts.Weapons
                     bullet.Init(ShootPosition);
                 }
 
-                yield return waitForSeconds;
+                yield return _waitForSeconds;
                 Vector3 vector = ShootPosition.position + Random.insideUnitSphere * _factor;
                 ShootPosition.position = vector;
             }
