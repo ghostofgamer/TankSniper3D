@@ -13,6 +13,7 @@ namespace Assets.Scripts.GameEnemy.Turrells
         [SerializeField] private ParticleSystem[] _effectsShoot;
 
         private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
 
         private void OnEnable()
         {
@@ -33,7 +34,7 @@ namespace Assets.Scripts.GameEnemy.Turrells
         {
             while (!_enemy.IsDying)
             {
-                yield return new WaitForSeconds(1f);
+                yield return _waitForSeconds;
                 int randomIndex = Random.Range(0, _shootPoints.Length);
                 _enemyShoot.Shooting(_shootPoints[randomIndex]);
                 _effectsShoot[randomIndex].Play();

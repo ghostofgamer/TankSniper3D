@@ -50,7 +50,7 @@ namespace Assets.Scripts.UI.Buttons
 
         public override void OnClick()
         {
-            Transform position = TryGetPosition();
+            Transform position = TryGetTransform();
 
             if (position == null)
                 return;
@@ -91,7 +91,7 @@ namespace Assets.Scripts.UI.Buttons
             ValidatePrice();
         }
 
-        private Transform TryGetPosition()
+        private Transform TryGetTransform()
         {
             var filter = _positions.FirstOrDefault(p => !p.GetComponent<PositionTank>().IsStay);
 

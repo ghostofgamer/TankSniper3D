@@ -23,6 +23,8 @@ namespace Assets.Scripts.MainMenu
         protected int _maxAmmo = 5;
         protected bool _autoExpand = true;
 
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.05f);
+
         private void OnEnable()
         {
             StartCoroutine(ViewLevel());
@@ -51,7 +53,7 @@ namespace Assets.Scripts.MainMenu
         private IEnumerator ViewLevel()
         {
             _levelTxt.text = " ";
-            yield return new WaitForSeconds(0.05f);
+            yield return _waitForSeconds;
             string name = _tanksEnum.ToString();
             int level = _load.Get(name, _startLevel);
             _levelTxt.text = (++level).ToString();
