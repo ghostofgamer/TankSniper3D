@@ -23,7 +23,7 @@ namespace Assets.Scripts.MainMenu
 
         public void Show()
         {
-            OffActiveTanks();
+            DisableActiveTanks();
             SetTank();
         }
 
@@ -43,7 +43,7 @@ namespace Assets.Scripts.MainMenu
             }
         }
 
-        public void OffActiveTanks()
+        public void DisableActiveTanks()
         {
             foreach (var tank in _tanks)
                 tank.SetActive(false);

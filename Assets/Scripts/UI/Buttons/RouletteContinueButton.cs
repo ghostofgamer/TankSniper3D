@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI.Buttons
 
         public override void OnClick()
         {
-            OnVictory();
+            EnableVictory();
         }
 
         public void SetActive()
@@ -27,7 +27,7 @@ namespace Assets.Scripts.UI.Buttons
             Button.interactable = false;
         }
 
-        private void OnVictory()
+        private void EnableVictory()
         {
             int volume = _load.Get(Save.Volume, _startVolume);
             SetActive();

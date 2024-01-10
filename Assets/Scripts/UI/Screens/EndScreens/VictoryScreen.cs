@@ -61,7 +61,7 @@ namespace Assets.Scripts.UI.Screens.EndScreens
                 _levelNumber.text = _currentLevel.ToString();
                 _currentLevel++;
                 _save.SetData(Save.LevelComplited, _currentLevel);
-                StartCoroutine(OnActiveButton());
+                StartCoroutine(EnableActiveButton());
                 _enoughtAmountText.text = Reward.ToString();
                 _panelInfo.SetActive(false);
                 int index = SceneManager.GetActiveScene().buildIndex;
@@ -71,7 +71,7 @@ namespace Assets.Scripts.UI.Screens.EndScreens
             }
         }
 
-        private IEnumerator OnActiveButton()
+        private IEnumerator EnableActiveButton()
         {
             yield return _waitForSeconds;
             Open();

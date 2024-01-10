@@ -38,7 +38,7 @@ namespace Assets.Scripts.UI.Buttons
             int index = _load.Get(_coloring.ToString(), _startIndex);
 
             if (index > 0)
-                OffActive();
+                DisableActive();
         }
 
         public override void OnClick()
@@ -88,7 +88,7 @@ namespace Assets.Scripts.UI.Buttons
             }
         }
 
-        public void OffActive()
+        public void DisableActive()
         {
             _imageBlock.gameObject.SetActive(false);
             _AdButton.SetActive(false);

@@ -17,7 +17,7 @@ namespace Assets.Scripts.UI.Buttons
         {
             _storeScreen.Open();
             _storeScreen.OpenTab(_index);
-            _tankView.OffActiveTanks();
+            _tankView.DisableActiveTanks();
             _merge.enabled = false;
             Time.timeScale = 1;
         }

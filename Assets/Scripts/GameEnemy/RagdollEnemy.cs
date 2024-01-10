@@ -9,15 +9,15 @@ namespace Assets.Scripts.GameEnemy
         private void Start()
         {
             rigidbodies = GetComponentsInChildren<Rigidbody>();
-            OffRigidbody();
+            DisableRigidbody();
         }
 
-        public void OnRigidbody()
+        public void EnbleRigidbody()
         {
             SetValue(false);
         }
 
-        private void OffRigidbody()
+        private void DisableRigidbody()
         {
             SetValue(true);
         }

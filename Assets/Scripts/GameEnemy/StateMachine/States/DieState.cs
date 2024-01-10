@@ -30,7 +30,7 @@ namespace Assets.Scripts.GameEnemy.StateMachine.States
                 _audioSource.Stop();
 
             _animator.enabled = false;
-            _ragdoll.OnRigidbody();
+            _ragdoll.EnbleRigidbody();
             _effect.PlayEffect();
             _killedInfo.ChangeValue();
 

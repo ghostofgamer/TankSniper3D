@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI.Screens
 
         public void OpenTab(int index)
         {
-            OffItem(_tabs);
+            DisableItem(_tabs);
             _tabs[index].SetActive(true);
 
             if (index == 0)
@@ -31,7 +31,7 @@ namespace Assets.Scripts.UI.Screens
 
         public void SetItem()
         {
-            OffItem(_items);
+            DisableItem(_items);
         }
 
         public GameObject GetTank()
@@ -58,7 +58,7 @@ namespace Assets.Scripts.UI.Screens
             }
         }
 
-        private void OffItem(GameObject[] items)
+        private void DisableItem(GameObject[] items)
         {
             foreach (GameObject item in items)
                 item.SetActive(false);

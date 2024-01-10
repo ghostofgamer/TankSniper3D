@@ -13,10 +13,10 @@ namespace Assets.Scripts
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(OffActive());
+            _coroutine = StartCoroutine(Disable());
         }
 
-        private IEnumerator OffActive()
+        private IEnumerator Disable()
         {
             yield return _waitForSeconds;
             gameObject.SetActive(false);

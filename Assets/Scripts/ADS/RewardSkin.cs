@@ -9,7 +9,7 @@ namespace Assets.Scripts.ADS
 
         public override void OnReward()
         {
-            buyButton.OffActive();
+            buyButton.DisableActive();
         }
     }
 }

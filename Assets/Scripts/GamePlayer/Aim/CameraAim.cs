@@ -56,7 +56,7 @@ namespace Assets.Scripts.GamePlayer.Aim
             CameraFovChanged(_fovStart);
         }
 
-        private void OnCinemachine()
+        private void EnableCinemachine()
         {
             SetCinemachine(true);
             Time.timeScale = 0.3f;
@@ -69,7 +69,7 @@ namespace Assets.Scripts.GamePlayer.Aim
             _cineMachineCamera.gameObject.SetActive(flag);
         }
 
-        private void OffCinemachine()
+        private void DisableCinemachine()
         {
             SetCinemachine(false);
             ResetMainCamera();
@@ -83,10 +83,10 @@ namespace Assets.Scripts.GamePlayer.Aim
 
         private IEnumerator ChangerCinemaMachine()
         {
-            OnCinemachine();
-            _visibilityAim.OffCanvasActive();
+            EnableCinemachine();
+            _visibilityAim.DisableCanvasActive();
             yield return WaitForSeconds;
-            OffCinemachine();
+            DisableCinemachine();
         }
 
         private void ResetMainCamera()

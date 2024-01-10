@@ -22,7 +22,7 @@ namespace Assets.Scripts.UI.Screens
             _weapon = weapon;
         }
 
-        public void OnSetScreen()
+        public void SetScreen()
         {
             _wallet.gameObject.SetActive(false);
             _killedInfo.gameObject.SetActive(true);

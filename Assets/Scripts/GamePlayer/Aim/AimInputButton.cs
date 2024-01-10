@@ -47,7 +47,7 @@ namespace Assets.Scripts.GamePlayer.Aim
 
             if (!_isPressed && IsZoom)
             {
-                DoZoomOff();
+                DoDisableZoom();
             }
 
             if (!IsZoom || _weapon.IsReload)
@@ -71,17 +71,17 @@ namespace Assets.Scripts.GamePlayer.Aim
         {
             _isPressed = false;
             _playerMover.Hide();
-            _visibilityAim.OnFadeOut();
+            _visibilityAim.EnableFadeOut();
         }
 
         private void OnDown()
         {
             IsZoom = true;
-            _fightScreen.OnSetScreen();
+            _fightScreen.SetScreen();
             _buttonScaler.Down();
             _isPressed = true;
             _playerMover.Go();
-            _visibilityAim.OnFadeIn();
+            _visibilityAim.EnableFadeIn();
             _cancelShoot.gameObject.SetActive(true);
         }
 
@@ -102,12 +102,12 @@ namespace Assets.Scripts.GamePlayer.Aim
             _cameraAim.CameraFovForward();
         }
 
-        private void DoZoomOff()
+        private void DoDisableZoom()
         {
-            StartCoroutine(ZoomOff());
+            StartCoroutine(DisableZoom());
         }
 
-        private IEnumerator ZoomOff()
+        private IEnumerator DisableZoom()
         {
             yield return _waitForPauzeZoom;
             IsZoom = false;

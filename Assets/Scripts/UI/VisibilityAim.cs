@@ -27,7 +27,7 @@ namespace Assets.Scripts.UI
                 _needCanvasGroup = _canvasGroupe;
         }
 
-        public void OnFadeIn()
+        public void EnableFadeIn()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI
             _coroutine = StartCoroutine(Fade(_needCanvasGroup, AlphaFull, Speed, 0, false));
         }
 
-        public void OnFadeOut()
+        public void EnableFadeOut()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
@@ -43,7 +43,7 @@ namespace Assets.Scripts.UI
             _coroutine = StartCoroutine(Fade(_needCanvasGroup, AlphaZero, -Speed, TimeFade, true));
         }
 
-        public void OffCanvasActive()
+        public void DisableCanvasActive()
         {
             _needCanvasGroup.alpha = 0;
         }

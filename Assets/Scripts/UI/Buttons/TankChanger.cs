@@ -27,7 +27,7 @@ namespace Assets.Scripts.UI.Buttons
 
         private void SetTank()
         {
-            OffTanks();
+            DisableTanks();
             _currentIndex = _index;
             _tanks[_currentIndex].SetActive(true);
             Material material = _tanks[_currentIndex].GetComponentInChildren<Tank>().GetMaterial();
@@ -35,7 +35,7 @@ namespace Assets.Scripts.UI.Buttons
             _save.SetData(Save.Tank, _currentIndex);
         }
 
-        private void OffTanks()
+        private void DisableTanks()
         {
             foreach (GameObject tank in _tanks)
                 tank.SetActive(false);

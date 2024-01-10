@@ -131,7 +131,7 @@ namespace Assets.Scripts.UI.Buttons
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(OnSetValue());
+            _coroutine = StartCoroutine(EnableSetValue());
         }
 
         private void SaveProgress()
@@ -164,7 +164,7 @@ namespace Assets.Scripts.UI.Buttons
             _currenPriceText.text = Price.ToString();
         }
 
-        private IEnumerator OnSetValue()
+        private IEnumerator EnableSetValue()
         {
             yield return _waitForSeconds;
             SetValue();
