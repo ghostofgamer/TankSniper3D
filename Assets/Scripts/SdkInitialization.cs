@@ -11,17 +11,35 @@ namespace Assets.Scripts
 
         private void Awake()
         {
+#if Yandex_Platform
             YandexGamesSdk.CallbackLogging = true;
+#endif
         }
 
         private IEnumerator Start()
         {
+#if UNITY_WEBGL && YANDEX_PLATFORM
             yield return YandexGamesSdk.Initialize(OnInitialized);
+            Debug.Log("Yandex SDK Initialized");
+
+#elif UNITY_ANDROID && RUSTORE
+            Debug.Log("Rustore SDK Initialized");
+            SceneManager.LoadScene(MainScene);
+            yield break;
+
+#elif UNITY_ANDROID && GOOGLE_PLAY
+            Debug.Log("Google SDK Initialized");
+            SceneManager.LoadScene(MainScene);
+            yield break;
+#else
+            // что угодно ещё
+            SceneManager.LoadScene(MainScene);
+            yield break;
+#endif
         }
 
         private void OnInitialized()
         {
-            YandexGamesSdk.GameReady();
             SceneManager.LoadScene(MainScene);
         }
     }

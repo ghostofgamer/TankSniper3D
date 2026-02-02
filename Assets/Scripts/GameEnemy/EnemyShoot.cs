@@ -15,7 +15,7 @@ namespace Assets.Scripts.GameEnemy
         [SerializeField] private float _maxTimeShoot;
         [SerializeField] private ParticleSystem _effectShooting;
         [SerializeField] private Enemy _enemy;
-        [Header("«‚ÛÍ")]
+        [Header("–ó–≤—É–∫")]
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _audioClip;
 

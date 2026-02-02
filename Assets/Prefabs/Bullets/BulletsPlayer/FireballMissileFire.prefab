@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803597819444571034}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9149449267591811966}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &803597819444571024
 MeshFilter:
@@ -170,6 +170,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803597819540530743}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -177,7 +178,6 @@ Transform:
   m_Children:
   - {fileID: 5524106450888538873}
   m_Father: {fileID: 9149449267591811966}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9149449267591585104
 GameObject:
@@ -204,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9149449267591585104}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9149449267591811966}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &9149449267577660264
 ParticleSystem:
@@ -4974,8 +4974,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9149449267591621148}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.73}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4985,7 +4986,6 @@ Transform:
   - {fileID: 803597819444571037}
   - {fileID: 803597819540530742}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &9149449267577677788
 ParticleSystem:
@@ -10038,7 +10038,6 @@ MonoBehaviour:
   _radius: 5
   _effect: {fileID: 3034004129944833565}
   _bulletMover: {fileID: -3490685593815622012}
-  _meshRenderer: {fileID: 9149449267602450327}
   _homingRocket: {fileID: 0}
 --- !u!114 &3034004129944833565
 MonoBehaviour:
@@ -10053,7 +10052,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 5524106450903638319}
-  _audioSource: {fileID: 5524106450892140379}
 --- !u!114 &-999325267113578704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10112,13 +10110,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9149449267591651916}
+  serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9149449267591811966}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!198 &9149449267577709032
 ParticleSystem:
@@ -14916,13 +14914,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9149449267591674780}
+  serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9149449267591811966}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: -180}
 --- !u!198 &9149449267577730046
 ParticleSystem:
@@ -19775,11 +19773,6 @@ PrefabInstance:
 --- !u!4 &5524106450888538873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490358, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
-  m_PrefabInstance: {fileID: 5524106450888081807}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &5524106450892140379 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8285908, guid: d16221e794fe16e4e8994a7f8c770561, type: 3}
   m_PrefabInstance: {fileID: 5524106450888081807}
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &5524106450903638319 stripped

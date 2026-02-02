@@ -24,6 +24,7 @@ namespace Assets.Scripts.UI.Buttons
         [SerializeField] private Storage _storage;
         [SerializeField] private Wallet _wallet;
         [SerializeField] private GameObject _button;
+        [SerializeField] private CanvasGroup _canvas;
 
         private List<Transform> _positions;
         private Coroutine _coroutine;
@@ -49,6 +50,11 @@ namespace Assets.Scripts.UI.Buttons
         }
 
         public override void OnClick()
+        {
+            GetTank();
+        }
+
+        public void GetTank()
         {
             Transform position = TryGetTransform();
 
@@ -195,7 +201,7 @@ namespace Assets.Scripts.UI.Buttons
             if (_wallet.Money < Price)
             {
                 _button.SetActive(true);
-                gameObject.SetActive(false);
+                _canvas.alpha = 0;
             }
         }
     }

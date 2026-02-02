@@ -11,7 +11,7 @@ namespace Assets.Scripts.ADS
 
         public override void OnReward()
         {
-            _button.OnClick();
+            _button.GetTank();
         }
 
         protected override void OnClose()
