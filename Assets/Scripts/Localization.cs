@@ -1,4 +1,6 @@
+#if UNITY_WEBGL
 using Agava.YandexGames;
+#endif
 using Lean.Localization;
 using UnityEngine;
 
@@ -24,7 +26,9 @@ namespace Assets.Scripts
 
         private void ChangeLanguage()
         {
-            string languageCode = YandexGamesSdk.Environment.i18n.lang;
+            
+#if UNITY_WEBGL
+string languageCode = YandexGamesSdk.Environment.i18n.lang;
 
             switch (languageCode)
             {
@@ -38,6 +42,21 @@ namespace Assets.Scripts
                     _leanLanguage.SetCurrentLanguage(RussianCode);
                     break;
             }
+#endif
+            /*string languageCode = YandexGamesSdk.Environment.i18n.lang;
+
+            switch (languageCode)
+            {
+                case English:
+                    _leanLanguage.SetCurrentLanguage(EnglishCode);
+                    break;
+                case Turkish:
+                    _leanLanguage.SetCurrentLanguage(TurkishCode);
+                    break;
+                case Russian:
+                    _leanLanguage.SetCurrentLanguage(RussianCode);
+                    break;
+            }*/
         }
     }
 }

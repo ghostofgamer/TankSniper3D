@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public class Alarm : MonoBehaviour
     {
-        private Weapon _weapon;
+        private Weapon _weapon; 
 
         public event UnityAction AlertChanged;
 

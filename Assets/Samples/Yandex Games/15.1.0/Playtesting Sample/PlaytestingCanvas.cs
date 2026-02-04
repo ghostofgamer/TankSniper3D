@@ -1,3 +1,4 @@
+#if UNITY_WEBGL
 #pragma warning disable
 
 using System.Collections;
@@ -179,3 +180,4 @@ namespace Agava.YandexGames.Samples
         }
     }
 }
+#endif

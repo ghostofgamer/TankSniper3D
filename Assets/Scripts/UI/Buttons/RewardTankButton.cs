@@ -13,6 +13,11 @@ namespace Assets.Scripts.UI.Buttons
 
         public override void OnClick()
         {
+#if UNITY_ANDROID && RUSTORE
+            if (!AdsRustore.Instance.GetStatus())
+                return;
+#endif
+
             int volume = _load.Get(Save.Volume, _startVolume);
             Button.interactable = false;
             _rewardTank.SetVolume(volume);

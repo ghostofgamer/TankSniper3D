@@ -1,4 +1,6 @@
+#if UNITY_WEBGL && YANDEX_PLATFORM
 using Agava.WebUtility;
+#endif
 using Assets.Scripts.GamePlayer.Aim;
 using UnityEngine;
 
@@ -13,13 +15,17 @@ namespace Assets.Scripts
         private void OnEnable()
         {
             Application.focusChanged += OnInBackgroundChangeApp;
+#if UNITY_WEBGL && YANDEX_PLATFORM
             WebApplication.InBackgroundChangeEvent += OnInBackgroundChangeWeb;
+#endif
         }
 
         private void OnDisable()
         {
             Application.focusChanged -= OnInBackgroundChangeApp;
+#if UNITY_WEBGL && YANDEX_PLATFORM
             WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
+#endif
         }
 
         public void Init(AimInputButton aimInputButton)

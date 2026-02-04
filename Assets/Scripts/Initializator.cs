@@ -19,23 +19,18 @@ namespace Assets.Scripts
     {
         private readonly int StartIndex = 0;
 
-        [Header("Player")]
-        [SerializeField] private Player[] _players;
-        [Header("UI")]
-        [SerializeField] private GameOverScreen _gameOverScreen;
+        [Header("Player")] [SerializeField] private Player[] _players;
+        [Header("UI")] [SerializeField] private GameOverScreen _gameOverScreen;
         [SerializeField] private VictoryScreen _victoryScreen;
         [SerializeField] private PlayerHealthbar _playerHealthbar;
         [SerializeField] private BulletsInfo[] _bulletsInfo;
         [SerializeField] private AimInputButton[] _aimInputButton;
         [SerializeField] private HitPlayer[] _hitPlayers;
         [SerializeField] private VisibilityAim[] _visibilityAim;
-        [Header("Enemys")]
-        [SerializeField] private Transform _enemysContainer;
-        [Header("Camera")]
-        [SerializeField] private HitPoint _hitPoint;
+        [Header("Enemys")] [SerializeField] private Transform _enemysContainer;
+        [Header("Camera")] [SerializeField] private HitPoint _hitPoint;
         [SerializeField] private CameraMovement _reviewCamera;
-        [Header("Other")]
-        [SerializeField] private Alarm _alarm;
+        [Header("Other")] [SerializeField] private Alarm _alarm;
         [SerializeField] private Progress _progress;
         [SerializeField] private Load _load;
         [SerializeField] private ScreenFocus _screenFocus;
@@ -86,7 +81,8 @@ namespace Assets.Scripts
         private void InitPlatform()
         {
             foreach (AimInputButton aimInputButton in _aimInputButton)
-                aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(), _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
+                aimInputButton.Init(_player.GetComponent<Weapon>(), _player.GetComponent<TowerRotate>(),
+                    _player.GetComponent<CameraAim>(), _player.GetComponent<PlayerMover>());
 
             if (Application.isMobilePlatform)
                 SetObject(_mobileIndex);

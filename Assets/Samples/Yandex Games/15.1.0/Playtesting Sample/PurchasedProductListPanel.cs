@@ -1,3 +1,4 @@
+#if UNITY_WEBGL
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,3 +54,4 @@ namespace Agava.YandexGames.Samples
         }
     }
 }
+#endif

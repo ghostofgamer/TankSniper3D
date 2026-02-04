@@ -1,4 +1,6 @@
+#if UNITY_WEBGL && Ya
 using Agava.YandexGames;
+#endif
 using UnityEngine;
 
 namespace Assets.Scripts

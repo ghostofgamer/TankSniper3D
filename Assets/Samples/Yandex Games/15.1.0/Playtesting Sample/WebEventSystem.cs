@@ -1,3 +1,4 @@
+#if UNITY_WEBGL
 using UnityEngine.EventSystems;
 
 namespace Agava.YandexGames.Samples
@@ -13,3 +14,4 @@ namespace Agava.YandexGames.Samples
         protected override void OnApplicationFocus(bool hasFocus) => base.OnApplicationFocus(true);
     }
 }
+#endif

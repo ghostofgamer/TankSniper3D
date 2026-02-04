@@ -1,3 +1,4 @@
+#if UNITY_WEBGL && YANDEX_PLATFORM
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,3 +37,4 @@ namespace Agava.WebUtility.Samples
         }
     }
 }
+#endif

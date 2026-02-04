@@ -34,5 +34,10 @@ namespace Assets.Scripts.ADS
             Time.timeScale = 1;
             AudioListener.volume = _volumeValue;
         }
+        
+        protected virtual void OnError(string error)
+        {
+            Debug.LogError($"Ad error: {error}");
+        }
     }
 }

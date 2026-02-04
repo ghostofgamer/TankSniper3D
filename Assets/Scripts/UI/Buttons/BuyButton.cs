@@ -27,6 +27,11 @@ namespace Assets.Scripts.UI.Buttons
 
         public override void OnClick()
         {
+#if UNITY_ANDROID && RUSTORE
+            if (!AdsRustore.Instance.GetStatus())
+                return;
+#endif
+            
             Button.interactable = false;
 
             switch (_coloring)

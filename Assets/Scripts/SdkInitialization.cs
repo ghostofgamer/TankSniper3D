@@ -1,5 +1,7 @@
 using System.Collections;
+#if UNITY_WEBGL
 using Agava.YandexGames;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +13,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-#if Yandex_Platform
+#if UNITY_WEBGL && YANDEX_PLATFORM
             YandexGamesSdk.CallbackLogging = true;
 #endif
         }
