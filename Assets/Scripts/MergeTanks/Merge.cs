@@ -1,7 +1,9 @@
 using System.Collections;
+using AppMetricaContent;
 using Assets.Scripts.MainMenu;
 using Assets.Scripts.SaveLoad;
 using Assets.Scripts.UI.Buttons;
+using Io.AppMetrica;
 using UnityEngine;
 
 namespace Assets.Scripts.MergeTanks
@@ -73,7 +75,8 @@ namespace Assets.Scripts.MergeTanks
 
         private void Join()
         {
-            Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
+            Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             var rayDirection = worldPosition - Camera.main.transform.position;
             RaycastHit hitInfo;
@@ -106,7 +109,9 @@ namespace Assets.Scripts.MergeTanks
             var level = tank.GetComponent<DragItem>().Level;
             var levelMerge = tank.GetComponent<DragItem>().LevelMerge;
 
-            if (_selectObject.GetComponent<DragItem>().Level == level && _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
+
+            if (_selectObject.GetComponent<DragItem>().Level == level &&
+                _selectObject.GetComponent<DragItem>().Id != tank.GetComponent<DragItem>().Id)
             {
                 int newLevel = ++level;
 
@@ -153,14 +158,17 @@ namespace Assets.Scripts.MergeTanks
             _save.SetData(Save.Level, newLevel);
             _save.SetData(Save.Tank, newLevel);
             _tankView.ShowNewLevel(levelMerge);
+            AppMetrica.ReportEvent("Progress", AppMetricaActivator.ToJson(("Level", newLevel)));
         }
 
         private void Move()
         {
-            Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
+            Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Camera.main.WorldToScreenPoint(_selectObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
             Vector3 currentPosition = new Vector3(worldPosition.x, 30f, worldPosition.z);
-            _selectObject.transform.position = Vector3.Lerp(_selectObject.transform.position, currentPosition, 10 * Time.deltaTime);
+            _selectObject.transform.position =
+                Vector3.Lerp(_selectObject.transform.position, currentPosition, 10 * Time.deltaTime);
         }
 
         private void TakeTank()

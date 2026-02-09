@@ -36,9 +36,9 @@ namespace ADS.Rustore
 
         private void RequestAd()
         {
-            MobileAds.SetAgeRestrictedUser(false); // COPPA
-
-            const string AD_UNIT_ID = "demo-interstitial-yandex"; // заменишь на боевой
+            MobileAds.SetAgeRestrictedUser(false);
+            const string AD_UNIT_ID = "R-M-18688729-1"; 
+            // const string AD_UNIT_ID = "demo-interstitial-yandex"; 
             interstitialAdLoader.LoadAd(new AdRequestConfiguration.Builder(AD_UNIT_ID).Build());
             _isReady = false;
         }
@@ -53,14 +53,12 @@ namespace ADS.Rustore
             if (!_isReady || interstitial == null)
             {
                 OnError("Interstitial ad is not ready yet");
-                RequestAd(); // подгружаем заново
+                RequestAd(); 
                 return;
             }
-
-            // Блокируем звук и таймскейл
+            
             OnOpen();
-
-            // Подписываемся на коллбеки
+            
             interstitial.OnAdClicked += HandleAdClicked;
             interstitial.OnAdShown += HandleAdShown;
             interstitial.OnAdDismissed += HandleAdDismissed;
@@ -99,15 +97,14 @@ namespace ADS.Rustore
 
         private void HandleAdDismissed(object sender, EventArgs args)
         {
-            OnClose(true); // вернёт таймскейл и звук
+            OnClose(true);
 
             if (interstitial != null)
             {
                 interstitial.Destroy();
                 interstitial = null;
             }
-
-            // Можно сразу подгрузить следующую рекламу
+            
             RequestAd();
         }
 

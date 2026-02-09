@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using AppMetricaContent;
 using Io.AppMetrica;
 using UnityEngine;
@@ -19,7 +17,8 @@ public class AdsRustore : MonoBehaviour
     private Action onClose;
     private Action<string> onError;
 
-    private const string AD_UNIT_ID = "demo-rewarded-yandex"; // заменишь на боевой
+    private const string AD_UNIT_ID = "R-M-18688729-2";
+    // private const string AD_UNIT_ID = "demo-rewarded-yandex";
 
     private void Awake()
     {

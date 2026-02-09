@@ -33,11 +33,7 @@ namespace AppMetricaContent
 
             PlayerPrefs.SetInt(_playerPrefsKey, 1);
             PlayerPrefs.Save();
-
-            /*AppMetrica.ReportEvent("Init", ToJson(
-                ("IsFirstLaunch", "true")
-            ));*/
-
+            AppMetrica.ReportEvent("Init", ToJson(("IsFirstLaunch", "true")));
             return true;
         }
 
